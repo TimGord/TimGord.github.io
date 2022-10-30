@@ -30,13 +30,13 @@ twitter_username: longevitytim
 github_username:  TimGord
 
 # Build settings
-#theme: minima
+theme: minima
 remote_theme: pages-themes/slate@v0.2.0
 plugins:
   - jekyll-feed
   - jekyll-remote-theme # add this line to the plugins list if you already have one
 
-page_excerpts: true 
+#page_excerpts: true 
 
 # Exclude from processing.
 # The following items will not be processed, by default.
