@@ -5,4 +5,4 @@
 layout: home
 ---
 
-Hi! I'm Tim and this is an irregularly updated blog on elegant longevity analytics and leveraging modern tools to make them performant.
+Hi! I'm Tim and this is an irregularly-updated blog on elegant longevity analytics and how to leverage modern tools to make them performant.
