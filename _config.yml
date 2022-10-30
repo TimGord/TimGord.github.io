@@ -29,8 +29,8 @@ url: "https://timgord.github.io" # the base hostname & protocol for your site, e
 #github_username:  TimGord
 
 # Build settings
-#markdown: GFM
-markdown: kramdown
+markdown: GFM
+#markdown: kramdown
     # https://chrisyeh96.github.io/2020/03/29/mathjax3.html implies this is overriden in GitHub pages 
     # by math_engine: mathjax
     # math_engine: katex # https://chrisyeh96.github.io/2020/03/29/mathjax3.html implies this is overriden with math_engine: mathjax
