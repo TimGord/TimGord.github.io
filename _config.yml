@@ -31,7 +31,9 @@ url: "https://timgord.github.io" # the base hostname & protocol for your site, e
 # Build settings
 #markdown: GFM
 markdown: kramdown
-    math_engine: katex
+    # https://chrisyeh96.github.io/2020/03/29/mathjax3.html implies this is overriden in GitHub pages 
+    # by math_engine: mathjax
+    # math_engine: katex # https://chrisyeh96.github.io/2020/03/29/mathjax3.html implies this is overriden with math_engine: mathjax
 theme: minima
 #remote_theme: pages-themes/slate@v0.2.0
 plugins:
