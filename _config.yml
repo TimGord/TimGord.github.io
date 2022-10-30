@@ -20,7 +20,7 @@
 
 title: Tim's blog
 #email: tim_gordon@example.com
-description: >- # this means to ignore newlines until "baseurl:"
+description: > # this means to ignore newlines until "baseurl:"
   Blog on elegant longevity analytics and 
   leveraging modern tools to make them performant.
 baseurl: "" # the subpath of your site, e.g. /blog
@@ -39,8 +39,18 @@ theme: minima
 plugins:
   - jekyll-feed
  # - jekyll-remote-theme # add this line to the plugins list if you already have one
+  - jekyll-relative-links
+  - jekyll-remote-theme
 
-page_excerpts: true 
+page_excerpts: true
+
+# Activate a "Back to top" link
+back_to_top: true
+back_to_top_text: "Back to top"
+
+# Heading anchor links appear on hover over h1-h6 tags in page content
+# allowing users to deep link to a particular heading on a page. (true or false)
+heading_anchors: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.
