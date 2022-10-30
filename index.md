@@ -5,6 +5,4 @@
 layout: home
 ---
 
-## HOME
-
 I am index.md
