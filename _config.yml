@@ -31,7 +31,7 @@ url: "https://timgord.github.io" # the base hostname & protocol for your site, e
 # Build settings
 #markdown: GFM
 markdown: kramdown
-#    math_engine: katex
+    math_engine: katex
 theme: minima
 #remote_theme: pages-themes/slate@v0.2.0
 plugins:
