@@ -5,6 +5,6 @@
 layout: home
 ---
 
-## HEADING
+## HOME
 
 I am index.md
