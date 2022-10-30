@@ -21,7 +21,7 @@
 title: Light5World
 #email: tim_gordon@example.com
 description: > # this means to ignore newlines until "baseurl:"
-  Blog on elegant longevity analytics and 
+  Elegant longevity analytics and 
   leveraging modern tools to make them performant.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://timgord.github.io" # the base hostname & protocol for your site, e.g. http://example.com
