@@ -4,11 +4,12 @@ site_url: https://timgord.com/
 
 nav:
     - Blog :
-        - XXX: index.md
-        - Measuring concentration: _blog/2023/measuring-concentration.md
+        - Blog: index.md
+        - Blog test 1: _blog/2023/blog-test-1.md
+        - Blog test 2: _blog/2023/blog-test-2.md
     - About :
         - Tim Gordon: _about/tim-gordon.md
-        - Licensing / reprint policy: _about/reprint-policy.md
+        - Reprint policy: _about/reprint-policy.md
     - Topics : tags.md
 
 theme:
