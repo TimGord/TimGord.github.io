@@ -1,1 +1,1 @@
-# The Plural programming guide
+# Tim Gordon blog source
