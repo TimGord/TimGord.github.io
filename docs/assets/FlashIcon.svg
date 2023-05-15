@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+    width="180"
+    height="180"
+    >
+    <!-- 
+        View box:
+        <rect x="0" y="0" width="180" height="180" fill="none" stroke="red" stroke-width="1"/>
+
+        Standard colour:
+            fill="#0080A0"
+
+        Line attrs:
+        stroke="white"
+        stroke-width="3" 
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    -->
+    <circle fill="#fff" cx="90" cy="90" r="90" />
+
+    <path 
+        fill="#00A0C0"
+        d="
+            M66 31
+            126 9
+            98 59.9
+            115.5 54
+            91.2 103.5
+            105 99
+            61 173
+            72.8 109.5
+            59 114
+            74.6 67.7
+            57 73.5
+            z
+        "
+    />
+</svg>

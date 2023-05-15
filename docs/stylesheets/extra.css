@@ -1,0 +1,17 @@
+/* Precise Teal */
+:root {
+  --md-primary-fg-color:        #00A0C0;
+  --md-primary-fg-color--light: #00C1EE;
+  --md-primary-fg-color--dark:  #0080A0;
+}
+
+::selection {
+  color: #000;
+  background: #FFE500;
+}
+
+
+/* Fix scroll bars appearing on math blocks */
+.md-typeset div.arithmatex {
+    overflow: initial;
+  }
