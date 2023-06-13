@@ -1,9 +1,19 @@
-/* Precise Teal */
+@font-face {
+  font-family: "Lisnoti";
+  src: url("fonts/Lisnoti.woff2");
+}
+
 :root {
+  /* Precise Teal */
   --md-primary-fg-color:        #00A0C0;
   --md-primary-fg-color--light: #00C1EE;
   --md-primary-fg-color--dark:  #0080A0;
+
+  /* Use Lisnoti font */
+  --md-text-font: "Lisnoti"; 
+  --md-code-font: "Lisnoti";
 }
+
 
 ::selection {
   color: #000;
