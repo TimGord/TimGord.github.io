@@ -13,3 +13,15 @@ Test 1
 - Italic: *AI Al A1 f0*
 - Bold: **AI Al A1 f0**
 - Bold italic: ***AI Al A1 f0***
+
+Some code:
+
+````
+in Namespace
+
+f(x₀ ~ Real, x₁ ~ Real ) := a · b where :
+
+    a :=  x₀ + x₁ 
+    b :=  x₀ − x₁ 
+
+```
