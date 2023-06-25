@@ -16,12 +16,11 @@ Test 1
 
 Some code:
 
-````
+```
 in Namespace
 
 f(x₀ ~ Real, x₁ ~ Real ) := a · b where :
 
     a :=  x₀ + x₁ 
     b :=  x₀ − x₁ 
-
 ```
