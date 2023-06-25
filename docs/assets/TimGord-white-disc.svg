@@ -7,9 +7,9 @@
         <rect x="0" y="0" width="180" height="180" fill="none" stroke="red" stroke-width="1"/>
     -->
 
-    <circle cx="90" cy="90" r="90" fill="#0088AA"/>
+    <circle cx="90" cy="90" r="90" fill="#FFFFFF"/>
     <path 
-        fill="#fff" 
+        fill="#0088AA" 
         d="
             M68 31
             128 9

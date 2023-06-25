@@ -16,13 +16,12 @@ theme:
 
   name: material
 
-  logo: assets/FlashIcon.svg
+  logo: assets/TimGord-white-disc.svg
   favicon: assets/favicon.svg
 
   # See https://squidfunk.github.io/mkdocs-material/setup/changing-the-fonts/#customization
   font:
-    text: Fira Sans
-    code: Fira Code
+    false
 
   palette:
 

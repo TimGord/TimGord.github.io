@@ -1,11 +1,27 @@
 @font-face {
   font-family: "Lisnoti";
-  src: url("fonts/Lisnoti.woff2");
+  src: url("fonts/Lisnoti.ttf");
+}
+@font-face {
+  font-family: "Lisnoti";
+  src: url("fonts/Lisnoti-Bold.ttf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Lisnoti";
+  src: url("fonts/Lisnoti-Italic.ttf");
+  font-style: italic;
+}
+@font-face {
+  font-family: "Lisnoti";
+  src: url("fonts/Lisnoti-BoldItalic.ttf");
+  font-weight: bold;
+  font-style: italic;
 }
 
 :root {
   /* Precise Teal */
-  --md-primary-fg-color:        #00A0C0;
+  --md-primary-fg-color:        #0088AA;
   --md-primary-fg-color--light: #00C1EE;
   --md-primary-fg-color--dark:  #0080A0;
 
@@ -14,12 +30,10 @@
   --md-code-font: "Lisnoti";
 }
 
-
 ::selection {
   color: #000;
   background: #FFE500;
 }
-
 
 /* Fix scroll bars appearing on math blocks */
 .md-typeset div.arithmatex {
