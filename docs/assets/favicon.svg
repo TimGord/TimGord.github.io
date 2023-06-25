@@ -2,12 +2,8 @@
     width="180"
     height="180"
     >
-    <!-- 
-        View box:
-        <rect x="0" y="0" width="180" height="180" fill="none" stroke="red" stroke-width="1"/>
-    -->
 
-    <circle cx="90" cy="90" r="90" fill="#0088AA"/>
+    <circle cx="90" cy="90" r="90" fill="#00A0C0"/>
     <path 
         fill="#fff" 
         d="

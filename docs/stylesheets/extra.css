@@ -1,7 +1,12 @@
 @font-face {
   font-family: "Lisnoti";
-  src: url("fonts/Lisnoti.ttf");
+  src:
+    url('fonts/Lisnoti.woff2') format('woff2'), /* Super Modern Browsers */
+    url('fonts/Lisnoti.woff') format('woff'), /* Pretty Modern Browsers */
+    url('fonts/Lisnoti.ttf')  format('truetype'), /* Safari, Android, iOS */
+    /* url('fonts/Lisnoti.svg#svgFontName') format('svg'); /* Legacy iOS */
 }
+
 @font-face {
   font-family: "Lisnoti";
   src: url("fonts/Lisnoti-Bold.ttf");
@@ -21,7 +26,7 @@
 
 :root {
   /* Precise Teal */
-  --md-primary-fg-color:        #0088AA;
+  --md-primary-fg-color:        #00A0C0;
   --md-primary-fg-color--light: #00C1EE;
   --md-primary-fg-color--dark:  #0080A0;
 
