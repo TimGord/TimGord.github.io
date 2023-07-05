@@ -1,25 +1,35 @@
+/* NB The url(...) path is *relative to* the stylesheets folder! */
+
 @font-face {
   font-family: "Lisnoti";
-  src:
-    url('fonts/Lisnoti.woff2') format('woff2'), /* Super Modern Browsers */
-    url('fonts/Lisnoti.woff') format('woff'), /* Pretty Modern Browsers */
-    url('fonts/Lisnoti.ttf')  format('truetype'), /* Safari, Android, iOS */
-    /* url('fonts/Lisnoti.svg#svgFontName') format('svg'); /* Legacy iOS */
+  src: /* List must end with a colon! */
+    url('../fonts/Lisnoti-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/Lisnoti-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/Lisnoti-Regular.ttf')  format('truetype'); /* Safari, Android, iOS */
 }
 
 @font-face {
   font-family: "Lisnoti";
-  src: url("fonts/Lisnoti-Bold.ttf");
+  src: /* List must end with a colon! */
+    url('../fonts/Lisnoti-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/Lisnoti-Bold.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/Lisnoti-Bold.ttf')  format('truetype'); /* Safari, Android, iOS */
   font-weight: bold;
 }
 @font-face {
   font-family: "Lisnoti";
-  src: url("fonts/Lisnoti-Italic.ttf");
+  src: /* List must end with a colon! */
+    url('../fonts/Lisnoti-Italic.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/Lisnoti-Italic.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/Lisnoti-Italic.ttf')  format('truetype'); /* Safari, Android, iOS */
   font-style: italic;
 }
 @font-face {
   font-family: "Lisnoti";
-  src: url("fonts/Lisnoti-BoldItalic.ttf");
+  src: /* List must end with a colon! */
+    url('../fonts/Lisnoti-BoldItalic.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/Lisnoti-BoldItalic.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/Lisnoti-BoldItalic.ttf')  format('truetype'); /* Safari, Android, iOS */
   font-weight: bold;
   font-style: italic;
 }
