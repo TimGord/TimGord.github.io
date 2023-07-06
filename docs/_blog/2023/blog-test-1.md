@@ -14,6 +14,13 @@ Test 1
 - Bold: **AI Al A1 f0**
 - Bold italic: ***AI Al A1 f0***
 
+Some maths:
+
+$$\begin{aligned}
+g_\delta(s)&=\sum_{i\in\text{Exp}}\phi\!\left(\frac{s-s_i}{\delta}\right)(-\ell''_i)\\[2em]
+h_\delta(s)&=\sum_{j\in\text{Val}}\phi\!\left(\frac{s-s_j}{\delta}\right)v'_j
+\end{aligned}$$
+
 Some code:
 
 ```
