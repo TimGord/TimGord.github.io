@@ -1,3 +1,6 @@
 {
-    "svg.preview.background": "transparent"
+    "markdown.styles": [
+        "markdown.css"
+    ],
+    "svg.preview.background": "transparent",
 }
