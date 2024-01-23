@@ -5,7 +5,7 @@ site_url: https://timgord.com/
 nav:
   - Recommended reading:
       # The only way I can get links to blog posts to work is to use the user version
-      - Lisnoti – a proportional font that works for coding too : 2024-01/lisnot--a-proportional-font-that-works-for-coding-too/
+      - Lisnoti – a proportional font that works for coding too : 2024-01/lisnoti--a-proportional-font-that-works-for-coding-too/
   - About me: about-me.md
   - Reprint policy: reprint-policy.md
   #- Topics : tags.md
