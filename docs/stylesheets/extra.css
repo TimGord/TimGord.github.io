@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: "Lisnoti";
-  src: /* List must end with a colon! */
+  src: /* List must end with a semi-colon! */
     url('../fonts/Lisnoti-Regular.woff2') format('woff2'), /* Super Modern Browsers */
     url('../fonts/Lisnoti-Regular.woff') format('woff'), /* Pretty Modern Browsers */
     url('../fonts/Lisnoti-Regular.ttf')  format('truetype'); /* Safari, Android, iOS */
@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: "Lisnoti";
-  src: /* List must end with a colon! */
+  src: /* List must end with a semi-colon! */
     url('../fonts/Lisnoti-Bold.woff2') format('woff2'), /* Super Modern Browsers */
     url('../fonts/Lisnoti-Bold.woff') format('woff'), /* Pretty Modern Browsers */
     url('../fonts/Lisnoti-Bold.ttf')  format('truetype'); /* Safari, Android, iOS */
@@ -18,7 +18,7 @@
 }
 @font-face {
   font-family: "Lisnoti";
-  src: /* List must end with a colon! */
+  src: /* List must end with a semi-colon! */
     url('../fonts/Lisnoti-Italic.woff2') format('woff2'), /* Super Modern Browsers */
     url('../fonts/Lisnoti-Italic.woff') format('woff'), /* Pretty Modern Browsers */
     url('../fonts/Lisnoti-Italic.ttf')  format('truetype'); /* Safari, Android, iOS */
@@ -26,7 +26,7 @@
 }
 @font-face {
   font-family: "Lisnoti";
-  src: /* List must end with a colon! */
+  src: /* List must end with a semi-colon! */
     url('../fonts/Lisnoti-BoldItalic.woff2') format('woff2'), /* Super Modern Browsers */
     url('../fonts/Lisnoti-BoldItalic.woff') format('woff'), /* Pretty Modern Browsers */
     url('../fonts/Lisnoti-BoldItalic.ttf')  format('truetype'); /* Safari, Android, iOS */

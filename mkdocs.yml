@@ -1,16 +1,14 @@
-site_name: Tim Gordon
+site_name: Tim Gordon’s blog
 
 site_url: https://timgord.com/
 
 nav:
-    - Blog :
-        - Blog: index.md
-        - Blog test 1: _blog/2023/blog-test-1.md
-        - Blog test 2: _blog/2023/blog-test-2.md
-    - About :
-        - Tim Gordon: _about/tim-gordon.md
-        - Reprint policy: _about/reprint-policy.md
-    - Topics : tags.md
+  - Recommended reading:
+      # The only way I can get links to blog posts to work is to use the user version
+      - Lisnoti – a proportional font that works for coding too : 2024-01/lisnoti-a-proportional-font-that-works-for-coding-too/
+  - About me: about-me.md
+  - Reprint policy: reprint-policy.md
+  #- Topics : tags.md
 
 theme:
 
@@ -19,7 +17,7 @@ theme:
   logo: assets/TimGord-white-disc.svg
   favicon: assets/favicon.svg
 
-  # See https://squidfunk.github.io/mkdocs-material/setup/changing-the-fonts/#customization
+  # See https://squidfunk.github.io/mkdocs-material/setup/changing-the-fonts/#autoloading
   font:
     false
 
@@ -34,6 +32,15 @@ theme:
         icon: material/brightness-7
         name: Switch to dark mode
 
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      scheme: default
+      primary: custom
+      accent: orange
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
@@ -41,17 +48,17 @@ theme:
       accent: orange
       toggle:
         icon: material/brightness-4
-        name: Switch to light mode
+        name: Switch to automatic mode
 
   features:
     - content.code.copy # Copy code blocks
     - content.tabs.link
     - navigation.sections 
     - navigation.instant
-    - navigation.tabs # Top level is treated as menu
-    - navigation.tabs.sticky
+    #- navigation.tabs # Top level is treated as menu
+    #- navigation.tabs.sticky
     - navigation.tracking
-    - navigation.indexes # Headings can be docs too
+    #- navigation.indexes # Headings can be docs too
     - navigation.expand # Headings on left expand when visit page
     - navigation.footer
     - navigation.top    
@@ -63,14 +70,14 @@ theme:
   custom_dir: overrides
 
   # Icons for tags
-  icon:
-    tag:
-      mortality: material/chart-bell-curve-cumulative
-      standards: material/scale-balance
-      maths: material/sigma
-      coding: material/code-json
-      forecasting: material/target
-      plural: material/parking
+  #icon:
+  #  tag:
+  #    mortality: material/chart-bell-curve-cumulative
+  #    standards: material/scale-balance
+  #    maths: material/sigma
+  #    coding: material/code-json
+  #    forecasting: material/target
+  #    plural: material/parking
 
 markdown_extensions:
   - admonition
@@ -87,9 +94,12 @@ markdown_extensions:
         custom_icons:
           - overrides/.icons 
   - pymdownx.highlight:
+      use_pygments: true
       anchor_linenums: true
-      line_spans: __span
-      pygments_lang_class: true
+      line_spans: __span # Required for features like line highlighting to work correctly
+      pygments_lang_class: true # Required for custom annotation markers to function
+  #- pymdownx.inlinehilite
+  - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
   - toc:
@@ -97,9 +107,7 @@ markdown_extensions:
       permalink: '' # GitHub-style heading links *before* title
       title: Page contents
   - pymdownx.details
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.superfences
+  #- pymdownx.snippets
   - pymdownx.arithmatex:
       generic: true
 
@@ -108,15 +116,34 @@ plugins:
   # See: https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/
   - search: 
       lang: en
-  - tags:
-      enabled: !ENV [CI, false]
-      tags_file: tags.md
+  #- tags:
+  #    enabled: !ENV [CI, false]
+  #    tags_file: tags.md
+  - blog :
+      archive: false ### Turn this off in 2025? ###
+      blog_dir: .
+      blog_toc: true
+      categories_name: Topics      
+      post_date_format: yyyy-MM-dd
+      post_url_date_format: yyyy-MM
+      post_date_format: yyyy-MM-dd # Heading within posts
+      archive_date_format: yyyy # How archive is grouped 
+      archive_url_date_format: yyyy
+      archive_url_format: "{date}"
+      post_excerpt: required # This setting means that posts without excerpt separators raise an error.
+      #categories_toc: true
+      categories_url_format: "topic/{slug}"
+      categories_allowed:
+        - Coding
+        - Maths/stats
+        - Mortality/longevity
+        - Presentation
 
 #repo_url: https://github.com/TimGord/TimGord.github.io
 
 site_description : Tim Gordon’s blog
 site_author: Tim Gordon
-copyright: Copyright &copy; 2023 Tim Gordon
+copyright: Copyright &copy; 2024 Tim Gordon
 
 extra:
   #generator: false

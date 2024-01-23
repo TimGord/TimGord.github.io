@@ -1,1 +1,0 @@
-# Tim Gordon blog source
