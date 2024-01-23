@@ -39,13 +39,11 @@ Very occasionally monospace is precisely what you want (e.g. to  edit hex data).
 - people are used to them, or
 - some (arguably brittle) code alignment practices, e.g. [hanging comments](https://lobste.rs/s/xyeqmu/monaspace#c_zrvjdj), assume that the code will always be displayed using a monospaced font.
 
-If you're not convinced there is a case for using proportional fonts for coding then fine; this article is not for you. Before you stop reading I would make a final plea that you drop code formatting styles that assume everyone uses monospaced fonts (just like you don't format tables in documents by pressing the space bar to line up columns).
+If you're not convinced there is a case for using proportional fonts for coding then fine; this article is not for you. But before you stop reading I make a final plea that you drop code formatting styles that assume everyone uses monospaced fonts (just like you don't format tables in documents by pressing the space bar to line up columns).
 
-There is however one common objection to proportional fonts that does carry some weight, which is that many proportional (sans serif) fonts *do not reliably distinguish between characters that matter when writing code*. In contrast, there are plenty of existing monospaced fonts that address this issue. So let's tackle this first.
+If you are still reading then there is one common objection to proportional fonts that does carry some weight, which is that many proportional (sans serif) fonts *do not reliably distinguish between characters that matter when writing code*. (In contrast, there are plenty of existing monospaced fonts that address this issue.) So let's tackle this issue first.
 
 ## The A1 AI called Al
-
-The need to distinguish characters *unambiguously* is not just a coding issue -- see e.g. [this Linotype article](https://www.linotype.com/6990/din-1450.html) on redesigning Frutiger to comply with German readability standard DIN 1450.
 
 The common problem cases for sans serif fonts are 
 
@@ -56,32 +54,34 @@ Gill Sans (![Characters I i 1 O and 0 in Gill Sans](Font-Il1O0-Gill-Sans-light.s
 
 Some sans serif fonts at least distinguish  the number `1` from letters, e.g Roboto (![Characters I i 1 O and 0 in Roboto](Font-Il1O0-Roboto-light.svg#only-light)![Characters I i 1 O and 0 in Roboto](Font-Il1O0-Roboto-dark.svg#only-dark)) -- Arial, Calibri are similar. But this still leaves `I` and `l` easily confused. 
 
+It is worth noting that the need to distinguish similar-looking characters such as `I` v `l` is not just a coding issue -- see e.g. [this Linotype article](https://www.linotype.com/6990/din-1450.html) on redesigning Frutiger to comply with German readability standard DIN 1450.
+
 !!! info inline end "Public signage"
 
     Surprisingly, many typefaces commonly used for -- sometimes even *specifically designed for* -- public signage do not reliably distinguish between the letters `I` and `l`. You can probably spot a few in [this summary](https://en.wikipedia.org/wiki/List_of_public_signage_typefaces). 
     
     Notable historical exceptions include the pioneering London Underground [Johnston typeface](https://en.wikipedia.org/wiki/Johnston_(typeface)), the UK's [Transport typeface](https://en.wikipedia.org/wiki/Transport_(typeface)) and Germany's [DIN 1451](https://en.wikipedia.org/wiki/DIN_1451).
 
-To address the `I` v `l` issue, modern fonts often follow in the footsteps of Johnston (see box to the right) and put a tail on the lower case `l`. Unfortunately, there is a conflicting convention where the lower case `l` is tailless and serifs are added to the upper `I`. An example of this in action is the inconsistent `I` v `l` typography in Google's [Noto global fonts project](https://fonts.google.com/noto) where
+To address the `I` v `l` issue, modern fonts often follow in the footsteps of Johnston (see the boxout) and put a tail on the lower case `l`. Unfortunately, there is a conflicting convention where the lower case `l` is tailless and serifs are added to the upper `I`. An example of this in action is the inconsistent `I` v `l` typography in Google's [Noto global fonts project](https://fonts.google.com/noto) where
 
 - the [Western version of Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans) uses the second convention (![Characters I i 1 O and 0 in Noto Sans](Font-Il1O0-Noto-Sans-light.svg#only-light)![Characters I i 1 O and 0 in Noto Sans](Font-Il1O0-Noto-Sans-dark.svg#only-dark)), but
 
 - the [Japanese version of Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans+JP) uses the first convention (![Characters I i 1 O and 0 in Noto Sans JP](Font-Il1O0-Noto-Sans-JP-light.svg#only-light)![Characters I i 1 O and 0 in Noto Sans](Font-Il1O0-Noto-Sans-JP-dark.svg#only-dark)).
 
-What all this means is that, *even if `I` is distinct from `l` within a font, you cannot deduce unless you have additional information about the font in use*.
+What all this means is that, *even if `I` is distinct from `l` within a font, you cannot deduce which is which in isolation*.
 
-Back at the start of 2017, Paul McAulay asked that [Noto Sans and Roboto be modified to correct precisely this ambiguity](https://github.com/notofonts/noto-fonts/issues/821#issuecomment-270531619) (see [here for Roboto](https://github.com/googlefonts/roboto/issues/226)), but he and others were given pretty short shrift. The argument I really struggle with is that making `I` and `l` distinct cannot be done for style reasons -- see for example [this classic](https://github.com/googlefonts/roboto/issues/226#issuecomment-270854413) and, for a completely different font,
+Back at the start of 2017, Paul McAulay asked that [Noto Sans and Roboto be modified to correct precisely this ambiguity](https://github.com/notofonts/noto-fonts/issues/821#issuecomment-270531619) (see [here for Roboto](https://github.com/googlefonts/roboto/issues/226)), but he and others were given pretty short shrift. The justification for the status quo that I really struggle with is that *making `I` and `l` distinct cannot be done for style reasons* -- see for example [this classic](https://github.com/googlefonts/roboto/issues/226#issuecomment-270854413) and, in relation to a different font,
  [the same thing again](https://github.com/be5invis/Iosevka/issues/1352#issuecomment-1125731246).
 
-Some proportional fonts *do* handle the `I` v `l` issue, e.g. [Input Sans](https://input.djr.com/info/) *by design* (although I find it too clunky for general typography and it's not open source) and -- I suspect solely because of the IBM logo -- [IBM Plex](https://www.ibm.com/plex/).
+Some proportional fonts *do* handle the `I` v `l` issue, e.g. by design [Input Sans](https://input.djr.com/info/) (although I find it too clunky for general typography and it's not open source) and [IBM Plex](https://www.ibm.com/plex/) (I suspect solely because of the IBM logo).
 
-So let's fix the `I` v `l` issue. But this is just the start&nbsp;…
+But fixing the `I` v `l` issue is just the start&nbsp;…
 
 ## The long wish list
 
-As well as being suitable for writing standard computer code and as a general font, I'd also like a font that includes maths and other symbols that crop up in code documentation and, if you use [Julia](https://julialang.org/),  in actual code.
+As well as being suitable for writing standard computer code and as a general font, I'd also like a font that includes maths and other symbols that crop up in code documentation and, if you use [Julia](https://julialang.org/), in actual code.
 
-The reason you want all characters in the *same* font is that otherwise the environment you're using will either show a blank character or make -- likely garish -- substitution.
+The reason you want all characters in the *same* font is that otherwise the environment you're using will either show a blank character or make a -- likely garish -- substitution.
 
 At an elementary level, using hyphen to represent a minus sign is a cardinal presentational sin given that almost all modern fonts specifically include the correct Unicode character, `U+2212` (although [Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans) has somehow managed to omit it).
 
