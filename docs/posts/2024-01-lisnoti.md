@@ -12,7 +12,7 @@ categories:
 #  - Standards
 ---
 
-# Lisnoti -- a proportional font that works for coding too
+# Lisnoti – a proportional font that works for coding too
 
 ![Lisnoti font card](LisnotiCard.svg){ align=right }
 
@@ -64,11 +64,11 @@ Some sans serif fonts at least distinguish  the number `1` from letters, e.g Rob
 
 To address the `I` v `l` issue, modern fonts often follow in the footsteps of Johnston (see box to the right) and put a tail on the lower case `l`. Unfortunately, there is a conflicting convention where the lower case `l` is tailless and serifs are added to the upper `I`. An example of this in action is the inconsistent `I` v `l` typography in Google's [Noto global fonts project](https://fonts.google.com/noto) where
 
-- ![Characters I i 1 O and 0 in Noto Sans](Font-Il1O0-Noto-Sans-light.svg#only-light)![Characters I i 1 O and 0 in Noto Sans](Font-Il1O0-Noto-Sans-dark.svg#only-dark) are in [Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans), and
+- the [Western version of Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans) uses the second convention (![Characters I i 1 O and 0 in Noto Sans](Font-Il1O0-Noto-Sans-light.svg#only-light)![Characters I i 1 O and 0 in Noto Sans](Font-Il1O0-Noto-Sans-dark.svg#only-dark)), but
 
-- ![Characters I i 1 O and 0 in Noto Sans JP](Font-Il1O0-Noto-Sans-JP-light.svg#only-light)![Characters I i 1 O and 0 in Noto Sans](Font-Il1O0-Noto-Sans-JP-dark.svg#only-dark) are in the Japanese version, [Noto Sans JP](https://fonts.google.com/noto/specimen/Noto+Sans+JP).
+- the [Japanese version of Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans+JP) uses the first convention (![Characters I i 1 O and 0 in Noto Sans JP](Font-Il1O0-Noto-Sans-JP-light.svg#only-light)![Characters I i 1 O and 0 in Noto Sans](Font-Il1O0-Noto-Sans-JP-dark.svg#only-dark)).
 
- This means that, *even if `I` is distinct from `l` within a font, you cannot deduce unless you have additional information about the font in use*.
+What all this means is that, *even if `I` is distinct from `l` within a font, you cannot deduce unless you have additional information about the font in use*.
 
 Back at the start of 2017, Paul McAulay asked that [Noto Sans and Roboto be modified to correct precisely this ambiguity](https://github.com/notofonts/noto-fonts/issues/821#issuecomment-270531619) (see [here for Roboto](https://github.com/googlefonts/roboto/issues/226)), but he and others were given pretty short shrift. The argument I really struggle with is that making `I` and `l` distinct cannot be done for style reasons -- see for example [this classic](https://github.com/googlefonts/roboto/issues/226#issuecomment-270854413) and, for a completely different font,
  [the same thing again](https://github.com/be5invis/Iosevka/issues/1352#issuecomment-1125731246).
