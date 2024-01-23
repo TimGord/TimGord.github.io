@@ -1,0 +1,16 @@
+
+.github-markdown-body {
+    font-family: "Lisnoti";
+}
+
+.github-markdown-body code {
+    font-family: "Lisnoti";
+    font-size: 0.95em;
+    color: #C00;
+    background-color:#F8F8F8
+}
+
+.github-markdown-body pre {
+    font-size: 0.9em;
+    background-color:#F8F8F8
+}
