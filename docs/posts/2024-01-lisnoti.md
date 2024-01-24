@@ -16,7 +16,7 @@ categories:
 
 ![Lisnoti font card](LisnotiCard.svg){ align=right }
 
-Over the past 15 years or so, I have periodically searched in vain for a *proportional* sans serif font that is both high quality in itself but also suitable for writing computer code. I've finally decided to stop waiting and to create one myself.
+Over the past 15 years or so, I have periodically searched in vain for a *proportional* sans serif font that is both high quality in itself but also suitable for programming, i.e. writing computer code. I finally decided to stop waiting and to make one myself.
 
 The result is [Lisnoti](https://github.com/Lisnoti/Lisnoti/) (`/lɪzˈnəʊtiː/`), which is published under the [SIL Open Font Licence (OFL)](https://openfontlicense.org/) and can be downloaded [here](https://github.com/Lisnoti/Lisnoti/). It is also the font used to typeset this blog.
 
@@ -32,28 +32,29 @@ The convention that monospaced fonts are used for coding derives from programmin
 
     'Typewriter habits' is a term coined by Matthew Butterick in his excellent [Practical Typography](https://practicaltypography.com/typewriter-habits.html) to describe bad typography habits left over from the typewriter era.
 
-The case for using proportional fonts for coding -- which boils down to readability and efficiency -- has already been well made by [Martĳn Storck](https://storck.io/posts/proportional-programming-code-fonts/), [Nelson Minar](https://nelsonslog.wordpress.com/2021/09/12/proportional-fonts-and-yapf-vs-black/) and [David Jonathan Ross](https://input.djr.com/info/). But the sheer prevalence of monospaced fonts in coding contexts means that their use is often simply taken for granted and so the habit is hard to break, despite widespread IDE support for proportional fonts and despite computing having spread far beyond the English-speaking world (hello Unicode).
+The case for using proportional fonts for coding -- which boils down to readability and efficiency -- has already been well made by [Martĳn Storck](https://storck.io/posts/proportional-programming-code-fonts/), [Nelson Minar](https://nelsonslog.wordpress.com/2021/09/12/proportional-fonts-and-yapf-vs-black/) and [David Jonathan Ross](https://input.djr.com/info/). But the sheer prevalence of monospaced fonts in coding contexts means that their use is often just taken for granted and so the habit is hard to break, despite widespread IDE support for proportional fonts and despite computing having spread far beyond the English-speaking world (hello Unicode).
 
-Very occasionally monospace is precisely what you want (e.g. to  edit hex data). But many objections to proportional fonts boil down to monospaced fonts being presumed to be better simply because either
+Very occasionally monospace is precisely what you want (e.g. to  edit hex data, write assembly or use a terminal). But many objections to proportional fonts boil down to monospaced fonts being presumed to be better simply because either
 
 - people are used to them, or
 - some (arguably brittle) code alignment practices, e.g. [hanging comments](https://lobste.rs/s/xyeqmu/monaspace#c_zrvjdj), assume that the code will always be displayed using a monospaced font.
 
-If you're not convinced there is a case for using proportional fonts for coding then fine; this article is not for you. Before you stop reading I make a final plea that you formatting code based on the assumption that everyone uses monospaced fonts (just like you don't format tables in documents by pressing the space bar to line up columns).
+If you're completely unconvinced there is a case for using proportional fonts for coding then fine; this article is not for you.
 
-There is one common objection to proportional fonts that does carry some weight, which is that many proportional sans serif fonts *do not reliably distinguish between characters that matter when writing code*. (In contrast, almost all monospaced fonts do.) So let's tackle this issue first.
+But if you are interested then there is one common objection to proportional fonts that does carry some weight, which is that many (sans serif) fonts *do not reliably distinguish between characters that matter when writing code*. (In contrast, almost all monospaced fonts do.) So let's tackle this issue first.
 
 ## The A1 AI called Al
 
-The biggest problem cases when using sans serif fonts for coding are distinguishing
+I am going to focus on sans serif fonts because I think these are clearer for coding than serif fonts (e.g. Times).
+
+The most obvious problem when using sans serif fonts for coding is distinguishing
 
 - upper case `I` from lower case `l` (and while we're here, also the number `1`), and
 - upper case `O` from zero `0`. 
 
+For instance, Gill Sans (![Characters I i 1 O and 0 in Gill Sans](Font-Il1O0-Gill-Sans-light.svg#only-light)![Characters I i 1 O and 0 in Gill Sans](Font-Il1O0-Gill-Sans-dark.svg#only-dark)) has the classic purist design where `I`, `l` and `1` are all indistinguishable.
 
-Gill Sans (![Characters I i 1 O and 0 in Gill Sans](Font-Il1O0-Gill-Sans-light.svg#only-light)![Characters I i 1 O and 0 in Gill Sans](Font-Il1O0-Gill-Sans-dark.svg#only-dark)) has the classic purist design where `I`, `l` and `1` are all indistinguishable.
-
-Many sans serif fonts do at least distinguish the number `1` from letters, e.g Roboto (![Characters I i 1 O and 0 in Roboto](Font-Il1O0-Roboto-light.svg#only-light)![Characters I i 1 O and 0 in Roboto](Font-Il1O0-Roboto-dark.svg#only-dark)) -- Arial, Calibri are similar. But this still leaves `I` and `l` easily confused. 
+Many sans serif fonts do at least distinguish the number `1` from letters, e.g Roboto (![Characters I i 1 O and 0 in Roboto](Font-Il1O0-Roboto-light.svg#only-light)![Characters I i 1 O and 0 in Roboto](Font-Il1O0-Roboto-dark.svg#only-dark) -- Arial and Calibri are similar). But this still leaves `I` and `l` easily confused. 
 
 !!! info inline end "Legibility is a wider concern"
 
@@ -132,9 +133,10 @@ Here's my personal long list of font requirements and character coverage:
 
     If you want all the above but you're happy with a monospaced font, then I suggest you check out [Julia Mono](https://juliamono.netlify.app/).
 
+
 ## Introducing the Lisnoti font
 
-Google's [Noto global fonts project](https://fonts.google.com/noto/) has generated sets of sans serif fonts that, in combination, have excellent Unicode coverage. This means a huge amount of the hard and technically skilled typographical work has already been done. Further, the Noto fonts are published under an [open source licence](https://openfontlicense.org/), which means they can be modified and republished (provided original copyright statements, reserved font name declarations, and the original licence text are included).
+Google's [Noto global fonts project](https://fonts.google.com/noto/) has generated sets of sans serif fonts that, in combination, have excellent Unicode coverage. That is a huge amount of the hard and technically skilled typographical work already done. Further, the Noto fonts are published under an [open source licence](https://openfontlicense.org/), which means they can be modified and republished (provided original copyright statements, reserved font name declarations, and the original licence text are included).
 
 So that's what I've done -- I've edited and combined Noto Sans fonts to create a proportional font **Lisnoti** (`/lɪzˈnəʊtiː/`) that meets all the requirement listed in this article, including the ambiguous characters we kicked of with (![Characters I i 1 O and 0 in Lisnoti](Font-Il1O0-Lisnoti-light.svg#only-light)![Characters I i 1 O and 0 in Lisnoti](Font-Il1O0-Lisnoti-dark.svg#only-dark)).
 
@@ -147,7 +149,7 @@ It is available
 
 is published under the [SIL Open Font Licence (OFL)](https://openfontlicense.org/). 
 
-I've tested Lisnoti on Windows and Apple, but not on Linux.
+I've been using Lisnoti in Visual Studio and VS Code for some time now, and it works for me. (I've used it on Windows and Apple, but not on Linux.)
 
 If you have comments on Lisnoti, please use the [Lisnoti GitHub discussions page](https://github.com/Lisnoti/Lisnoti/discussions). (If you do comment then please bear in mind that I am not a typography expert, just a frustrated user.)
 
