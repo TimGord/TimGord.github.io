@@ -87,7 +87,7 @@ As well as being suitable for writing standard computer code and as a general fo
 
 The reason you want all characters in the *same* font is that otherwise the environment you're using will either show a blank character or make a -- likely garish -- substitution.
 
-!!! info inline end "Hyphens vs minus signs"
+!!! info inline end "Hyphen vs minus sign"
 
     Using hyphen to represent a minus sign is a frequently-occurring presentational sin, the more so because  almost all modern fonts specifically include the correct Unicode minus sign, `U+2212`.
 
