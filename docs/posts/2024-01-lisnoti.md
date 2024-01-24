@@ -89,11 +89,11 @@ The reason you want all characters in the *same* font is that otherwise the envi
 
 !!! info inline end "Hyphen vs minus sign"
 
-    Using hyphen to represent a minus sign is a frequently-occurring presentational sin, the more so because  almost all modern fonts specifically include the correct Unicode minus sign, `U+2212`.
+    Using hyphen to represent a minus sign is a frequently-occurring typographical sin, the more so because  almost all modern fonts specifically include an actual minus sign (`U+2212`).
 
-    Even the generally reliable Matthew Butterick lapses (albeit while advocating the use of true maths symbols) [by suggesting en dash as a minus sign](https://practicaltypography.com/math-symbols.html)  -- please don't do that!
+    Even the generally reliable Matthew Butterick lapses (albeit while advocating the use of true maths symbols) [by suggesting en dash as a minus sign](https://practicaltypography.com/math-symbols.html) -- please don't do that!
 
-    A possibly even worse sin is that -- at time of writing -- [Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans) *does* implement Unicode minus sign but *wrongly* as a hyphen. (The minus sign glyph in the font file is simply a reference to the hyphen glyph.)
+    And just to catch out the unwary, [Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans)  -- at time of writing -- *does* implement the Unicode minus sign but *incorrectly* as a hyphen. (The minus sign in the font file is literally a reference to the hyphen glyph.)
 
 Here's my personal long list of font requirements and character coverage:
 
