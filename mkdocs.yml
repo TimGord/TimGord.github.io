@@ -4,7 +4,9 @@ site_url: https://timgord.com/
 
 nav:
   - Recommended reading:
-      # The only way I can get links to blog posts to work is to use the user version
+      # The only way I can get links to blog posts to work is to use the external link.
+      # For reasons I don't understand, the local and server slugification produce different results
+      # when there are dashes in the item title.
       - Lisnoti – a proportional font that works for coding too : 2024-01/lisnoti--a-proportional-font-that-works-for-coding-too/
   - About me: about-me.md
   - Reprint policy: reprint-policy.md
