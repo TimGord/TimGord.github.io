@@ -154,6 +154,9 @@ extra:
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/tim-gordon-8b59b180/
       name: Tim on LinkedIn
+    - icon: fontawesome/brands/x-twitter
+      link: https://twitter.com/LongevityTim/
+      name: Tim on X (fka Twitter)
 
   tags:
     Mortality: mortality
