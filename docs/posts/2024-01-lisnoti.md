@@ -18,7 +18,7 @@ categories:
 
 Over the past 15 years or so, I have periodically searched in vain for a *proportional* sans serif font that is both high quality in itself but also suitable for programming, i.e. writing computer code. I finally decided to stop waiting and to make one myself.
 
-The result is [Lisnoti](https://github.com/Lisnoti/Lisnoti/) (`/lɪzˈnəʊtiː/`), which is published under the [SIL Open Font Licence (OFL)](https://openfontlicense.org/) and can be downloaded [here](https://github.com/Lisnoti/Lisnoti/). It is also the font used to typeset this blog.
+The result is the open source [Lisnoti](https://github.com/Lisnoti/Lisnoti/) (`/lɪzˈnəʊtiː/`) font, which can be **downloaded [here](https://github.com/Lisnoti/Lisnoti/)**. It is also the font used to typeset this blog.
 
 <!-- more -->
 
@@ -70,7 +70,7 @@ To address the `I` v `l` issue, modern fonts often follow in the footsteps of Jo
 
 - the [Western version of Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans) uses the second convention (![Characters I i 1 O and 0 in Noto Sans](Font-Il1O0-Noto-Sans-light.svg#only-light)![Characters I i 1 O and 0 in Noto Sans](Font-Il1O0-Noto-Sans-dark.svg#only-dark)).
 
-What this means is that, *even if `I` is distinct from `l` within a font, you cannot deduce which is which in isolation*, plus there is additional cognitive load.
+What this means is that, *even if `I` is distinct from `l` within a font, you cannot deduce which is which in isolation*. Plus there is additional cognitive load.
 
 Back at the start of 2017, Paul McAulay asked that [Noto Sans and Roboto be modified to correct precisely this ambiguity](https://github.com/notofonts/noto-fonts/issues/821#issuecomment-270531619) (see [here for the Roboto request](https://github.com/googlefonts/roboto/issues/226)), but he and others were given pretty short shrift. The objection that I really struggle to understand is that *making `I` and `l` distinct cannot be done for style reasons* -- see for example [this classic ('it just won't fit')](https://github.com/googlefonts/roboto/issues/226#issuecomment-270854413) and, in relation to a different font,
  [a dismissal based solely on style ('differentiation is not a design goal')](https://github.com/be5invis/Iosevka/issues/1352#issuecomment-1125731246).
@@ -137,14 +137,14 @@ Google's [Noto global fonts project](https://fonts.google.com/noto/) has generat
 
 So that's what I've done -- I've edited and combined Noto Sans fonts to create a proportional font **Lisnoti** (`/lɪzˈnəʊtiː/`) that meets all the requirement listed in this article, including, of course, fixing the ambiguous characters we kicked off with (![Characters I i 1 O and 0 in Lisnoti](Font-Il1O0-Lisnoti-light.svg#only-light)![Characters I i 1 O and 0 in Lisnoti](Font-Il1O0-Lisnoti-dark.svg#only-dark)).
 
-Lisnoti can be downloaded from GitHub **[here](https://github.com/Lisnoti/Lisnoti)** (where you can also find further detail on its construction). 
+**Lisnoti can be downloaded from GitHub [here](https://github.com/Lisnoti/Lisnoti)** (where you can also find further detail on its construction). 
 
 It is available 
 
-- in regular, *italic*, **bold** and ***bold-italic*** variants,
-- in OpenType (`.ttf`) and web (`.woff` and `.woff2`) formats, and
+- in regular, *italic*, **bold** and ***bold-italic*** variants, and
+- in OpenType (`.ttf`) and web (`.woff` and `.woff2`) formats,
 
-is published under the [SIL Open Font Licence (OFL)](https://openfontlicense.org/). 
+and is published under the [SIL Open Font Licence (OFL)](https://openfontlicense.org/). 
 
 I've been using Lisnoti in Visual Studio and VS Code for some time now, and it works for me. (I've tried it on Windows and Apple, but not on Linux.)
 

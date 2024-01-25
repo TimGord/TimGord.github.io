@@ -2,37 +2,24 @@
 
 ## Handy ref
 
-Tags:
+The Material for MKDocs is [here](https://squidfunk.github.io/mkdocs-material/getting-started/).
 
-  - Mortality
-  - Forecasting
-  - Standards
-  - Maths
-  - Coding
-  - Plural
+Lists of tags and categories to use:
 
-Categories :
-
-- Mortality/longevity
-- Maths/stats
-- Presentation
-- Coding
+|Tags|Categories|
+|:---|:---|
+|`Mortality`<br/>`Forecasting`<br/>`Standards`<br/>`Maths`<br/>`Coding`<br/>`Plural`|`Mortality/longevity`<br/>`Maths/stats`<br/>`Presentation`<br/>`Coding`|
 
 ## Organisation
 
-We have two repos:
+1. Use the `dev` folder for
 
-1. `TimGord\TimGord.github.io-dev`
-
+    - Instructions, i.e. this doc.
     - Notes and record of work associated with the blog.
-    - Draft version of the blog is maintained in the `DRAFT-TimGord.github.io` sub-folder.
-    - **Always** update and test using the draft version *before* copying to 1. `TimGord\TimGord.github.io`.
 
+2. `mkdocs.yml` controls the site generator.
 
-1. `TimGord\TimGord.github.io`
-
-    - Generates the live blog -- simply replicating to GitHub updates the live blog.
-    - Additionally contains a `.github` folder describing the workflows.
+3. All content lives in the `docs` folder. Posts live inside the `posts` folder (and any of its sub-folders).
 
 ## Testing the blog locally
 
