@@ -60,7 +60,7 @@ Many sans serif fonts do at least distinguish the number `1` from letters, e.g R
 
     The need to distinguish similar-looking characters such as `I` v `l` is not just a coding issue -- see e.g. [this Linotype article](https://www.linotype.com/6990/din-1450.html) on redesigning Frutiger to comply with German legibility standard DIN 1450.
 
-    You may find it surprising that, many typefaces commonly used for -- sometimes even *specifically designed for* -- public signage do not reliably distinguish between the letters `I` and `l`. (You can probably spot a few in [this summary](https://en.wikipedia.org/wiki/List_of_public_signage_typefaces).)
+    You may find it surprising that many typefaces commonly used for -- sometimes even *specifically designed for* -- public signage do not reliably distinguish between the letters `I` and `l`. (You can probably spot a few in [this summary](https://en.wikipedia.org/wiki/List_of_public_signage_typefaces).)
     
     Notable historical exceptions include the pioneering London Underground [Johnston typeface](https://en.wikipedia.org/wiki/Johnston_(typeface)), the UK's [Transport typeface](https://en.wikipedia.org/wiki/Transport_(typeface)) and Germany's [DIN 1451](https://en.wikipedia.org/wiki/DIN_1451).
 
@@ -77,7 +77,7 @@ Back at the start of 2017, Paul McAulay asked that [Noto Sans and Roboto be modi
 
 A limited few proportional fonts *do* handle the `I` v `l` issue:
 
-- David Jonathan Ross's proportionally-spaced sans serif variant on his [Input font](https://input.djr.com/info/) does this by design, although I find it too clunky for general typography (which to be fair is not what it is intended for).
+- David Jonathan Ross's proportionally-spaced sans serif variant of his [Input font](https://input.djr.com/info/) does this by design, although I find it too clunky for general typography (which to be fair is not what it is intended for).
 - I suspect [IBM Plex](https://www.ibm.com/plex/) achieves this accidentally solely because of the `I` in the IBM logo.
 
 But fixing the `I` v `l` issue is just the start&nbsp;…
@@ -111,7 +111,7 @@ Here's my personal long list of font requirements and character coverage:
 
 1. Greek and Cyrillic letters -- mathematics and logic make frequent use of Greek letters and occasionally Cyrillic ones too.
 
-1. Consistently formatted digit and Roman letter superscripts and subscripts, e.g. `¹²³⁽⁾⁺⁻ ᵃᵇᶜ ᴬᴮᴰ` and `₁₂₃₍₎₊₋ ₐₑₕ`.
+1. Consistently formatted digit and Roman letter superscripts and subscripts, e.g. `¹²³ ⁽⁾⁺⁻ ᵃᵇᶜ ᴬᴮᴰ` and `₁₂₃ ₍₎₊₋ ₐₑₕ`.
 
 1. A selection of symbols (consistently including all related characters within each set -- I've shown only subsets below)
 
@@ -146,7 +146,7 @@ It is available
 
 is published under the [SIL Open Font Licence (OFL)](https://openfontlicense.org/). 
 
-I've been using Lisnoti in Visual Studio and VS Code for some time now, and it works for me. (It's been used on Windows and Apple, but not on Linux.)
+I've been using Lisnoti in Visual Studio and VS Code for some time now, and it works for me. (I've tried it on Windows and Apple, but not on Linux.)
 
 If you have comments on Lisnoti, please use the [Lisnoti GitHub discussions page](https://github.com/Lisnoti/Lisnoti/discussions). If you do comment then please bear in mind that I am not a typography expert, just a frustrated user.
 
