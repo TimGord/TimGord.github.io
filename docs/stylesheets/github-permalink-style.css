@@ -2,7 +2,7 @@
 
 .headerlink {
 	--permalink-size: 20px; /* was 16px */ /* for font-relative sizes, 0.6em is a good choice */
-	--permalink-spacing: 4px; /* was 4px */
+	--permalink-spacing: 6px; /* was 4px */
 
 	width: calc(var(--permalink-size) + var(--permalink-spacing));
 	height: var(--permalink-size);
