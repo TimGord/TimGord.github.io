@@ -5,11 +5,19 @@ authors:
   - timgord
 categories:
   - Coding
+  #- Forecasting
+  #- Maths/stats
+  #- Mortality/longevity
   - Presentation
-#tags:
+#- #tags:
+#  - Coding
 #  - Mortality
 #  - Forecasting
 #  - Standards
+
+# For reasons I don't understand, the local and server slugification produce
+# different results when there are dashes in the item title.
+slug: lisnoti-a-proportional-font-that-works-for-coding-too
 ---
 
 # Lisnoti – a proportional font that works for coding too
@@ -17,6 +25,7 @@ categories:
 ![Lisnoti font card](LisnotiCard.svg){ align=right }
 
 Over the past 15 years or so, I have periodically searched in vain for a *proportional* sans serif font that is both high quality in itself but also suitable for programming, i.e. writing computer code. I finally decided to stop waiting and to make one myself.
+
 
 The result is the open source [Lisnoti](https://github.com/Lisnoti/Lisnoti/) (`/lɪzˈnəʊtiː/`) font, which can be **[downloaded here](https://github.com/Lisnoti/Lisnoti/)**. It is also the font used to typeset this blog.
 

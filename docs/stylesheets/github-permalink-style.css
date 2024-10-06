@@ -1,8 +1,8 @@
 /* GitHub-style heading links *before* title */
 
 .headerlink {
-	--permalink-size: 16px; /* for font-relative sizes, 0.6em is a good choice */
-	--permalink-spacing: 4px;
+	--permalink-size: 20px; /* was 16px */ /* for font-relative sizes, 0.6em is a good choice */
+	--permalink-spacing: 4px; /* was 4px */
 
 	width: calc(var(--permalink-size) + var(--permalink-spacing));
 	height: var(--permalink-size);

@@ -7,7 +7,10 @@ nav:
       # The only way I can get links to blog posts to work is to use the external link.
       # For reasons I don't understand, the local and server slugification produce different results
       # when there are dashes in the item title.
-      - Lisnoti – a proportional font that works for coding too : 2024-01/lisnoti--a-proportional-font-that-works-for-coding-too/
+
+      #- On contemporary mortality models for actuarial use : 2024-10/on-contemporary-mortality-models-for-actuarial-use/
+      #- Mortality experience analysis : 2024-10/mortality-experience-analysis/
+      - Lisnoti – a proportional font that works for coding too : 2024-01/lisnoti-a-proportional-font-that-works-for-coding-too/
   - About me: about-me.md
   - Reprint policy: reprint-policy.md
   #- Topics : tags.md
@@ -110,6 +113,8 @@ markdown_extensions:
       title: Page contents
   - pymdownx.details
   #- pymdownx.snippets
+
+# KATEX *and* MATH_JAX
   - pymdownx.arithmatex:
       generic: true
 
@@ -137,8 +142,9 @@ plugins:
       categories_url_format: "topic/{slug}"
       categories_allowed:
         - Coding
-        - Maths/stats
+        - Forecasting
         - Mortality/longevity
+        - Maths/stats
         - Presentation
 
 #repo_url: https://github.com/TimGord/TimGord.github.io
@@ -170,10 +176,21 @@ extra_css:
   - stylesheets/extra.css
   - stylesheets/github-permalink-style.css  # GitHub-style heading links *before* title
 
+# KATEX
+  - https://unpkg.com/katex@0/dist/katex.min.css
+
 extra_javascript:
-  - javascripts/mathjax.js
+
+# KATEX
+  - javascripts/katex.js
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+
+# MATH_JAX
+#  - javascripts/mathjax.js
+#  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
   - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 
 
