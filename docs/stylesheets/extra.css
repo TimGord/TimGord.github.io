@@ -54,3 +54,6 @@
 .md-typeset div.arithmatex {
     overflow: initial;
   }
+
+/* Make MathJax a little smaller */
+.MJX-TEX { font-size: 93.75%; }

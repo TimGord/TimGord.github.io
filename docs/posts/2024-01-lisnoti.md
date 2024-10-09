@@ -18,6 +18,8 @@ categories:
 # For reasons I don't understand, the local and server slugification produce
 # different results when there are dashes in the item title.
 slug: lisnoti-a-proportional-font-that-works-for-coding-too
+
+# Don't forget to add the <!-- more --> separator!!!
 ---
 
 # Lisnoti – a proportional font that works for coding too

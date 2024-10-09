@@ -1,6 +1,6 @@
 ---
 draft: true 
-date: 2024-10-07
+date: 2024-10-09
 authors:
   - timgord
 categories:
@@ -19,147 +19,83 @@ categories:
 # For reasons I don't understand, the local and server slugification produce
 # different results when there are dashes in the item title.
 #slug: add-custom-slug-here
+
+# Don't forget to add the <!-- more --> separator!!!
 ---
 
 # On contemporary mortality models for actuarial use
 
-Stephen Richards' and Angus Macdonald's paper ['On Contemporary Mortality Models for Actuarial Use'](https://www.longevitas.co.uk/sites/default/files/2024-08/On_contemporary_mortality_models_for_actuarial_use.pdf) (due to be discussed at [the Institute of Actuaries on 24 October 2024](https://actuaries.org.uk/learn/events/events-calendar/sessional-meeting-contemporary-mortality-models-for-actuarial-use/)) makes the case for the following in mortality experience analysis:
+Stephen Richards' and Angus Macdonald's paper ['On Contemporary Mortality Models for Actuarial Use'](https://www.longevitas.co.uk/sites/default/files/2024-08/On_contemporary_mortality_models_for_actuarial_use.pdf) (due to be discussed at [the Institute of Actuaries on 24 October 2024](https://actuaries.org.uk/learn/events/events-calendar/sessional-meeting-contemporary-mortality-models-for-actuarial-use/)) makes the case for the following in mortality experience analysis[^Scope]:
 
-1. Use individual data and work in terms of continuous time and instantaneous mortality (i.e. *μ* rather than *q*).
+[^Scope]: Although the paper's title suggests it covers all mortality modelling, its sole focus is analysis of portfolio mortality experience. For instance, mortality projection modelling is omitted entirely. This  doesn't detract from the paper's contents -- mortality experience analysis is an important topic in itself.
+
+1. Use individual data if at all possible.
+
+1. Work in continuous time and use instantaneous mortality rates, i.e. *μ* rather than *q*.
 
 1. Consider mortality experience data as comprising a series of Bernoulli trials over infinitesimally small time periods.
- 
-I strongly agree on both points.
 
-That said, I think there is a potentially more intuitive approach than the one they present and one of the features they touch on is deserving of wider understanding.
+The paper could be read as a polemic against actuaries who can't help but think in terms of *q* and whose first instinct is to group all time and age-dependent data on annual grids. *Which is fine by me -- I strongly agree with the thrust of the paper and, in particular, the above three points.*
+
+So, having welcomed the paper, I do have a few observations...
 
 <!-- more -->
 
-The title suggests a wide gamut, but the paper's sole focus is the analysis of portfolio mortality experience. So, for instance, mortality projection models are omitted entirely. That's fine by me -- mortality experience analysis is an important topic in itself.
+### 1. Are actuaries really migrating from&#x00A0;*q*&#x00A0;to&#x00A0;*µ*?
 
-## The benefits of working in continuous time
+The paper's introduction states that '*µ<sub>x</sub>* is usurping *q<sub>x</sub>* in actuarial work.' While I would like to think this is true, I can't help but wonder whether it's wishful thinking, or, if it is true, whether the rate of change is glacial.
 
-Ironically, important to implement as integers to avoid the vagaries of floating point arithmetic. Floating point is neither *precise* -- the evaluation of *a*&#x202F;+&#x202F;*bc* depends on which machine instructions are used -- nor *associative* -- the result of (*a*&#x202F;+&#x202F;*b*&#x202F;)+*&#x202F;c* often differs from *a*&#x202F;+&#x202F;(*b*&#x202F;+*&#x202F;c*), sometimes with catastrophically so.
+!!! info inline end "Trying to switch the CMI Mortality Projections Model from *q* to *µ*[^CMIMNotMu]"
 
-Nature of log-likelihood
+    As chair of the CMI's [Mortality Projections Committee](https://www.actuaries.org.uk/learn-and-develop/continuous-mortality-investigation/cmi-investigations/mortality-projections), I oversaw the revision of its Model in 2016. I was keen to remove all *q*-based aspects inherited from the previous approach, but -- relevant in this context -- all changes from *q* to *µ* were opposed by at least some actuaries. Despite objections[^CMIConsultation], the following two changes did gain majority support in consultation and made it into the final version:
 
-Topics for another day:
+    - Changing the 'long-term rate of mortality improvement' (LTR) from *q* to *µ*-based.
 
-- Locality and smoothness
-- Weighted analysis
+    - Changing the projections part of the model to work in directly in terms of *µ* rather than *q*.
 
+    The only item remaining was to change the improvement factors output by the Model to be in terms of *µ*, but the committee itself felt this was a step too far.
 
-## The importance of measures
+[^CMIMNotMu]: Technically the model works in terms of *m*, not *µ*.
 
-  [measures](https://en.wikipedia.org/wiki/Measure_(mathematics))
-*multiplicative* representation of the mortality hazard rate they favour, and (a)&#x00A0;what they describe as 'factorization of survival model likelihoods' is deeply important, at both a practical and a theoretical level.
+[^CMIConsultation]: See Q&#x202F;6.1 and Q&#x202F;6.2 in [WP&#x00A0;93](https://www.actuaries.org.uk/system/files/field/document/CMI%20WP093%20v02%202016-12-02%20-%20CMI%20Model%20consultation%20responses.pdf)
+- In my experience, most actuarial *valuation* systems work with *q* and annual (or sometimes monthly) grids.
 
-I've
+- Even within the mortality specialism, where, as the paper states, there are clear benefits to working in continuous time, I've encountered plenty of systems using a grid-based approach.
 
-Actuaries must model mortality to understand, manage and price risk. Continuous-time
-methods offer considerable practical benefits to actuaries analysing portfolio mortality experience. This paper discusses six categories of advantage: (i) reflecting the reality of data produced
-by everyday business practices, (ii) modelling rapid changes in risk, (iii) modelling time- and
-duration-varying risk, (iv) competing risks , (v) data-quality checking and (vi) management information. Specific examples are given where continuous-time models are more useful in practice
-than discrete-time models.
+- Many actuaries simply prefer *q* in the same way that they also prefer *i* to [the force of interest](https://en.wikipedia.org/wiki/Compound_interest#Force_of_interest). See the break out box for a documented example.
 
-We reprise some common statistical models for actuarial mortality analysis using grouped
-counts. We then discuss the benefits of building mortality models from the most elemental
-items. This has two facets. First, models are better based on the mortality of individuals,
-rather than groups. Second, models are better defined in continuous time, rather than over
-fixed intervals like a year. We show how survival probabilities at the ‘macro’ level arise at
-the ‘micro’ level from a series of Bernoulli trials over infinitesimally small time periods. Using
-a multiplicative representation of the mortality hazard rate, we show how counting processes
-naturally represent left-truncated and right-censored actuarial data, individual or age-grouped.
-Together these explain the ‘pseudo-Poisson’ behaviour of survival model likelihoods.
+### 2. 'Factorisation' of survival likelihood
 
- I couldn't agree more.
+In section 3.3, the paper notes that survival likelihood can be factorised over sub-time intervals and that multiple likelihoods for *contiguous* intervals can validly be multiplied together.
 
-You can book here https://actuaries.org.uk/learn/events/events-calendar/sessional-meeting-contemporary-mortality-models-for-actuarial-use/
+This is important, but I think there is a more general concept at play here, which is that the count of actual deaths, the integral of mortality rate over exposure periods and log-likelihood are *all [measures](https://en.wikipedia.org/wiki/Measure_(mathematics)) over experience data[^LIsSignedMeasure]*. This means that they
 
-PART A
+[^LIsSignedMeasure]: Log-likelihood is a [*signed* measure](https://en.wikipedia.org/wiki/Signed_measure).
 
-https://www.longevitas.co.uk/information-matrix-page/seriatim-data
-https://www.longevitas.co.uk/information-matrix-page/fundamental-atom-mortality-modelling
-https://www.longevitas.co.uk/information-matrix-page/product-integral-practice
-https://www.longevitas.co.uk/information-matrix-page/when-your-poisson-model-not-poisson-model
+- give the same result when summed over a partitioned experience dataset *regardless of how it is partitioned*, and
 
+- there is no need for experience time periods to be *contiguous* -- the sole requirement is that experience datasets do not intersect.
 
-https://actuaries.org.uk/media/q0gogxpw/on-contemporary-mortality-models-for-actuarial-use_practice.pdf
+I think the above are two points are intuitively well understood by practitioners; my point is that the maths -- suitably defined -- aligns with this.
 
-On Contemporary Mortality Models for Actuarial Use
-https://www.longevitas.co.uk/sites/default/files/2024-08/On_contemporary_mortality_models_for_actuarial_use.pdf
+### 3. Likelihood vs log-likelihood
 
-Focussed on portfolio experience analysis -- projection is a big deal.
+The paper focuses on likelihood, i.e. probabilities, but I'd argue that *log*-likelihood is both more *tractable* and more *fundamental*. These are intrinsically subjective concepts, so this is personal opinion, not a matter of right or wrong.
 
-Conclusions:
+Let's take tractability first. The paper is littered[^ProdSigns] with product signs, i.e. $\prod$, arising from the use of probabilities. In contrast, working in term of log-likelihood results in standard integrals and makes linearity self-evident where present. I also didn't find the continued use of the Volterra product integral, i.e.
 
-10 Conclusions
-Methods operating in continuous time, or in daily intervals, offer substantial advantages for actuaries.
-Chief among these are the ability to reflect the reality of everyday business processes, and the ability
-to handle rapid changes in risk level. In contrast, q-type models, especially those operating over a
-one-year interval, make assumptions about the data that are hard to justify, and often require data
-to be discarded if using standard GLMs. In addition, annual q-type models are unable to reflect
-rapid intra-year movements in risk.
-Continuous-time methods are also the more-practical solution to certain modelling problems. Examples include risks varying in more than one time dimension and modelling risks with competing
-decrements. In contrast, annual q-type models within a GLM framework are not capable of simultaneously modelling time- and duration-varying risk. For competing risks, q-type models force the
-pretence that the number of lives is smaller than it really is.
-Continuous-time methods also offer useful data-quality checks. The visual nature of non- and
-semi-parametric methods make them particularly useful for communication with non-specialists.
-There are occasional circumstances when daily information is unavailable, or even deliberately
-withheld, but actuaries should strive wherever possible to collect full dates and use continuous-time
-methods of analysis.
+$$\prod_a^b\Big(1-f(t)\,\text{d}t\Big)=\exp\!\left(\!-\!\int_a^b \! f(t) \,\text{d}t \right)$$
 
+enlightening. I'd suggest it's simpler to explain survival probabilities once, then take logs and work in terms of standard integrals, i.e.
 
+$$\int_a^b \! f(t) \,\text{d}t$$
 
-# Thoughts on [Richards & Macdonald (2024)](https://www.longevitas.co.uk/sites/default/files/2024-08/On_contemporary_mortality_models_for_actuarial_use.pdf)
+[^ProdSigns]: A quick search suggest there are over 60 product signs, i.e. $\prod$, in the paper.
 
-Good paper
+Turning to fundamentality:
 
-Things right:
+- A key rationale for fitting models by maximising log-likelihood and selecting between them using the AIC is [information theory](https://en.wikipedia.org/wiki/Entropy_(information_theory)), the core unit of which is [information content](https://en.wikipedia.org/wiki/Information_content), which in turn is defined as $\log p$ where $p$ is probability.
 
-- Work in continuous time ('micro' in their terminology) -- I cannot commend this starting point (in fact I think they should have started with this)
-- Individual ('seriatim') data beats grouped data
-- Mortality model unit -- again, yes, I'd call it a data unit, although mixing probability masses and continuous functions is awkward analytically
-- 'Pseudo-Poisson'
-- Likelihood can be factorised -- this is important, although I think there is a better way to frame this
+- The paper repeatedly refer to the concept of infinitesimal Bernoulli trials. I think this emphasis is correct, but note that the usual mathematical notation for infinitesimals is something like $\text{d} \ell$ and, for this to make sense, $\ell$ has to be log-likelihood.
 
-But I'd like to suggest an alternative and possibly more natural framework.
-
-- Does not contradict Richards & Macdonald (!).
-- Not new -- in use since 2009 or so. See e.g. [these 2011 slides](https://www.actuaries.org.uk/system/files/documents/pdf/tim-gordon.pdf).
-
-Key concepts are
-
-- E2R
-- *Log*-likelihood is the canoncal measure (as opposed to likelihood)
-- Express as A and E -- lots of good things follow from this formalism.
-
-Key points
-
-1. E2R algebra is well-defined on partitions, although the infinitessimal is awkward (there is no $\text{d}\varepsilon_t$)
-1. A and E are *measures* over the data
-    - This the factorisation point
-    - This is practical point
-        - A requirement to trace lives through all time does not need to be hard-coded -- real world example
-        - We can process independent times slices of data in parallel (as well as independent lives)
-        - We often have different overlapping data extracts
-1. L is a simple function of A and E -- include overdispersion
-1. E(A-E) and Var(A-E)
-1. Proportional hazards is the canonical mortality model
-1. Framework naturally can cope with weighted log-likelihoods -- can be seen as contentious
-    - Everyone does this with $w\in \{0,1\}$
-    - CMI has been doing for my lifetime and is still doing it -- the industry standard base tables are amounts-weighted
-    - Useful to incorporate this upfront
-
-You can do all of the above in performant computer code.
-
-Criticisms
-
-1. Why write $\prod_t(1-f_t \text{d}t)$ when you really want $-\int\! f_t\, \text{d}t$. It's *not* the item you want.
-    - Maximum likelihood is always maximum log-likelihood in practice. 
-    - This is not just because likelihood is numerically impractical to deal this; log-likelihood represents is information -- it's the key concept.
-1. Missing a key point as to why 'factorisation' -- I'd call it partition -- is important.
-1. Code is better when it maps to concepts -- E2R, A, E and log-likelihood are those concepts
-
-Final note on locality of likelihood (well known in forecasting context) -- there is an implicit assumption of smoothness which is a topic for another day.
-
+- Observation&#x00A0;2 above (that there is a more general concept at play than just being able to factorise the survival likelihood over contiguous time periods) is best expressed using the language of [measures](https://en.wikipedia.org/wiki/Measure_(mathematics)), which means using log-likelihood.
