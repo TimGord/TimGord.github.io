@@ -77,7 +77,7 @@ The paper's introduction states that '*µ<sub>x</sub>* is usurping *q<sub>x</sub
 
 - Even within specialised mortality experience analysis environments, where, as the paper notes, there are clear benefits to working in continuous time, I've encountered plenty of systems that use *q*.
 
-### 2. 'Factorisation' of survival likelihood
+### 2. Generalising survival likelihood factorisation
 
 Section&#x00A0;3.3 of part&#x00A0;II of the paper notes that survival likelihood can be factorised over sub-time intervals and that likelihoods for *contiguous* intervals can validly be multiplied together.
 
