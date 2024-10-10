@@ -63,23 +63,25 @@ Volatility in CMI Model arising directly from data falling out of the 40 year ca
 
 ## Preliminaries
 
-1. All **time intervals** are open-closed, i.e. $(\nu,\tau]$ where $\nu\le\tau$. An the interval contains $t$ iff $\nu\le t\lt\tau$.
+**================= STILL UNSURE ABOUT (a,b] vs [a,b) !!=================**
+
+1. All **time intervals** are closed-open, i.e. $[\nu,\tau)$ where $\nu\le\tau$. An the interval contains $t$ iff $\nu\le t\lt\tau$.
 
 1. An **'E2R'** -- the core mortality-experience data item -- is a triple $(\nu,\tau,\delta)$ where
 
-    - $(\nu,\tau]$ is the time interval of the individual's **exposure**, and
+    - $[\nu,\tau)$ is the time interval of the individual's **exposure**, and
     - $\delta$ is $1$ if the individual **died at the end of the exposure** and $0$ otherwise.
 
     If the exposure is empty, i.e. $\nu=\tau$, then $\delta$ must be $0$[^EmptyE2R].
 
-[^EmptyE2R]:  An empty E2R for interval $[t,t)$ contains no information. In particular is does *not* imply that the individual was still alive at time $t$.
+    [^EmptyE2R]:  An empty E2R for interval $[t,t)$ contains no information. In particular is does *not* imply that the individual was still alive at time $t$.
 
-1. An **experience dataset** $\mathscr{E}$ relating to the overall time interval $(N,T]$ comprises pairs $(i,\varepsilon)$ where
+1. An **experience dataset** $\mathscr{E}$ relating to the overall time interval $[N,T)$ comprises pairs $(i,\varepsilon)$ where
 
     - $i$ is a vector of the individual's time-invariant data items, e.g. birth date, sex/gender, etc[^NoCheating], and
-    - $\varepsilon$ is the the individual's E2R, where $(\nu_\varepsilon,\tau_\varepsilon] \subseteq (N,T]$.
+    - $\varepsilon$ is the the individual's E2R, where $[\nu_\varepsilon,\tau_\varepsilon) \subseteq [N,T)$.
 
-[^NoCheating]: The only thing $i$ can't contain is whether the individual lived or died.
+    [^NoCheating]: The only thing $i$ can't contain is whether the individual lived or died.
 
     If there are multiple entries for the same individual then the exposures of those entries cannot intersect.
 
@@ -87,7 +89,9 @@ Volatility in CMI Model arising directly from data falling out of the 40 year ca
 
     $$f(i,t) = \underset{s \uparrow t}\lim \, f(i,s)$$
 
-1. A **mortality model** $\mu(i,t)$ gives the probability of an individual $i$ dies in an infinitesimal time interval $(t,t+\text{d}t]$ given they were alive at the start of the interval, i.e.
+1. A **mortality model** $\mu(i,t)$ gives the probability of an individual $i$ dies in an infinitesimal time interval $(t,t+\text{d}t]$ given they were alive at the start of the interval[^MortalityEnd], i.e.
+
+    [^MortalityEnd]: A mortality model also typically has an end time $t^\text{end}(i)$ -- typically a constant (high) age -- at which point the individual definitely dies. While this is important for valuation, which requires mortality projection, experience analysis is restricted to ages materially before mortality end times and so we ignore it in this note apart from noting that *it is a model error for any individuals in an experience (or valuation) dataset to be alive at $t^\text{end}(i)$ or later*. 
 
     $$\mathbb{P}\big(i\text{ dies in } (t,t+\text{d}t] \,\big|\;i\text{ alive at }t\big)=\mu(i,t)\text{d}t$$
 
@@ -103,7 +107,7 @@ Define analogues of integration/summation of an arbitrary factor $f(i,t)$ over a
 $$\begin{aligned}
 \text{A}_\mathscr{E}f&=\sum_{(i,\varepsilon)\in \mathscr{E}}\delta_\varepsilon f(i,\tau_\varepsilon)
 \\[1em]
-\text{E}_\mathscr{E}f&=\sum_{(i,\varepsilon)\in \mathscr{E}}\int_{\nu_\varepsilon}^{\tau_\varepsilon}\mu(i,t)f(i,t)\,\text{d}t
+\text{E}_\mathscr{E}f&=\sum_{(i,\varepsilon)\in \mathscr{E}}\int_{\nu_\varepsilon}^{\tau_\varepsilon}\!\mu(i,t)f(i,t)\,\text{d}t
 \end{aligned}$$
 
 > We'll drop the subscript $\mathscr{E}$ when we are working with just one experience dataset.
