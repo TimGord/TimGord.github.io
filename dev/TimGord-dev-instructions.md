@@ -27,7 +27,7 @@ Lists of tags and categories to use:
 
 1. To check that you're up-to-date, run: `pip install mkdocs-material`
 
-1. `cd C:\Users\Tim Gordon\source\repos\TimGord\TimGord.github.io`
+1. `cd "C:\Users\Tim Gordon\source\repos\TimGord\TimGord.github.io"`
 
 1. To test the site:
 

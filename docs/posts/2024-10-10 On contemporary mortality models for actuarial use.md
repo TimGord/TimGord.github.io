@@ -65,7 +65,7 @@ The paper's introduction states that '*µ<sub>x</sub>* is usurping *q<sub>x</sub
 
     [^CMIBehaviour]: This is not a criticism -- the CMI has an obligation to its users to consider the stability and consistency of its outputs.
 
-- Many actuaries simply prefer *q* (in the same way that they prefer annually-compounded interest rates to [the force of interest](https://en.wikipedia.org/wiki/Compound_interest#Force_of_interest)). See the break out box for a documented example.
+- Many actuaries simply prefer *q* (in the same way that they prefer annually-compounded interest rates to [the force of interest](https://en.wikipedia.org/wiki/Compound_interest#Force_of_interest)). See the boxout for a documented example.
 
 - Like it or not, *q* is the current *lingua franca* in the sense that '110% of S4PxA' without further qualification means scale *q* by 110%[^QOver1].
 

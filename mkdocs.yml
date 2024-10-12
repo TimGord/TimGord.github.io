@@ -1,6 +1,16 @@
 site_name: Tim Gordon’s blog
 
+# site_url is required for social cards
+# See https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/
 site_url: https://timgord.com/
+
+site_description : Tim Gordon’s blog
+site_author: Tim Gordon
+copyright: Copyright &copy; 2024 Tim Gordon
+
+# See: https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/
+#repo_url: https://github.com/TimGord/TimGord.github.io
+#repo_name
 
 nav:
   - Recommended reading:
@@ -116,15 +126,24 @@ markdown_extensions:
 # KATEX *and* MATH_JAX
   - pymdownx.arithmatex:
       generic: true
+      # Adding block_tag: 'pre' causes equation numbers to be at far right.
+      # Without this they are only slightly to the right of an equation.
+      block_tag: 'pre'
 
 plugins:
   # Enable explicitly in case we add other plug ins.
   # See: https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/
   - search: 
       lang: en
+
+  # The following makes your email address public
+  # See https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#document-authors
+  #- git-authors
+
   #- tags:
   #    enabled: !ENV [CI, false]
   #    tags_file: tags.md
+
   - blog :
       archive: false ### Turn this off in 2025? ###
       blog_dir: .
@@ -146,11 +165,17 @@ plugins:
         - Maths/stats
         - Presentation
 
-#repo_url: https://github.com/TimGord/TimGord.github.io
-
-site_description : Tim Gordon’s blog
-site_author: Tim Gordon
-copyright: Copyright &copy; 2024 Tim Gordon
+  # Social cards
+  # As at 2024-01-11, I haven't managed to get this to work :-(
+  # See https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/
+  # You also need other stuff -- see : https://squidfunk.github.io/mkdocs-material/plugins/requirements/image-processing/
+  # I used https://www.msys2.org/ as recommended by Material for MkDocs
+  # As at 2024-01-11, I haven't managed to get this to work :-(
+  # I get: File "C:\Python310\lib\zipfile.py", line 1334, in _RealGetContents raise BadZipFile("File is not a zip file")
+  # This is the same error as: https://github.com/squidfunk/mkdocs-material/discussions/3246
+  #- social:
+  #  cards_layout_options:
+  #    font_family: Noto Sans
 
 extra:
   #generator: false
@@ -188,8 +213,9 @@ extra_javascript:
 # MATH_JAX
   - javascripts/mathjax.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  # The following is for IE compatibility
+  # See https://docs.mathjax.org/en/latest/web/start.html#browser-compatibility
+  - https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6
 
 
 
