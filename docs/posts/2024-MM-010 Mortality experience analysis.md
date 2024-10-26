@@ -25,13 +25,16 @@ categories:
 
 # Mortality experience analysis
 
-Over the years I have witnessed confusions and errors relating to mortality experience analysis that I think were avoidable, to say nothing about my own paranoia over making mistakes.
+Over the years I have witnessed confusions and errors relating to mortality experience analysis that I think were avoidable.
 
-So I have set out on this page a coherent conceptual framework that I have found helpful, together with the insights I think it provides.
+So I have set out in this note a coherent conceptual framework that I have found helpful, together with the insights I think it provides.
+
+This is fairly technical stuff, but -- and it is a critical but -- in my opinion this framework maps one-to-one to how I think you should implement mortality experience analysis at a high level.
 
 <!-- more -->
 
-This is not new. The AIC-related maths is set out in widely influential [Model Selection and Multimodel Inference: A practical information-theoretic approach (2nd ed.)](https://link.springer.com/book/10.1007/b97636) by Kenneth Burnham and David Anderson[^BurnhamAnderson]. And I've [presented on this publicly for over a decade](https://www.actuaries.org.uk/system/files/documents/pdf/tim-gordon.pdf). 
+Before we begin let's note that this is not new. The AIC-related maths is set out in the widely influential [Model Selection and Multimodel Inference: A practical information-theoretic approach (2nd ed.)](https://link.springer.com/book/10.1007/b97636) by Kenneth Burnham and David Anderson[^BurnhamAnderson]. And I've [presented on this publicly for over a decade](https://www.actuaries.org.uk/system/files/documents/pdf/tim-gordon.pdf). But Stephen Richards' and Angus Macdonald's excellent [paper on mortality models](https://www.longevitas.co.uk/sites/default/files/2024-08/On_contemporary_mortality_models_for_actuarial_use.pdf) -- on which my comments can be found [here](/2024-10/on-contemporary-mortality-models-for-actuarial-use/) -- has prompted me to pull various strands together in one place for easy reference.
+
 
 [^BurnhamAnderson]:
 
@@ -41,16 +44,16 @@ This is not new. The AIC-related maths is set out in widely influential [Model S
     
     See also Multimodel Inference: Understanding AIC and BIC in Model Selection ([PDF here](http://www.sortie-nd.org/lme/Statistical%20Papers/Burnham_and_Anderson_2004_Multimodel_Inference.pdf), doi:[10.1177/0049124104268644](https://doi.org/10.1177%2F0049124104268644)).
 
-But Stephen Richards' and Angus Macdonald's excellent [paper on mortality models](https://www.longevitas.co.uk/sites/default/files/2024-08/On_contemporary_mortality_models_for_actuarial_use.pdf) -- on which my comments can be found [here](/2024-10/on-contemporary-mortality-models-for-actuarial-use/) -- has prompted me to pull various strands together in one place for easy reference.
-
-## Preliminaries
+## Set up
 
 1. An **'E2R'** -- the core mortality-experience data item -- is a triple $(\nu,\tau,\delta)$ where
 
     - $[\nu,\tau)$ is the time interval of the individual's **exposure**, and
     - $\delta$ is the indicator $1$ if the individual **died** at $\tau$, i.e. immediately after the end of the exposure, and $0$ otherwise.
 
-    We require $\nu\le\tau$. If the exposure is empty, i.e. $\nu=\tau$, then $\delta$ must be $0$ and the E2R is treated as containing no information. In particular, an empty E2R does *not* imply that an individual was still alive at $\nu$.
+    We require $\nu\le\tau$. If the exposure is empty, i.e. $\nu=\tau$, then $\delta$ must be $0$ and the E2R is treated as containing no information[^EmptyE2R].
+
+    [^EmptyE2R]: Note in particular that an empty E2R does *not* imply that an individual was still alive at $\nu$.
 
 1. An **experience dataset** $\mathscr{E}$ relating to the overall time interval $[N,T)$ comprises pairs $(i,\varepsilon)$ where
 
@@ -79,13 +82,13 @@ The above are the minimum requirements[^ExtendedFeatures] to proceed.
      
         In theory, we could use factors returning 0 or 1 for this, but, as well as this being woefully inefficient, practical systems are likely to assume that factors are 'smooth' (so that they can be integrated numerically).
 
-    - A mortality model would have an *end time* as a function of the individual's data, $\zeta_\mu(i)$, from which time the model asserts that that individual must be dead. In practice, these are always ages, e.g. $\zeta_\mu(i)=b_i+120\text{ years}$, where $b_i$ is the birth date of individual $i$. It is a fundamental model error (e.g. [NaN](https://en.wikipedia.org/wiki/NaN)) for any individual in an experience (or valuation) dataset to be alive at $\zeta_\mu(i)$ or later*. End times are required for mortality projections (e.g. in present value calculations), but experience analysis is usually restricted to ages well before model end ages and so we ignore them in this note. 
+    - A mortality model would need an *end time* as a function of the individual's data, $\zeta_\mu(i)$, at which point the model asserts that that individual must be dead. In practice, these functions are always ages, e.g. $\zeta_\mu(i)=b_i+120\text{ years}$, where $b_i$ is the birth date of individual $i$. It is a fundamental model error (e.g. [NaN](https://en.wikipedia.org/wiki/NaN)) for any individual in an experience (or valuation) dataset to be alive at $\zeta_\mu(i)$ or later*. End times are required for mortality projections (e.g. in present value calculations), but experience analysis is usually restricted to ages well before model end ages and so we ignore them in this note. 
 
 ## Framework
 
 ### Defining actual and 'expected' deaths
 
-Define analogues of integration/summation of an arbitrary factor $f(i,t)$ over an experience dataset for actual deaths ($\text{A}$) and 'expected' deaths ($\text{E}$) as:
+Define analogues of integration/summation of an arbitrary factor $f(i,t)$ over an experience dataset for actual deaths ($\text{A}$) and 'expected'[^EConfusion] deaths ($\text{E}$) as:
 
 $$\begin{aligned}
 \text{A}_\mathscr{E}f&=\sum_{(i,\varepsilon)\in \mathscr{E}}\delta_\varepsilon f(i,\tau_\varepsilon)
@@ -95,11 +98,11 @@ $$\begin{aligned}
 
 > We'll drop the subscript $\mathscr{E}$ when we are working with just one experience dataset.
 
-$\text{A}$ and $\text{E}$ are linear operators[^AELinear] on factors. It is also the case that both $\text{A}f$ and $\text{E}f$ are random variables[^EAbuse], although we suggest that, in typical scenarios, the variation of $\text{E}f$ is much less than the variation of $\text{A}f$.
+$\text{A}$ and $\text{E}$ are linear operators[^AELinear] on factors. It is also the case that both $\text{A}f$ and $\text{E}f$ are random variables[^EConfusion], although we suggest that, in typical scenarios, the variation of $\text{E}f$ is much less than the variation of $\text{A}f$.
+
+[^EConfusion]: Describing $\text{E}f$ as 'expected' deaths when it is actually a random variable is an abuse of terminology and -- unsurprisingly -- repeatedly gives rise to confusion. But it is so ensconced that I feel using a different term would be even more confusing. I'll used 'expected' in inverted commas to refer to the random variable $\text{E}f$ and without inverted commas to refer expectation.
 
 [^AELinear]: $\text{A}f$ and $\text{E}f$ being [linear operators](https://en.wikipedia.org/wiki/Operator_(mathematics)#Linear_operators) means that (a)&#x00A0;they are straighforward to manipulate and (b)&#x00A0;typically do not need their operands enclosed in brackets.
-
-[^EAbuse]: Describing $\text{E}f$ as 'expected' deaths when it is actually a random variable is an abuse of terminology and -- unsurprisingly -- repeatedly gives rise to confusion. But it is so ensconced that I feel using a different term would be even more confusing. I'll used 'expected' in inverted commas to refer to the random variable $\text{E}f$ and without inverted commas to refer expectation.
 
 *If $\mu$ is the true mortality* then, *for any factor $f$*, the following are mathematical identities:
 
@@ -109,24 +112,24 @@ $$\begin{aligned}
 \text{Var}\big(\text{A}f-\text{E}f\big)&=\mathbb{E}\big(\text{E}f^2\big)
 \end{aligned} \tag{1}$$
 
-where $\mathbb{E}$ -- in contrast to $\text{E}$ -- is true expectation[^EAbuse].
+where $\mathbb{E}$ -- in contrast to $\text{E}$ -- is true expectation[^EConfusion].
 
 !!! info "Insight 1"
 
     These are the [*canonical*](https://en.wikipedia.org/wiki/Canonical_form) definitions of A and E in continuous time.
     
-    Confusion -- usually over $\text{E}$ vs $\mathbb{E}$ -- and spurious complexity can arise over the interpretation of actual and expected deaths when using other definitions.
+    Confusion -- usually[^EConfusion] over $\text{E}$ vs $\mathbb{E}$ -- and spurious complexity can arise over the interpretation of actual and expected deaths when using other definitions.
 
 !!! info "Insight 2"
 
-    If a model is true then we *expect* actual and 'expected' deaths to be equal
+    If the model is true then the *mathematical* expectation is for actual and 'expected' deaths to be equal
     
     - *over any subset* of the experience data, and
     - *weighted by any factor* -- this seems to surprise some practitioners.
 
 !!! info "Insight 3"
 
-    As well as defining A−E, we can *use the same machinery* to estimate its uncertainty.
+    As well as defining A and E, we can *use the same machinery* to estimate their uncertainty.
 
 ### A over E
 
@@ -134,33 +137,25 @@ The classic diagnostic when reviewing mortality experience is to compare [actual
 
 [^Weights]: Typical weights are 'lives', i.e. 1 (unweighted), and 'amounts', which means benefit amount revalued (a)&#x00A0;for consistency between exposures and deaths and (b)&#x00A0;comparability over time.
 
-The above variance result suggests the normal approximation
+Dividing equation $\text{(1)}$ above by expected deaths suggests that a useful diagnostic is to compare A/E[^Diagnostics] to 100% and assess the difference relative to $\pm\sqrt{\text{E}w^2/(\text{E}w)^2}$.
 
-$$\text{A}w / \text{E}w \sim \text{N}\Big(1,\text{E}w^2 / (\text{E}w)^2\Big) \tag{2}$$
+[^Diagnostics]:
 
-in which case the diagnostic it to compare A/E[^LogAOverE] to 100% and assess the difference relative to $\pm\sqrt{\text{E}w^2/(\text{E}w)^2}$.
-
-[^LogAOverE]:
-
-    Or, in log&#x202F;*μ* space,
-
-    $$\log\!\big(\text{A}w / \text{E}w\big) \sim \text{N}\big(1,\text{E}w^2 / (\text{A}w\,\text{E}w)\big) \tag{3}$$
-
-    In the cases where they differ materially, the standard A/E will be materially different from 100% in which case the diagnostic will be failed under either approach.
+    This is good enough in practice. Deviance residuals are also commonly suggested but the difference is typically immaterial.
 
 !!! info "Insight 4"
 
-    the above definitions of A and E lead directly to a well-defined and parsimonious measure of weighted A/E itself *and* an estimate of its uncertainty.
+    The above definitions of A and E lead directly to a well-defined and parsimonious A/E diagnostic.
 
 !!! info "Insight 5"
 
-    In the lives-weighted case, $\text{E}w^2 = \text{E}w$ and hence the variance estimate simplifies to $1 / \text{E}w$. There are two things to avoid:
+    In the lives-weighted case, i.e. $w\in\{0,1\}$, we have $\text{E}w^2 = \text{E}w$, and hence the variance estimate simplifies to $1 / \text{E}w$. There are two things to avoid:
     
     1. The lives-weighted variance estimate should not be used to estimate the variance of a weighted A/E because it will always understate it[^WeightVariance].
 
-    [^WeightVariance]: Provided the $w$ exhibits some variation over the experience data, it is a [*mathematical* inequality](https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality) that $\text{E}w^2 \cdot \text{E}1\gt (\text{E}w)^2$.
+    [^WeightVariance]: Provided the $w$ exhibits some variation over the experience data, it is a [*mathematical* truth](https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality) that $\text{E}w^2\,\text{E}1\gt (\text{E}w)^2$.
 
-    1. If the assumption that all statistics are lives-weighted is built into an implementation then that implementation will struggle when actual weighted results are required.
+    1. If the assumption that all statistics are lives-weighted is built into an implementation then that implementation will struggle when weighted results are required.
 
 !!! info "Insight 6"
 
@@ -168,7 +163,9 @@ in which case the diagnostic it to compare A/E[^LogAOverE] to 100% and assess th
 
 ### Measures and partitions
 
-$\text{A}$ and $\text{E}$ are both [*measures*](https://en.wikipedia.org/wiki/Measure_(mathematics)) over experience data[^ExpDims]. This is an important point -- it means that a linear combination of $\text{A}$ and $\text{E}$ gives the same result when summed over a partitioned experience dataset *regardless of how it is partitioned*.
+$\text{A}$ and $\text{E}$ are both [*measures*](https://en.wikipedia.org/wiki/Measure_(mathematics)) over experience data[^ExpDims]. This is an important point -- it means that a linear combination of $\text{A}$ and $\text{E}$ gives the same result when summed over a partitioned experience dataset *regardless of how it is partitioned*[^Partition].
+
+[^Partition]: DEFINE PARTITION AS Union = set, subsets no overlapping.
 
 [^ExpDims]: There are two axes for assessing whether experience data intersect, *identity* and *time*. Specifically, the data $(i_1,\varepsilon_1)$ and $(i_2,\varepsilon_2)$ intersect iff both
 
@@ -188,7 +185,7 @@ $\text{A}$ and $\text{E}$ are both [*measures*](https://en.wikipedia.org/wiki/Me
 
 [^ApologiesRust]: With apologies to [Rust](https://doc.rust-lang.org/book/ch16-00-concurrency.html).
 
-[^Tracking]: Tracking individuals across experience datasets for different time periods can make sense as a data check or simply trying to understand the data.
+[^Tracking]: Tracking individuals across experience datasets for different time periods can be a useful data check.
 
 [^Contiguity]: Gaps in data are equivalent to setting the weight to zero for the non-included time periods.
 
@@ -197,7 +194,7 @@ $\text{A}$ and $\text{E}$ are both [*measures*](https://en.wikipedia.org/wiki/Me
     If you want your analysis and model fitting to be *performant* then consider
     
     - using operations based on $\text{A}$ and $\text{E}$, and
-    - running the code implementing those operations *in parallel* on partitions of the data.
+    - running the code implementing those operations *in parallel* on partitions[^Partition] of the data.
 
 ### Log-likelihood and model fitting
 
@@ -207,7 +204,7 @@ We can define the (weighted[^WeightedL]) log-likelihood of an experience dataset
 
 $$L=\text{A}w\log\mu-\text{E}w \tag{4}$$
 
-$L$ is a linear combination of $A$ and $E$, and so it too can be summed over a partitioned experience dataset *regardless of how it is partitioned*.
+$L$ is a linear combination of $A$ and $E$, and so it too can be summed over a partitioned experience dataset *regardless of how it is partitioned*[^Partition].
 
 In order to make progress, assume that the mortality model is a [proportional hazards model](https://en.wikipedia.org/wiki/Proportional_hazards_model), i.e.
 

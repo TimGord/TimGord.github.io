@@ -213,9 +213,11 @@ extra_javascript:
 # MATH_JAX
   - javascripts/mathjax.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-  # The following is for IE compatibility
+  # The following was for IE compatibility
   # See https://docs.mathjax.org/en/latest/web/start.html#browser-compatibility
-  - https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6
+  # But the original author suggests it is no longer required anyway.
+  # See https://x.com/triblondon/status/1761852350224846906
+  #- https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6
 
 
 

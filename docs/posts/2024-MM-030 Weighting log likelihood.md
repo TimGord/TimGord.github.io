@@ -31,6 +31,8 @@ Worn like a badge of honour.
 
 Seen multiple screw up where confused.
 
+Ironically, actuaries think moving from weighted to unweighted is progress. I have witnessed screw ups in practice.
+
 Simple test: If you have to price a book of UK pension in payment liabilities and the only info you have is A/E do you want (a)lives-weighted or (b) amounts-weighted? If you answer (a) then I suspect that I suspect
 
 This is not a straw man
