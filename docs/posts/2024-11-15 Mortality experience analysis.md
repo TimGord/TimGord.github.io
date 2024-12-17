@@ -1,6 +1,6 @@
 ---
 draft: true 
-date: 2024-10-20
+date: 2024-11-15
 authors:
   - timgord
 categories:
@@ -98,9 +98,16 @@ $$\begin{aligned}
 
 > We'll drop the subscript $\mathscr{E}$ when we are working with just one experience dataset.
 
-$\text{A}$ and $\text{E}$ are linear operators[^AELinear] on factors. It is also the case that both $\text{A}f$ and $\text{E}f$ are random variables[^EConfusion], although we suggest that, in typical scenarios, the variation of $\text{E}f$ is much less than the variation of $\text{A}f$.
+$\text{A}$ and $\text{E}$ are linear operators[^AELinear] on factors. Both of them are also random variables[^EConfusion], although we suggest that, in typical scenarios, the variation of $\text{E}f$ is much less than the variation of $\text{A}f$.
 
-[^EConfusion]: Describing $\text{E}f$ as 'expected' deaths when it is actually a random variable is an abuse of terminology and -- unsurprisingly -- repeatedly gives rise to confusion. But it is so ensconced that I feel using a different term would be even more confusing. I'll used 'expected' in inverted commas to refer to the random variable $\text{E}f$ and without inverted commas to refer expectation.
+[^EConfusion]:
+
+    Describing $\text{E}f$ as 'expected' deaths when it is actually a random variable is an abuse of terminology and -- unsurprisingly -- repeatedly gives rise to confusion. But this terminology is so ensconced that I feel using a different term would be even more confusing. I'll used 'expected' in inverted commas to refer to the random variable $\text{E}f$ and without inverted commas to refer true expectation.
+
+    It may help to think of $\text{E}f$ being defined on a set of time intervals as the true expected value over each interval *given the individual's aliveness at the start of that interval* and then taking the limit as the interval size tends to zero. (Indeed using annual intervals is a fairly common approach to calculating expected deaths.) This helps illustrate that
+
+    - the randomness arises from survival, and
+    - our definition of $\text{E}f$ is the canonical one because it eliminates any dependence on a choice of intervals.
 
 [^AELinear]: $\text{A}f$ and $\text{E}f$ being [linear operators](https://en.wikipedia.org/wiki/Operator_(mathematics)#Linear_operators) means that (a)&#x00A0;they are straighforward to manipulate and (b)&#x00A0;typically do not need their operands enclosed in brackets.
 
@@ -200,7 +207,7 @@ $\text{A}$ and $\text{E}$ are both [*measures*](https://en.wikipedia.org/wiki/Me
 
 We can define the (weighted[^WeightedL]) log-likelihood of an experience dataset for a specified mortality model $\mu$ directly in terms of the $\text{A}$ and $\text{E}$ operators as
 
-[^WeightedL]:  Weighting log-likelihoods, i.e. placing more statistical weight on some data than others, is seen as controversial in some quarters. If you are uncomfortable with the notion of weighting then read the rest of this note assuming that only lives weights are used, i.e. the weight is only ever $0$ or $1$. Even if you object to weighting log-likelihood, I suggest there are cases where having the ability to weight log-likelihood is helpful and therefore it should be builtin as a capability to an experience analysis system.
+[^WeightedL]:  Weighting log-likelihoods, i.e. placing more statistical weight on some data than others, is seen as controversial in some quarters. If you are uncomfortable with the notion of weighting then read the rest of this note assuming that only lives weights are used, i.e. the weight is only ever $0$ or $1$. Even if you object to weighting log-likelihood, I suggest there are cases where having the ability to weight log-likelihood is helpful and therefore it should be built in as a *core capability* to an experience analysis system.
 
 $$L=\text{A}w\log\mu-\text{E}w \tag{4}$$
 

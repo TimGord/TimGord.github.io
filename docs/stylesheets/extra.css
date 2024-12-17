@@ -52,8 +52,16 @@
 
 /* Fix scroll bars appearing on math blocks */
 .md-typeset div.arithmatex {
-    overflow: initial;
-  }
+  overflow: initial;
+}
 
 /* Make MathJax a little smaller */
 .MJX-TEX { font-size: 93.75%; }
+
+/* Make table headings align to bottom of row */
+th { 
+    vertical-align: bottom;
+}
+.md-typeset table:not([class]) th {
+    vertical-align: bottom;
+}

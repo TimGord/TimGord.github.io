@@ -99,6 +99,7 @@ markdown_extensions:
   - attr_list
   - def_list
   - smarty
+  - md_in_html
   - pymdownx.tasklist:
       custom_checkbox: true  
   - pymdownx.emoji:
@@ -212,6 +213,8 @@ extra_javascript:
 
 # MATH_JAX
   - javascripts/mathjax.js
+  # Source: https://docs.mathjax.org/en/latest/web/configuration.html
+  # Read this on render choice: https://docs.mathjax.org/en/v2.0-latest/output.html#mathjax-output-formats
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   # The following was for IE compatibility
   # See https://docs.mathjax.org/en/latest/web/start.html#browser-compatibility
