@@ -1,0 +1,67 @@
+/* NB The url(...) path is *relative to* the stylesheets folder! */
+
+@font-face {
+  font-family: "Lisnoti";
+  src: /* List must end with a semi-colon! */
+    url('../fonts/Lisnoti-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/Lisnoti-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/Lisnoti-Regular.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: "Lisnoti";
+  src: /* List must end with a semi-colon! */
+    url('../fonts/Lisnoti-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/Lisnoti-Bold.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/Lisnoti-Bold.ttf')  format('truetype'); /* Safari, Android, iOS */
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Lisnoti";
+  src: /* List must end with a semi-colon! */
+    url('../fonts/Lisnoti-Italic.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/Lisnoti-Italic.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/Lisnoti-Italic.ttf')  format('truetype'); /* Safari, Android, iOS */
+  font-style: italic;
+}
+@font-face {
+  font-family: "Lisnoti";
+  src: /* List must end with a semi-colon! */
+    url('../fonts/Lisnoti-BoldItalic.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/Lisnoti-BoldItalic.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/Lisnoti-BoldItalic.ttf')  format('truetype'); /* Safari, Android, iOS */
+  font-weight: bold;
+  font-style: italic;
+}
+
+:root {
+  /* Precise Teal */
+  --md-primary-fg-color:        #00A0C0;
+  --md-primary-fg-color--light: #00C1EE;
+  --md-primary-fg-color--dark:  #0080A0;
+
+  /* Use Lisnoti font */
+  --md-text-font: "Lisnoti"; 
+  --md-code-font: "Lisnoti";
+}
+
+::selection {
+  color: #000;
+  background: #FFE500;
+}
+
+/* Fix scroll bars appearing on math blocks */
+.md-typeset div.arithmatex {
+  overflow: initial;
+}
+
+/* Make MathJax a little smaller */
+.MJX-TEX { font-size: 93.75%; }
+
+/* Make table headings align to bottom of row */
+th { 
+    vertical-align: bottom;
+}
+.md-typeset table:not([class]) th {
+    vertical-align: bottom;
+}
