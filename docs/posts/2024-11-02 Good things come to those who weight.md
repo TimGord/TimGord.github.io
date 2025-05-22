@@ -107,9 +107,9 @@ Actuaries make decisions on the relevance of mortality experience data all the t
 
 [^HighAgeConvergence]: Especially given that most models assume mortality convergence at high ages.
 
-What's worthy of note is how very fuzzy the include / exclude decision is in contrast to the sharp-edged mathematical assumptions underlying most mortality modelling that treat data as either100% relevant or 100% irrelevant[^AllOrNothing]. What happens if instead we try to incorporate *degrees of relevance* into the modelling itself? The fuzziness is not going to go away -- all we're doing is moving fuzziness already present in the real world to inside our modelling -- but maybe this approach can provide us with some insights, so let's have a go.
+What's worthy of note is how very fuzzy the include / exclude decision is in contrast to the sharp-edged mathematical assumptions underlying most mortality modelling that treat data as either 100% relevant or 100% irrelevant[^AllOrNothing]. What happens if instead we try to incorporate relevance into the modelling itself? The fuzziness is not going to go away -- all we're doing is moving fuzziness already present in the real world to inside our modelling -- but maybe this approach can provide us with some insight, so let's have a go.
 
-[^AllOrNothing]: For the avoidance of doubt, I am *not* suggesting that using a well-defined framework to obtain *initial* results and then layering in judgement on top is unreasonable, not least because it helps define and corral the fuzziness. But the very act of having to make calls on which data to include or exclude is an implicit admission that something is missing from the modelling.
+[^AllOrNothing]: For the avoidance of doubt, I am *not* suggesting that using a well-defined framework to obtain *initial* results and then layering in judgement on top is unreasonable, not least because it helps define and corral the fuzziness. But if it's not clear which which data to include or exclude and that has a material impact on the results, then that in itself is an implicit admission that something is missing from the modelling.
 
 First some definitions:
 
