@@ -23,7 +23,7 @@ categories:
 # Don't forget to add the <!-- more --> separator!!!
 ---
 
-# Implementing continuous time in actuarial modelling
+# Implementing continuous time
 
 ## The benefits of working in continuous time
 

@@ -4,11 +4,11 @@ date: 2025-05-25
 authors:
   - timgord
 categories:
-  #- Coding
+  - Coding
   #- Forecasting
   - Maths & stats
   - Mortality & longevity
-  #- Presentation
+  - Presentation
 
 #tags:
 #  - Coding
@@ -23,10 +23,9 @@ categories:
 # Don't forget to add the <!-- more --> separator!!!
 ---
 
-# I will always log mu
+# There’s only one date format
 
-
+![x](https://imgs.xkcd.com/comics/iso_8601.png)
 ## The benefits of working in continuous time
 
 <!-- more -->
-
