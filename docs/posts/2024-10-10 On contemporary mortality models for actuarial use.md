@@ -6,8 +6,8 @@ authors:
 categories:
   #- Coding
   #- Forecasting
-  - Maths/stats
-  - Mortality/longevity
+  - Maths & stats
+  - Mortality & longevity
   #- Presentation
 
 #tags:

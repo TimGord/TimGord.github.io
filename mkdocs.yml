@@ -1,4 +1,4 @@
-site_name: Tim Gordon’s blog
+site_name: Tim Gordon
 
 # site_url is required for social cards
 # See https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/
@@ -163,16 +163,16 @@ plugins:
       categories_allowed:
         - Coding
         - Forecasting
-        - Mortality/longevity
-        - Maths/stats
+        - Mortality & longevity
+        - Maths & stats
         - Presentation
 
   # Social cards
   # See https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/
   - social:
       cards_layout_options:
-        #color: "#0FF1CE"
-        #background_color: "#FF000088" #Use transparency!
+        #color: "#00A0C0"
+        background_color: "#00A0C0" #Use transparency if you load an image!
         #background_image: layouts/LogMu-social-card-background-1280x630.png # DOESN'T WORK?
         #logo:
         font_family: Noto Sans SC

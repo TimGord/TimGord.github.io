@@ -1,13 +1,13 @@
 ---
 draft: true 
-date: 2024-10-30
+date: 2025-07-15
 authors:
   - timgord
 categories:
   #- Coding
   #- Forecasting
-  - Maths/stats
-  - Mortality/longevity
+  - Maths & stats
+  - Mortality & longevity
   #- Presentation
 
 #tags:
