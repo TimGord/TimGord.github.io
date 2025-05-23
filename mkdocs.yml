@@ -104,8 +104,8 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true  
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
       options:
         custom_icons:
           - overrides/.icons 
@@ -221,6 +221,3 @@ extra_javascript:
   # But the original author suggests it is no longer required anyway.
   # See https://x.com/triblondon/status/1761852350224846906
   #- https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6
-
-
-
