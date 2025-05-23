@@ -78,6 +78,7 @@ theme:
     - navigation.top    
     #- header.autohide
     #- toc.integrate # MarkDown headings are on LHS NB Not compatible with navigation.indexes
+    - toc.follow
     - search.suggest
     - search.highlight
 
@@ -167,19 +168,18 @@ plugins:
         - Presentation
 
   # Social cards
-  # As at 2024-01-11, I haven't managed to get this to work :-(
   # See https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/
-  # You also need other stuff -- see : https://squidfunk.github.io/mkdocs-material/plugins/requirements/image-processing/
-  # I used https://www.msys2.org/ as recommended by Material for MkDocs
-  # As at 2024-01-11, I haven't managed to get this to work :-(
-  # I get: File "C:\Python310\lib\zipfile.py", line 1334, in _RealGetContents raise BadZipFile("File is not a zip file")
-  # This is the same error as: https://github.com/squidfunk/mkdocs-material/discussions/3246
-  #- social:
-  #  cards_layout_options:
-  #    font_family: Noto Sans
+  - social:
+      cards_layout_options:
+        #color: "#0FF1CE"
+        #background_color: "#FF000088" #Use transparency!
+        #background_image: layouts/LogMu-social-card-background-1280x630.png # DOESN'T WORK?
+        #logo:
+        font_family: Noto Sans SC
+        #font_variant:
 
 extra:
-  #generator: false
+  #generator: false # Removes credit to Material for Mkdocs (don't do this!)
 
   social:
     - icon: fontawesome/brands/linkedin
