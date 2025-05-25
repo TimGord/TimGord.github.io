@@ -23,7 +23,7 @@ categories:
 # Don't forget to add the <!-- more --> separator!!!
 ---
 
-# Good things come to those who weight
+# Good things come to those who weight #1 / 3
 
 There was a time when actuaries understood that amounts-weighted statistics are the most appropriate ones for assessing defined benefit pension plan liabilities. After all, 
 
