@@ -1,4 +1,9 @@
-# TimGord blog instructions
+# <span style="color:#00A0C0;">README-DEV</span>
+
+<!--
+#00A0C0
+#FF3300
+-->
 
 ## Handy ref
 
@@ -12,10 +17,7 @@ Lists of tags and categories to use:
 
 ## Organisation
 
-1. Use the `dev` folder for
-
-    - Instructions, i.e. this doc.
-    - Notes and record of work associated with the blog.
+1. Use the `dev` folder for dev associated with the blog.
 
 2. `mkdocs.yml` controls the site generator.
 
@@ -34,9 +36,11 @@ Lists of tags and categories to use:
     - Type `mkdocs serve`
     - Point your browser to [localhost:8000](http://localhost:8000/)
 
-## Syntax highlighting
+## NOT USED
 
-My plan is to rely on a Plural syntax highlighter written in JS (that can also be used with VS Code).
+### Syntax highlighting
+
+**If** we want to highlight  Plural syntax using a highlighter written in JS (that can also be used with VS Code).
 
 First, we need to ensure the Pygments highlighter is disabled. That means *not* include the following in `mkdocs.yml` in the `markdown_extensions` section:
 

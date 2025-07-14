@@ -23,7 +23,7 @@ categories:
 # Don't forget to add the <!-- more --> separator!!!
 ---
 
-# There’s only one date format
+# The one true date format
 
 ![x](https://imgs.xkcd.com/comics/iso_8601.png)
 ## The benefits of working in continuous time

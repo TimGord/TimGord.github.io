@@ -16,14 +16,13 @@ categories:
 #  - Forecasting
 #  - Standards
 
-# For reasons I don't understand, the local and server slugification produce
-# different results when there are dashes in the item title.
+# The local and server slugifications produce *different* results when there are dashes in the item title.
 #slug: add-custom-slug-here
 
 # Don't forget to add the <!-- more --> separator!!!
 ---
 
-# Mortality experience analysis
+# Measures matter (Mortality Experience #1 / 7)
 
 Over the years I have witnessed confusions and errors relating to mortality experience analysis that I think were avoidable.
 
@@ -39,8 +38,6 @@ Before we begin let's note that this is not new. The AIC-related maths is set ou
 [^BurnhamAnderson]:
 
     [Model Selection and Multimodel Inference: A practical information-theoretic approach (2nd ed.)](https://link.springer.com/book/10.1007/b97636), ISBN-13: 9780387953649.
-    
-    At time of writing, Chapter 7, which contains the relevant maths is [free on the Springer website](https://link.springer.com/chapter/10.1007/978-0-387-22456-5_7).
     
     See also Multimodel Inference: Understanding AIC and BIC in Model Selection ([PDF here](http://www.sortie-nd.org/lme/Statistical%20Papers/Burnham_and_Anderson_2004_Multimodel_Inference.pdf), doi:[10.1177/0049124104268644](https://doi.org/10.1177%2F0049124104268644)).
 

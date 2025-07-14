@@ -16,19 +16,17 @@ categories:
 #  - Forecasting
 #  - Standards
 
-# For reasons I don't understand, the local and server slugification produce
-# different results when there are dashes in the item title.
+# The local and server slugifications produce *different* results when there are dashes in the item title.
 #slug: add-custom-slug-here
 
 # Don't forget to add the <!-- more --> separator!!!
 ---
 
-# Implementing continuous time
+# Representing continuous time
 
 ## The benefits of working in continuous time
 
 <!-- more -->
-
 
 Quantisation
 
