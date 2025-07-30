@@ -17,9 +17,9 @@ nav:
       # The only way I can get links to blog posts to work is to use the external link.
       # For reasons I don't understand, the local and server slugification produce different results
       # when there are dashes in the item title.
-
       - On contemporary mortality models for actuarial use : 2024-10/on-contemporary-mortality-models-for-actuarial-use/
       - Lisnoti – a proportional font that works for coding too : 2024-01/lisnoti-a-proportional-font-that-works-for-coding-too/
+  - Collated mortality insights: collated-mortality-insights.md
   - About me: about-me.md
   - Reprint policy: reprint-policy.md
   #- Topics : tags.md
@@ -95,7 +95,8 @@ theme:
   #    plural: material/parking
 
 markdown_extensions:
-  - admonition
+  #- admonition 
+  - pymdownx.blocks.admonition # These may fail to co-operate -- see https://github.com/squidfunk/mkdocs-material/discussions/7217
   - footnotes
   - attr_list
   - def_list

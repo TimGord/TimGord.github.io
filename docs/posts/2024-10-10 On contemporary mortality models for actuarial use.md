@@ -47,23 +47,27 @@ So, having welcomed the paper, I do have a few observations...
 
 The paper's introduction states that '*µ<sub>x</sub>* is usurping *q<sub>x</sub>* in actuarial work.' While I'd like this to be true, I can't help but wonder whether it's wishful thinking.
 
-!!! info inline end "Trying to switch the CMI Mortality Projections Model from *q* to *µ*[^CMIMNotMu]"
+/// admonition | Trying to switch the CMI Mortality Projections Model from *q* to *µ*[^CMIMNotMu]
+    type: info
+    attrs: {class: "inline end"}
 
-    [^CMIMNotMu]: Technically the CMI Mortality Projections Model is defined in terms of *m*, not *µ*, but it is *m* rather than *q* that maps straightforwardly to *µ*.
+[^CMIMNotMu]: Technically the CMI Mortality Projections Model is defined in terms of *m*, not *µ*, but it is *m* rather than *q* that maps straightforwardly to *µ*.
 
-    As chair of the CMI's [Mortality Projections Committee](https://www.actuaries.org.uk/learn-and-develop/continuous-mortality-investigation/cmi-investigations/mortality-projections), I oversaw the revision of its Projections Model in 2016. I was keen to remove all *q*-based aspects inherited from the previous approach, but -- relevant in this context -- all changes from *q* to *µ* were opposed by at least some actuaries. 
-    
-    The following two changes were objected to[^CMIConsultation], but did gain majority support in consultation and make it into the final version:
+As chair of the CMI's [Mortality Projections Committee](https://www.actuaries.org.uk/learn-and-develop/continuous-mortality-investigation/cmi-investigations/mortality-projections), I oversaw the revision of its Projections Model in 2016. I was keen to remove all *q*-based aspects inherited from the previous approach, but -- relevant in this context -- all changes from *q* to *µ* were opposed by at least some actuaries. 
 
-    - Changing the 'long-term rate of mortality improvement' (LTR) from *q* to *µ*-based.
+The following two changes were objected to[^CMIConsultation], but did gain majority support in consultation and make it into the final version:
 
-    - Changing the projections part of the model to work in directly in terms of *µ* rather than *q*.
+- Changing the 'long-term rate of mortality improvement' (LTR) from *q* to *µ*-based.
 
-    The only *q*-related aspect remaining was that the improvement factors output by the Model are expressed in terms of *q*-multipliers, but the committee itself felt that changing this to *µ* was a step too far[^CMIBehaviour].
+- Changing the projections part of the model to work in directly in terms of *µ* rather than *q*.
 
-    [^CMIConsultation]: See Q&#x202F;6.1 and Q&#x202F;6.2 in [WP&#x00A0;93](https://www.actuaries.org.uk/system/files/field/document/CMI%20WP093%20v02%202016-12-02%20-%20CMI%20Model%20consultation%20responses.pdf).
+The only *q*-related aspect remaining was that the improvement factors output by the Model are expressed in terms of *q*-multipliers, but the committee itself felt that changing this to *µ* was a step too far[^CMIBehaviour].
 
-    [^CMIBehaviour]: This is not a criticism -- the CMI has an obligation to its users to consider the stability and consistency of its outputs.
+[^CMIConsultation]: See Q&#x202F;6.1 and Q&#x202F;6.2 in [WP&#x00A0;93](https://www.actuaries.org.uk/system/files/field/document/CMI%20WP093%20v02%202016-12-02%20-%20CMI%20Model%20consultation%20responses.pdf).
+
+[^CMIBehaviour]: This is not a criticism -- the CMI has an obligation to its users to consider the stability and consistency of its outputs.
+
+///
 
 - Many actuaries simply prefer *q* (in the same way that they prefer annually-compounded interest rates to [the force of interest](https://en.wikipedia.org/wiki/Compound_interest#Force_of_interest)). See the boxout for a documented example.
 
