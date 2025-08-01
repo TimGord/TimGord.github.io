@@ -10,7 +10,7 @@ categories:
   - Mortality & longevity
   #- Presentation
 
-comments: true
+#comments: true
 
 #tags:
 #  - Coding
@@ -82,7 +82,7 @@ A <span id="Def-mortality">**mortality**</span> $\mu$ is a strictly positive var
 
 We will assume that the mortality $\mu$ at hand is itself completely deterministic and the sole source of random variation is whether or not individuals die according to $\mu$.
 
-In practice, *this is never true for mortality data* because $\mu$ itself is also stochastic. <span id="Def-overdispersion">This manifests as observed variances being (much) higher than would be predicted by a fitted Poisson distribution, and is known as **overdispersion**.</span>
+In practice, *this is never true for mortality data* because $\mu$ itself is also stochastic. <span id="Def-overdispersion">This manifests as observed variances being materially higher than would be predicted by a fitted Poisson distribution, and is known as **overdispersion**.</span>
 
 /// admonition | Insight 1. Always allow for overdispersion
     type: insight
@@ -96,11 +96,13 @@ The good news is that there is a standard way of adjusting for overdispersion (w
 
 ## The measures that matter
 
-An experience dataset is [measurable](https://en.wikipedia.org/wiki/Measurable_space)[^Measurable] in the mathematical sense, which means we can define sums (or integrals) of a variable over the data and it doesn't matter how we partition the data to get the sum -- we'll always get the same answer.
+An experience dataset is [measurable](https://en.wikipedia.org/wiki/Measurable_space)[^Measurable] in the mathematical sense, which means we can define sums (or integrals) of a variable over the data and it doesn't matter how we partition the data to get the sum -- we'll always get the same answer[^Parallel].
 
 [^Measurable]: Experience data is trivially measurable because countable sets (i.e. the individuals) are measurable and the real line (i.e. the non-overlapping exposure periods for each individual) is measurable.
 
-This is intuitively equivalent to treating experience data as comprising infinitesimals $\text{d}(i,\varepsilon)$ over which we can integrate.
+[^Parallel]: The freedom to partition experience data may also present opportunities to run [calculations in parallel](https://en.wikipedia.org/wiki/Embarrassingly_parallel). (I suggest that your bulk mortality experience calculations should be running in parallel at least somewhere along the chain.)
+
+My intuition is to consider experience data as comprising infinitesimals $\text{d}(i,\varepsilon)$ over which we can integrate.
 
 /// admonition | Insight 2. Experience data is '[measurable](https://en.wikipedia.org/wiki/Measurable_space)'
     type: insight
@@ -142,7 +144,7 @@ There are essentially two core measures. You almost certainly have already come 
     While this is a simpler definition, it would
     
     - clutter up our notation because we'd end up writing $\text{S}\mu f$ everywhere instead of $\text{E}f$, and
-    - obscure the essential symmetry between $\text{A}$ and $\text{E}$.
+    - obscure the symmetry between $\text{A}$ and $\text{E}$.
 
 /// admonition | 'Expected' is not expectation
     type: danger
@@ -161,9 +163,9 @@ On notation and terminology:
 - The dataset $\mathscr{E}$ and, for $\text{E}$, the mortality $\mu$ are typically implicit from context -- it is rare that we need additional notation to make them explicit.
 - There is a multitude of notations for integrating using measures (see e.g. [here](https://math.stackexchange.com/questions/5230/is-there-any-difference-between-the-notations-int-fxd-mux-and-int-fx)), of which $\int \!f(x)\,\text{M}(\text{d}x)$ and $\int \!f\,\text{dM}$ are common. But the simplest is $\text{M}f$, which is what we'll use.
 
-Although I've emphasised that $\text{A}$ and $\text{E}$ are measures over experience data, I confess that I don't use this terminology day-to-day[^LinearOp]. In fact, I've hardly heard anyone mention 'measures' in connection with experience analysis, which may explain why [ts importance seems to be regularly overlooked, sometimes leading practitioners down blind alleys in relation to e.g. the meaning of 'expected' (see box out) or whether experience data needs to be contiguous (which has cropped up more than once in multi-£ billion transactions I have worked on).
+Although I've emphasised that $\text{A}$ and $\text{E}$ are measures over experience data, I confess that I don't use this terminology day-to-day[^LinearOp]. In fact, I've hardly heard anyone mention 'measures' in connection with experience analysis, which may explain why their importance seems to be regularly overlooked, sometimes leading practitioners down blind alleys in relation to e.g. the meaning of 'expected' (see box out) or whether experience data needs to be contiguous (which has cropped up more than once in multi-£ billion transactions I have worked on).
 
-[^LinearOp]: I think I typically describe $A$ and $E$ as *linear operators*.
+[^LinearOp]: I think I usually describe $A$ and $E$ as 'linear operators'.
 
 /// admonition | Insight 3. The continuous time definitions of A and E are canonical
     type: insight
@@ -190,6 +192,6 @@ And once we incorporate weighted statistics then $E$ can no longer serve as an e
 
 The real reason though is that, as noted above and as we’ll cover in the articles in this series, *pretty much every aspect of mortality experience analysis can be expressed directly in terms of $\text{A}f$ and $\text{E}f$*.
 
-[^FAsIndicator]: It can be *mathematically convenient* to use $f\in \{0,1\}$ as an indicator of dataset membership *by time*. But this is an implementation nightmare, and so has limited practical value. There are (much) better approaches to achieving this in real-world implementations.
+[^FAsIndicator]: It can be *mathematically convenient* to use $f\in \{0,1\}$ as an indicator of dataset membership *by time*. But this is an implementation nightmare, and so has limited practical value. There are much better approaches to achieving this in real-world implementations.
 
 [^NextArticle]: This is the topic of [the next article](/2025-08/mortality-a-over-e/) in this series.
