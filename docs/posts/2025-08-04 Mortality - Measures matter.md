@@ -110,9 +110,14 @@ My intuition is to consider experience data as comprising infinitesimals $\text{
 
 Provided we use [measures](https://en.wikipedia.org/wiki/Measure_(mathematics)), we'll always get the same answer *regardless of how an experience dataset is partitioned*.
 
-In particular, *there is no need for experience time periods to be contiguous*[^OmitPandemic] -- the sole requirement is that elements of the experience datasets do not intersect.
+In particular, there is no need
+
+- *for experience time periods to be contiguous*[^OmitPandemic] -- the sole requirement is that elements of the experience datasets do not intersect, or
+   - *to track individuals across experience datasets relating to different time periods*[^Tracking].
 
 [^OmitPandemic]: An obvious example is excluding mortality experience from the height of the COVID-19 pandemic, potentially resulting in *non-contiguous* data from before and after the excluded time period.
+
+[^Tracking]: Tracking individuals across experience datasets for different time periods may however be a very sensible data check.
 
 [[All mortality insights](/collated-mortality-insights/#Insight2)]
 ///
