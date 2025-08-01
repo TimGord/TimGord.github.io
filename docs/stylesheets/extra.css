@@ -65,3 +65,25 @@ th {
 .md-typeset table:not([class]) th {
     vertical-align: bottom;
 }
+
+/* Add an "insight" admonition */
+:root {
+/*
+  --md-admonition-icon--insight: url('docs/assets/TimGord-teal-disc.svg')
+*/
+--md-admonition-icon--insight: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180"><path d="M 90, 90 m 90, 0 a 90,90 0 1,0 -180,0 a 90,90 0 1,0  180,0Z M68 31 128 9 100 59.9 117.5 54 93.2 103.5 107 99 63 175 74.8 109.5 61 114 76.6 67.7 59 73.5Z"/></svg>')
+}
+.md-typeset .admonition.insight,
+.md-typeset details.insight {
+  border-color: #FFA000;
+}
+.md-typeset .insight > .admonition-title,
+.md-typeset .insight > summary {
+  background-color: #FFA00011;
+}
+.md-typeset .insight > .admonition-title::before,
+.md-typeset .insight > summary::before {
+  background-color: #FFA000;
+  -webkit-mask-image: var(--md-admonition-icon--insight);
+  mask-image: var(--md-admonition-icon--insight);
+}

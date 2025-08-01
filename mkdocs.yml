@@ -17,12 +17,16 @@ nav:
       # The only way I can get links to blog posts to work is to use the external link.
       # For reasons I don't understand, the local and server slugification produce different results
       # when there are dashes in the item title.
-      - On contemporary mortality models for actuarial use : 2024-10/on-contemporary-mortality-models-for-actuarial-use/
+      - "Mortality: A over E" : 2025-08/mortality-a-over-e/
+      - "Mortality: Measures matter" : 2025-08/mortality-measures-matter/
       - Lisnoti – a proportional font that works for coding too : 2024-01/lisnoti-a-proportional-font-that-works-for-coding-too/
   - Collated mortality insights: collated-mortality-insights.md
   - About me: about-me.md
   - Reprint policy: reprint-policy.md
   #- Topics : tags.md
+
+watch:
+  - snippets # Not working?
 
 theme:
 
@@ -98,6 +102,7 @@ markdown_extensions:
   #- admonition 
   - pymdownx.blocks.admonition # These may fail to co-operate -- see https://github.com/squidfunk/mkdocs-material/discussions/7217
   - footnotes
+  - abbr
   - attr_list
   - def_list
   - smarty
@@ -124,7 +129,9 @@ markdown_extensions:
       permalink: '' # GitHub-style heading links *before* title
       title: Page contents
   - pymdownx.details
-  #- pymdownx.snippets
+  - pymdownx.snippets:
+      auto_append:
+        - snippets/include.md
 
 # KATEX *and* MATH_JAX
   - pymdownx.arithmatex:

@@ -25,7 +25,7 @@ categories:
 
 # On contemporary mortality models for actuarial use
 
-Stephen Richards' and Angus Macdonald's paper ['On Contemporary Mortality Models for Actuarial Use'](https://www.longevitas.co.uk/sites/default/files/2024-08/On_contemporary_mortality_models_for_actuarial_use.pdf) (due to be discussed at [the Institute of Actuaries on 24 October 2024](https://actuaries.org.uk/learn/events/events-calendar/sessional-meeting-contemporary-mortality-models-for-actuarial-use/)) makes the case for the following in mortality experience analysis[^Scope]:
+Stephen Richards' and Angus Macdonald's paper ['On Contemporary Mortality Models for Actuarial Use'](https://www.longevitas.co.uk/sites/default/files/2024-08/On_contemporary_mortality_models_for_actuarial_use.pdf) (due to be discussed at [the Institute of Actuaries on 24 October 2024](https://actuaries.org.uk/events/contemporary-mortality-models-for-actuarial-use/)) makes the case for the following in mortality experience analysis[^Scope]:
 
 [^Scope]: The paper's title suggests it covers all mortality modelling, but its sole focus is the analysis of portfolio mortality experience. So, for instance, mortality projection modelling is omitted entirely. This doesn't detract from the paper's contents -- mortality experience analysis is an important topic in itself.
 
