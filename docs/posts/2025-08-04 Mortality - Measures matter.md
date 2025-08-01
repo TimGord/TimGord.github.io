@@ -10,6 +10,8 @@ categories:
   - Mortality & longevity
   #- Presentation
 
+comments: true
+
 #tags:
 #  - Coding
 #  - Mortality
