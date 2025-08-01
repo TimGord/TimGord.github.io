@@ -52,7 +52,7 @@ An <span id="Def-E2R">**exposed-to-risk**</span> (E2R) for an individual compris
 
 I'll write an E2R as $\varepsilon=(\nu,\tau,\delta)$.
 
-For each individual we also have a set of <span id="Def-fact">**facts**</span>, $i$, known at the time of the analysisand which are time invariant.
+For each individual we also have a set of <span id="Def-fact">**facts**</span>, $i$, known at the time of the analysis and which are time invariant.
 
 If a fact relates to something that would have happened except that the individual died, e.g. pension in payment in 2025 for an individual who died in 2024, then we assume this fact is determined *as if the individual had lived*. This is critical for unbiased analysis and is sometimes referred to as 'the principle of correspondence'[^NoCheating].
 
@@ -66,7 +66,7 @@ A <span id="Def-variable">**variable**</span> is a real-valued function $f(i,t)$
 
 - The continuity condition allows theoretical generality, but is deeply impractical for actual implementation, for which a more realistic requirement is that variables are *smooth*[^NotFullyDefined] in $t$ at the scale of numerical integration.
 
-A <span id="Def-mortality">**mortality**</span> $\mu$ is a strictly positive variable[^Terminal] that specifies the probability of an individual dying over an infinitessimal time interval $\text{d}t$ as $\mu(i,t)\,\text{d}t$, i.e. a [Poisson distribution](https://en.wikipedia.org/wiki/Poisson_distribution).
+A <span id="Def-mortality">**mortality**</span> $\mu$ is a strictly positive variable[^Terminal] that specifies the probability of an individual dying over an infinitessimal time interval $\text{d}t$ as $\mu(i,t)\,\text{d}t$, i.e. an independent[^Independence] [Bernoulli trial](https://en.wikipedia.org/wiki/Bernoulli_trial).
 
 [^ContinuousTime]: I'll take it as a given that we should work in (some representation of) continuous time if at all possible. Otherwise we'd be (a)&#xA0;throwing away data and (b)&#xA0;creating additional cognitive load and potentially biased or even plain wrong results by having to make assumptions about averages.
 
@@ -77,6 +77,8 @@ A <span id="Def-mortality">**mortality**</span> $\mu$ is a strictly positive var
 [^NotFullyDefined]: We'll leave *smoothness** not fully defined for now, but a minimum requirement is variables are [absolutely continuous](https://en.wikipedia.org/wiki/Absolute_continuity) in $t$.
 
 [^Terminal]: An implementation would also need a mortality to specify a terminal date or age by individual (because mortality tables stop), but I don't need that for this exposition.
+
+[^Independence]: For the avoidance of doubt, we assume that these Bernoulli trials are independent by time and by individual.
 
 ## What is random?
 
