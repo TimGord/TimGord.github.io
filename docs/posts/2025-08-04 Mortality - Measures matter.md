@@ -89,22 +89,23 @@ In practice, *this is never true for mortality data* because $\mu$ itself is als
 /// admonition | Insight 1. Always allow for overdispersion
     type: insight
     attrs: {id: "Insight1"}
+
 If you don't allow for overdispersion then you *will* underestimate uncertainty and overfit models.
 
 [[All mortality insights](/collated-mortality-insights/#Insight1)]
 ///
 
-The good news is that there is a standard way of adjusting for overdispersion (which we'll do this later in this series). For the time being, whenever you come across references to mortality variance or uncertainty (in this blog or anywhere else), there should have a little voice in your head saying '*remember to allow for overdispersion*'.
+The good news is that there is a standard way of adjusting for overdispersion, which we'll cover in a later article. For the time being, whenever you come across references to mortality variance or uncertainty (in this blog or anywhere else), a little voice in your head should be saying '*remember to allow for overdispersion*'.
 
 ## The measures that matter
 
 An experience dataset is [measurable](https://en.wikipedia.org/wiki/Measurable_space)[^Measurable] in the mathematical sense, which means we can define sums (or integrals) of a variable over the data and it doesn't matter how we partition the data to get the sum -- we'll always get the same answer[^Parallel].
 
+I find it useful to picture experience data as comprising infinitesimals $\text{d}(i,\varepsilon)$ over which we can integrate.
+
 [^Measurable]: Experience data is trivially measurable because countable sets (i.e. the individuals) are measurable and the real line (i.e. the non-overlapping exposure periods for each individual) is measurable.
 
 [^Parallel]: The freedom to partition experience data may also present opportunities to run [calculations in parallel](https://en.wikipedia.org/wiki/Embarrassingly_parallel). (I suggest that your bulk mortality experience calculations should be running in parallel at least somewhere along the chain.)
-
-My intuition is to consider experience data as comprising infinitesimals $\text{d}(i,\varepsilon)$ over which we can integrate.
 
 /// admonition | Insight 2. Experience data is '[measurable](https://en.wikipedia.org/wiki/Measurable_space)'
     type: insight
@@ -157,9 +158,9 @@ There are essentially two core measures. You almost certainly have already come 
     type: danger
     attrs: {class: "inline end"}
 
-$\text{E}f$ is a *random variable* (like $\text{A}f$), and so describing it as 'expected' deaths unsurprisingly repeatedly gives rise to confusion. But the practice is so ensconced that using a different term would be even more confusing.
+$\text{E}f$ is a *random variable* (like $\text{A}f$), and so describing it as 'expected' deaths can give rise to confusion. But the practice is so ensconced that using a different term would be even more confusing.
 
-The terminology arises because, for typical mortality rates, $\text{E}f$ is an *approximation* to true expectation of deaths over small timescales (e.g. a year). But, at an infinitesimal scale, they are *identical*  which is why using measures and $\text{E}$ as defined here are [*canonical*](https://en.wikipedia.org/wiki/Canonical_form).
+The terminology arises because 'expected deaths' is typically an estimate of expected deaths over short but *finite* time intervals, e.g. years. The definition of $\text{E}$ here is the same except it is *defined on a grid of infinitesimal time intervals*, which means that we've discarded the complexity of determining survival during finite intervals and makes it the [*canonical*](https://en.wikipedia.org/wiki/Canonical_form) definition.
 
 For avoidance of doubt, I'll always use $\mathbb{E}$ to refer to true expectation.
 
@@ -168,7 +169,7 @@ For avoidance of doubt, I'll always use $\mathbb{E}$ to refer to true expectatio
 On notation and terminology:
 
 - The dataset $\mathscr{E}$ and, for $\text{E}$, the mortality $\mu$ are typically implicit from context -- it is rare that we need additional notation to make them explicit.
-- There is a multitude of notations for integrating using measures (see e.g. [here](https://math.stackexchange.com/questions/5230/is-there-any-difference-between-the-notations-int-fxd-mux-and-int-fx)), of which $\int \!f(x)\,\text{M}(\text{d}x)$ and $\int \!f\,\text{dM}$ are common. But the simplest is $\text{M}f$, which is what we'll use.
+- There is a multitude of notations for integrating using measures (see e.g. [here](https://math.stackexchange.com/questions/5230/is-there-any-difference-between-the-notations-int-fxd-mux-and-int-fx)), of which $\int \!f(x)\,\text{M}(\text{d}x)$ and $\int \!f\,\text{dM}$ are common. But the simplest is $\text{M}f$, which is what I'll use.
 
 Although I've emphasised that $\text{A}$ and $\text{E}$ are measures over experience data, I confess that I don't use this terminology day-to-day[^LinearOp]. In fact, I've hardly heard anyone mention 'measures' in connection with experience analysis, which may explain why their importance seems to be regularly overlooked, sometimes leading practitioners down blind alleys in relation to e.g. the meaning of 'expected' (see box out) or whether experience data needs to be contiguous (which has cropped up more than once in multi-£ billion transactions I have worked on).
 
@@ -189,16 +190,16 @@ Other definitions can lead to confusion -- usually over $\text{E}$ vs true expec
 
 References to actual and expected deaths in mortality analyses are not usually accompanied by a reference to a 'variable' and are usually written simply as $A$ and $E$, so why do we have one in our definitions?
 
-The immediate justification[^FAsIndicator] is that real world mortality work requires *weighted* statistics:
+The immediate justification[^FAsIndicator] is that real world mortality work requires *weighted* statistics[^Weighted]:
 
-1. It is standard to analyse actual and expected deaths weighted[^NextArticle] e.g. by benefit amount as well as unweighted ('lives-weighted' in actuarial parlance). So including $f$ means that we have this requirement covered.
+1. It is standard to analyse actual and expected deaths weighted e.g. by benefit amount as well as unweighted ('lives-weighted' in actuarial parlance). So including $f$ means that we have this requirement covered.
 
 1. We may want to weight data by its *relevance* (also known as reliability or importance), in which case we'd use $0\le f\le 1$. (This too will be covered in a future article.)
 
-And once we incorporate weighted statistics then $E$ can no longer serve as an estimate of its own variance and so this alone means we need something more general.
-
 The real reason though is that, as noted above and as we’ll cover in the articles in this series, *pretty much every aspect of mortality experience analysis can be expressed directly in terms of $\text{A}f$ and $\text{E}f$*.
 
-[^FAsIndicator]: It can be *mathematically convenient* to use $f\in \{0,1\}$ as an indicator of dataset membership *by time*. But this is an implementation nightmare, and so has limited practical value. There are much better approaches to achieving this in real-world implementations.
+In [the next article](/2025-08/mortality-a-over-e/) we'll cover A/E analysis.
 
-[^NextArticle]: This is the topic of [the next article](/2025-08/mortality-a-over-e/) in this series.
+[^Weighted]:It is important to note that, when dealing with weighted statistics, $E$ can no longer serve as an estimate of its own variance.
+
+[^FAsIndicator]: It can be *mathematically convenient* to use $f\in \{0,1\}$ as an indicator of dataset membership *by time*. But this is an implementation nightmare, and so has limited practical value. There are much better approaches to achieving this in real-world implementations.
