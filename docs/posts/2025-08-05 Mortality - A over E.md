@@ -74,7 +74,7 @@ If $\mu$ is the true mortality then the expected value of $\text{A}f-\text{E}f$ 
 - *for any variable $f$* (even if $f$ was used to fit the mortality in question), and
 - *for any subset* of the experience data (provided the choice of subset does not depend on E2R information).
 
-[[All mortality insights](/collated-mortality-insights/#Insight4)]
+[[All mortality insights](/collated-mortality-insights#Insight4)]
 ///
 
 ## The 'variance' result
@@ -102,7 +102,7 @@ If $\mu$ is the true mortality then the variance of $\text{A}f-\text{E}f$ equals
 
 (This is before allowing for overdispersion.)
 
-[[All mortality insights](/collated-mortality-insights/#Insight5)]
+[[All mortality insights](/collated-mortality-insights#Insight5)]
 ///
 
 Over the years, I've seen the lives-weighted case can lead practitioners into making some invalid assumptions or bad decisions:
@@ -139,7 +139,7 @@ $\sqrt{\text{E}w^2} / \text{E}w$, where $w\ge0$ is a useful and recurring measur
 
 Using unweighted variance without adjustment to estimate weighted statistics will likely *understate* risk.
 
-[[All mortality insights](/collated-mortality-insights/#Insight6)]
+[[All mortality insights](/collated-mortality-insights#Insight6)]
 ///
 
 The above diagnostics are ok in practice, but they have some drawbacks:
