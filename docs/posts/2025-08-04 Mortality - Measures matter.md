@@ -193,7 +193,7 @@ The immediate justification[^VariableAsTimeIndicator] is that real world mortali
 
 1. It is standard to analyse actual and expected deaths weighted by benefit amount ('amounts-weighted') as well as unweighted ('lives-weighted'). So including $f$ means that we have this requirement covered.
 
-1. We may[^Relevance] also want to weight data by its *relevance* (also known as reliability or importance).
+1. We may[^Relevance] want to weight data by its *relevance* (also known as reliability or importance).
 
 The fundamental reason though is that, as noted above, *pretty much every useful aspect of mortality experience analysis can be expressed directly in terms of $\text{A}f$ and $\text{E}f$*.
 
@@ -203,5 +203,4 @@ In [the next article](/2025-08/mortality-a-over-e/) we'll review the properties 
 
 [^VariableAsTimeIndicator]: Another potential justification is that it is *mathematically convenient* to use $f\in \{0,1\}$ as an indicator of dataset membership *by time*. Unfortunately, this is an implementation nightmare in its full generality, and so has limited real-world value. There are better, simpler, approaches to achieving this in practice.
 
-[^Relevance]: By which I mean I will
-
+[^Relevance]: And in a future article *will*.
