@@ -48,6 +48,8 @@ In the [previous article](/2025-08/mortality-measures-matter/) we defined [exper
 
 In this article we'll put $\text{A}$ and $\text{E}$ to work.
 
+<!-- more -->
+
 ## The 'expected' result
 
 When the mortality $\mu$ is the *true mortality* then *for any variable $f$* it is easy to show that
@@ -55,8 +57,6 @@ When the mortality $\mu$ is the *true mortality* then *for any variable $f$* it 
 $$\mathbb{E}\big(\text{A}f-\text{E}f\big)=0\tag{1}$$
 
 where $\mathbb{E}$ is true expectation.
-
-<!-- more -->
 
 --8<-- "snippets/mortality-series-list.md"
 
@@ -150,4 +150,4 @@ The above diagnostics are fine in practice, but they have some nagging drawbacks
 - We've relied on $\sqrt{\text{E}f^2}\gg \text{E}f$ and the central limit theorem, which will break down for datasets with fewer / more concentrated weighted deaths.
 - The implied confidence intervals can include negative values!
 
-We can do better and so we'll revisit A/E diagnostics in due course. But in order to that we'll need to define the log likelihood, which is the subject of the next article.
+We can do better and so we'll revisit A/E diagnostics in due course. But in order to do that we'll need to define the log likelihood, which is the subject of the next article.
