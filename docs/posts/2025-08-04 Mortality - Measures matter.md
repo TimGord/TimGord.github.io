@@ -34,10 +34,9 @@ This will be fairly technical, but I'll aim
 - to pull out the key insights, and
 - to map concepts one-to-one to the process of actually carrying out a mortality experience analysis or calibrating and selecting mortality models.
 
-A lot of this is reasonably well known, but not always available in one place or easily accessible. 
-It won't be all plain sailing, and there'll be a few potentially contentious or any maybe even surprising points along the way.
+A lot of this is reasonably well known, but not always available in one place or easily accessible. It won't be all plain sailing, and there'll be a few potentially contentious and maybe even surprising points along the way.
 
-In this first article I'll set out the foundations.
+In this first article, I'll set out the foundations.
 
 <!-- more -->
 
@@ -103,11 +102,11 @@ The good news is that we can fix things up to allow for overdispersion, which we
 
 I'm now going to talk about [measures](https://en.wikipedia.org/wiki/Measure_(mathematics)) in the mathematical sense. 
 
-If you're a practitioner, please don't let this put you off -- all it means is that we can add functions up over experience data, and, *provided we use a measure* to do this, we'll always get the same answer *regardless of how an experience dataset is partitioned*.[^Parallel] I am surprised by how many practitioners do not know this.
+If you're a practitioner, please don't let this put you off -- all it means is that *provided we use a measure* we can add up functions over experience data and we'll always end up with the same answer regardless of how we do the sum.[^Parallel]
 
 My heuristic picture is that experience data comprises infinitesimals $\text{d}(i,\varepsilon)$ over which we can integrate.
 
-[^Parallel]: The freedom to partition experience data may also present opportunities to run [calculations in parallel](https://en.wikipedia.org/wiki/Embarrassingly_parallel). (I suggest that your bulk mortality experience calculations should be running in parallel at least somewhere along the chain.)
+[^Parallel]: The freedom to partition experience data any way you choose may also present opportunities to run [calculations in parallel](https://en.wikipedia.org/wiki/Embarrassingly_parallel). (I suggest that your bulk mortality experience calculations should be running in parallel at least somewhere along the line.)
 
 /// admonition | Insight 2. Experience data is '[measurable](https://en.wikipedia.org/wiki/Measurable_space)'
     type: insight
@@ -118,7 +117,7 @@ Provided we use [measures](https://en.wikipedia.org/wiki/Measure_(mathematics)),
 In particular, there is no need
 
 - *for experience time periods to be contiguous*[^OmitPandemic] -- the sole requirement is that elements of the experience datasets do not intersect, or
-   - *to track individuals across experience datasets relating to different time periods*[^Tracking].
+- *to track individuals across experience datasets relating to different time periods*[^Tracking].
 
 [^OmitPandemic]: An obvious example is excluding mortality experience from the height of the COVID-19 pandemic, potentially resulting in *non-contiguous* data from before and after the excluded time period.
 
@@ -175,7 +174,7 @@ Although I've emphasised that $\text{A}$ and $\text{E}$ are measures over experi
 
 [^LinearOp]: I think I usually describe $A$ and $E$ as 'linear operators'.
 
-Let's be clear about the chain of reasoning. $\text{E}f$ as defined here is [canonical](https://en.wikipedia.org/wiki/Canonical_form) (in the same way that, say, the derivative is the canonical definition of slope), which makes it appealing. But what really matters is its power, which is that we can express everything else we need in terms of $\text{A}$ and $\text{E}$.
+Let's be clear about the chain of reasoning. $\text{E}f$ as defined here is [canonical](https://en.wikipedia.org/wiki/Canonical_form) (in the same way that, say, the derivative is the canonical definition of slope), which makes it appealing. But *what really matters is its power*, which is that we can express everything else we need in terms of $\text{A}$ and $\text{E}$.
 
 /// admonition | Insight 3. The continuous time definitions of A and E are canonical
     type: insight
@@ -190,18 +189,18 @@ Other definitions can lead to confusion -- usually over $\text{E}$ vs true expec
 
 ## Why include&#xA0;*f*&#x202F;?
 
-References to actual and expected deaths in mortality analyses are not usually accompanied by a reference to a 'variable' and are usually written simply as $A$ and $E$, so why do we have one in our definitions?
+References to actual and expected deaths in mortality analyses are often written simply as $A$ and $E$, so why do we have a variable in our definitions?
 
-The immediate justification[^FAsIndicator] is that real world mortality work requires *weighted* statistics[^Weighted]:
+The immediate justification[^VariableAsTimeIndicator] is that real world mortality work requires *weighted* statistics[^Weighted]:
 
-1. It is standard to analyse actual and expected deaths weighted e.g. by benefit amount as well as unweighted ('lives-weighted' in actuarial parlance). So including $f$ means that we have this requirement covered.
+1. It is standard to analyse actual and expected deaths weighted by benefit amount ('amounts-weighted') as well as unweighted ('lives-weighted'). So including $f$ means that we have this requirement covered.
 
-1. We may want to weight data by its *relevance* (also known as reliability or importance), in which case we'd need to use a relevance weight $0\le f\le 1$.
+1. We also may want to weight data by its *relevance* (also known as reliability or importance).
 
-The real reason though is that, as noted above and as we’ll cover in the articles in this series, *pretty much every aspect of mortality experience analysis can be expressed directly in terms of $\text{A}f$ and $\text{E}f$*.
+The fundamental reason though is that, as noted above and as we’ll cover in the articles in this series, *pretty much every aspect of mortality experience analysis can be expressed directly in terms of $\text{A}f$ and $\text{E}f$*.
 
-In [the next article](/2025-08/mortality-a-over-e/) we'll review the properties $\text{A}f$ and $\text{E}f$, which are essential for A/E analysis.
+In [the next article](/2025-08/mortality-a-over-e/) we'll review the properties $\text{A}f$ and $\text{E}f$ and there role in A/E analysis.
 
-[^Weighted]:It is important to note that, when dealing with weighted statistics, $E$ can no longer serve as an estimate of its own variance.
+[^Weighted]: Note that$E$ can no longer serve as an estimate of its own variance when dealing with weighted statistics.
 
-[^FAsIndicator]: It can be *mathematically convenient* to use $f\in \{0,1\}$ as an indicator of dataset membership *by time*. But this is an implementation nightmare, and so has limited practical value. There are much better approaches to achieving this in real-world implementations.
+[^VariableAsTimeIndicator]: Another potential justification is that it is *mathematically convenient* to use $f\in \{0,1\}$ as an indicator of dataset membership *by time*. Unfortunately, this is an implementation nightmare in its full generality, and so has limited real-world value. There are better, simpler, approaches to achieving this in practice.
