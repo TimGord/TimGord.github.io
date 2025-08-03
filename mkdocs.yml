@@ -14,12 +14,12 @@ copyright: Copyright &copy; Tim Gordon
 
 nav:
   - Recommended reading:
-    # Always used the form `link.md`, but note that won't work on the local test server
+    # Use `link.md` for root and `folder/article/` for blog article (), but note that won't work on the local test server
     # The local and server slugification produces different results when
     # there are dashes in the item title, so specify the slug name manually!
-    - "Mortality: Measures matter" : 2025-08/mortality-measures-matter.md
+    - "Mortality: Measures matter" : 2025-08/mortality-measures-matter/
     - Collated mortality insights: collated-mortality-insights.md
-    - Lisnoti – a proportional font that works for coding too : 2024-01/lisnoti-a-proportional-font-that-works-for-coding-too.md
+    - Lisnoti – a proportional font that works for coding too : 2024-01/lisnoti-a-proportional-font-that-works-for-coding-too/
   - About me: about-me.md
   - Reprint policy: reprint-policy.md
   #- Topics : tags.md
