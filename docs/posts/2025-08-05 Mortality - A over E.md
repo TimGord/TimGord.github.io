@@ -81,7 +81,7 @@ If $\mu$ is the true mortality then the expected value of $\text{A}f-\text{E}f$ 
 
 This bears repeating: it doesn't matter how you calibrated your mortality model, if your model works then the expected value of $\text{A}f-\text{E}f$, whether it be weighted by lives[^Lives], by amounts or by any other variable you or I may choose, is zero.
 
-[^Lives]: I'll interpret lives-weighting as meaning $f\in\{0,1\}$, which is a little more general than unweighted, which is $f=1$. In both cases $f^2=f$ and hence $\text{E}f^2=\text{E}f$.
+[^Lives]: I'll interpret lives-weighted as meaning $f\in\{0,1\}$, which is a little more general than unweighted, which is $f=1$. In both cases $f^2=f$ and hence $\text{E}f^2=\text{E}f$.
 
 ## The 'variance' result
 
