@@ -36,9 +36,7 @@ This will be fairly technical, but I'll aim
 
 <!-- more -->
 
-A lot of this is reasonably well known, but it is not always available in one place or easily accessible, and sometimes key points are dropped. It won't be all plain sailing, and there'll be a few potentially contentious and maybe even surprising points along the way.
-
-I will *try* to be clear where I think I'm giving opinion as opposed to stating fact. And I would love to hear from you if you think I've got something wrong or that I need to be clearer.
+A lot of this is reasonably well known, but it is not always available in one place or easily accessible, and sometimes key points are omitted. It won't be all plain sailing, and there'll be a few potentially contentious and maybe even surprising points along the way.
 
 In this first article, I'll set out the foundations.
 
@@ -61,11 +59,7 @@ If a fact relates to something that would have happened except that the individu
 
 An <span id="Def-exp-data">**experience dataset**</span> $\mathscr{E}$ comprises pairs of facts and E2Rs, i.e. $\{(i,\varepsilon)\}$ for which no E2Rs for the same individual overlap in time[^Deduplication].
 
-A <span id="Def-variable">**variable**</span> is a real-valued function $f(i,t)$ of facts $i$ and time $t$ that is left-continuous with right limits[^LeftContinuity] in $t$. There are a few points worth noting:
-
-- A variable as defined here is *not* random -- by assumption, the sole source of stochasticity is whether individuals die or not, which is embedded in $\varepsilon$.
-
-- The continuity condition allows theoretical generality, but is deeply impractical for actual implementation, for which a more realistic requirement is that variables are *smooth*[^NotFullyDefined] in $t$ at the scale of numerical integration.
+A <span id="Def-variable">**variable**</span> is a real-valued function $f(i,t)$ of facts $i$ and time $t$[^ContinuityInTime]. A variable is *not* random -- by assumption, the sole source of stochasticity is whether individuals die or not, which is embedded in $\varepsilon$.
 
 A <span id="Def-mortality">**mortality**</span>, $\mu$, is a strictly positive variable[^Terminal] that specifies the probability of an individual dying over an infinitessimal time interval $\text{d}t$ as $\mu(i,t)\,\text{d}t$, i.e. an independent[^Independence] [Bernoulli trial](https://en.wikipedia.org/wiki/Bernoulli_trial).
 
@@ -73,13 +67,17 @@ A <span id="Def-mortality">**mortality**</span>, $\mu$, is a strictly positive v
 
 [^ContinuousTime]: I'll take it as a given that we should work in (some representation of) continuous time if at all possible. Otherwise we'd be (a)&#xA0;throwing away data and (b)&#xA0;creating additional cognitive load and potentially biased or even plain wrong results by having to make assumptions about averages.
 
-[^Deduplication]: This is easy to stipulate in theory, but data de-duplication is typically an essential and non-trivial part of real world mortality experience analysis.
+[^Deduplication]: Easy to stipulate in theory, but data de-duplication is an essential and sometimes non-trivial part of real world mortality experience analysis.
 
-[^LeftContinuity]: Left continuity is required so that the value at death is consistent with the value over the immediately preceding exposure.
+[^ContinuityInTime]:
 
-[^NotFullyDefined]: We'll leave *smoothness** not fully defined for now, but a minimum requirement is variables are [absolutely continuous](https://en.wikipedia.org/wiki/Absolute_continuity) in $t$.
+    We need to place some conditions on the dependence of a variable $f(i,t)$ on time $t$.
+    
+    The most general is that $f(i,t)$ is left-continuous with right limits in $t$, left continuity being required so that the value at death is consistent with the value in the immediately preceding exposure. But this level of generality is impractical for an actual implementation.
+    
+    A more useful real-world condition is that $f(i,t)$ is *smooth* in $t$ at the scale of numerical integration. We'll leave *smoothness* undefined for now, other than to state that, as a minimum, it implies [absolute continuity](https://en.wikipedia.org/wiki/Absolute_continuity) in $t$.
 
-[^Terminal]: An implementation would also need a mortality to specify a terminal date or age by individual (because mortality tables stop), but I don't need that for this exposition.
+[^Terminal]: An implementation would also need a mortality to specify a terminal date or age by individual (because mortality tables stop), but we don't need that for this exposition.
 
 [^Independence]: For the avoidance of doubt, we assume that these Bernoulli trials are independent by time and by individual.
 
@@ -102,11 +100,9 @@ The good news is that we can fix things up to allow for overdispersion, which we
 
 ## The measures that matter
 
-I'm now going to discuss [measures](https://en.wikipedia.org/wiki/Measure_(mathematics)) in the mathematical sense. If you're a practitioner, please don't let this put you off -- all it means is that *provided we use a measure* we can add up functions over experience data and we'll always end up with the same answer regardless of how we do the sum.[^Parallel]
+We can picture experience data as comprising infinitesimals $\text{d}(i,\varepsilon)$ that can be added up in a couple of different ways. The mathematical approach to this is to define [measures](https://en.wikipedia.org/wiki/Measure_(mathematics)) on the data. The pay off is that *provided we use a measure* we can add up functions over experience data any way we like and we're guaranteed to end up with the same answer.[^Parallel]
 
-I find it helps to picture experience data as comprising infinitesimals $\text{d}(i,\varepsilon)$ that we can add up in  a couple of different ways.
-
-[^Parallel]: The freedom to partition experience data any way you choose may also present opportunities to run [calculations in parallel](https://en.wikipedia.org/wiki/Embarrassingly_parallel). (I suggest that your bulk mortality experience calculations should be running in parallel at least somewhere along the line.)
+[^Parallel]: The freedom to partition experience data may also present opportunities to run [calculations in parallel](https://en.wikipedia.org/wiki/Embarrassingly_parallel). (I suggest that your mortality experience calculations should be running in parallel at least somewhere along the line.)
 
 /// admonition | Insight 2. Experience data is '[measurable](https://en.wikipedia.org/wiki/Measurable_space)'
     type: insight
@@ -126,7 +122,7 @@ In particular, there is no need
 [[All mortality insights](/collated-mortality-insights#Insight2)]
 ///
 
-I mentioned that there are essentially two core measures. If you're a practitioner, you've already come across them (or at least an approximation to them) and, as we'll see over this series, *pretty much every useful aspect of mortality experience analysis can be expressed directly in terms of them*:
+I suggested above that there are two things we want to add up. If you’re a practitioner, you’ve already come across them (or at least an approximation to them) and, as we’ll see over this series, *pretty much every useful aspect of mortality experience analysis can be expressed directly in terms of them*:
 
 <span id="Def-AE-ops">
 
@@ -170,7 +166,7 @@ On notation and terminology:
 - The dataset $\mathscr{E}$ and, for $\text{E}$, the mortality $\mu$ are typically implicit from context -- it is rare that we need additional notation to make them explicit. But, for the avoidance of doubt, $\text{E}$ always implies a background mortality $\mu$.
 - There is a multitude of notations for integrating using measures (see e.g. [here](https://math.stackexchange.com/questions/5230/is-there-any-difference-between-the-notations-int-fxd-mux-and-int-fx)), of which $\int \!f(x)\,\text{M}(\text{d}x)$ and $\int \!f\,\text{dM}$ are common. But the simplest is $\text{M}f$, which is what I'll use.
 
-Although I've emphasised that $\text{A}$ and $\text{E}$ are measures over experience data, I confess that I don't use this terminology day-to-day[^LinearOp]. In fact, I've hardly heard anyone mention 'measures' in connection with experience analysis, which may explain why their importance seems to be overlooked and why practitioners end up confused over the meaning of 'expected' (see box out), and whether experience data needs to be contiguous (which has cropped up more than once in multi-£ billion transactions I have worked on).
+Although I've emphasised that $\text{A}$ and $\text{E}$ are measures over experience data, I confess that I don't use this terminology day-to-day[^LinearOp]. In fact, I've hardly heard anyone mention 'measures' in connection with experience analysis, which may explain why their importance seems to be overlooked and why some practitioners end up confused over the meaning of 'expected' (see box out), or whether individuals need to be tracked throughout the experience data.
 
 [^LinearOp]: I think I usually describe $A$ and $E$ as 'linear operators'.
 
@@ -189,7 +185,7 @@ Other definitions can lead to confusion -- usually over $\text{E}$ vs true expec
 
 References to actual and expected deaths in mortality analyses are often written simply as $A$ and $E$, so why do we have a variable in our definitions?
 
-The immediate justification[^VariableAsTimeIndicator] is that real world mortality work requires *weighted* statistics[^Weighted]:
+An simple justification[^VariableAsTimeIndicator] is that real world mortality work requires *weighted* statistics[^Weighted]:
 
 1. It is standard to analyse actual and expected deaths weighted by benefit amount ('amounts-weighted') as well as unweighted ('lives-weighted'). So including $f$ means that we have this requirement covered.
 
@@ -197,10 +193,10 @@ The immediate justification[^VariableAsTimeIndicator] is that real world mortali
 
 The fundamental reason though is that, as noted above, *pretty much every useful aspect of mortality experience analysis can be expressed directly in terms of $\text{A}f$ and $\text{E}f$*.
 
-In [the next article](/2025-08/mortality-a-over-e/) we'll review the properties of $\text{A}f$ and $\text{E}f$ and their role in A/E analysis.
+In [the next article](/2025-08/mortality-a-over-e/) I'll review the properties of $\text{A}f$ and $\text{E}f$ and their role in A/E analysis.
 
-[^Weighted]: Note that$E$ can no longer serve as an estimate of its own variance when dealing with weighted statistics.
+[^Weighted]: Note that $E$ can no longer serve as an estimate of its own variance when dealing with weighted statistics.
 
-[^VariableAsTimeIndicator]: Another potential justification is that it is *mathematically convenient* to use $f\in \{0,1\}$ as an indicator of dataset membership *by time*. Unfortunately, this is an implementation nightmare in its full generality, and so has limited real-world value. There are better, simpler, approaches to achieving this in practice.
+[^VariableAsTimeIndicator]: Another potential justification is that it is *mathematically convenient* to use $f\in \{0,1\}$ as an indicator of dataset membership *by time*. Unfortunately, this is an implementation nightmare in its full generality, and so has limited real-world value. There are better approaches to achieving this in practice.
 
 [^Relevance]: And in a future article *will*.

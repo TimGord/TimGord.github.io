@@ -30,9 +30,9 @@ categories:
     type: info
     attrs: {class: "inline end"}
 
-'A over E' literally refers to 'actual' deaths divided by 'expected' deaths as a measure of how mortality experience data compares with a mortality.
+'A over E' literally refers to 'actual' deaths divided by 'expected' deaths as a measure of how experience data compares with a mortality.
 
-In practice, 'A over E' is often means as the whole statistical caboodle, which is how I'll use it here.
+In practice, 'A over E' is often interpreted as meaning the whole statistical caboodle, which is how I'll use it here.
 ///
 
 <!--
@@ -50,13 +50,13 @@ In this article we'll put $\text{A}$ and $\text{E}$ to work.
 
 <!-- more -->
 
-## The 'expected' result
+## The 'expectation' result
 
 When the mortality $\mu$ is the *true mortality* then *for any variable $f$* it is easy to show that
 
 $$\mathbb{E}\big(\text{A}f-\text{E}f\big)=0\tag{1}$$
 
-where $\mathbb{E}$ is true expectation.
+where $\mathbb{E}$ is true expectation (allowing for probabilities of survival etc).
 
 --8<-- "snippets/mortality-series-list.md"
 
@@ -77,25 +77,25 @@ If $\mu$ is the true mortality then the expected value of $\text{A}f-\text{E}f$ 
 [[All mortality insights](/collated-mortality-insights#Insight4)]
 ///
 
-This bears repeating: it doesn't matter how you calibrated your mortality model, if your model works then the expected value of $\text{A}f-\text{E}f$ should be zero weighted by lives, by amounts and by any other variables you or I may choose.
+This bears repeating: it doesn't matter how you calibrated your mortality model, if your model works then the expected value of $\text{A}f-\text{E}f$, whether it be weighted by lives[^Lives], by amounts or by any other variable you or I may choose, is zero.
+
+[^Lives]: I'll interpret lives-weighting as meaning $f\in\{0,1\}$, which is a little more general than unweighted, which is $f=1$. In both cases $f^2=f$ and hence $\text{E}f^2=\text{E}f$.
 
 ## The 'variance' result
 
-Observations are noisy and so we also need a measure of variance to assess how close the observed result is to $0$.
+Observations are noisy and so we'd also like to calculate the variance to assess how close the observed result is to $0$.
 
-So we also need this second result, which is that when the mortality $\mu$ is the *true mortality* then *for any variable $f$* then we can show that
+When the mortality $\mu$ is the *true mortality* then *for any variable $f$* then we can show that
 
 $$\text{Var}\big(\text{A}f-\text{E}f\big)=\mathbb{E}\big(\text{E}f^2\big) \tag{2}$$
 
 Some observations:
 
-1. This is a generalisation of the well-known lives-weighted (i.e. unweighted) result[^LivesVariance] that the variance of *A*−*E* is *E*.
+1. This is a generalisation of the lives-weighted (or unweighted) result[^Lives] that the variance of *A*−*E* is *E*.
 
-1. If you have the machinery in place to calculate $\text{A}f$ and $\text{E}f$ then you are also immediately in a position to estimate the variance of $\text{A}f-\text{E}f$.
+1. If you have the machinery in place to calculate $\text{A}f$ and $\text{E}f$ then you are also immediately in a position to estimate the variance of $\text{A}f-\text{E}f$ because it's just $\text{E}g$ where $g=f^2$.
 
-1. This does *not* allow for [overdispersion](/2025-08/mortality-measures-matter/#Def-overdispersion) and so is typically an *underestimate* of variance. We'll ignore this for the time being on the basis that we'll cover overdispersion later in this series.
-
-[^LivesVariance]: The general lives-weighting is $f\in\{0,1\}$, for which $f^2=f$ and hence the variance estimate simplifies to $\text{E}f$.
+1. This does *not* allow for [overdispersion](/2025-08/mortality-measures-matter/#Def-overdispersion) and so is typically an *underestimate* of variance. I'll ignore this for the time being on the basis that I'll cover overdispersion later in this series.
 
 /// admonition | Insight 5. The *same machinery* that defines *A*−*E* can be used to estimate its uncertainty
     type: insight
@@ -108,13 +108,13 @@ If $\mu$ is the true mortality then the variance of $\text{A}f-\text{E}f$ equals
 [[All mortality insights](/collated-mortality-insights#Insight5)]
 ///
 
-The lives-weighted case can lead practitioners into making invalid assumptions or even bad decisions:
+Familiarity with lives-weighted case can lead practitioners astray in relation to weighted statistics:
 
 - An unadjusted lives-weighted variance estimate should *not* be used to estimate the variance of a weighted A/E because it will always understate it[^WeightVariance].
 
 - Hard-coding the assumption that all statistics are lives-weighted into your system will mean your system will struggle when weighted results are required in the future.
 
-- When experience data is provided in the form of *grouped* deaths and exposures, it is reasonably common for this data to be provided weighted both by lives and by benefit amount. But what is almost always overlooked[^ShouldKnowBetter] is that the amounts-weighted grouped experience data should include exposure data *weighted by amount squared* in additional to exposure data weighted by amount In other words, the grouped data should comprise $\big(\text{A}f$, $\text{E}f$ and $\text{E}f^2\big)$ as opposed to just $\big(\text{A}f$ and $\text{E}f\big)$.
+- When experience data is provided in the form of *grouped* deaths and exposures, it is reasonably common for this data to be provided weighted both by lives and by benefit amount. But what is almost always overlooked[^ShouldKnowBetter] is that the amounts-weighted grouped experience data should *in addition* include exposure data *weighted by amount squared*. In other words, grouped *weighted* data should comprise $\text{A}f$, $\text{E}f$ and $\text{E}f^2$ as opposed to just $\text{A}f$ and $\text{E}f$.
 
 [^WeightVariance]: Provided $f$ exhibits some variation over the experience data, it is a [mathematical truth](https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality) that $\text{E}f^2\cdot\text{E}1\gt (\text{E}f)^2$.
 
@@ -126,9 +126,9 @@ With a mean and a variance to hand, we are in a position to take a first stab at
 
 The Pearson residual is (*actual*&#x00A0;−&#x00A0;*expected*) / (*estimated&#x00A0;standard&#x00A0;deviation*). In our case, *actual* is $\text{A}f-\text{E}f$, *expected* is $0$, and *estimated standard deviation* is $\sqrt{\text{E}f^2}$, and so the Pearson residual is
 
-$$r_\text{P}=\frac{\text{A}f-\text{E}f}{\sqrt{\text{E}f^2}}$$
+$$r_\text{P}=\frac{\text{A}f-\text{E}f}{\sqrt{\text{E}f^2}}\sim N\!\left(0,1\right)$$
 
-Another obvious A/E diagnostic is the literal one, i.e. divide equation $\text{(1)}$ by $\text{E}f$ and appeal to the central limit theorem and the low variance of $\text{E}f$ to assume
+Another obvious A/E diagnostic is the literal one -- appeal to the central limit theorem and the low variance of $\text{E}f$ to assume
 
 $$\frac{\text{A}f}{\text{E}f}\sim N\!\left(1,\;\frac{\text{E}f^2}{(\text{E}f)^2}\right)$$
 
@@ -147,7 +147,7 @@ Using unweighted variance without adjustment to estimate weighted statistics wil
 
 The above diagnostics are fine in practice, but they have some nagging drawbacks:
 
-- We've relied on $\sqrt{\text{E}f^2}\gg \text{E}f$ and the central limit theorem, which will break down for datasets with fewer / more concentrated weighted deaths.
+- We've relied on $\sqrt{\text{E}f^2}\gg \text{E}f$ and the central limit theorem, which will break down for datasets with fewer or more concentrated weighted deaths.
 - The implied confidence intervals can include negative values!
 
-We can do better and so we'll revisit A/E diagnostics in due course. But in order to do that we'll need to define the log likelihood, which is the subject of the next article.
+We can do (a bit) better and so we'll revisit A/E diagnostics in due course. But in order to do that we'll need to define the log likelihood, which is the subject of the next article.
