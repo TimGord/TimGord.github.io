@@ -100,7 +100,9 @@ The good news is that we can fix things up to allow for overdispersion, which we
 
 ## The measures that matter
 
+<span id="Def-measure">
 We can picture experience data as comprising infinitesimals $\text{d}(i,\varepsilon)$ that can be added up in a couple of different ways. The mathematical approach to this is to define [measures](https://en.wikipedia.org/wiki/Measure_(mathematics)) on the data. The pay off is that *provided we use a measure* we can add up functions over experience data any way we like and we're guaranteed to end up with the same answer.[^Parallel]
+</span>
 
 [^Parallel]: The freedom to partition experience data may also present opportunities to run [calculations in parallel](https://en.wikipedia.org/wiki/Embarrassingly_parallel). (I suggest that your mortality experience calculations should be running in parallel at least somewhere along the line.)
 
@@ -132,7 +134,7 @@ I suggested above that there are two things we want to add up. If you’re a pra
 
     Note that the variable, $f$, is evaluated at time of death.
 
-1. **Expected deaths**[^ExposureMeasure] with respect to mortality $\mu$ is the integral of $\mu$ times $f$ over all exposure periods:
+1. <span id="Def-E-op">**Expected deaths**[^ExposureMeasure] with respect to mortality $\mu$ is the integral of $\mu$ times $f$ over all exposure periods:</span>
 
     $$\text{E} f=\sum_{(i,\varepsilon)\in \mathscr{E}}\int_{\nu_\varepsilon}^{\tau_\varepsilon}\!\mu(i,t)f(i,t)\,\text{d}t$$
 
