@@ -2,7 +2,10 @@
 
 These are the collated mortality insights from all my blog articles.
 
-<!-- /2025-08/mortality-measures-matter/ -->
+<!-- 
+/2025-08/mortality-measures-matter/ 
+●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+-->
 
 /// admonition | Insight 1. Always allow for overdispersion
     type: insight
@@ -10,7 +13,7 @@ These are the collated mortality insights from all my blog articles.
 
 If you don't allow for overdispersion then you *will* underestimate uncertainty and overfit models.
 
-[[Original article](/2025-08/mortality-measures-matter/#Insight1)]
+[[Original article](/2025-08/mortality-measures-matter#Insight1)]
 ///
 
 /// admonition | Insight 2. Experience data is '[measurable](https://en.wikipedia.org/wiki/Measurable_space)'
@@ -28,7 +31,7 @@ In particular, there is no need
 
 [^Tracking]: Tracking individuals across experience datasets for different time periods may however be a very sensible data check.
 
-[[Original article](/2025-08/mortality-measures-matter/#Insight2)]
+[[Original article](/2025-08/mortality-measures-matter#Insight2)]
 ///
 
 /// admonition | Insight 3. The continuous time definitions of A and E are canonical
@@ -39,10 +42,13 @@ The continuous time definitions of $A$ and $E$ are measures and *the* [canonical
 
 Other definitions can lead to confusion -- usually over $\text{E}$ vs true expectation -- and spurious complexity.
 
-[[Original article](/2025-08/mortality-measures-matter/#Insight3)]
+[[Original article](/2025-08/mortality-measures-matter#Insight3)]
 ///
 
-<!-- /2025-08/mortality-a-over-e/ -->
+<!-- 
+/2025-08/mortality-a-over-e/ 
+●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+-->
 
 /// admonition | Insight 4. The expected value of *A*−*E* is zero
     type: insight
@@ -53,7 +59,7 @@ If $\mu$ is the true mortality then the expected value of $\text{A}f-\text{E}f$ 
 - *for any variable $f$* (even if $f$ was used to fit the mortality in question), and
 - *for any subset* of the experience data (provided the choice of subset does not depend on E2R information).
 
-[[Original article](/2025-08/mortality-a-over-e/#Insight4)]
+[[Original article](/2025-08/mortality-a-over-e#Insight4)]
 ///
 
 
@@ -65,7 +71,7 @@ If $\mu$ is the true mortality then the variance of $\text{A}f-\text{E}f$ equals
 
 (This is before allowing for overdispersion.)
 
-[[Original article](/2025-08/mortality-a-over-e/#Insight5)]
+[[Original article](/2025-08/mortality-a-over-e#Insight5)]
 ///
 
 /// admonition | Insight 6. A/E variance increases with concentration
@@ -76,6 +82,23 @@ $\sqrt{\text{E}w^2} / \text{E}w$, where $w\ge0$ is a useful and recurring measur
 
 Using unweighted variance without adjustment to estimate weighted statistics will likely *understate* risk.
 
-[[Original article](/2025-08/mortality-a-over-e/#Insight6)]
+[[Original article](/2025-08/mortality-a-over-e#Insight6)]
 ///
 
+<!-- 
+/2025-08/mortality-log-likelihood/ 
+●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+-->
+
+/// admonition | Insight 7. Log-likelihood can be defined directly in terms of the $\text{A}$ and $\text{E}$ operators
+    type: insight
+    attrs: {id: "Insight7"}
+
+The log-likelihood written in terms of the $\text{A}$ and $\text{E}$ operators is
+
+$$L=\text{A}w\log\mu-\text{E}w$$
+
+where $w\ge0$ is the weight variable.
+
+[[Original article](/2025-08/mortality-log-likelihood#Insight7)]
+///
