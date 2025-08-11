@@ -152,4 +152,4 @@ The above diagnostics are fine in practice, but they have some nagging drawbacks
 - We've relied on $\sqrt{\text{E}f^2}\gg \text{E}f$ and the central limit theorem, which will break down for datasets with fewer or more concentrated weighted deaths.
 - The implied confidence intervals can include negative values!
 
-We can do (a bit) better and so we'll revisit A/E diagnostics in due course. But in order to do that we'll need to define the log likelihood, which will be the subject of my next article.
+We can do (a bit) better and so we'll revisit A/E diagnostics in due course. But in order to do that we'll need to define the log-likelihood, which will be the subject of [my next article](/2025-08/mortality-log-likelihood/).
