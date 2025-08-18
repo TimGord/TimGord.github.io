@@ -85,9 +85,9 @@ $$\mu(\beta) = \mu^\text{ref}\exp\Big(\beta^\text{T}X\Big)\tag{9}$$
 where
 
 - $\mu^\text{ref}$ is a mortality that does not depend on $\beta$, and
-- $\beta^\text{T}X$ means the ['dot' product](https://en.wikipedia.org/wiki/Dot_product) of vectors $\beta$ and $X$, i.e. $\sum_j \beta_j X_j$, and
+- $\beta^\text{T}X$ means the ['dot' product](https://en.wikipedia.org/wiki/Dot_product) of vectors $\beta$ and $X$, i.e. $\sum_j \beta_j X_j$,
 
-don't forget that $\mu$, $\mu^\text{ref}$ and the components of the covariate vector $X$ are all [variables](/2025-08/mortality-measures-matter/#Def-variable) and therefore also have implicit [fact](/2025-08/mortality-measures-matter/#Def-fact) ($i$) and time ($t$) arguments.
+and don't forget that $\mu$, $\mu^\text{ref}$ and the components of the covariate vector $X$ are all [variables](/2025-08/mortality-measures-matter/#Def-variable) and therefore also have implicit [fact](/2025-08/mortality-measures-matter/#Def-fact) ($i$) and time ($t$) arguments.
 
 <span id="Def-proportional-hazards">Equation $(9)$ is the well-known *proportional hazards model*[^PartialLikelihood]</span>, with the elements of $X$ being the covariates and the elements of $\beta$ the fitted covariate weights.
 
@@ -103,7 +103,7 @@ Some observations:
 
 [^Decrements]: 'Hazard' is the general term for what actuaries often call a 'decrement'.
 
-[^LogLog]: When you think about it, it is a little odd given that $\log\mu$ should be the natural metric when $\mu$ itself is already the log of something. There is a very good explanation for this, but that's to come.
+[^LogLog]: When you think about it, it is a little odd that $\log\mu$ should be the natural metric when $\mu$ itself is already the log of something. There is a very good explanation for this, but that's to come.
 
 [^LeeCarter]: OK, Lee-Carter is bi-linear.
 
