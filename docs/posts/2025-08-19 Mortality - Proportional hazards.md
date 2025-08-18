@@ -41,7 +41,7 @@ categories:
 
 [A/E diagnostics](/2025-08/mortality-a-over-e/) are important but, if we have *any* mortality experience data, we should be using it to develop a model that takes account of that data, even if it's nothing more than a simple *how-much-heavier-or-lighter-is-the-mortality-of-this-population-than-average* model. Otherwise, we're not making full use of available information.
 
-There are lots of possible approaches, including complex parametric formulas designed to capture all typically observed effects. But I promised [concision](/2025-08/mortality-measures-matter/#Ref-concision) and so in this article I'll develop what I think is simultaneously one of the most powerful general approaches and one of the simplest. And the beauty of it is: we've already done most of the work.
+There are lots of possible approaches, including complex parametric formulas designed to capture all typically observed effects. But I promised [concision](/2025-08/mortality-measures-matter/#Ref-concision) and so in this article I'll expound what I think is simultaneously one of the most powerful general approaches and one of the simplest. And the beauty of it is: we've already done most of the work.
 
 <!-- more -->
 --8<-- "snippets/mortality-series-list.md"
