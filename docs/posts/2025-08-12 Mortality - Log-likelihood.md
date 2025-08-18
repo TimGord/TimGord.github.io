@@ -109,4 +109,4 @@ where $w\ge0$ is the weight variable.
 [[All mortality insights](/collated-mortality-insights#Insight7)]
 ///
 
-Equation $(4)$ is doing a lot of heavy lifting with admirable concision. In the next article, I'll show how it leads directly to one of the most useful tools in the mortality modelling armoury.
+Equation $(4)$ is doing a lot of heavy lifting with admirable concision. In [the next article](/2025-08/mortality-proportional-hazards/)., I'll show how it leads directly to one of the most useful tools in the mortality modelling armoury.
