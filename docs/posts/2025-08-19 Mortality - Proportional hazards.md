@@ -62,7 +62,7 @@ $$L=\text{A}w\log\mu-\text{E}w\tag{4}$$
 
 where $w\ge0$ is an optional weighting [variable](/2025-08/mortality-measures-matter/#Def-variable).
 
-A classic approach to solving equation $(5)$ is to note that the derivative is zero at the maximum, resulting in the vector differential equation
+We can try solving equation $(5)$ by setting the derivative of $L$ to zero, resulting in the vector differential equation
 
 $$\frac{\partial L}{\partial\beta}(\hat\beta) = 0\tag{6}$$
 
