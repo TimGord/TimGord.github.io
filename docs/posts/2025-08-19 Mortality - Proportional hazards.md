@@ -138,7 +138,7 @@ Many expositions of the proportional hazards model do not include $\mu^\text{ref
 [^HighAgeMortality]:
     An important example is *high age mortality*, which is nigh impossible  to determine from an individual pension plan's experience data. By the very nature of high ages, there is little data and that data is often unreliable -- even if the plan is huge, systemic data risk remains. So, in practice, you *will* need some sort of prior model for high age mortality.
   
-    This is one of the reasons I set up the CMI's High Age Mortality Working Party. The high quality -- and [prize-winning](https://actuaries.org.uk/about-us/prizes-and-awards/best-paper-prizes/peter-clark-prize/) -- reports ([WP100](https://actuaries.org.uk/media/cfxilsvc/cmi-wp100-v01-2017-06-30-hamwp-second-report.pdf) and [WP122](https://www.actuaries.org.uk/system/files/field/document/CMI%20WP122%20v01%202019-06-28%20%20HAMWP%20final%20report_0.pdf)) by Steve Bale and his working party colleagues are recommended reading.
+    This is one of the reasons I set up the CMI's High Age Mortality Working Party. The high quality -- and [prize-winning](https://actuaries.org.uk/about-us/prizes-and-awards/best-paper-prizes/peter-clark-prize/) -- reports ([WP100](https://actuaries.org.uk/media/cfxilsvc/cmi-wp100-v01-2017-06-30-hamwp-second-report.pdf) and [WP122](https://www.actuaries.org.uk/system/files/field/document/CMI%20WP122%20v01%202019-06-28%20%20HAMWP%20final%20report_0.pdf)) by [Steve Bale](https://www.linkedin.com/in/steve-bale-5785b521/) and his working party colleagues are recommended reading.
   
     Incidentally, 'high age' in a pension plan longevity context typically means over age 90 or so.
 
