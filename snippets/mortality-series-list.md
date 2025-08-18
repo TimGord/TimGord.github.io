@@ -4,8 +4,9 @@
 1. [Measures matter](/2025-08/mortality-measures-matter/)
 1. [A over E](/2025-08/mortality-a-over-e/)
 1. [Log-likelihood](/2025-08/mortality-log-likelihood/)
-<!--
 1. [Proportional hazards](/2025-08/mortality-proportional-hazards/)
+<!--
 1. [Suddenly AIC](/2025-08/mortality-suddenly-aic/)
+1. [Overdispersion and quasi-log-likelihood](/2025-09/mortality-overdispersion-and-quasi-log-likelihood/)
 -->
 ///

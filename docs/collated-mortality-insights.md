@@ -102,3 +102,24 @@ where $w\ge0$ is the weight variable.
 
 [[Original article](/2025-08/mortality-log-likelihood#Insight7)]
 ///
+
+<!-- 
+/2025-08/mortality-proportional-hazards/ 
+●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+-->
+
+/// admonition | Insight 8. Proportional hazards models are probably all you need for mortality modelling
+    type: insight
+    attrs: {id: "Insight8"}
+
+The proportional hazards model
+
+$$\mu(\beta) = \mu^\text{ref}\exp\Big(\beta^\text{T}X\Big)$$
+
+is
+
+- highly tractable, and
+- sufficiently powerful to cope with almost all practical mortality modelling problems.
+
+[[Original article](/2025-08/mortality-proportional-hazards#Insight8)]
+///
