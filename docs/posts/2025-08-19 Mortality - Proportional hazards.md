@@ -39,7 +39,7 @@ categories:
 [proportional hazards](/2025-08/mortality-proportional-hazards/#Def-proportional-hazards)
 -->
 
-[A/E diagnostics](/2025-08/mortality-a-over-e/) are important but, if we have *any* mortality experience data, we should be using it to develop a model that takes account of that data, even if it's nothing more than a simple *how-much-heavier-or-lighter-is-the-mortality-of-this-population-than-average* model). Otherwise, we're not making full use of available information.
+[A/E diagnostics](/2025-08/mortality-a-over-e/) are important but, if we have *any* mortality experience data, we should be using it to develop a model that takes account of that data, even if it's nothing more than a simple *how-much-heavier-or-lighter-is-the-mortality-of-this-population-than-average* model. Otherwise, we're not making full use of available information.
 
 There are lots of possible approaches, including complex parametric formulas designed to capture all typically observed effects. But I promised [concision](/2025-08/mortality-measures-matter/#Ref-concision) and so in this article I'll develop what I think is simultaneously one of the most powerful general approaches and one of the simplest. And the beauty of it is: we've already done most of the work.
 
@@ -95,9 +95,9 @@ don't forget that $\mu$, $\mu^\text{ref}$ and the components of the covariate ve
 
 Some observations:
 
-- Let's first note that we were led to equation $(9)$ simply by writing the log-likelihood in terms of the [$\text{A}$ and $\text{E}$ operators](/2025-08/mortality-measures-matter/#Def-AE-ops) and noting the symmetry of equation $(7)$.
+- Let's first note that we were led to equation $(9)$ simply by writing the log-likelihood in terms of the [$\text{A}$ and $\text{E}$ operators](/2025-08/mortality-measures-matter/#Def-AE-ops) and the symmetry of equation $(7)$.
 
-- The name 'proportional hazards' is not ideal because hazard[^Decrements] rates combine using *addition*, i.e. $\mu=\sum_i\mu^{(i)}$, *not* multiplication, i.e. $\mu=\prod_i e^{\beta_iX_i}$. So the covariates do *not* relate to individual hazard rates; instead they are component effects used to build a model. The justification is the effectiveness -- power and tractability -- of the proportional hazards approach.
+- The name 'proportional hazards' is not ideal because hazard[^Decrements] rates combine using *addition*, i.e. $\mu=\sum_i\mu^{(i)}$, *not* multiplication, i.e. $\mu=\prod_i e^{\beta_iX_i}$. So the covariates do *not* relate to individual hazard rates; instead they are component effects used to build a model. The ultimate justification is the effectiveness -- power and tractability -- of the proportional hazards approach.
 
 - Finally, this is part of a bigger picture in which *linear $\log\mu$[^LogLog] models are ubiquitous*, from [Gompertz](https://doi.org/10.1098/rstl.1825.0026), arguably the world's first realistic mortality model, via [Lee-Carter](https://doi.org/10.2307/2290201)[^LeeCarter] to the [CMI Mortality Projections Model](https://www.actuaries.org.uk/learn-and-develop/continuous-mortality-investigation/cmi-investigations/mortality-projections).
 
@@ -123,7 +123,6 @@ At risk of repetition, note (a)&#xA0;the concision and (b)&#xA0;that everything 
 
 [^NewtonRaphsonOptimal]: First, it converges *quadratically*, and, second, the cost of inverting $L''$ (sometimes cited as a reason not to use Newton-Raphson) is typically very small compared with the cost of calculating $L'$ and $L''$. Failure to converge is often because the model being calibrated has an identifiability issue, resulting in $L''$ being non-invertible, which in itself is a handy diagnostic.
 
-
 ## Information budget
 
 Many expositions of the proportional hazards model do not include $\mu^\text{ref}$, i.e. a given 'background' hazard rate, but for mortality analysis this is often optimal. For instance:
@@ -132,7 +131,7 @@ Many expositions of the proportional hazards model do not include $\mu^\text{ref
 
 - I'd suggest going further and modelling *variation* from a reasonable default mortality (including trends) so that you inherit *a priori* sensible behaviour[^HighAgeMortality] from that default.
 
-- At the most extreme, if you have a postcode mortality model to hand, then use that postcode model as $\mu^\text{ref}$[^Credibility].
+- At the most extreme, if you have a postcode mortality model to hand, then use that as $\mu^\text{ref}$[^Credibility].
 
 [^MortalityTrendsModel]: Mortality trends are hard to discern over a period as short as ten years, and breaking them down into age, period and cohort components is even harder. The CMI uses 41 years for its [Mortality Projections Model](https://www.actuaries.org.uk/learn-and-develop/continuous-mortality-investigation/cmi-investigations/mortality-projections) and it still struggles. Trends also typically include some element of judgement or consensus view, to which you likely want to adhere in your general mortality modelling.
 
@@ -167,7 +166,9 @@ is
 [[All mortality insights](/collated-mortality-insights#Insight8)]
 ///
 
-Let's take stock:
+There is a lot more to this, e.g. how does mortality vary between populations, do we require additional procedures to select covariates initially, and so on, which are questions I hope to answer in due course.
+
+But, for now, let's take stock:
 
 - With the proportional hazards model, we have an excellent framework for creating mortality models.
 - And, by maximising log-likelihood, we can calibrate those models with relative ease.
