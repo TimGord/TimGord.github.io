@@ -24,20 +24,6 @@ categories:
 
 # Mortality: Log-likelihood
 
-<!--
-[overdispersion](/2025-08/mortality-measures-matter/#Def-overdispersion)
-[E2R](/2025-08/mortality-measures-matter/#Def-E2R)
-[experience dataset](/2025-08/mortality-measures-matter/#Def-exp-data)
-[variable](/2025-08/mortality-measures-matter/#Def-variable)
-[fact](/2025-08/mortality-measures-matter/#Def-fact)
-[mortality](/2025-08/mortality-measures-matter/#Def-mortality)
-[$\text{A}$ and $\text{E}$ operators](/2025-08/mortality-measures-matter/#Def-AE-ops)
-[$\text{E}$ operator](/2025-08/mortality-measures-matter/#Def-E-op)
-[measure](/2025-08/mortality-measures-matter/#Def-measure)
-[log](/2025-08/mortality-log-likelihood/#Ref-log)
-[proportional hazards](/2025-08/mortality-proportional-hazards/#Def-proportional-hazards)
--->
-
 <span id="Ref-log">I think it's a shame that the 'log' in 'log-likelihood' is so often presented as a technical convenience or a device for avoiding numerical under/overflow. Yes, it is definitely both of these things, but it is much more fundamental.</span>
 
 **Expected *log*-probability, i.e. *entropy*, lies at the heart of information theory.** And the concept of entropy itself is pervasive, having extended beyond thermodynamics, its original home, into quantum physics and general relativity, as well as information theory.
@@ -86,11 +72,13 @@ $\text{A}$ and $\text{E}$ are [measures](/2025-08/mortality-measures-matter/#Def
 
 [^SignedMeasure]: Technically it's a [signed measure](https://en.wikipedia.org/wiki/Signed_measure).
 
+## Weighting
+
 Log-likelihood is literally the log of a probability so the inclusion of a weight $w$ implies that we're using probabilities to the power of $w$, which is worthy of comment.
 
 1. If $w\in\{0,1\}$ then this is simply equivalent to excluding or including data. I'll call this 'lives-weighted'.
 
-1. If $0\le w \le 1$ then $w$ can be interpreted as *relevance* (also known as 'reliability' or 'importance'). 
+1. <span id="Ref-relevance">If $0\le w \le 1$ then $w$ can be interpreted as *relevance* (also known as 'reliability' or 'importance').</span>
 
 1. The general case, $w\ge0$, is sometimes described as '*ad hoc*' or 'pragmatic', or even illegitimate(!).
 

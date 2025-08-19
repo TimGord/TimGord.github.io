@@ -24,21 +24,6 @@ categories:
 
 # Mortality: Proportional hazards
 
-<!--
-[overdispersion](/2025-08/mortality-measures-matter/#Def-overdispersion)
-[E2R](/2025-08/mortality-measures-matter/#Def-E2R)
-[experience dataset](/2025-08/mortality-measures-matter/#Def-exp-data)
-[variable](/2025-08/mortality-measures-matter/#Def-variable)
-[fact](/2025-08/mortality-measures-matter/#Def-fact)
-[mortality](/2025-08/mortality-measures-matter/#Def-mortality)
-[$\text{A}$ and $\text{E}$ operators](/2025-08/mortality-measures-matter/#Def-AE-ops)
-[$\text{E}$ operator](/2025-08/mortality-measures-matter/#Def-E-op)
-[measure](/2025-08/mortality-measures-matter/#Def-measure)
-[concision](/2025-08/mortality-measures-matter/#Ref-concision)
-[log-likelihood](/2025-08/mortality-log-likelihood/#Def-log-likelihood)
-[proportional hazards](/2025-08/mortality-proportional-hazards/#Def-proportional-hazards)
--->
-
 [A/E diagnostics](/2025-08/mortality-a-over-e/) are important but, if we have *any* mortality experience data, we should be using it to develop a model that takes account of that data, even if it's nothing more than a simple *how-much-heavier-or-lighter-is-the-mortality-of-this-population-than-average* model. Otherwise, we're not making full use of available information.
 
 There are lots of possible approaches, including complex parametric formulas designed to capture all typically observed effects. But I promised [concision](/2025-08/mortality-measures-matter/#Ref-concision) and so in this article I'll expound what I think is simultaneously one of the most powerful general approaches and one of the simplest. And the beauty of it is: we've already done most of the work.
@@ -107,7 +92,7 @@ Some observations:
 
 [^LeeCarter]: OK, Lee-Carter is bi-linear.
 
-We still need to solve equation $(6)$, which, in general, we have to do numerically. The good news is that, *provided we use a proportional hazards model*, we can write down the first and second derivative of the log-likelihood in closed form. That in turn means we can use [Newton–Raphson](https://en.wikipedia.org/wiki/Newton%27s_method_in_optimization), which, in my experience is robust[^NewtonRaphsonRobustness] and beats most other numerical methods hands down[^NewtonRaphsonOptimal]. The vector first derivative (from equation $(7)$ above) and the matrix second derivative are
+We still need to solve equation $(6)$, which, in general, we have to do numerically. The good news is that, *provided we use a proportional hazards model*, we can write down the first and second derivative of the log-likelihood in closed form. That in turn means we can use [Newton–Raphson](https://en.wikipedia.org/wiki/Newton%27s_method_in_optimization), which, in my experience is robust[^NewtonRaphsonRobustness] and beats most other numerical methods hands down[^NewtonRaphsonOptimal]. The vector first derivative (from equation $(7)$ above) and the matrix <span id="Def-L-dash-dash">second derivative</span> are
 
 $$\begin{aligned}
 L'&=\text{A}wX-\text{E}wX

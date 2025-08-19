@@ -35,17 +35,6 @@ categories:
 In practice, 'A over E' is often interpreted as meaning the whole statistical caboodle, which is how I'll use it here.
 ///
 
-<!--
-[overdispersion](/2025-08/mortality-measures-matter/#Def-overdispersion)
-[E2R](/2025-08/mortality-measures-matter/#Def-E2R)
-[experience dataset](/2025-08/mortality-measures-matter/#Def-exp-data)
-[variable](/2025-08/mortality-measures-matter/#Def-variable)
-[mortality](/2025-08/mortality-measures-matter/#Def-mortality)
-[$\text{A}$ and $\text{E}$ operators](/2025-08/mortality-measures-matter/#Def-AE-ops)
-[$\text{E}$ operator](/2025-08/mortality-measures-matter/#Def-E-op)
-[measure](/2025-08/mortality-measures-matter/#Def-measure)
--->
-
 In the [previous article](/2025-08/mortality-measures-matter/) we defined [experience data](/2025-08/mortality-measures-matter/#Def-exp-data), [variables](/2025-08/mortality-measures-matter/#Def-variable) and [mortality](/2025-08/mortality-measures-matter/#Def-mortality) with respect to that data, and the [$\text{A}$ (actual) and $\text{E}$ (expected) deaths operators](/2025-08/mortality-measures-matter/#Def-AE-ops).
 
 In this article we'll put $\text{A}$ and $\text{E}$ to work.
