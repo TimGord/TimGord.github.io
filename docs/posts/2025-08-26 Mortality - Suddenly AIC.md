@@ -77,7 +77,7 @@ The AIC is defined as −2 times $L_\text{P}$, for consistency with regression. 
 - obscures the AIC as an unbiased estimate of [relative entropy](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence), and
 - leads to spurious additional factors of 2 or ½ in applications[^SpuriousTwo].
 
-So, *despite this being non-standard*, I'll use penalised log-likelihood, $L_\text{P}$, *without adjustment* (but still refer to the approach as the AIC).
+So I'm going to use the penalised log-likelihood, $L_\text{P}$, *without adjustment*, while still referring to the overall approach as 'the AIC'.
 ///
 [^SpuriousTwo]: Examples:
 
