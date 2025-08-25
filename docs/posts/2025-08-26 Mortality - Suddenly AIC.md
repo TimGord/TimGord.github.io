@@ -207,7 +207,7 @@ There are issues though:
 
 [^TotalPenalityDividedByParameterCount]: One option is to add up all the penalties of all candidate models and divide that the by the total number of parameters being fitted to obtain an equivalent to 'one more parameter'.
 
-On balance, I think equation $(15)$ is a useful practical tool, but we can do better and put matters on a sounder footing. So we'll revisit weighting and relevance in a few articles' time.
+On balance, I think equation $(15)$ is a useful practical tool, but we can do better and put matters on a sounder footing. So I'll revisit weighting and relevance in a few articles' time.
 
 /// admonition | Next article: *Overdispersion and quasi-log-likelihood*
     type: tip
