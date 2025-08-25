@@ -54,7 +54,9 @@ Other definitions can lead to confusion -- usually over $\text{E}$ vs true expec
     type: insight
     attrs: {id: "Insight4"}
 
-If $\mu$ is the true mortality then the expected value of $\text{A}f-\text{E}f$ is zero
+If $\mu$ is the true mortality then the expected value of $\text{A}f-\text{E}f$ is zero, i.e.
+
+$$\mathbb{E}\big(\text{A}f-\text{E}f\big)=0$$
 
 - *for any variable $f$* (even if $f$ was used to fit the mortality in question), and
 - *for any subset* of the experience data (provided the choice of subset does not depend on E2R information).
@@ -67,9 +69,13 @@ If $\mu$ is the true mortality then the expected value of $\text{A}f-\text{E}f$ 
     type: insight
     attrs: {id: "Insight5"}
 
-If $\mu$ is the true mortality then the variance of $\text{A}f-\text{E}f$ equals the expected value of $\text{E}f^2$.
+If $\mu$ is the true mortality then, *before allowing for overdispersion*, the variance of $\text{A}f-\text{E}f$ equals the expected value of $\text{E}f^2$, i.e.
 
-(This is before allowing for overdispersion.)
+$$\text{Var}\big(\text{A}f-\text{E}f\big)=\mathbb{E}\big(\text{E}f^2\big)$$
+
+ Allowing for overdispersion $\Omega$, this becomes
+
+$$\text{Var}\big(\text{A}f-\text{E}f\big)=\Omega\,\mathbb{E}\big(\text{E}f^2\big)$$
 
 [[Original article](/2025-08/mortality-a-over-e#Insight5)]
 ///
@@ -100,6 +106,8 @@ $$L=\text{A}w\log\mu-\text{E}w$$
 
 where $w\ge0$ is the weight variable.
 
+(This is *before* allowing for overdispersion.)
+
 [[Original article](/2025-08/mortality-log-likelihood#Insight7)]
 ///
 
@@ -123,3 +131,35 @@ is
 
 [[Original article](/2025-08/mortality-proportional-hazards#Insight8)]
 ///
+
+<!-- 
+/2025-08/mortality-suddenly-aic/ 
+●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+-->
+
+/// admonition | Insight 9. An estimate of the variance of the fitted parameters for a proportional hazards mortality model is available in closed form for any *ad hoc* log-likelihood weight
+    type: insight
+    attrs: {id: "Insight9"}
+
+$$\text{Var}\big(\hat\beta\big)\mathrel{\hat=} \Omega\,\mathbf{I}^{-1}\mathbf{J}\mathbf{I}^{-1}$$
+
+where $\hat\beta$ is the maximum likelihood estimator of the covariate weights, $X$ is the vector of covariates, $w\ge0$ is the log-likelihood weight, $\mathbf{I}=\text{E}wXX^\text{T}$, $\mathbf{J}=\text{E}w^2XX^\text{T}$ and $\Omega$ is overdispersion
+
+Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* relevance.
+
+[[Original article](/2025-08/mortality-suddenly-aic#Insight9)]
+///
+
+/// admonition | Insight 10. A penalised log-likelihood for a proportional hazards mortality model is available in closed form for any *ad hoc* log-likelihood weight
+    type: insight
+    attrs: {id: "Insight10"}
+
+$$L_\text{P}= L(\hat\beta)-\text{tr}\big(\mathbf{J}\mathbf{I}^{-1}\big)$$
+
+where $\hat\beta$ is the maximum likelihood estimator of the covariate weights, $X$ is the vector of covariates, $L$ is the log-likelihood (which has *already* been adjusted for overdispersion), $w\ge0$ is the log-likelihood weight, $\mathbf{I}=\text{E}wXX^\text{T}$ and $\mathbf{J}=\text{E}w^2XX^\text{T}$.
+
+Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* relevance.
+
+[[Original article](/2025-08/mortality-suddenly-aic#Insight10)]
+///
+

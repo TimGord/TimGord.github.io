@@ -3,6 +3,7 @@
 date: 2025-08-19
 authors:
   - timgord
+#comments: true
 categories:
   #- Coding
   #- Forecasting
@@ -74,7 +75,7 @@ where
 
 and don't forget that $\mu$, $\mu^\text{ref}$ and the components of the covariate vector $X$ are all [variables](/2025-08/mortality-measures-matter/#Def-variable) and therefore also have implicit [fact](/2025-08/mortality-measures-matter/#Def-fact) ($i$) and time ($t$) arguments.
 
-<span id="Def-proportional-hazards">Equation $(9)$ is the well-known *proportional hazards model*[^PartialLikelihood]</span>, with the elements of $X$ being the covariates and the elements of $\beta$ the fitted covariate weights.
+Equation $(9)$ is the well-known *proportional hazards model*[^PartialLikelihood], with the elements of $X$ being the covariates and the elements of $\beta$ the fitted covariate weights.
 
 [^PartialLikelihood]: It is sometimes called the '*Cox* proportional hazards model', but this is usually in a context (e.g. medical research) where the objective is to estimate an impact independently from the absolute mortality (or 'hazard') rate, which is the *opposite* of what we're doing here -- we are trying to calculate the *absolute* hazard rate.
 
@@ -158,4 +159,10 @@ But, for now, let's take stock:
 - With the proportional hazards model, we have an excellent framework for creating mortality models.
 - And, by maximising log-likelihood, we can calibrate those models with relative ease.
 
-The obvious next question is: *how should we choose between different models?* This will be the subject of the next article.
+/// admonition | Next article: [*Suddenly AIC*](/2025-08/mortality-suddenly-aic/)
+    type: tip
+
+The obvious next question is: *how should we choose between different models?* This will be the subject of the [next article](/2025-08/mortality-suddenly-aic/).
+
+///
+

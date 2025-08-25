@@ -3,6 +3,7 @@
 date: 2025-08-04
 authors:
   - timgord
+#comments: true
 categories:
   #- Coding
   #- Forecasting
@@ -10,7 +11,7 @@ categories:
   - Mortality & longevity
   #- Presentation
 
-#comments: true
+##comments: true
 
 #tags:
 #  - Coding
@@ -30,7 +31,7 @@ This is the first in a series of articles outlining *mortality experience analys
 
 This will be fairly technical, but I'll aim
 
-- to be concise,
+- <span id="Ref-concision">to be concise</span>,
 - to pull out the key insights, including what does and doesn't matter in practice, and
 - to map concepts one-to-one to the process of actually carrying out a mortality experience analysis or calibrating and selecting mortality models.
 
@@ -195,7 +196,13 @@ An simple justification[^VariableAsTimeIndicator] is that real world mortality w
 
 The fundamental reason though is that, as noted above, *pretty much every useful aspect of mortality experience analysis can be expressed directly in terms of $\text{A}f$ and $\text{E}f$*.
 
+/// admonition | Next article: [*A over E*](/2025-08/mortality-a-over-e/)
+    type: tip
+
 In [the next article](/2025-08/mortality-a-over-e/) I'll review the properties of $\text{A}f$ and $\text{E}f$ and their role in A/E analysis.
+
+///
+
 
 [^Weighted]: Note that $E$ can no longer serve as an estimate of its own variance when dealing with weighted statistics.
 

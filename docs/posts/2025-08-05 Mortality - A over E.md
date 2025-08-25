@@ -3,6 +3,7 @@
 date: 2025-08-05
 authors:
   - timgord
+#comments: true
 categories:
   #- Coding
   #- Forecasting
@@ -10,7 +11,7 @@ categories:
   - Mortality & longevity
   #- Presentation
 
-#comments: true
+##comments: true
 
 #tags:
 #  - Coding
@@ -56,21 +57,23 @@ If is worth emphasising that this is true
 - *for any weight*, even if that that weight was used to fit the mortality in question, and
 - *for any subset* of the experience data, provided the choice of subset does not depend on E2R information.
 
+This bears repeating: it doesn't matter how you calibrated your mortality model, if your model works then the expected value of $\text{A}f-\text{E}f$, whether it be weighted by lives[^Lives], by amounts or by any other variable you or I may choose, is zero.
+
+[^Lives]: I'll interpret lives-weighted as meaning $f\in\{0,1\}$, which is a little more general than unweighted, which is $f=1$. In both cases $f^2=f$ and hence $\text{E}f^2=\text{E}f$.
+
 /// admonition | Insight 4. The expected value of *A*−*E* is zero
     type: insight
     attrs: {id: "Insight4"}
 
-If $\mu$ is the true mortality then the expected value of $\text{A}f-\text{E}f$ is zero
+If $\mu$ is the true mortality then the expected value of $\text{A}f-\text{E}f$ is zero, i.e.
+
+$$\mathbb{E}\big(\text{A}f-\text{E}f\big)=0$$
 
 - *for any variable $f$* (even if $f$ was used to fit the mortality in question), and
 - *for any subset* of the experience data (provided the choice of subset does not depend on E2R information).
 
 [[All mortality insights](/collated-mortality-insights#Insight4)]
 ///
-
-This bears repeating: it doesn't matter how you calibrated your mortality model, if your model works then the expected value of $\text{A}f-\text{E}f$, whether it be weighted by lives[^Lives], by amounts or by any other variable you or I may choose, is zero.
-
-[^Lives]: I'll interpret lives-weighted as meaning $f\in\{0,1\}$, which is a little more general than unweighted, which is $f=1$. In both cases $f^2=f$ and hence $\text{E}f^2=\text{E}f$.
 
 ## The 'variance' result
 
@@ -92,9 +95,11 @@ Some observations:
     type: insight
     attrs: {id: "Insight5"}
 
-If $\mu$ is the true mortality then the variance of $\text{A}f-\text{E}f$ equals the expected value of $\text{E}f^2$.
+If $\mu$ is the true mortality then the variance of $\text{A}f-\text{E}f$ equals the expected value of $\text{E}f^2$, i.e.
 
-(This is before allowing for overdispersion.)
+$$\text{Var}\big(\text{A}f-\text{E}f\big)=\mathbb{E}\big(\text{E}f^2\big)$$
+
+(This is *before* allowing for overdispersion.)
 
 [[All mortality insights](/collated-mortality-insights#Insight5)]
 ///
@@ -141,4 +146,10 @@ The above diagnostics are fine in practice, but they have some nagging drawbacks
 - We've relied on $\sqrt{\text{E}f^2}\gg \text{E}f$ and the central limit theorem, which will break down for datasets with fewer or more concentrated weighted deaths.
 - The implied confidence intervals can include negative values!
 
+/// admonition | Next article: [*Log-likelihood*](/2025-08/mortality-log-likelihood/)
+    type: tip
+
 We can do (a bit) better and so we'll revisit A/E diagnostics in due course. But in order to do that we'll need to define the log-likelihood, which will be the subject of [my next article](/2025-08/mortality-log-likelihood/).
+
+///
+

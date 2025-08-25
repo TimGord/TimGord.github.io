@@ -3,6 +3,7 @@
 date: 2025-08-12
 authors:
   - timgord
+#comments: true
 categories:
   #- Coding
   #- Forecasting
@@ -94,7 +95,15 @@ $$L=\text{A}w\log\mu-\text{E}w$$
 
 where $w\ge0$ is the weight variable.
 
+(This is *before* allowing for overdispersion.)
+
 [[All mortality insights](/collated-mortality-insights#Insight7)]
 ///
 
+
+/// admonition | Next article: [*Proportional hazards*](/2025-08/mortality-proportional-hazards/)
+    type: tip
+
 Equation $(4)$ is doing a lot of heavy lifting with admirable concision. In [the next article](/2025-08/mortality-proportional-hazards/), I'll show how it leads directly to one of the most useful tools in the mortality modelling armoury.
+
+///
