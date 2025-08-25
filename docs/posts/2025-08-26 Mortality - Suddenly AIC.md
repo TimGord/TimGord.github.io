@@ -71,15 +71,19 @@ Akaike's[^Akaike] insight was
     type: warning
     attrs: {class: "inline end"}
 
-The AIC is defined as −2 times $L_\text{P}$, for consistency with regression. Unfortunately the −2 factor
+The AIC is defined as −2 times $L_\text{P}$, for consistency with regression.
+
+Unfortunately the −2 factor
 
 - complicates the definition,
 - obscures the AIC as an unbiased estimate of [relative entropy](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence), and
 - leads to spurious additional factors of 2 or ½ in applications[^SpuriousTwo].
+
+So I'll use the penalised log-likelihood, $L_\text{P}$, itself i.e. *without the −2*.
 ///
 [^SpuriousTwo]: Examples:
 
-    - The natural definition and standard guidance on what constitutes a significant difference in AIC is one parameter's worth. This is 1 for penalised log-likelihood, but 2 for the conventional AIC definition.
+    - The natural definition and standard guidance on what constitutes a significant difference in AIC is one parameter's worth. This is 1 for penalised log-likelihood, but as non-intuitive 2 for the conventional AIC definition.
 
     - Akaike weights, $\exp(-\tfrac{1}{2}\text{AIC})$, are pure clumsiness compared with $\exp(L_\text{P})$.
 
@@ -199,7 +203,7 @@ There are issues though:
 
 - The validity of equation $(13)$ depends on the interpretation of the weight, $w$. If it is lives-weighted, i.e. $w\in\{0,1\}$, then everything is trivially ok. And if $w$ is an *ad hoc* reallocation of log-likelihood then this seems ok too, albeit in a pragmatic hand-wavy sense[^HandWavy]. But equation $(13)$ cannot be correct if $w$ is interpreted as, for instance, [relevance](/2025-08/mortality-log-likelihood/#Ref-relevance) -- if it were then, say, halving it should double $\text{Var}\big(\hat\beta\big)$, but it doesn't. Hence the caveats.
 
-- Being able to rank models by $L_\text{P}$ gets us only halfway because we also need to understand *whether differences in $L_\text{P}$ are significant*. In the lives-weighted and (after we've corrected for the point above) the relevance-weighted cases, this is straightforward -- a difference in the penalised log-likelihood of 1 is significant because it is equivalent to adding one more parameter. But, for an *exitad hoc* weight, using the formula as presented here does not automatically provide a measure of significance and so we need another way in[^TotalPenalityDividedByParameterCount].
+- Being able to rank models by $L_\text{P}$ gets us only halfway because we also need to understand *whether differences in $L_\text{P}$ are significant*. In the lives-weighted and (after we've corrected for the point above) the relevance-weighted cases, this is straightforward -- a difference in the penalised log-likelihood of 1 is significant because it is equivalent to adding one more parameter. But, for an *ad hoc* weight, using the formula as presented here does not automatically provide a measure of significance and so we need another way in[^TotalPenalityDividedByParameterCount].
 
 [^HandWavy]: There is *non*-hand-wavy version to come in a few articles' time.
 
