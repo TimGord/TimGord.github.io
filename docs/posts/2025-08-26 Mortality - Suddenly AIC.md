@@ -47,7 +47,7 @@ Selecting parameters by maximising the log-likelihood is an effective tool for c
 
 Kenneth Burnham and David Anderson's [book on model selection](https://doi.org/10.1007/b97636)[^BurnhamAnderson] is in my view the best reference on *practical application* of the AIC. Also see (both online) [AIC vs BIC](http://www.sortie-nd.org/lme/Statistical%20Papers/Burnham_and_Anderson_2004_Multimodel_Inference.pdf) and [AIC myths and misunderstandings](https://sites.warnercnr.colostate.edu/kenburnham/wp-content/uploads/sites/25/2016/08/AIC-Myths-and-Misunderstandings.pdf).
 
-Rob Hyndman also provides an excellent overview of [facts and fallacies of the AIC](https://robjhyndman.com/hyndsight/aic/).
+Rob Hyndman provides an excellent overview of [facts and fallacies of the AIC](https://robjhyndman.com/hyndsight/aic/).
 
 [^BurnhamAnderson]: Burnham, K. P.; Anderson, D. R. (2002), *Model Selection and Multimodel Inference: A practical information-theoretic approach* (2nd ed.), Springer-Verlag. doi:[10.1007/b97636](https://doi.org/10.1007/b97636), ISBN-13: 9780387953649.
 
