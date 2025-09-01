@@ -178,7 +178,7 @@ If $\Omega$ is *global* overdispersion then:
 
 1. Suitable default values for mortality experience data are $2\le\Omega\le3$.
 
-1. Always use the *same $\Omega$ for all candidate models being tested*, including when $\Omega$ is being estimated from the experience data at hand.
+1. Use the *same $\Omega$ for all candidate models being tested*, including when $\Omega$ is being estimated from the experience data at hand.
 
 [[Original article](/2025-09/mortality-overdispersion-and-quasi-log-likelihood#Insight11)]
 ///

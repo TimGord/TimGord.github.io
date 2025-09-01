@@ -58,17 +58,15 @@ At time of writing (2025-08-20), the [Wikipedia article on overdispersion](https
 
 > Overdispersion is a very common feature in applied data analysis *because in practice, populations are frequently heterogeneous (non-uniform) contrary to the assumptions implicit within widely used simple parametric models*.
 
-This explanation is sometimes repeated in a mortality context, but that's *not* the case *within the framework I've outlined*: if mortality itself is deterministic ([as we've assumed](/2025-08/mortality-measures-matter/#what-is-random)) and deaths are independent then, *regardless of how much mortality varies by individual*, there should be no overdispersion[^FailureDeterministicIndependence].
+This explanation is sometimes repeated in a mortality context, but that's *not* the case *within the framework I've outlined*: if mortality itself were deterministic ([as we've assumed](/2025-08/mortality-measures-matter/#what-is-random)) and deaths were independent then, *regardless of how much mortality varied by individual*, there would be no overdispersion. So the cause of overdispersion is not heterogeneity; it's the failure of our idealised assumptions.
 
-And it's not just that overdispersion is *not* caused by heterogeneity in this context; mortality varying by individual is a *core premise* in mortality modelling[^Frailty].
-
-[^FailureDeterministicIndependence]: In contrast, failure of either or both of these assumptions *will* give rise to overdispersion. And we know they are both false -- we make idealised assumptions like these to keep the maths tractable in the hope that either they don't matter or we can make a simple compensating adjustment for them elsewhere.
+And it's not just that heterogeneity in not the cause in this context; mortality varying by individual is a *core premise* in mortality modelling[^Frailty].
 
 [^Frailty]: There are other issues caused by heterogeneity, e.g. it is a candidate for causing the flattening of observed *population* mortality at high ages and failure to allow for heterogeneity can result in the *under*-valuation of closed books of pension-in-payment liabilities. I may return to these in future articles.
 
 ///
 
-There are multiple potential causes of overdispersion, all arising from our initial assumptions not being true in the real world, the key ones being that [mortality is itself deterministic and deaths are independent](/2025-08/mortality-measures-matter/#what-is-random).
+There are multiple potential causes of overdispersion, all arising from our initial assumptions not being true in the real world, the key ones being that [mortality is itself deterministic and deaths are independent](/2025-08/mortality-measures-matter/#what-is-random). (Also see the box out regarding heterogeneity.)
 
 We knew from the the outset that this is a convenient simplification of reality. The question is: what's the best way to allow for overdispersion[^DeduplicationFailure]?
 
@@ -100,7 +98,7 @@ I'd suggest a suitable default is $2\le\Omega\le3$[^BurnhamAndersonOverdispersio
 
 [^BurnhamAndersonOverdispersion]: Burnham & Anderson recommend $1\le\Omega\le4$ for general count data. See box out 'Overdispersed Count Data: A Review' on page 69 of Burnham, K. P.; Anderson, D. R. (2002), *Model Selection and Multimodel Inference: A practical information-theoretic approach* (2nd ed.), Springer-Verlag. doi:[10.1007/b97636](https://doi.org/10.1007/b97636), ISBN-13: 9780387953649.
 
-If you do estimate $\Omega$ from the data then the cardinal rule is that you should *use the same estimate for all candidate models being tested*.
+If you do estimate $\Omega$ from the data then the cardinal rule is *use the same estimate for all candidate models being tested*.
 
 /// admonition | Insight 11. Adjusting *globally* for overdispersion is reasonable and straightforward
     type: insight
@@ -112,7 +110,7 @@ If $\Omega$ is *global* overdispersion then:
 
 1. Suitable default values for mortality experience data are $2\le\Omega\le3$.
 
-1. Always use the *same $\Omega$ for all candidate models being tested*, including when $\Omega$ is being estimated from the experience data at hand.
+1. Use the *same $\Omega$ for all candidate models being tested*, including when $\Omega$ is being estimated from the experience data at hand.
 
 [[All mortality insights](/collated-mortality-insights#Insight11)]
 ///
