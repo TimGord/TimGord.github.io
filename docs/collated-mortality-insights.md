@@ -163,3 +163,22 @@ Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* relevance
 [[Original article](/2025-08/mortality-suddenly-aic#Insight10)]
 ///
 
+<!-- 
+/2025-08/mortality-overdispersion-and-quasi-log-likelihood/ 
+●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+-->
+
+/// admonition | Insight 11. Adjusting *globally* for overdispersion is reasonable and straightforward
+    type: insight
+    attrs: {id: "Insight11"}
+
+If $\Omega$ is *global* overdispersion then:
+
+1. A standard method for allowing for overdispersion is to scale log-likelihood by $\Omega^{-1}$ and variances by $\Omega$.
+
+1. Suitable default values for mortality experience data are $2\le\Omega\le3$.
+
+1. Always use the *same $\Omega$ for all candidate models being tested*, including when $\Omega$ is being estimated from the experience data at hand.
+
+[[Original article](/2025-09/mortality-overdispersion-and-quasi-log-likelihood#Insight11)]
+///

@@ -38,7 +38,7 @@ To make this concrete, let's assume that we have a mortality model $\mu(\beta)$,
 
 A standard way to estimate $\beta$ is to choose the value that maximises the log-likelihood, i.e.
 
-$$\hat\beta = \underset{\beta}{\text{arg max}}\, L(\beta)\tag{5}$$
+$$\hat\beta = \underset{\beta}{\arg\max}\, L(\beta)\tag{5}$$
 
 where $L$ is the log-likelihood and the parameter $\beta$ is passed through to the mortality $\mu(\beta)$.
 

@@ -211,10 +211,10 @@ There are issues though:
 
 On balance, I think equation $(15)$ is a useful practical tool, but we can do better and put matters on a sounder footing. So I'll revisit weighting and relevance in a few articles' time.
 
-/// admonition | Next article: *Overdispersion and quasi-log-likelihood*
+/// admonition | Next article: [*Overdispersion and quasi-log-likelihood*](/2025-09/mortality-overdispersion-and-quasi-log-likelihood/)
     type: tip
 
-I used variance in the above *with allowing for overdispersion*. This is [*always wrong in mortality analysis*](/2025-08/mortality-measures-matter/#Insight1), so let's tackle it in the next article.
+I used variance in the above *with allowing for overdispersion*. This is [*always wrong in mortality analysis*](/2025-08/mortality-measures-matter/#Insight1), so let's tackle it in the [next article](/2025-09/mortality-overdispersion-and-quasi-log-likelihood/).
 
 ///
 
