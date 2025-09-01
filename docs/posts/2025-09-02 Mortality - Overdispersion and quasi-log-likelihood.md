@@ -78,11 +78,11 @@ One option is to use a statistical distribution with an additional hyperparamete
 
 [^TractabilityBenefits]: Tractability doesn't just mean pretty equations; it means simpler computer code that is therefore more robust and easier to maintain, which in turn means fewer visits from the f***-up fairy.
 
-The most widely used approach is simply to divide the log-likelihood by an estimated or assumed *global*[^GlobalOverdispersion] value for overdispersion, $\Omega$, i.e.
+The most widely used approach is to divide the log-likelihood by an estimated or assumed *global*[^GlobalOverdispersion] value for overdispersion, $\Omega$, i.e.
 
 $$L \mapsto \Omega^{-1}L$$
 
-[^GlobalOverdispersion]: It is not necessarily the case that overdispersion is the same for all the data in the experience dataset or for all weights in equation $(16)$, but this is a standard assumption on the basis that, once a general mitigation has been made for overdispersion, then there are probably bigger fish left to fry.
+[^GlobalOverdispersion]: It is not necessarily the case that overdispersion is the same for all the data in the experience dataset, or indeed for all weights in equation $(16)$, but this is a standard assumption on the basis that, once a general mitigation has been made for overdispersion, then there are probably bigger modelling fish left to fry.
 
 Technically, this results in a [quasi-log-likelihood](https://en.wikipedia.org/wiki/Quasi-likelihood) (and the AIC becomes the QAIC), but I'll continue to refer to it as the log-likelihood on the understanding that adjustments are always made for overdispersion.
 
@@ -142,7 +142,7 @@ In the above, $\mathbf{I}=\text{E}wXX^\text{T}$ and $\mathbf{J}=\text{E}w^2XX^\t
 /// admonition | Next article: *Incoherent rating factors*
     type: tip
 
-So far I have focussed on the machinery for modelling the mortality of DB pension plan members. There is more to come on this, but in the next article I want to discuss 'incoherent rating factors'. These are rating factors that appear predictive under standard modelling methods but which, scarily, actually result in models that produce poor or even systematically biased forecasts.
+So far I have focussed on the machinery for modelling the mortality of DB pension plan members. There is more to come on this, but in the next article I want to discuss 'incoherent rating factors'. These are rating factors that can appear predictive using standard modelling diagnostics but which -- scarily -- can result in models that produce poor or even systematically biased forecasts.
 
 ///
 
