@@ -139,7 +139,7 @@ For reference, I'll restate results from previous articles with overdispersion i
 
 In the above, $\mathbf{I}=\text{E}wXX^\text{T}$ and $\mathbf{J}=\text{E}w^2XX^\text{T}$, and, as [previously noted](/2025-08/mortality-suddenly-aic/#just-weight-a-moment), these assume $w$ is an *ad hoc* reallocation of log-likelihood, as opposed to e.g. relevance-based.
 
-/// admonition | Next article: *Incoherent rating factors*
+/// admonition | Next article: [*Incoherent rating factors*](/2025-10/mortality-incoherent-rating-factors/)
     type: tip
 
 So far I have focussed on the machinery for modelling the mortality of DB pension plan members. There is more to come on this, but in the next article I want to discuss 'incoherent rating factors'. These are rating factors that can appear predictive using standard modelling diagnostics but which -- scarily -- can result in models that produce poor or even systematically biased forecasts.
