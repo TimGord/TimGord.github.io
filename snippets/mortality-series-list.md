@@ -7,9 +7,9 @@
 1. [Proportional hazards](/2025-08/mortality-proportional-hazards/)
 1. [Suddenly AIC](/2025-08/mortality-suddenly-aic/)
 1. [Overdispersion and quasi-log-likelihood](/2025-09/mortality-overdispersion-and-quasi-log-likelihood/)
+1. [Incoherent rating factors](/2025-10/mortality-incoherent-rating-factors/)
 <!--
-1. [Incoherent rating factors](/2025-09/mortality-incoherent-rating-factors/)
-1. [Good things come to those who weight I](/2025-09/mortality-2025-09-09 Mortality-good-things-come-to-those-who-weight-i/)
-1. [Good things come to those who weight II](/2025-09/mortality-2025-09-09 Mortality-good-things-come-to-those-who-weight-ii/)
+1. [Variation in pension plan mortality](/2025-10/mortality-variation-in-pension-plan-mortality/)
+1. [Good things come to those who weight part I](/2025-10/mortality-good-things-come-to-those-who-weight-i/) and [part II](/2025-10/mortality--good-things-come-to-those-who-weight-ii/)
 -->
 ///

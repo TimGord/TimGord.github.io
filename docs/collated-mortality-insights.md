@@ -164,7 +164,7 @@ Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* relevance
 ///
 
 <!-- 
-/2025-08/mortality-overdispersion-and-quasi-log-likelihood/ 
+/2025-09/mortality-overdispersion-and-quasi-log-likelihood/ 
 ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
 -->
 
@@ -182,3 +182,62 @@ If $\Omega$ is *global* overdispersion then:
 
 [[Original article](/2025-09/mortality-overdispersion-and-quasi-log-likelihood#Insight11)]
 ///
+
+<!-- 
+/2025-10/mortality-variation-in-pension-plan-mortality/ 
+●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+-->
+
+/// admonition | Insight 12. Rating factors must be *coherent*
+    type: insight
+    attrs: {id: "Insight12"}
+
+In order for a function of information associated with individuals to be valid as a rating factor, it must be *coherent*, which means:
+
+1. No foreknowledge of death
+1. Correspondence between exits and survivors
+1. Comparability between individuals
+1. Comparability by time
+
+[[Original article](/2025-10/mortality-incoherent-rating-factors#Insight12)]
+///
+
+/// admonition | Insight 13. Take care when using pension as a rating factor
+    type: insight
+    attrs: {id: "Insight13"}
+
+Be wary of phrases like 'just use pension as a covariate' because it trivialises the problems involved in making pension a *coherent* rating factor:
+
+- Pensions for individuals in different pension plans are *not* directly comparable. For general pension plan mortality models consider using [leave-one out cross validation](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#Leave-one-out_cross-validation) to understand this risk and/or using an alternative approach.
+- Pensions as at date of exit need careful adjustment to be consistent with pensions of survivors (which can be non trivial for UK DB plans).
+- Pensions for actives require additional consideration in relation to potential future accrual.
+- Consideration needs to be given to whether or how to adjust pensions for inflation (typically since retirement). This is more of an issue in pension systems where indexation of pensions in payment is less common (e.g. the USA).
+- Do not assume that longevity always increases with benefit amount.
+
+[[Original article](/2025-10/mortality-incoherent-rating-factors#Insight13)]
+///
+
+<!-- 
+/2025-10/mortality-variation-in-pension-plan-mortality/ 
+●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+
+/// admonition | Insight 14. The bulk of pension plan mortality variation can be captured on a monotonic one dimensional scale
+    type: insight
+    attrs: {id: "Insight14"}
+
+The log-mortality for sub-sets of DB pension plan members can reasonably be represented as the sum of
+
+- a common base log-mortality ($\bar \lambda_x$), and
+- a multiple of a common variation age shape ($\Delta\lambda_x$),
+
+i.e.
+
+$$\log\mu_x(\beta)= \bar \lambda_x + \beta\,\Delta\lambda_x$$
+
+where $\Delta\lambda_x$ declines to zero at high ages.
+
+[[Original article](/2025-10/mortality-variation-in-pension-plan-mortality#Insight14)]
+
+///
+
+-->
