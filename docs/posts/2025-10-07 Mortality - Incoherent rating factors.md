@@ -154,6 +154,6 @@ Be wary of phrases like 'just use pension as a covariate' because it trivialises
 
 In the next article, I'll cover, at a high level, how mortality varies by age for DB pensioners.
 
-With that, I'll have all the ground work in place for the final (two parter) article in this series, which I'm thinking of calling 'Good things come to those who weight'. I hope you'll find it interesting.
+With that, I'll have all the ground work in place for the final (three parter) article in this series, which I'm thinking of calling 'Good things come to those who weight'. I hope you'll find it interesting.
 
 ///
