@@ -93,7 +93,7 @@ where $x$ is age as a function of birth date from individual data $i$ and time $
 
 There is a lot more to say in relation to the shape of mortality and the shape of mortality variation, and I hope to come back to this in a future article. For now, I'll restrict myself to a few passing comments:
 
-1. I expect that there are some models in use are more complex and that their authors believe that the added complexity makes their models superior. While not dismissing this out of hand, I would make a couple of points:
+1. I expect that some models in current use do *not* make the same simplifying assumption as above and that their authors believe that the added complexity makes their models superior. While not dismissing this out of hand, I would make a couple of points:
 
     - I suggest that there is more information content in allocating individuals to lower or higher mortality than there is in the precise shape of mortality by age.
 
@@ -101,17 +101,19 @@ There is a lot more to say in relation to the shape of mortality and the shape o
 
 1. Using a common pattern of variation between sub-groups is potentially *more robust* than calibrating sub-groups separately. For instance, I doubt that some of the shape complexity in the S4 variation graph at the top of this article is genuinely predictive[^S4Shapes].
 
-1. Incorporating ill health mortality would require an additional variation component, i.e. variation would no longer be one-dimensional[^SelectMortality]. But allowing for ill-health mortality in pension plans (a)&#xA0;does not usually move the needle much (in terms of overall PV impact) and (b)&#xA0;comes with complications that can cause models to be *less* robust in practice[^ModellingIllHealth].
+1. Incorporating ill health mortality would require an additional variation component, i.e. variation would no longer be one-dimensional[^SelectMortality]. But allowing for ill-health mortality in pension plans (a)&#xA0;does not usually move the needle much in terms of overall PV impact and (b)&#xA0;comes with complications that can cause models to be *less* robust in practice[^ModellingIllHealth].
 
-1. It is well known that the apparent plateauing of *observed population* mortality at high ages does not necessarily mean that *underlying individual* mortality plateaus at high ages[^EcologicalFallacy]. A similar caveat applies to apparent mortality convergence. This is notoriously hard to determine one way or another and, in my experience, is often relegated to the too-hard category.
+1. It is reasonably well known that the apparent plateauing of *observed population* mortality at high ages does not necessarily mean that *underlying individual* mortality plateaus at high ages[^EcologicalFallacy]. A similar caveat applies to apparent mortality convergence. But this is notoriously hard to determine one way or another and, in my experience, is often relegated to the too-hard category (if it's even thought about at all).
 
 [^SomeModelsArePoor]:
 
     This does *not* mean that all postcode-based or other base mortality models are good; far from it. In my time I've encountered
 
-    - a model that produced results that defied common sense, which I suspect was down to users misunderstanding the inputs required or software error (given that this was a third party model used by smaller pensions consultancies),
-    - models constructed from components that cannot possibly have been tested statistically rigorously against actual data, and
+    - a model that produced results that defied actuarial common sense, which I suspect was down to users misunderstanding the inputs required and / or maybe software error,
+    - models constructed from promising-sounding components but where the resulting models were not themselves tested statistically rigorously[^LOOCV] against actual data, and
     - a mortality modelling process that, by its very design, would produce biased results.
+
+[^LOOCV]: By 'rigorously', I mean testing the resulting model using [leave-one out cross validation](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#Leave-one-out_cross-validation) on mortality experience data *by pension plan*, or some variation thereof.
 
 [^S4Shapes]: This is *not* a slight on the CMI -- the tables produced by CMI's SAPS committee are exemplars for actuarial professions in other locales.
 
@@ -131,13 +133,13 @@ There is a lot more to say in relation to the shape of mortality and the shape o
 /// admonition | Next article: *Good things come to those who weight*
     type: tip
 
-So far, the articles in this series have been mostly uncontentious. While treating the $\text{A}$ and $\text{E}$ measures as foundational is, I think, intuitive, expressive and concise (and something that I have not seen elsewhere), it is ultimately just a nice way of expressing reasonably standard maths.
+So far, the articles in this series have been mostly uncontentious. While treating [$\text{A}$ and $\text{E}$ measures](/2025-08/mortality-measures-matter/#Def-AE-ops) as foundational is, I think, intuitive, expressive and concise (and something that I have not seen elsewhere), it is ultimately just a nice way of expressing reasonably standard maths.
 
-I have taken care to ensure that the option of using a *weight* has been preserved in the formalism because this matters but it is often overlooked. Indeed, it is a feature of this formalism that a weight is required[^AE-ops] (even if it's always $1$).
+I have taken care to ensure that the option of using a *weight* has been preserved in the formalism because this matters but it is often overlooked. Indeed, it is a feature of this formalism that a weight is required[^AE-ops] (even if it's simply $1$).
 
 The next article will be the first of three on using *weighted* statistics to assess pension liabilities. Now this *is* contentious in some circles, to the point of being attacked as invalid. An alternative view is that it marks a dividing line between actuarial work and abstract statistics. You be the judge.
 
 ///
 
-[^AE-ops]: As the argument to the [$\text{A}$ and $\text{E}$ operators](/2025-08/mortality-measures-matter/#Def-AE-ops).
+[^AE-ops]: As the function argument to the [$\text{A}$ and $\text{E}$ measures](/2025-08/mortality-measures-matter/#Def-AE-ops).
 
