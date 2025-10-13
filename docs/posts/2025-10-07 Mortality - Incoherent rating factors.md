@@ -149,7 +149,7 @@ Be wary of phrases like 'just use pension as a covariate' because it trivialises
 
 ///
 
-/// admonition | Next article: [*How mortality varies in pension plans*](/2025-10/mortality-how-mortality-varies-in-pension-plans/)
+/// admonition | Next article: [*How mortality varies in pension plans*](/2025-10/mortality-pensioner-mortality-variation/)
     type: tip
 
 In the next article, I'll cover, at a high level, how mortality varies by age for DB pensioners.

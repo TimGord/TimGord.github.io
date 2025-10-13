@@ -23,11 +23,11 @@ categories:
 # Don't forget to add the <!-- more --> separator!!!
 ---
 
-# Mortality: How mortality varies in pension plans
+# Mortality: Pensioner mortality variation
 
 Modelling the mortality of DB pensioners is, in many ways, about as easy as mortality modelling gets -- experience data is typically very high quality and often strongly credible, anti-selection is not usually a big deal and the available rating factors are limited (which constrains model complexity).
 
-I suggest that it's even simpler in that, for most pension plan mortality modelling, it is sufficient to assume that mortality varies monotonically *in one-dimension* along a low-high mortality axis.
+I suggest that it's even simpler in that, for most pension plan mortality modelling, it is sufficient to assume that pensioner mortality varies monotonically *in one-dimension* along a low-high mortality axis.
 
 Don't just take my word for it; here's how log mortality varies for the CMI's S4 male pensioner base tables:
 
@@ -37,14 +37,14 @@ Don't just take my word for it; here's how log mortality varies for the CMI's S4
 <!-- more -->
 --8<-- "snippets/mortality-series-list.md"
 
-Just to be clear, the convergence of the mortality rates at the 'younger' ages  (below, say, age 85) in the above graph *is* present in the SAPS data. In contrast, the convergence at higher ages (where there are fewer data and data errors cause more distortion) is actually *enforced* by the CMI, i.e. not 100% driven by the SAPS data. This is still evidence, albeit of a different type, in that
+Just to be clear, while the convergence of mortality rates at the 'younger' ages (below, say, age 85) in the above graph *is* present in the SAPS data, the convergence at higher ages (where there are fewer data and data errors cause more distortion) is actually *enforced* by the CMI, i.e. not 100% driven by the SAPS data. This is still evidence, albeit of a different type, in that
 
 - the CMI has invested considerable resources in understanding high age mortality -- see the HAMWP reports [WP100](https://actuaries.org.uk/media/cfxilsvc/cmi-wp100-v01-2017-06-30-hamwp-second-report.pdf) and [WP122](https://www.actuaries.org.uk/system/files/field/document/CMI%20WP122%20v01%202019-06-28%20%20HAMWP%20final%20report_0.pdf), and
 - there is a huge amount of diverse mortality expertise amongst the CMI volunteers and secretariat, with the SAPS committee's approach itself having evolved in line with improved understanding[^SAPSEvolution].
 
 [^SAPSEvolution]: For instance, variation by age in log-mortality for the S1 series initially converges by age but then actually starts to diverge before being forced to reconverge again at the very highest ages. And for the S2 series (which predated the HAMWP), convergence was enforced at age&#xA0;95, which I now think is too early[^S2TJG].
 
-[^S2TJG]: I was on SAPS committee when it produced S2, and so I'm partly responsible for that early age convergence. On the plus side, repeated concerns about getting high age mortality SAPS mortality right was one of the motivations behind setting up the HAMWP.
+[^S2TJG]: I was on SAPS committee when it produced S2, and so I'm partly responsible for that too-early age convergence. On the plus side, repeated concerns about getting high age mortality SAPS mortality right was one of the motivations behind setting up the HAMWP.
 
 ## General model
 

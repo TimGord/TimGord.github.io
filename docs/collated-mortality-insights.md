@@ -218,7 +218,7 @@ Be wary of phrases like 'just use pension as a covariate' because it trivialises
 ///
 
 <!-- 
-/2025-10/mortality-variation-in-pension-plan-mortality/ 
+/2025-10/mortality-pensioner-mortality-variation/ 
 ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
 -->
 
@@ -232,7 +232,7 @@ $$\mu_{it}(\beta)= \mu_{it}^\text{ref} \exp\big(\beta\psi_x\big)$$
 
 where $x$ is age as a function of birth date from individual data $i$ and time $t$, $\mu_{it}^\text{ref}$ is a common base mortality and $\psi_x$ is a common (non-negative) pattern of mortality variation by age that tends to zero at high ages.
 
-[[Original article](/2025-10/mortality-how-mortality-varies-in-pension-plans#Insight14)]
+[[Original article](/2025-10/mortality-pensioner-mortality-variation#Insight14)]
 
 ///
 
