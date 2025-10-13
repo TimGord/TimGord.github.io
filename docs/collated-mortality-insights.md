@@ -220,24 +220,19 @@ Be wary of phrases like 'just use pension as a covariate' because it trivialises
 <!-- 
 /2025-10/mortality-variation-in-pension-plan-mortality/ 
 ●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+-->
 
 /// admonition | Insight 14. The bulk of pension plan mortality variation can be captured on a monotonic one dimensional scale
     type: insight
     attrs: {id: "Insight14"}
 
-The log-mortality for sub-sets of DB pension plan members can reasonably be represented as the sum of
+Modelling base mortality for UK DB pension plans can be reasonably reduced to modelling a single parameter for each of male pensioners, female retirees and female dependants, i.e.
 
-- a common base log-mortality ($\bar \lambda_x$), and
-- a multiple of a common variation age shape ($\Delta\lambda_x$),
+$$\mu_{it}(\beta)= \mu_{it}^\text{ref} \exp\big(\beta\psi_x\big)$$
 
-i.e.
+where $x$ is age as a function of birth date from individual data $i$ and time $t$, $\mu_{it}^\text{ref}$ is a common base mortality and $\psi_x$ is a common (non-negative) pattern of mortality variation by age that tends to zero at high ages.
 
-$$\log\mu_x(\beta)= \bar \lambda_x + \beta\,\Delta\lambda_x$$
-
-where $\Delta\lambda_x$ declines to zero at high ages.
-
-[[Original article](/2025-10/mortality-variation-in-pension-plan-mortality#Insight14)]
+[[Original article](/2025-10/mortality-how-mortality-varies-in-pension-plans#Insight14)]
 
 ///
 
--->
