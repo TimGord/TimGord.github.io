@@ -63,7 +63,7 @@ where $x$ is age, $\mu_x^\text{ref}$ is a common base mortality and $\psi_x$ is 
 
 The age pattern of *contemporary* variation in mortality *by individual* is remarkably similar to the age pattern of mortality variation over the *medium-to-longer timescales*; so much so that it's tempting to identify them, i.e. assume they're the same thing.
 
-(This is *not* true for shorter timescales -- short term mortality variation at pensioner ages typically *increases* with age.)
+(This is *not* true for pensioner mortality variation over *short timescales* -- it typically *increases* with age.)
 
 ///
 
