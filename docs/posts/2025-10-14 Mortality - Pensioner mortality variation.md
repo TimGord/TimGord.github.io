@@ -93,7 +93,7 @@ where $x$ is age as a function of birth date from individual data $i$ and time $
 
 There is a lot more to say in relation to the shape of mortality and the shape of mortality variation, and I hope to come back to this in a future article. For now, I'll restrict myself to a few passing comments:
 
-1. I'm expect that there are more complex models in use and that their authors believe that the added complexity makes their models superior. I'm not dismissing this out of hand, but I would make a couple of points:
+1. I expect that there are some models in use are more complex and that their authors believe that the added complexity makes their models superior. While not dismissing this out of hand, I would make a couple of points:
 
     - I suggest that there is more information content in allocating individuals to lower or higher mortality than there is in the precise shape of mortality by age.
 
