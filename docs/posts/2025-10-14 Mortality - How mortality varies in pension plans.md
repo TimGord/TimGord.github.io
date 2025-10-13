@@ -34,8 +34,6 @@ Don't just take my word for it; here's how log mortality varies for the CMI's S4
 ![CMI SAPS S4 male amounts tables vs S4PMA](S4-variation-light.png#only-light)
 ![CMI SAPS S4 male amounts tables vs S4PMA](S4-variation-dark.png#only-dark)
 
-The pattern is very clear!
-
 <!-- more -->
 --8<-- "snippets/mortality-series-list.md"
 
