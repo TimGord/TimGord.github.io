@@ -48,9 +48,9 @@ When the mortality $\mu$ is the *true mortality* then *for any variable $f$* it 
 
 $$\mathbb{E}\big(\text{A}f-\text{E}f\big)=0\tag{1}$$
 
-where $\mathbb{E}$ is true expectation (allowing for probabilities of survival etc).
-
 --8<-- "snippets/mortality-series-list.md"
+
+where $\mathbb{E}$ is true expectation (allowing for probabilities of survival etc).
 
 If is worth emphasising that this is true
 
