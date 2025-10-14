@@ -188,7 +188,7 @@ Other definitions can lead to confusion -- usually over $\text{E}$ vs true expec
 
 References to actual and expected deaths in mortality analyses are often written simply as $A$ and $E$, so why do we have a variable in our definitions?
 
-An simple justification[^VariableAsTimeIndicator] is that real world mortality work requires *weighted* statistics[^Weighted]:
+A simple justification[^VariableAsTimeIndicator] is that real world mortality work requires *weighted* statistics[^Weighted]:
 
 1. It is standard to analyse actual and expected deaths weighted by benefit amount ('amounts-weighted') as well as unweighted ('lives-weighted'). So including $f$ means that we have this requirement covered.
 
