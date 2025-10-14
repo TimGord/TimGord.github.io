@@ -142,7 +142,7 @@ In the above, $\mathbf{I}=\text{E}wXX^\text{T}$ and $\mathbf{J}=\text{E}w^2XX^\t
 /// admonition | Next article: [*Incoherent rating factors*](/2025-10/mortality-incoherent-rating-factors/)
     type: tip
 
-So far I have focussed on the machinery for modelling the mortality of DB pension plan members. There is more to come on this, but in the next article I want to discuss 'incoherent rating factors'. These are rating factors that can appear predictive using standard modelling diagnostics but which -- scarily -- can result in models that produce poor or even systematically biased forecasts.
+So far I have focussed on the machinery for modelling the mortality of DB pension plan members. There is more to come on this, but in the [next article](/2025-10/mortality-incoherent-rating-factors/) I want to discuss 'incoherent rating factors'. These are rating factors that can appear predictive using standard modelling diagnostics but which -- scarily -- can result in models that produce poor or even systematically biased forecasts.
 
 ///
 
