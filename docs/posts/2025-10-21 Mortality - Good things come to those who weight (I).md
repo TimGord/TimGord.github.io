@@ -91,11 +91,11 @@ Actuaries make decisions on the *relevance* of mortality experience data all the
 - It is routine to exclude older data over concerns that the population composition may have changed, that historical values of covariates cannot reliably be compared with current values or simply that mortality is time-heterogeneous.
 - The CMI excludes data over 41 years old from its projections model[^CMIModel41Years], and, more recently, it has under-weighted data for years materially affected by COVID-19.
 - The mortality experience for pensioners below age 65 in DB pension plans is usually excluded because it is distorted by the heavier mortality of ill health early retirees.
-- High age (e.g. over age 95) mortality experience is routinely excluded because models are sensitive to data errors at high ages (specifically unnotified deaths)[^HighAgeConvergence] and there are concerns about data quality and rating factor validity at higher ages.
+- High age (e.g. over age 95) mortality experience is routinely excluded because of concerns over rating factor validity and because models can be sensitive to unnotified deaths at high ages[^HighAgeConvergence].
 
 [^CMIModel41Years]: This results in the questionable effect that if an atypical calendar year falls off the *start* of the 41 year data period then this change (relating to shortly-to-be-out-of-date data) can impact the CMI Model's current predictions.
 
-[^HighAgeConvergence]: Most models assume mortality convergence at high ages, which increases sensitivity to high age data.
+[^HighAgeConvergence]: Survival is unlikely at very high ages, which makes an unnotified death look statistically significant. Models typically also assume mortality convergence at very high ages, which amplifies the effect further still.
 
 What's worthy of note is how very fuzzy and uncertain the include / exclude decision is in contrast to the maths underlying most mortality modelling, which is sharp-edged, treating data as either 100% relevant or 100% irrelevant[^AllOrNothing]. 
 
