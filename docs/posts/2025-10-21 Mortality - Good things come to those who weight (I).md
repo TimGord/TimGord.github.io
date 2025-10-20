@@ -93,11 +93,11 @@ Actuaries make decisions on the *relevance* of mortality experience data all the
 - The mortality experience for pensioners below age 65 in DB pension plans is usually excluded because it is distorted by the heavier mortality of ill health early retirees.
 - High age (e.g. over age 95) mortality experience is routinely excluded because of concerns over rating factor validity and because models can be sensitive to unnotified deaths at high ages[^HighAgeConvergence].
 
-[^CMIModel41Years]: This results in the questionable effect that if an atypical calendar year falls off the *start* of the 41 year data period then this change (relating to shortly-to-be-out-of-date data) can impact the CMI Model's current predictions.
+[^CMIModel41Years]: This results in the questionable effect that if an atypical calendar year falls off the *start* of the 41 year data period then this dropping of shortly-to-be-out-of-date data can impact the CMI Model's *current* predictions.
 
-[^HighAgeConvergence]: Survival is unlikely at very high ages, which makes an unnotified death look statistically significant. Models typically also assume mortality convergence at very high ages, which amplifies the effect further still.
+[^HighAgeConvergence]: Survival is unlikely at very high ages, which means an unnotified death look statistically significant. Models typically also assume mortality convergence at very high ages, which amplifies the effect further still.
 
-What's worthy of note is how very fuzzy and uncertain the include / exclude decision is in contrast to the maths underlying most mortality modelling, which is sharp-edged, treating data as either 100% relevant or 100% irrelevant[^AllOrNothing]. 
+What's worthy of note is how very fuzzy, uncertain and judgement-based the include / exclude decision is in contrast to the maths underlying most mortality modelling, which is sharp-edged, treating data as either 100% relevant or 100% irrelevant[^AllOrNothing]. 
 
 [^AllOrNothing]: For the avoidance of doubt, I am *not* suggesting that using a well-defined framework to analyse data and create models is unreasonable, not least because it helps define and corral the fuzziness. But if (a)&#xA0;it's not clear which data to include or exclude and (b)&#xA0;inclusion / exclusion has a material impact on the results, then this in itself implies that something is missing from the modelling.
 
@@ -105,7 +105,7 @@ What happens if instead we try to incorporate relevance into the modelling itsel
 
 First, we need to define it: a <span id="Def-relevance">**relevance**</span>[^RelevanceOtherNames] $r_{itku} \in [0,1]$ is the multiplicative factor to apply to the log-likelihood of the experience data for individual $i$ at time $t$ to assess liabilities for individual $k$ as at time $u$[^RelevanceProperties].
 
-[^RelevanceOtherNames]: Relevance is also known as *importance* or *reliability*. Beware that these words are also used to described other types of weights, so it's important to check definitions. And sometimes weighting is deemed to be so obvious as not to be named at all.
+[^RelevanceOtherNames]: Relevance is also known as *importance* or *reliability*. Beware that these words are also used to described other types of weights, so it's important to check definitions. And sometimes weighting log-likelihood is assumed to be such an obvious concept that it is not given a special name at all.
 
 [^RelevanceProperties]: For consistency, a relevance should also be 
 
