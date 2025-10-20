@@ -130,14 +130,14 @@ There is a lot more to say in relation to the shape of mortality and the shape o
 
 [^EcologicalFallacy]: This is an example of a potential [ecological fallacy](https://en.wikipedia.org/wiki/Ecological_fallacy).
 
-/// admonition | Next article: *Good things come to those who weight*
+/// admonition | Next article: [*Good things come to those who weight (I)*](/2025-10/mortality-good-things-come-to-those-who-weight-i/)
     type: tip
 
 So far, the articles in this series have been mostly uncontentious. While treating [$\text{A}$ and $\text{E}$ measures](/2025-08/mortality-measures-matter/#Def-AE-ops) as foundational is, I think, intuitive, expressive and concise (and something that I have not seen elsewhere), it is ultimately just a nice way of expressing reasonably standard maths.
 
 I have taken care to ensure that the option of using a *weight* has been preserved in the formalism because this matters but it is often overlooked. Indeed, it is a feature of this formalism that a weight is required[^AE-ops] (even if it's simply $1$).
 
-The next article will be the first of three on using *weighted* statistics to assess pension liabilities. Now this *is* contentious in some circles, to the point of being attacked as invalid. An alternative view is that it marks a dividing line between actuarial work and abstract statistics. You be the judge.
+The [next article](/2025-10/mortality-good-things-come-to-those-who-weight-i/) will be the first of three on using *weighted* statistics to assess pension liabilities. Now this *is* contentious in some circles, to the point of being attacked as invalid. An alternative view is that it marks a dividing line between actuarial work and abstract statistics. You be the judge.
 
 ///
 
