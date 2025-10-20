@@ -144,7 +144,7 @@ Neither is ideal, but only one of these options gets you a shot at achieving the
     type: info
     attrs: {class: "inline end"}
 
-Rico Mariani's [2003 *ad lib*](https://ricomariani.medium.com/pit-of-success-a-2003-ad-lib-ffb05ccdd2c6) expressed the design principle that *users should end up with a good answer by default*. The context was the design of then new .NET coding framework and its associated C# language. The principle was reiterated by, amongst others, [Jeff Atwood](https://blog.codinghorror.com/falling-into-the-pit-of-success/) and [Eric Lippert](https://ericlippert.com/2007/08/14/c-and-the-pit-of-despair/), which are well worth a read, even if you're not a coder.
+Rico Mariani's [2003 *ad lib*](https://ricomariani.medium.com/pit-of-success-a-2003-ad-lib-ffb05ccdd2c6) expressed the design principle that *users should end up with a good answer by default*. The context was the design of the then new .NET coding framework and its associated C# language. The principle was reiterated by, amongst others, [Jeff Atwood](https://blog.codinghorror.com/falling-into-the-pit-of-success/) and [Eric Lippert](https://ericlippert.com/2007/08/14/c-and-the-pit-of-despair/), which are well worth a read, even if you're not a coder.
 
 I suggest that it's a general design principle. To quote Mariani:
 
