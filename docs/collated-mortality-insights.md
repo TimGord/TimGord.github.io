@@ -77,6 +77,9 @@ $$\text{Var}\big(\text{A}f-\text{E}f\big)=\mathbb{E}\big(\text{E}f^2\big)$$
 
 $$\text{Var}\big(\text{A}f-\text{E}f\big)=\Omega\,\mathbb{E}\big(\text{E}f^2\big)$$
 
+Caveat: $f$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#Def-relevance)
+.
+
 [[Original article](/2025-08/mortality-a-over-e#Insight5)]
 ///
 
@@ -145,7 +148,8 @@ $$\text{Var}\big(\hat\beta\big)\mathrel{\hat=} \Omega\,\mathbf{I}^{-1}\mathbf{J}
 
 where $\hat\beta$ is the maximum likelihood estimator of the covariate weights, $X$ is the vector of covariates, $w\ge0$ is the log-likelihood weight, $\mathbf{I}=\text{E}wXX^\text{T}$, $\mathbf{J}=\text{E}w^2XX^\text{T}$ and $\Omega$ is overdispersion
 
-Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* relevance.
+Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#Def-relevance)
+.
 
 [[Original article](/2025-08/mortality-suddenly-aic#Insight9)]
 ///
@@ -158,7 +162,8 @@ $$L_\text{P}= L(\hat\beta)-\text{tr}\big(\mathbf{J}\mathbf{I}^{-1}\big)$$
 
 where $\hat\beta$ is the maximum likelihood estimator of the covariate weights, $X$ is the vector of covariates, $L$ is the log-likelihood (which has *already* been adjusted for overdispersion), $w\ge0$ is the log-likelihood weight, $\mathbf{I}=\text{E}wXX^\text{T}$ and $\mathbf{J}=\text{E}w^2XX^\text{T}$.
 
-Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* relevance.
+Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#Def-relevance)
+.
 
 [[Original article](/2025-08/mortality-suddenly-aic#Insight10)]
 ///
@@ -236,3 +241,45 @@ where $x$ is age as a function of birth date from individual data $i$ and time $
 
 ///
 
+<!-- 
+/2025-10/mortality-good-things-come-to-those-who-weight-ii/ 
+●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+-->
+<!--
+/// admonition | Insight 15. Weighted log-likelihood *automatically* estimates liabilities correctly for single scalar parameter models when provided with relevance
+    type: insight
+    attrs: {id: "Insight15"}
+
+If (a)&#xA0;a mortality model has a single scalar parameter and (b)&#xA0;[relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#Def-relevance) is provided then maximising log-likelihood weighted by
+
+$$w_{it}=\sum_{k\in\text{Val}} r_{itku} \, I_k^{-1} v'_k$$
+
+*automatically* results in the best estimate of the present value of liabilities.
+
+In the above,
+
+- $r_{itku}$ is the relevance of the log-likelihood of the E2R of individual $i$ at time $t$ to individual $k$ in the valuation data as at the valuation date $u$,
+- $I_k$ is the relevant information matrix for valuation individual $k$, and
+- $v'_k$ is derivative of liability value for valuation individual $k$ with respect to the model parameter $\beta$.
+
+For further definitions, see [article body](/2025-10/mortality-good-things-come-to-those-who-weight-ii/#starting-point).
+
+[[Original article](/2025-10/mortality-good-things-come-to-those-who-weight-ii#Insight15)]
+
+///
+
+
+/// admonition | Insight 16. A different weight is required to determine uncertainty in the presence of relevance
+    type: insight
+    attrs: {id: "Insight16"}
+
+The log-likelihood weight to determine uncertainty that corresponds to the best estimate weight in [Insight&#xA0;15](/2025-10/mortality-good-things-come-to-those-who-weight-ii#Insight15) is
+
+
+$$u_{it}=\sum_{k\in\text{Val}} \sqrt{r_{itku}} \, I_k^{-1} v'_k$$
+
+[[Original article](/2025-10/mortality-good-things-come-to-those-who-weight-ii#Insight16)]
+
+///
+
+-->
