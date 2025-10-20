@@ -83,7 +83,7 @@ So I'll use the penalised log-likelihood, $L_\text{P}$, itself i.e. *without the
 ///
 [^SpuriousTwo]: Examples:
 
-    - The natural definition and standard guidance on what constitutes a significant difference in AIC is one parameter's worth. This is 1 for penalised log-likelihood, but as non-intuitive 2 for the conventional AIC definition.
+    - The natural definition and standard guidance on what constitutes a significant difference in AIC is one parameter's worth. This is 1 for penalised log-likelihood, but a non-intuitive 2 for the conventional AIC definition.
 
     - Akaike weights, $\exp(-\tfrac{1}{2}\text{AIC})$, are pure clumsiness compared with $\exp(L_\text{P})$.
 
