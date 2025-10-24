@@ -47,7 +47,7 @@ In this first article, I'll set out the foundations.
 
 An <span id="Def-E2R">**exposed-to-risk**</span> (E2R) for an individual comprises
 
-- an exposure period $[\nu,\tau)$[^Interval][^ContinuousTime] throughout which the individual was alive, and
+- an exposure period $[\nu,\tau)$ throughout which the individual was alive[^Interval][^ContinuousTime], and
 - an indicator $\delta$, which is $1$ if the individual died at $\tau$ or else $0$.
 
 [^Interval]: The notation $[\nu,\tau)$ means the [interval](https://en.wikipedia.org/wiki/Interval_(mathematics)) $\{t\in\mathbb{R} \mid  \nu\le t \lt \tau\}$.
