@@ -60,7 +60,7 @@ At time of writing (2025-08-20), the [Wikipedia article on overdispersion](https
 
 This explanation is sometimes repeated in a mortality context, but that's *not* the case *within the framework I've outlined*: if mortality itself were deterministic ([as we've assumed](/2025-08/mortality-measures-matter/#what-is-random)) and deaths were independent then, *regardless of how much mortality varied by individual*, there would be no overdispersion. So the cause of overdispersion is not heterogeneity; it's the failure of our idealised assumptions.
 
-And it's not just that heterogeneity in not the cause in this context; mortality varying by individual is a *core premise* in mortality modelling[^Frailty].
+And it's not just that heterogeneity is not the cause in this context; mortality varying by individual is a *core premise* in mortality modelling[^Frailty].
 
 [^Frailty]: There are other issues caused by heterogeneity, e.g. it is a candidate for causing the flattening of observed *population* mortality at high ages and failure to allow for heterogeneity can result in the *under*-valuation of closed books of pension-in-payment liabilities. I may return to these in future articles.
 
