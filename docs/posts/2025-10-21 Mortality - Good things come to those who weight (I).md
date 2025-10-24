@@ -103,7 +103,7 @@ What's worthy of note is how very fuzzy, uncertain and judgement-based the inclu
 
 What happens if instead we try to incorporate relevance into the modelling itself? The fuzziness is not going to go away; all we're doing is moving fuzziness already present in the real world to inside our modelling. But this approach may provide us with insights, so let's give it a go.
 
-First, we need to define it: a <span id="Def-relevance">**relevance**</span>[^RelevanceOtherNames] $r_{itku} \in [0,1]$ is the multiplicative factor to apply to the log-likelihood of the experience data for individual $i$ at time $t$ to assess liabilities for individual $k$ as at time $u$[^RelevanceProperties].
+First, we need to define it: a **relevance**[^RelevanceOtherNames] $r_{itku} \in [0,1]$ is the multiplicative factor to apply to the log-likelihood of the experience data for individual $i$ at time $t$ to assess liabilities for individual $k$ as at time $u$[^RelevanceProperties].
 
 [^RelevanceOtherNames]: Relevance is also known as *importance* or *reliability*. Beware that these words are also used to described other types of weights, so it's important to check definitions. And sometimes weighting log-likelihood is assumed to be such an obvious concept that it is not given a special name at all.
 

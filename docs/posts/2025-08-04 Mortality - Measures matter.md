@@ -208,5 +208,5 @@ In [the next article](/2025-08/mortality-a-over-e/) I'll review the properties o
 
 [^VariableAsTimeIndicator]: Another potential justification is that it is *mathematically convenient* to use $f\in \{0,1\}$ as an indicator of dataset membership *by time*. Unfortunately, this is an implementation nightmare in its full generality, and so has limited real-world value. There are better approaches to achieving this in practice.
 
-[^Relevance]: And in a [future article](/2025-10/mortality-good-things-come-to-those-who-weight-i/#Def-relevance) *will*.
+[^Relevance]: And in a [future article](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance) *will*.
 

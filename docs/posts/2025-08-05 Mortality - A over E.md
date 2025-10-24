@@ -101,8 +101,7 @@ $$\text{Var}\big(\text{A}f-\text{E}f\big)=\mathbb{E}\big(\text{E}f^2\big)$$
 
 (This is *before* allowing for overdispersion.)
 
-Caveat: $f$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#Def-relevance)
-.
+Caveat: $f$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance).
 
 [[All mortality insights](/collated-mortality-insights#Insight5)]
 ///

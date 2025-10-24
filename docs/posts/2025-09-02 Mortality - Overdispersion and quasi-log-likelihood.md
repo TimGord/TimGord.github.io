@@ -137,7 +137,7 @@ For reference, I'll restate results from previous articles with overdispersion i
 
     $$L_\text{P}=L(\hat\beta)- \text{tr}\big(\mathbf{J}\mathbf{I}^{-1}\big)\tag{15b}$$
 
-In the above, $\mathbf{I}=\text{E}wXX^\text{T}$ and $\mathbf{J}=\text{E}w^2XX^\text{T}$, and, as [previously noted](/2025-08/mortality-suddenly-aic/#just-weight-a-moment), these assume $w$ is an *ad hoc* reallocation of log-likelihood, as opposed to e.g. relevance-based.
+In the above, $\mathbf{I}=\text{E}wXX^\text{T}$ and $\mathbf{J}=\text{E}w^2XX^\text{T}$, and, as [previously noted](/2025-08/mortality-suddenly-aic/#just-weight-a-moment), these assume $w$ is an *ad hoc* reallocation of log-likelihood, as opposed to e.g. [relevance-based](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance).
 
 /// admonition | Next article: [*Incoherent rating factors*](/2025-10/mortality-incoherent-rating-factors/)
     type: tip
