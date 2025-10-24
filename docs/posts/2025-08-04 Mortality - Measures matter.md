@@ -50,6 +50,10 @@ An <span id="Def-E2R">**exposed-to-risk**</span> (E2R) for an individual compris
 - an exposure period $[\nu,\tau)$[^Interval][^ContinuousTime] throughout which the individual was alive, and
 - an indicator $\delta$, which is $1$ if the individual died at $\tau$ or else $0$.
 
+[^Interval]: The notation $[\nu,\tau)$ means the [interval](https://en.wikipedia.org/wiki/Interval_(mathematics)) $\{t\in\mathbb{R} \mid  \nu\le t \lt \tau\}$.
+
+[^ContinuousTime]: I'll take it as a given that we should work in (some representation of) continuous time if at all possible. Otherwise we'd be (a)&#xA0;throwing away data and (b)&#xA0;creating additional cognitive load and potentially biased or even plain wrong results by having to make assumptions about averages.
+
 I'll write an E2R as $\varepsilon=(\nu,\tau,\delta)$.
 
 For each individual we also have a set of <span id="Def-fact">**facts**</span>, $i$, known at the time of the analysis and which are time invariant.
@@ -60,15 +64,9 @@ If a fact relates to something that would have happened except that the individu
 
 An <span id="Def-exp-data">**experience dataset**</span> $\mathscr{E}$ comprises pairs of facts and E2Rs, i.e. $\{(i,\varepsilon)\}$ for which no E2Rs for the same individual overlap in time[^Deduplication].
 
-A <span id="Def-variable">**variable**</span> is a real-valued function $f(i,t)$ of facts $i$ and time $t$[^ContinuityInTime]. A variable is *not* random -- by assumption, the sole source of stochasticity is whether individuals die or not, which is embedded in $\varepsilon$.
-
-A <span id="Def-mortality">**mortality**</span>, $\mu$, is a strictly positive variable[^Terminal] that specifies the probability of an individual dying over an infinitessimal time interval $\text{d}t$ as $\mu(i,t)\,\text{d}t$, i.e. an independent[^Independence] [Bernoulli trial](https://en.wikipedia.org/wiki/Bernoulli_trial).
-
-[^Interval]: The notation $[\nu,\tau)$ means the [interval](https://en.wikipedia.org/wiki/Interval_(mathematics)) $\{t\in\mathbb{R} \mid  \nu\le t \lt \tau\}$.
-
-[^ContinuousTime]: I'll take it as a given that we should work in (some representation of) continuous time if at all possible. Otherwise we'd be (a)&#xA0;throwing away data and (b)&#xA0;creating additional cognitive load and potentially biased or even plain wrong results by having to make assumptions about averages.
-
 [^Deduplication]: Easy to stipulate in theory, but data de-duplication is an essential and sometimes non-trivial part of real world mortality experience analysis.
+
+A <span id="Def-variable">**variable**</span> is a real-valued function $f(i,t)$ of facts $i$ and time $t$[^ContinuityInTime]. A variable is *not* random -- by assumption, the sole source of stochasticity is whether individuals die or not, which is embedded in $\varepsilon$.
 
 [^ContinuityInTime]:
 
@@ -77,6 +75,8 @@ A <span id="Def-mortality">**mortality**</span>, $\mu$, is a strictly positive v
     The most general is that $f(i,t)$ is left-continuous with right limits in $t$, left continuity being required so that the value at death is consistent with the value in the immediately preceding exposure. But this level of generality is impractical for an actual implementation.
     
     A more useful real-world condition is that $f(i,t)$ is *smooth* in $t$ at the scale of numerical integration. We'll leave *smoothness* undefined for now, other than to state that, as a minimum, it implies [absolute continuity](https://en.wikipedia.org/wiki/Absolute_continuity) in $t$.
+
+A <span id="Def-mortality">**mortality**</span>, $\mu$, is a strictly positive variable[^Terminal] that specifies the probability of an individual dying over an infinitessimal time interval $\text{d}t$ as $\mu(i,t)\,\text{d}t$, i.e. an independent[^Independence] [Bernoulli trial](https://en.wikipedia.org/wiki/Bernoulli_trial).
 
 [^Terminal]: An implementation would also need a mortality to specify a terminal date or age by individual (because mortality tables stop), but we don't need that for this exposition.
 
