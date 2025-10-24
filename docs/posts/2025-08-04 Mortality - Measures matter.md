@@ -47,7 +47,7 @@ In this first article, I'll set out the foundations.
 
 An <span id="Def-E2R">**exposed-to-risk**</span> (E2R) for an individual comprises[^ContinuousTime]
 
-- an exposure period $[\nu,\tau)$[^Interval] throughout which the individual was alive, and
+- an exposure period[^Interval] $[\nu,\tau)$ throughout which the individual was alive, and
 - an indicator $\delta$, which is $1$ if the individual died at $\tau$ or else $0$.
 
 [^ContinuousTime]: I'll take it as a given that we should work in (some representation of) continuous time if at all possible. Otherwise we'd be (a)&#xA0;throwing away data and (b)&#xA0;creating additional cognitive load and potentially biased or even plain wrong results by having to make assumptions about averages.
