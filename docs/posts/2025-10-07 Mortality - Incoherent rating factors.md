@@ -131,7 +131,7 @@ Here are some of the many ways in which this can go wrong:
 
 ## Pension as a rating factor
 
-If there's a recurring theme in the above then it's this: beware of using pension as a rating factor. It will almost certainly show up as strongly predictive (regardless of whether or not you allowed for the above  issue correctly) but it can catch you out.
+If there's a recurring theme in the above then it's this: beware of using pension as a rating factor. It will almost certainly show up as strongly predictive (regardless of whether or not you've allowed for the above issues correctly) but it can catch you out.
 
 /// admonition | Insight 13. Take care when using pension as a rating factor
     type: insight
