@@ -57,11 +57,11 @@ Akaike's[^Akaike] insight was
 
 - [*relative entropy*](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence) (also known as the *Kullback-Leibler divergence*) can be used to compare different models,
 
-- maximum likelihood is a biased estimate of the *variation* in relative entropy compared with reality[^TrueModel],
+- *maximum likelihood is a biased estimate* of the variation in relative entropy compared with reality[^TrueModel],
 
-- *provided a model is reasonably good*, we can adjust for that bias with a simple penalty, and
+- provided a model is reasonably good, *we can adjust for that bias with a simple penalty*, and
 
-- the resulting *penalised* maximum log-likelihood, $L_\text{P}$, can be used to compare models *regardless of the number of parameters they have*.
+- the resulting *penalised maximum log-likelihood*, $L_\text{P}$, can be used to compare models *regardless of the number of parameters they have*.
 
 [^Akaike]: Akaike, H. (1973), "Information theory and an extension of the maximum likelihood principle", in Petrov, B. N.; Csáki, F. (eds.), *2nd International Symposium on Information Theory, Tsahkadsor, Armenia, USSR, September 2-8, 1971*, Budapest: Akadémiai Kiadó, pp. 267–281. Republished in Kotz, S.; Johnson, N. L., eds. (1992), *Breakthroughs in Statistics*, vol. I, Springer-Verlag, pp. 610–624.
 
@@ -175,8 +175,7 @@ where $\hat\beta$ is the maximum likelihood estimator of the covariate weights, 
 
 (This is *before* allowing for overdispersion.)
 
-Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#Def-relevance)
-.
+Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance).
 
 [[All mortality insights](/collated-mortality-insights#Insight9)]
 ///
@@ -189,8 +188,7 @@ $$L_\text{P}= L(\hat\beta)-\text{tr}\big(\mathbf{J}\mathbf{I}^{-1}\big)$$
 
 where $\hat\beta$ is the maximum likelihood estimator of the covariate weights, $X$ is the vector of covariates, $L$ is the log-likelihood, $w\ge0$ is the log-likelihood weight, $\mathbf{I}=\text{E}wXX^\text{T}$ and $\mathbf{J}=\text{E}w^2XX^\text{T}$.
 
-Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#Def-relevance)
-.
+Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance).
 
 [[All mortality insights](/collated-mortality-insights#Insight10)]
 ///
