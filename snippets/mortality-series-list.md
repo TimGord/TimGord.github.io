@@ -9,9 +9,5 @@
 1. [Overdispersion and quasi-log-likelihood](/2025-09/mortality-overdispersion-and-quasi-log-likelihood/)
 1. [Incoherent rating factors](/2025-10/mortality-incoherent-rating-factors/)
 1. [Pensioner mortality variation](/2025-10/mortality-pensioner-mortality-variation/)
-1. [Good things come to those who weight (Part&#xA0;I)](/2025-10/mortality-good-things-come-to-those-who-weight-i/)
-
-<!--
-1. [Good things come to those who weight: Part&#xA0;I](/2025-10/mortality-good-things-come-to-those-who-weight-i/), [Part&#xA0;II](/2025-10/mortality--good-things-come-to-those-who-weight-ii/) [and Part&#xA0;III](/2025-10/mortality--good-things-come-to-those-who-weight-iii/)
--->
+1. [Good things come to those who weight: Part&#xA0;I](/2025-10/mortality-good-things-come-to-those-who-weight-i/), [Part&#xA0;II](/2025-10/mortality-good-things-come-to-those-who-weight-ii/) and Part&#xA0;III (to come)
 ///
