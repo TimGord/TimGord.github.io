@@ -177,7 +177,7 @@ Using the weights by $w$ and $u$ as defined in Insights&#xA0;[15](/2025-10/morta
 
 - defaults to sensible results regardless of the quantum of experience data available.
 
-The following Insights need to restated to accommodate relevance:
+The following Insights need to be restated to accommodate relevance:
 
 - [Insight&#xA0;5](/2025-08/mortality-a-over-e#Insight5) (allowing for overdispersion $\Omega$) becomes
 
@@ -249,12 +249,12 @@ In real life your systems may not be able to accommodate relevance, in which cas
 
 For avoidance of doubt, I am *not* suggesting replacing sophisticated models with amounts-weighted A/E[^AEConfusion]. I *am* suggesting using the same modelling framework but with relevance-based weights.
 
-[^AEConfusion]: I think one of the reasons for propagation of the 'lives-weighted is the only valid approach' view is because actuaries think the only combination of options are (a)&#xA0;amounts-weighted A/E and (b)&#xA0;sophisticated lives-weighted modelling when actually choice of weight and modelling approach are orthogonal.
+[^AEConfusion]: I think one of the reasons for propagation of the 'lives-weighted is the only valid approach' view is because actuaries think the only combination of options are (a)&#xA0;amounts-weighted A/E and (b)&#xA0;sophisticated lives-weighted modelling when actually the choice of weight and modelling approach are orthogonal.
 
-People (including me) sometimes worry about abnormally large pensions distorting the results but I don't think this actually a problem in practice:
+People (including me) sometimes worry about abnormally large pensions distorting the results but this hasn't been a problem in practice:
 
 - The variance will capture concentration.
-- UK DB pensions have in effect been capped by regulation for such a long time now that extremely large pensions no longer exist.
+- UK DB pensions have been capped by regulation for such a long time now that extremely large pensions no longer exist.
 
 If it's a choice between lives and amounts-weighted then, while [both are 'wrong'](https://hermiene.net/essays-trans/relativity_of_wrong.html), the amounts-weighted is safer if your objective is to value liabilities.
 
@@ -273,8 +273,10 @@ For DB pensioner mortality analysis, prefer log-likelihood weighted by pension a
 If you believe
 
 - *what matters is valuing liabilities correctly* (as opposed to developing models that are good in some abstract sense),
+
 - *relevance of mortality experience varies by pension amount*, and
-- *the variation in pension plan mortality is can be parametrised in one dimension as heavy vs light mortality*,
+
+- *the variation in pension plan mortality can be parametrised in one dimension as heavy vs light mortality*,
 
 then I think you should be using weighted log-likelihood when assessing base mortality for DB pensioners.
 

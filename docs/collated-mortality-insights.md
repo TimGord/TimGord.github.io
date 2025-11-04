@@ -313,7 +313,7 @@ Using the weights by $w$ and $u$ as defined in Insights&#xA0;[15](/collated-mort
 
 - defaults to sensible results regardless of the quantum of experience data available.
 
-The following Insights need to restated to accommodate relevance:
+The following Insights need to be restated to accommodate relevance:
 
 - [Insight&#xA0;5](/collated-mortality-insights#Insight5) (allowing for overdispersion $\Omega$) becomes
 
