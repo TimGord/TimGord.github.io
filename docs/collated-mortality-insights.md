@@ -73,11 +73,11 @@ If $\mu$ is the true mortality then, *before allowing for overdispersion*, the v
 
 $$\text{Var}\big(\text{A}f-\text{E}f\big)=\mathbb{E}\big(\text{E}f^2\big)$$
 
- Allowing for overdispersion $\Omega$, this becomes
+Allowing for overdispersion $\Omega$, this becomes
 
 $$\text{Var}\big(\text{A}f-\text{E}f\big)=\Omega\,\mathbb{E}\big(\text{E}f^2\big)$$
 
-Caveat: $f$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance).
+Caveat: $f$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance). For the version of this insight that *does* take account of relevance, see [Insight&#xA0;17](/collated-mortality-insights#Insight17).
 
 [[Original article](/2025-08/mortality-a-over-e#Insight5)]
 ///
@@ -147,7 +147,7 @@ $$\text{Var}\big(\hat\beta\big)\mathrel{\hat=} \Omega\,\mathbf{I}^{-1}\mathbf{J}
 
 where $\hat\beta$ is the maximum likelihood estimator of the covariate weights, $X$ is the vector of covariates, $w\ge0$ is the log-likelihood weight, $\mathbf{I}=\text{E}wXX^\text{T}$, $\mathbf{J}=\text{E}w^2XX^\text{T}$ and $\Omega$ is overdispersion
 
-Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance).
+Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance). For the version of this insight that *does* take account of relevance, see [Insight&#xA0;17](/collated-mortality-insights#Insight17).
 
 [[Original article](/2025-08/mortality-suddenly-aic#Insight9)]
 ///
@@ -160,7 +160,7 @@ $$L_\text{P}= L(\hat\beta)-\text{tr}\big(\mathbf{J}\mathbf{I}^{-1}\big)$$
 
 where $\hat\beta$ is the maximum likelihood estimator of the covariate weights, $X$ is the vector of covariates, $L$ is the log-likelihood (which has *already* been adjusted for overdispersion), $w\ge0$ is the log-likelihood weight, $\mathbf{I}=\text{E}wXX^\text{T}$ and $\mathbf{J}=\text{E}w^2XX^\text{T}$.
 
-Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance).
+Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance). For the version of this insight that *does* take account of relevance, see [Insight&#xA0;17](/collated-mortality-insights#Insight17).
 
 [[Original article](/2025-08/mortality-suddenly-aic#Insight10)]
 ///
@@ -248,15 +248,15 @@ where $x$ is age as a function of birth date from individual data $i$ and time $
 
 If (a)&#xA0;a mortality model has a single scalar parameter and (b)&#xA0;[relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance) is provided then maximising log-likelihood weighted by
 
-$$w_{it}=\sum_{k\in\text{Val}} r_{itku} \, I_k^{-1} v'_k$$
+$$w_{it}=\sum_{j\in\text{Val}} r_{it}^{jt_0} \, I_j^{-1} v'_j$$
 
 *automatically* results in the best estimate of the present value of liabilities.
 
 In the above,
 
-- $r_{itku}$ is the relevance of the log-likelihood of the E2R of individual $i$ at time $t$ to individual $k$ in the valuation data as at the valuation date $u$,
-- $I_k$ is the relevant information matrix for valuation individual $k$, and
-- $v'_k$ is derivative of liability value for valuation individual $k$ with respect to the model parameter $\beta$.
+- $r_{it}^{jt_0}$ is the relevance of the log-likelihood of the E2R of individual $i$ at time $t$ to individual $k$ in the valuation data as at the valuation date $t_0$,
+- $I_j$ is the relevant information matrix for valuation individual $j$, and
+- $v'_j$ is derivative of liability value for valuation individual $j$ with respect to the model parameter $\beta$.
 
 For further definitions, see [article body](/2025-10/mortality-good-things-come-to-those-who-weight-ii/#starting-point).
 
@@ -272,8 +272,73 @@ For further definitions, see [article body](/2025-10/mortality-good-things-come-
 The log-likelihood weight to determine uncertainty that corresponds to the best estimate weight in [Insight&#xA0;15](/2025-10/mortality-good-things-come-to-those-who-weight-ii#Insight15) is
 
 
-$$u_{it}=\sum_{k\in\text{Val}} \sqrt{r_{itku}} \, I_k^{-1} v'_k$$
+$$u_{it}=\sum_{j\in\text{Val}} \sqrt{r_{it}^{jt_0}} \, I_j^{-1} v'_j$$
 
 [[Original article](/2025-10/mortality-good-things-come-to-those-who-weight-ii#Insight16)]
+
+///
+
+<!-- 
+/2025-11/mortality-good-things-come-to-those-who-weight-iii/ 
+●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●
+-->
+
+/// admonition | Insight 17. Always allow for time-based relevance
+    type: insight
+    attrs: {id: "Insight17"}
+
+Allowing for time-based relevance, e.g. using 
+
+$$r_s^t=\exp\!\big(\!-\phi\,\big|t-s\big|\big)$$
+
+where $s$ and $t$ are dates (measured in years) and $\phi>0$, is to be preferred in all contexts because
+
+- it automatically allows for the decay in relevance as time elapses, and
+- compared with fixed windows, leaves models less sensitive to the falling away of more historical data.
+
+If relevance is purely time-based then this can be accomplished simply by scaling the data.
+
+[[Original article](/2025-11/mortality-good-things-come-to-those-who-weight-iii#Insight17)]
+
+///
+
+
+/// admonition | Insight 18. Use relevance for calibrating and selecting DB pensioner base mortality models 
+    type: insight
+    attrs: {id: "Insight18"}
+
+Using the weights by $w$ and $u$ as defined in Insights&#xA0;[15](/collated-mortality-insights#Insight15) and [16](/collated-mortality-insights#Insight16) respectively to calibrate and select DB pensioner base mortality models 
+
+- takes explicit account of liability impact, and
+
+- defaults to sensible results regardless of the quantum of experience data available.
+
+The following Insights need to restated to accommodate relevance:
+
+- [Insight&#xA0;5](/collated-mortality-insights#Insight5) (allowing for overdispersion $\Omega$) becomes
+
+    $$\text{Var}\big(\text{A}w-\text{E}w\big)=\Omega\,\mathbb{E}\big(\text{E}u^2\big)$$
+
+- The equations for [Insights&#xA0;9](/collated-mortality-insights#Insight9) and [Insights&#xA0;10](/collated-mortality-insightsaic#Insight10) are unchanged as
+
+    $$\begin{aligned}
+    \text{Var}\big(\hat\beta\big)\mathrel{\hat=} \Omega\,\mathbf{I}^{-1}\mathbf{J}\mathbf{I}^{-1}
+    \\[1em]
+    L_\text{P}= L(\hat\beta)-\text{tr}\big(\mathbf{J}\mathbf{I}^{-1}\big)
+    \end{aligned}$$
+
+    But $\mathbf{J}$ is redefined as $\text{E}u^2XX^\text{T}$, i.e. weighted by $u^2$ rather than $w^2$.
+
+[[Original article](/2025-11/mortality-good-things-come-to-those-who-weight-iii#Insight18)]
+
+///
+
+/// admonition | Insight 19. Prefer amounts-weighted to lives-weighted log-likelihood
+    type: insight
+    attrs: {id: "Insight19"}
+
+For DB pensioner mortality analysis, prefer log-likelihood weighted by pension amount to lives-weighted.
+
+[[Original article](/2025-11/mortality-good-things-come-to-those-who-weight-iii#Insight19)]
 
 ///

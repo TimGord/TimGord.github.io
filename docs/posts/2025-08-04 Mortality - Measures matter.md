@@ -62,7 +62,7 @@ If a fact relates to something that would have happened except that the individu
 
 [^NoCheating]: From a technical point of view, this principle also means mortality models can't cheat simply by looking at the data.
 
-An <span id="Def-exp-data">**experience dataset**</span> $\mathscr{E}$ comprises pairs of facts and E2Rs, i.e. $\{(i,\varepsilon)\}$ for which no E2Rs for the same individual overlap in time[^Deduplication].
+An <span id="Def-exp-data">**experience dataset**</span> $\text{Exp}$ comprises pairs of facts and E2Rs, i.e. $\{(i,\varepsilon)\}$ for which no E2Rs for the same individual overlap in time[^Deduplication].
 
 [^Deduplication]: Easy to stipulate in theory, but data de-duplication is an essential and sometimes non-trivial part of real world mortality experience analysis.
 
@@ -131,13 +131,13 @@ I suggested above that there are two things we want to add up. If you’re a pra
 
 1. **Actual deaths** is the sum of $f$ over deaths at time of death:
 
-    $$\text{A}f=\sum_{(i,\varepsilon)\in \mathscr{E}}\delta_\varepsilon f(i,\tau_\varepsilon)$$
+    $$\text{A}f=\sum_{(i,\varepsilon)\in \text{Exp}}\delta_\varepsilon f(i,\tau_\varepsilon)$$
 
     Note that the variable, $f$, is evaluated at time of death.
 
 1. <span id="Def-E-op">**Expected deaths**[^ExposureMeasure] with respect to mortality $\mu$ is the integral of $\mu$ times $f$ over all exposure periods:</span>
 
-    $$\text{E} f=\sum_{(i,\varepsilon)\in \mathscr{E}}\int_{\nu_\varepsilon}^{\tau_\varepsilon}\!\mu(i,t)f(i,t)\,\text{d}t$$
+    $$\text{E} f=\sum_{(i,\varepsilon)\in \text{Exp}}\int_{\nu_\varepsilon}^{\tau_\varepsilon}\!\mu(i,t)f(i,t)\,\text{d}t$$
 
 </span>
 
@@ -145,7 +145,7 @@ I suggested above that there are two things we want to add up. If you’re a pra
 
     We could alternatively define an 'exposure measure' as
 
-    $$\text{S} f=\sum_{(i,\varepsilon)\in \mathscr{E}}\int_{\nu_\varepsilon}^{\tau_\varepsilon}\!f(i,t)\,\text{d}t$$
+    $$\text{S} f=\sum_{(i,\varepsilon)\in \text{Exp}}\int_{\nu_\varepsilon}^{\tau_\varepsilon}\!f(i,t)\,\text{d}t$$
 
     While this is a simpler definition, it would
     
@@ -166,7 +166,7 @@ For avoidance of doubt, I'll always use $\mathbb{E}$ to refer to true expectatio
 
 On notation and terminology:
 
-- The dataset $\mathscr{E}$ and, for $\text{E}$, the mortality $\mu$ are typically implicit from context -- it is rare that we need additional notation to make them explicit. But, for the avoidance of doubt, $\text{E}$ always implies a background mortality $\mu$.
+- The dataset $\text{Exp}$ and, for $\text{E}$, the mortality $\mu$ are typically implicit from context -- it is rare that we need additional notation to make them explicit. But, for the avoidance of doubt, $\text{E}$ always implies a background mortality $\mu$.
 - There is a multitude of notations for integrating using measures (see e.g. [here](https://math.stackexchange.com/questions/5230/is-there-any-difference-between-the-notations-int-fxd-mux-and-int-fx)), of which $\int \!f(x)\,\text{M}(\text{d}x)$ and $\int \!f\,\text{dM}$ are common. But the simplest is $\text{M}f$, which is what I'll use.
 
 Although I've emphasised that $\text{A}$ and $\text{E}$ are measures over experience data, I confess that I don't use this terminology day-to-day[^LinearOp]. In fact, I've hardly heard anyone mention 'measures' in connection with experience analysis, which may explain why their importance seems to be overlooked and why some practitioners end up confused over the meaning of 'expected' (see box out), or whether individuals need to be tracked throughout the experience data.

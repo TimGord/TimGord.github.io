@@ -30,9 +30,7 @@ categories:
 
 This article is almost all maths.
 
-If that's not your thing then I suggest that you skip ahead to 
-part&#xA0;III (to come).
-<!-- [part&#xA0;III](/2025-10/mortality-good-things-come-to-those-who-weight-iii).-->
+If that's not your thing then I suggest that you skip ahead to [part&#xA0;III](/2025-11/mortality-good-things-come-to-those-who-weight-iii).
 
 ///
 
@@ -68,7 +66,7 @@ Some definitions:
 - We'll initially assume our mortality model takes $n$ parameters, represented as a vector, e.g. $\beta$. (We'll specialise to the $n=1$ case later.)
 - $\ell_a(\beta)$ is the *log-likelihood* of the E2R for $a\in\text{Exp}$ using our mortality model, where $\text{Exp}$ is the experience data.[^DiscreteSumVsIntegration]
 - $v_b(\beta)$ is the *present value of liabilities* for valuation individual $b\in\text{Val}$ using our mortality model, where $\text{Val}$ is the valuation data.
-- $r_{ab}\in[0,1]$ is the *[relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance)* of $a$ to $b$, with $r_{aa}=1$ and $r_{ab}=r_{ba}$.
+- $r_a^b\in[0,1]$ is the *[relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance)* of $a$ to $b$, with $r_a^a=1$ and $r_a^b=r_b^a$.
 - $'$ and $''$ are the vector first derivative and matrix second derivative with respect to $\beta$.
 - $^\text{T}$ is vector or matrix transpose.
 
@@ -80,9 +78,18 @@ We'll also impose the simplest non-trivial conditions to make things tractable:
 
 [^SignVDash]: Althought I've assumed $v'_b$ is positive, the sign of $v'_b$ doesn't matter *provided it's consistent*: if $v'_b\lt0$ then replace $v'_b$ everywhere with $-v'_b$. Indeed, because mortality models are usually arranged so that higher $\beta$ increases mortality and the liability in a pensions context is an annuity, I'd *expect* $v'_b$ to be negative.
 
+This graphic illustrates
+
+- indexing the <span style="color:#F28E2B;">**experience data**</span> using a (nominally discrete) single-dimensional index $a$ in place of the two dimensions of individual $i$ and (continuous) time $t$ (within each individual's E2R), and
+
+- how elements of the <span style="color:#F28E2B;">**experience data**</span> are related by *relevance* to elements of the <span style="color:#4E79A7;">**valuation data**</span>.
+
+![Chart illustrating relevance](Relevance-exp-val-ab-light.png#only-light)
+![Chart illustrating relevance](Relevance-exp-val-ab-dark.png#only-dark)
+
 ## Roadmap
 
-To give you an idea of where we're headed, this is a roadmap:
+To give you an idea of where we're headed, here is a roadmap:
 
 - First, we'll define [best estimate liability](#best-estimate-liability) taking account of relevance.
 
@@ -96,7 +103,7 @@ To give you an idea of where we're headed, this is a roadmap:
 
 The *relevant* log-likelihood for each individual to be valued $b\in\text{Val}$ is
 
-$$L_b(\beta)=\sum_{a\in\text{Exp}}r_{ba}\ell_a(\beta)$$
+$$L_b(\beta)=\sum_{a\in\text{Exp}}r_b^a\ell_a(\beta)\tag{17}$$
 
 This defines an estimate of the model parameter for $b\in\text{Val}$ as
 
@@ -104,15 +111,15 @@ $$\hat\beta_b = \underset{\beta}{\arg\max}\, L_b(\beta)$$
 
 or, equivalently, given that the $\ell_a$ are approximately quadratic, we can solve the differential equation
 
-$$L'_b(\hat\beta_b)=0\tag{17}$$
+$$L'_b(\hat\beta_b)=0\tag{18}$$
 
 The best estimate of total liability value is the sum of each individual's liabilities evaluated using the parameter fitted to the data relevant to that individual, i.e.
 
-$$\hat V=\sum_{b\in\text{Val}}v_b(\hat\beta_b)\tag{18}$$
+$$\hat V=\sum_{b\in\text{Val}}v_b(\hat\beta_b)\tag{19}$$
 
 ## Equivalent overall parameter
 
-Equation $(18)$ is fine in theory but it'd be a nightmare to implement because each individual in the valuation data requires their own mortality model to be calibrated and selected.
+Equation $(19)$ is fine in theory but it'd be a nightmare to implement because each individual in the valuation data requires their own mortality model to be calibrated and selected.
 
 What if, instead, we could derive a *single overall parameter vector estimate, $\hat\beta$, that gave the same total value*, i.e.
 
@@ -124,16 +131,16 @@ $$
 0
 =\sum_{b\in\text{Val}}\left\{v_b(\hat\beta)-v_b(\hat\beta_b)\right\}
 \approx\sum_{b\in\text{Val}} v'_b{}^\text{T}  \left\{\hat\beta-\hat\beta_b\right\}
-\tag{19}
+\tag{20}
 $$
 
 > :pushpin: $v'_b$ is written without an argument because, by assumption, it is approximately constant.
 
-So a single overall estimate $\hat\beta$ that complies with equation $(19)$ will provide (approximately) the same overall value as the complex approach embodied in equation $(18)$.
+So a single overall estimate $\hat\beta$ that complies with equation $(20)$ will provide (approximately) the same overall value as the complex approach embodied in equation $(19)$.
 
-As it stands, equation $(19)$ still requires that we calculate parameters $\hat\beta_b$ separately per individual. Is there a way to sidestep this?
+As it stands, equation $(20)$ still requires that we calculate parameters $\hat\beta_b$ separately per individual. Is there a way to sidestep this?
 
-One approach is to try to sum up the log-likelihoods in such a way that the maximum of that sum is automatically at $\hat\beta$. Specifically, we'd like a *scalar* weight, $\tilde w_b$ for $b\in\text{Val}$ such that equation $19$ holds if
+One approach is to try to sum up the log-likelihoods in such a way that the maximum of that sum is automatically at $\hat\beta$. Specifically, we'd like a *scalar* weight, $\tilde w_b$ for $b\in\text{Val}$ such that equation $(19)$ holds if
 
 $$\hat\beta=\underset{\beta}{\arg\max} \sum_{b\in\text{Val}} \tilde w_b \, L_b(\hat\beta)$$
 
@@ -145,45 +152,45 @@ The assumption that $\ell_a$ is approximately quadratic means that so is $L_b$ a
 
 $$L'_b(\hat\beta) 
 \approx L'_b(\hat\beta_b)+L''_b \left\{\hat\beta-\hat\beta_b\right\} 
-= -I_b \left\{\hat\beta-\hat\beta_b\right\}\tag{21}$$
+= -I_b \left\{\hat\beta-\hat\beta_b\right\}\tag{22}$$
 
-where I've used equation $(17)$ and, for convenience, defined the 'relevant information matrix' as
+where I've used equation $(18)$ and, for convenience, <span id="Def-Ik">defined the *relevant information* (matrix) as<span>
 
-$$I_b=-L''_b$$
+$$I_b = -L''_b = -\sum_{a\in\text{Exp}}r_b^a\ell''_a \tag{23}$$
 
 > :pushpin: $I_b$, $L''_b$ and $\ell''_a$ are written without an argument because they are approximately constant (similar to $v'_b$, as noted above).
 
-This enables us to rewrite equation $(20a)$ approximately as
+This enables us to rewrite equation $(21a)$ approximately as
 
 $$\sum_{b\in\text{Val}} \tilde w_b I_b \left\{\hat\beta-\hat\beta_b\right\}=0$$
 
-and comparison with equation $(19)$ suggests[^SignVDash][^IIsIinvertible][^CreditAndyHarding]
+and comparison with equation $(20)$ suggests[^SignVDash][^IIsIinvertible][^CreditAndyHarding]
 
 [^IIsIinvertible]: $I_b$ is known to be invertible because it is positive definite, which in turn is because, by assumption, the $\ell''_a$ are negative definite.
 
 [^CreditAndyHarding]: Pointed out to me by Andy Harding -- thank you.
 
-$$\tilde w_b=I_b^{-1} v'_b\tag{22}$$
+$$\tilde w_b=I_b^{-1} v'_b\tag{24}$$
 
-The single constraint implied by (the scalar) equation $(19)$ does not *define* a scalar weight if there are $n>1$ degrees of freedom in (the vector) equation $(20a)$. This is manifest in equation $(22)$, which defines $\tilde w_b$ as a vector, not a scalar, and in which case equation $(20a)$ would need to be rewritten as
+The single constraint implied by (the scalar) equation $(20)$ does not *define* a scalar weight if there are $n>1$ degrees of freedom in (the vector) equation $(21a)$. This is manifest in equation $(24)$, which defines $\tilde w_b$ as a vector, not a scalar, and in which case equation $(21a)$ would need to be rewritten as
 
-$$\sum_{b\in\text{Val}} \tilde w_b^\text{T} \, L'_b(\hat\beta)=0\tag{20b}$$
+$$\sum_{b\in\text{Val}} \tilde w_b^\text{T} \, L'_b(\hat\beta)=0\tag{21b}$$
 
 ## Weighted log-likelihood
 
-While this approach is not fruitful in the $n>1$ case, one of our [givens above](#Ref-givens) is that our mortality model has a *single scalar parameter*, i.e. $n=1$, which means that, in our scenario, equation $(22)$ *does* define a scalar weight.
+While this approach is not fruitful in the $n>1$ case, one of our [givens above](#Ref-givens) is that our mortality model has a *single scalar parameter*, i.e. $n=1$, which means that, in our scenario, equation $(24)$ *does* define a scalar weight.
 
 I used $\tilde w_b$ to denote the weighting of *relevant log-likelihood* indexed by *valuation* individual $b$ because I was saving $w_a$ to denote the equivalent weight indexed by *experience* datum, i.e.
 
-$$w_a =\sum_{b\in\text{Val}} r_{ab}\tilde w_b$$
+$$w_a =\sum_{b\in\text{Val}} r_a^b\tilde w_b$$
 
 Changing order of summation, we have
 
-$$\sum_{b\in\text{Val}} \tilde w_b L_b(\beta)=\sum_{b\in\text{Val}} \tilde w_b \sum_{a\in\text{Exp}} r_{ba}\ell_a(\beta)= \sum_{a\in\text{Exp}} w_a\ell_a(\beta)$$
+$$\sum_{b\in\text{Val}} \tilde w_b L_b(\beta)=\sum_{b\in\text{Val}} \tilde w_b \sum_{a\in\text{Exp}} r_b^a\ell_a(\beta)= \sum_{a\in\text{Exp}} w_a\ell_a(\beta)$$
 
 and hence the general weight to apply to the experience data is[^CreditAndyHarding]
 
-$$w_a=\sum_{b\in\text{Val}} r_{ab} \, I_b^{-1} v'_b\tag{23}$$
+$$w_a=\sum_{b\in\text{Val}} r_a^b \, I_b^{-1} v'_b\tag{25}$$
 
 /// admonition | Insight 15. Weighted log-likelihood *automatically* estimates liabilities correctly for single scalar parameter models when provided with relevance
     type: insight
@@ -191,15 +198,15 @@ $$w_a=\sum_{b\in\text{Val}} r_{ab} \, I_b^{-1} v'_b\tag{23}$$
 
 If (a)&#xA0;a mortality model has a single scalar parameter and (b)&#xA0;[relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance) is provided then maximising log-likelihood weighted by
 
-$$w_{it}=\sum_{k\in\text{Val}} r_{itku} \, I_k^{-1} v'_k$$
+$$w_{it}=\sum_{j\in\text{Val}} r_{it}^{jt_0} \, I_j^{-1} v'_j$$
 
 *automatically* results in the best estimate of the present value of liabilities.
 
 In the above,
 
-- $r_{itku}$ is the relevance of the log-likelihood of the E2R of individual $i$ at time $t$ to individual $k$ in the valuation data as at the valuation date $u$,
-- $I_k$ is the relevant information matrix for valuation individual $k$, and
-- $v'_k$ is derivative of liability value for valuation individual $k$ with respect to the model parameter $\beta$.
+- $r_{it}^{jt_0}$ is the relevance of the log-likelihood of the E2R of individual $i$ at time $t$ to individual $j$ in the valuation data as at the valuation date $t_0$,
+- $I_j$ is the relevant information matrix for valuation individual $j$, and
+- $v'_j$ is derivative of liability value for valuation individual $j$ with respect to the model parameter $\beta$.
 
 For further definitions, see [article body](/2025-10/mortality-good-things-come-to-those-who-weight-ii/#starting-point).
 
@@ -228,9 +235,9 @@ $$
 
 where $u_a$ is the vector
 
-$$u_a=\sum_{b\in\text{Val}} \sqrt{r_{ab}}\,I_b^{-1}v'_b\tag{24}$$
+$$u_a=\sum_{b\in\text{Val}} \sqrt{r_a^b}\,I_b^{-1}v'_b\tag{26}$$
 
-> :pushpin: Contrast the uncertainty weight in equation $(24)$ with the weight used to derive the best estimate in equation $(23)$ above.
+> :pushpin: Contrast the uncertainty weight in equation $(26)$ with the weight used to derive the best estimate in equation $(25)$ above.
 
 Given our assumptions, we have
 
@@ -242,7 +249,7 @@ $$V' = \sum_{b\in\text{Val}}v'_b = -\!\sum_{a\in\text{Exp}}\ell''_a w_a $$
 
 In the $n=1$ case, this *defines* an estimate of the variance of $\hat\beta$ as
 
-$$\text{Var}(\hat\beta) \approx (V')^{-2}\;\text{Var}(\hat V)\tag{25}$$
+$$\text{Var}(\hat\beta) \approx (V')^{-2}\;\text{Var}(\hat V)\tag{27}$$
 
 /// admonition | Insight 16. A different weight is required to determine uncertainty in the presence of relevance
     type: insight
@@ -251,7 +258,7 @@ $$\text{Var}(\hat\beta) \approx (V')^{-2}\;\text{Var}(\hat V)\tag{25}$$
 The log-likelihood weight to determine uncertainty that corresponds to the best estimate weight in [Insight&#xA0;15](/2025-10/mortality-good-things-come-to-those-who-weight-ii#Insight15) is
 
 
-$$u_{it}=\sum_{k\in\text{Val}} \sqrt{r_{itku}} \, I_k^{-1} v'_k$$
+$$u_{it}=\sum_{j\in\text{Val}} \sqrt{r_{it}^{jt_0}} \, I_j^{-1} v'_j$$
 
 [[All mortality insights](/collated-mortality-insights#Insight16)]
 
@@ -265,18 +272,12 @@ Let's take stock: if our underlying mortality model has a single scalar paramete
 
 1. the second differential of log-likelihood weighted by $u^2$ estimates *parameter (and liability) uncertainty*.
 
-<!--
-/// admonition | Next article: [*Good things come to those who weight (III)*](/2025-10/mortality-good-things-come-to-those-who-weight-iii/)
--->
-/// admonition | Next article: *Good things come to those who weight (III)*
+/// admonition | Next article: [*Good things come to those who weight (III)*](/2025-11/mortality-good-things-come-to-those-who-weight-iii/)
     type: tip
 
 There remain questions of practicality and generalisability.
 
 I'll conclude this series by addressing those questions in
-part&#xA0;III (to come).
-<!--
-[part&#xA0;III](/2025-10/mortality-good-things-come-to-those-who-weight-iii/).
--->
+[part&#xA0;III](/2025-11/mortality-good-things-come-to-those-who-weight-iii/).
 
 ///

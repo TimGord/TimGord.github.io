@@ -101,9 +101,10 @@ $$\text{Var}\big(\text{A}f-\text{E}f\big)=\mathbb{E}\big(\text{E}f^2\big)$$
 
 (This is *before* allowing for overdispersion.)
 
-Caveat: $f$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance).
+Caveat: $f$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance). For the version of this insight that *does* take account of relevance, see [Insight&#xA0;17](/2025-11/mortality-good-things-come-to-those-who-weight-iii/#Insight17).
 
 [[All mortality insights](/collated-mortality-insights#Insight5)]
+
 ///
 
 Familiarity with lives-weighted case can lead practitioners astray in relation to weighted statistics:

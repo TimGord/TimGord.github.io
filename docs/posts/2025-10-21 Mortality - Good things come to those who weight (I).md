@@ -103,16 +103,19 @@ What's worthy of note is how very fuzzy, uncertain and judgement-based the inclu
 
 What happens if instead we try to incorporate relevance into the modelling itself? The fuzziness is not going to go away; all we're doing is moving fuzziness already present in the real world to inside our modelling. But this approach may provide us with insights, so let's give it a go.
 
-First, we need to define it: a **relevance**[^RelevanceOtherNames] $r_{itku} \in [0,1]$ is the multiplicative factor to apply to the log-likelihood of the experience data for individual $i$ at time $t$ to assess liabilities for individual $k$ as at time $u$[^RelevanceProperties].
+First, we need to define it: a **relevance**[^RelevanceOtherNames] $r_{it}^{jt_0} \in [0,1]$ is the multiplicative factor to apply to the log-likelihood of the experience data for individual $i$ at time $t$ to assess liabilities for individual $j$ as at the valuation date $t_0$[^RelevanceProperties].
 
 [^RelevanceOtherNames]: Relevance is also known as *importance* or *reliability*. Beware that these words are also used to described other types of weights, so it's important to check definitions. And sometimes weighting log-likelihood is assumed to be such an obvious concept that it is not given a special name at all.
 
-[^RelevanceProperties]: For consistency, a relevance should also be 
+[^RelevanceProperties]: To ensure sensible behaviour, a relevance should also be 
 
-    - 100% self-relevant, i.e. $r_{aa}=1$, and
-    - symmetric, i.e. $r_{ab}= r_{ba}$,
+    - 100% self-relevant, i.e. $r_a^a=1$,
+    - symmetric, i.e. $r_a^b= r_b^a$, and
+    - consistent, i.e. $r_a^c \ge r_a^b \cdot r_b^c$,
+
+    where $a=(i,t)$, $b=(j,u)$ and $c=(k,v)$.
     
-    where I've written $a$ for $it$ and $b$ for $ju$.
+    Or, equivalently, we require that $-\log r_a^b$ be a [metric](https://en.wikipedia.org/wiki/Metric_space#Definition).
 
 I don't think this is contentious -- relevance is not uncommon in modern statistical sampling. And I suspect that you didn't bat an eyelid when I mentioned above that the CMI under-weighted COVID-19 affected data in its Mortality Projections Model, and yet those weights are nothing more than relevances.
 
@@ -162,16 +165,12 @@ I suggest that the equivalent in the context of DB pension plan mortality modell
 
 For avoidance of doubt, I am *not* claiming that this excludes either the adoption of more complex models (commensurate with the amount of experience data) or a role for expert judgement -- both are essential parts of the mortality modelling toolkit. But if the framework you're using does not *default to* giving a reasonable estimate of mortality for *valuing liabilities* in the simplest scenario then I think you have some questions to answer.
 
-/// admonition | Next article: *Good things come to those who weight (II)*
-    type: tip
-<!--
 /// admonition | Next article: [*Good things come to those who weight (II)*](/2025-10/mortality-good-things-come-to-those-who-weight-ii/)
     type: tip
--->
 
-In part II, <!-- [part II](/2025-10/mortality-good-things-come-to-those-who-weight-ii/), --> I'll set out some maths to make the above more concrete.
+In [part&#xA0;II](/2025-10/mortality-good-things-come-to-those-who-weight-ii/) I'll set out some maths to make the above more concrete.
 
-And then in part III, <!-- [part III](/2025-10/mortality-good-things-come-to-those-who-weight-iii/), --> the final article in this series, I'll address its practical application.
+And then in [part&#xA0;III](/2025-11/mortality-good-things-come-to-those-who-weight-iii/), the final article in this series, I'll address its practical application.
 
 ///
 

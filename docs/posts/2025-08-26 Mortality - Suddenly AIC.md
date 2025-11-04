@@ -175,7 +175,7 @@ where $\hat\beta$ is the maximum likelihood estimator of the covariate weights, 
 
 (This is *before* allowing for overdispersion.)
 
-Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance).
+Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance). For the version of this insight that *does* take account of relevance, see [Insight&#xA0;17](/2025-11/mortality-good-things-come-to-those-who-weight-iii/#Insight17).
 
 [[All mortality insights](/collated-mortality-insights#Insight9)]
 ///
@@ -188,7 +188,7 @@ $$L_\text{P}= L(\hat\beta)-\text{tr}\big(\mathbf{J}\mathbf{I}^{-1}\big)$$
 
 where $\hat\beta$ is the maximum likelihood estimator of the covariate weights, $X$ is the vector of covariates, $L$ is the log-likelihood, $w\ge0$ is the log-likelihood weight, $\mathbf{I}=\text{E}wXX^\text{T}$ and $\mathbf{J}=\text{E}w^2XX^\text{T}$.
 
-Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance).
+Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance). For the version of this insight that *does* take account of relevance, see [Insight&#xA0;17](/2025-11/mortality-good-things-come-to-those-who-weight-iii/#Insight17).
 
 [[All mortality insights](/collated-mortality-insights#Insight10)]
 ///
