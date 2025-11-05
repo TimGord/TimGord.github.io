@@ -30,7 +30,7 @@ categories:
 
 This article is almost all maths.
 
-If that's not your thing then I suggest that you skip ahead to [part&#xA0;III](/2025-11/mortality-good-things-come-to-those-who-weight-iii).
+If that's not your thing then I suggest that you skip ahead to [Part&#xA0;III](/2025-11/mortality-good-things-come-to-those-who-weight-iii).
 
 ///
 
@@ -136,7 +136,7 @@ $$
 
 > :pushpin: $v'_b$ is written without an argument because, by assumption, it is approximately constant.
 
-So a single overall estimate $\hat\beta$ that complies with equation $(20)$ will provide (approximately) the same overall value as the complex approach embodied in equation $(19)$.
+This means that a single overall estimate $\hat\beta$ that complies with equation $(20)$ will provide (approximately) the same overall value as the complex approach embodied in equation $(19)$.
 
 As it stands, equation $(20)$ still requires that we calculate parameters $\hat\beta_b$ separately per individual. Is there a way to sidestep this?
 
@@ -215,9 +215,9 @@ For further definitions, see [article body](/2025-10/mortality-good-things-come-
 ///
 
 I suggest that the above means is that, in a *DB pensioner* context, *if we already
-have a reasonable default mortality* (so that we can calculate $I$ and $v'$) then we can define *in advance* a weight such that maximising weighted log-likelihood results in the correct overall parameter *for assessing liability value* for a single parameter model.
+have a reasonable default mortality* (so that we can calculate $I$ and $v'$ *in advance*) then we can define a weight such that maximising weighted log-likelihood results in the correct overall parameter *for assessing liability value* for a single parameter model.
 
-I'll expand on this in part&#xA0;III (to come).
+I'll expand on this in [P&#xA0;III](/2025-11/mortality-good-things-come-to-those-who-weight-iii#Insight19).
 
 ## Parameter uncertainty
 
@@ -278,6 +278,6 @@ Let's take stock: if our underlying mortality model has a single scalar paramete
 There remain questions of practicality and generalisability.
 
 I'll conclude this series by addressing those questions in
-[part&#xA0;III](/2025-11/mortality-good-things-come-to-those-who-weight-iii/).
+Part&#xA0;III](/2025-11/mortality-good-things-come-to-those-who-weight-iii/).
 
 ///

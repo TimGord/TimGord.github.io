@@ -158,7 +158,7 @@ This is self-evidently the best estimate for liability value and its uncertainty
 
 ## Application
 
-In [part&#xA0;II](/2025-10/mortality-good-things-come-to-those-who-weight-ii), we showed that if
+In [Part&#xA0;II](/2025-10/mortality-good-things-come-to-those-who-weight-ii), we showed that if
 
 - a mortality model has a single scalar parameter, and
 - we are provided with a [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance) of the log-likelihood of the E2R for individual $i$ at time $t$ to individual $j$ in the valuation data as at the valuation date $t_0$,
@@ -230,9 +230,9 @@ The infinite data fallacy is that there *will* always be sufficient experience d
 
 I've used the future tense because the assumption is usually made in the context of a hypothetical future case, as opposed to a common concrete dataset that we can all examine.
 
-*The* classic example is assuming that there *will* be sufficient experience data to determine dependence of mortality on pension amount. (One of the [many](/2025-10/mortality-incoherent-rating-factors#Insight13) reasons why 'Just include pension as a covariate' is a red light.)
+The classic example is assuming that there *will* be sufficient experience data to determine dependence of mortality on pension amount. (One of the [many](/2025-10/mortality-incoherent-rating-factors#Insight13) reasons why 'Just include pension as a covariate' is a red light.)
 
-The important point is that in the presence of infinite data *we cannot distinguish between different methods, because they will all work* (including weighting by 'anything I feel like').
+The point is that in the presence of infinite data *we cannot distinguish between different methods, because they will all work* (including weighting by 'anything I feel like').
 
 ///
 

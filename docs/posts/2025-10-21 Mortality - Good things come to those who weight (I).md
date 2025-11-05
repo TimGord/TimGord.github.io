@@ -168,9 +168,9 @@ For avoidance of doubt, I am *not* claiming that this excludes either the adopti
 /// admonition | Next article: [*Good things come to those who weight (II)*](/2025-10/mortality-good-things-come-to-those-who-weight-ii/)
     type: tip
 
-In [part&#xA0;II](/2025-10/mortality-good-things-come-to-those-who-weight-ii/) I'll set out some maths to make the above more concrete.
+In [Part&#xA0;II](/2025-10/mortality-good-things-come-to-those-who-weight-ii/) I'll set out some maths to make the above more concrete.
 
-And then in [part&#xA0;III](/2025-11/mortality-good-things-come-to-those-who-weight-iii/), the final article in this series, I'll address its practical application.
+And then in [Part&#xA0;III](/2025-11/mortality-good-things-come-to-those-who-weight-iii/), the final article in this series, I'll address its practical application.
 
 ///
 
