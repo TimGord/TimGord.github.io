@@ -254,11 +254,11 @@ People reach for this throw away line frequently, but it's flawed.
 
 ### *2. Why not use a Bayesian approach instead?*
 
-Bayesian approaches are *prima facie* attractive, and maybe it can be made to work.
+Bayesian approaches are *prima facie* attractive, and maybe they can be made to work in this context too.
 
-But, whereas relevance is a standalone concept, the parameters of a prior model would depend on the particular mortality model (because it's a prior for those parameters), which I think makes it less intuitive than relevance.
+Whereas relevance is a standalone concept, the definition of a prior depends on the particular mortality model (because it's a prior for the parameters of a model), which I think makes using priors less flexible and less intuitive than relevance, and probably makes the maths more messy too.
 
-I've tried it and the maths was more messy, but if you can make it work then good luck (but note that if liability values don't figure in your approach then, whatever problem you think you've solved, it isn't pricing or valuation related).
+If you can get it to work then great (but note that if liability values don't figure in your approach then, whatever problem you think you've solved, it isn't pricing or valuation related).
 
 ### *3. Weight by pension amount*
 
