@@ -56,11 +56,13 @@ The notion that *relevance typically decreases as time elapses* is uncontentious
 
 - Smoothly varying relevance by time is not usually a built in feature. Instead it is usually left as an *ad hoc* practitioner decision, and typically implemented on an all-or-nothing basis.
 
-The simplest time-based relevance measure is
+An example of a time-based relevance[^RelevanceConstruction] is
 
 $$r_s^t=\exp\!\big(\!-\phi\,\big|t-s\big|\big)$$
 
 where $s$ and $t$ are dates (measured in years) and $\phi>0$.
+
+[^RelevanceConstruction]: If $d(a,b)$ is a [metric](https://en.wikipedia.org/wiki/Metric_space#Definition) then $r_a^b= \exp\{-d(a,b)\}$ is a relevance. And the simplest metric is $\big|b-a\big|$.
 
 It is a special case if relevance is purely time-based, i.e. no variation by individual, *because we can shortcut all the above simply by scaling the data by relevance* and proceeding with the lives-weighted approach. While, yes, this is a relevance-based approach, the maths is so trivial that it is usually treated as obvious and goes unremarked[^CmiModelRelevance].
 
@@ -76,12 +78,12 @@ Allowing for time-based relevance, e.g. using
 
 $$r_s^t=\exp\!\big(\!-\phi\,\big|t-s\big|\big)$$
 
-where $s$ and $t$ are dates (measured in years) and $\phi>0$, is to be preferred in all contexts because
+where $s$ and $t$ are dates (measured in years) and $\phi>0$, is to be preferred in *all mortality modelling contexts* because
 
 - it automatically allows for the decay in relevance as time elapses, and
 - compared with fixed windows, leaves models less sensitive to the falling away of more historical data.
 
-If relevance is purely time-based then this can be accomplished simply by scaling the data.
+If relevance is purely time-based then this can be accomplished simply by scaling the experience data.
 
 [[All mortality insights](/collated-mortality-insights#Insight17)]
 
@@ -105,12 +107,16 @@ If you have a lot of experience data, then you will likely end up sub-dividing y
 
 But if you don't have a lot of data (or if you calibrate any covariates across all lives) then *not taking account of relevance will have an impact*. A particularly fertile area is processes that handle lots of cases each of which has relatively small amounts of experience data.
 
-Given that the underlying variables feeding into data relevance need to be generally available, simple and robust, the obvious candidate for individual relevance is log-pension, for example
+Given that the underlying variables feeding into data relevance need to be generally available, simple and robust, an obvious[^Dimensionless] candidate for individual relevance is log-pension, for example[^RelevanceConstruction]
 
-$$r_p^q
-=\exp\!\big(\!-\psi\,\big|\log q-\log p\big|\big)
-= \min\!\big(p/q,q/p\big)^\psi
-$$
+[^Dimensionless]: Obvious because (a)&#xA0;results should be independent of units, (b)&#xA0;ratios are the simplest dimensionless means of comparison and (c)&#xA0;measuring distance requires taking differences. Hence use logarithms.
+
+$$\begin{aligned}
+r_p^q
+&=\exp\!\big(\!-\psi\,\big|\log q-\log p\big|\big)
+\\[1em]
+&= \min\!\big(p/q,q/p\big)^\psi
+\end{aligned}$$
 
 where $p$ and $q$ are pension amounts (revalued to the same date for consistency) and $\psi>0$.
 
@@ -157,13 +163,26 @@ In [part&#xA0;II](/2025-10/mortality-good-things-come-to-those-who-weight-ii), w
 - a mortality model has a single scalar parameter, and
 - we are provided with a [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance) of the log-likelihood of the E2R for individual $i$ at time $t$ to individual $j$ in the valuation data as at the valuation date $t_0$,
 
+/// admonition | It's not amounts-weighted A/E vs lives-weighted modelling
+    type: tip
+    attrs: {class: "inline end"}
+
+One reason the 'lives-weighted is the only valid approach' view has propagated is because some actuaries think the only combinations of options are
+
+- amounts-weighted A/E, and
+- sophisticated lives-weighted modelling
+
+when actually the choices of weight and modelling approach are orthogonal.
+
+///
+
 then we can define a weight such that maximising the *weighted* log-likelihood *automatically* results in the best estimate of the present value of liabilities when using that single parameter mortality model.
 
 I suggest that it is best practice to use an approach that
 
 - takes explicit account of liability impact (given that assessing liabilities is our objective), and
 
-- in particular, defaults to sensible (i.e. accurate liability valuation) results regardless of the quantum of experience data available (which is *not* the case for lives-weighted statistics).
+- in particular, defaults to unbiased liability valuation results *regardless of the quantum of experience data available* (which is *not* automatically the case for lives-weighted statistics).
 
 Using a weighted log-likelihood as derived to fit DB pensioner base mortality models meets these criteria and -- as demonstrated by the previous articles in this series -- leaves standard modelling machinery unchanged.
 
@@ -225,9 +244,9 @@ The important point is that in the presence of infinite data *we cannot distingu
 
 People reach for this throw away line frequently, but it's flawed.
 
-- It doesn't specify a model to be fitted or a concrete approach. Yes, sensible approaches to allow for pension as a covariate can be constructed but they *all* contain prior assumptions and/or require data.
+- It doesn't specify a model to be fitted or a concrete approach. Yes, sensible approaches to allow for pension as a covariate can be constructed but they have to work very hard to avoid bias in the absence of credible experience data.
 
-- And that leads on to the second point, which I call the 'infinite data fallacy' -- see box out. The statement implicitly assumes either (a)&#xA0;there is sufficient experience data to capture the impact of pension as a covariate or (b)&#xA0;if there isn't then it doesn't matter. But it most certainly *does* matter: the mortality (*μ*) rates for the CMI's standard male pensioner base tables at age 75 are over 20%(!) higher for lives-weighted vs amounts-weighted. I'd like an approach that works in all cases.
+- And that leads on to the second point, which I call the 'infinite data fallacy' -- see box out. The throw away line implicitly assumes either (a)&#xA0;there is sufficient experience data to capture the impact of pension as a covariate or (b)&#xA0;if there isn't then it doesn't matter. But it most certainly *does* matter: the mortality (*μ*) rates for the CMI's standard male pensioner base tables at age 75 are over 20%(!) higher for lives-weighted vs amounts-weighted. I'd like an approach that works in all cases please.
 
 - Allowing for 'pension as a covariate' doesn't help with other independent covariates -- you'll still end up fitting these on a lives-weighted basis.
 
@@ -235,21 +254,17 @@ People reach for this throw away line frequently, but it's flawed.
 
 ### *2. Why not use a Bayesian approach instead?*
 
-Bayesian approaches are *prima facie* attractive, and I expect it could be made to work.
+Bayesian approaches are *prima facie* attractive, and maybe it can be made to work.
 
 But, whereas relevance is a standalone concept, the parameters of a prior model would depend on the particular mortality model (because it's a prior for those parameters), which I think makes it less intuitive than relevance.
 
-I've tried it and the maths was more messy, but if you can make it work then good luck.
+I've tried it and the maths was more messy, but if you can make it work then good luck (but note that if liability values don't figure in your approach then, whatever problem you think you've solved, it isn't pricing or valuation related).
 
 ### *3. Weight by pension amount*
 
 In real life your systems may not be able to accommodate relevance, in which case I suggest just *weight your analysis by pension amount*[^SystemsAndWeights].
 
 [^SystemsAndWeights]: A lot of systems can't weight by anything.
-
-For avoidance of doubt, I am *not* suggesting replacing sophisticated models with amounts-weighted A/E[^AEConfusion]. I *am* suggesting using the same modelling framework but with relevance-based weights.
-
-[^AEConfusion]: I think one of the reasons for propagation of the 'lives-weighted is the only valid approach' view is because actuaries think the only combination of options are (a)&#xA0;amounts-weighted A/E and (b)&#xA0;sophisticated lives-weighted modelling when actually the choice of weight and modelling approach are orthogonal.
 
 People (including me) sometimes worry about abnormally large pensions distorting the results but this hasn't been a problem in practice:
 
@@ -262,7 +277,9 @@ If it's a choice between lives and amounts-weighted then, while [both are 'wrong
     type: insight
     attrs: {id: "Insight19"}
 
-For DB pensioner mortality analysis, prefer log-likelihood weighted by pension amount to lives-weighted.
+For DB pensioner mortality analysis, prefer statistics weighted by pension amount over lives-weighted.
+
+When there is a lot of experience data it won't matter; when there is only a little it will mitigate biased liability value estimates.
 
 [[All mortality insights](/collated-mortality-insights#Insight19)]
 

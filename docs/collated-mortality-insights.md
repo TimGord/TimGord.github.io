@@ -291,12 +291,12 @@ Allowing for time-based relevance, e.g. using
 
 $$r_s^t=\exp\!\big(\!-\phi\,\big|t-s\big|\big)$$
 
-where $s$ and $t$ are dates (measured in years) and $\phi>0$, is to be preferred in all contexts because
+where $s$ and $t$ are dates (measured in years) and $\phi>0$, is to be preferred in *all mortality modelling contexts* because
 
 - it automatically allows for the decay in relevance as time elapses, and
 - compared with fixed windows, leaves models less sensitive to the falling away of more historical data.
 
-If relevance is purely time-based then this can be accomplished simply by scaling the data.
+If relevance is purely time-based then this can be accomplished simply by scaling the experience data.
 
 [[Original article](/2025-11/mortality-good-things-come-to-those-who-weight-iii#Insight17)]
 
@@ -337,7 +337,9 @@ The following Insights need to be restated to accommodate relevance:
     type: insight
     attrs: {id: "Insight19"}
 
-For DB pensioner mortality analysis, prefer log-likelihood weighted by pension amount to lives-weighted.
+For DB pensioner mortality analysis, prefer statistics weighted by pension amount over lives-weighted.
+
+When there is a lot of experience data it won't matter; when there is only a little it will mitigate biased liability value estimates.
 
 [[Original article](/2025-11/mortality-good-things-come-to-those-who-weight-iii#Insight19)]
 
