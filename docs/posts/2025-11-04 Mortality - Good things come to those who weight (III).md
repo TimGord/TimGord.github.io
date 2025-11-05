@@ -68,7 +68,7 @@ It is a special case if relevance is purely time-based, i.e. no variation by ind
 
 [^CmiModelRelevance]: For instance, this is how the CMI adjusted its Mortality Projections Model to cope with COVID-affected mortality experience. I note that the debate then was essentially over *the degree of relevance*, not whether adjusting for relevance was wrong.
 
-This is applicable beyond base mortality -- I'd recommend using time-based relevance for calibration of *all* mortality projection and stochastic mortality models (including the CMI Mortality Projections Mode).
+This is applicable beyond base mortality -- I'd recommend using time-based relevance for calibration of *all* mortality projection and stochastic mortality models (including the CMI Mortality Projections Model).
 
 /// admonition | Insight 17. Always allow for time-based relevance
     type: insight
