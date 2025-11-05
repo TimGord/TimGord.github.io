@@ -62,7 +62,7 @@ $$r_s^t=\exp\!\big(\!-\phi\,\big|t-s\big|\big)$$
 
 where $s$ and $t$ are dates (measured in years) and $\phi>0$.
 
-[^RelevanceConstruction]: If $d(a,b)$ is a [metric](https://en.wikipedia.org/wiki/Metric_space#Definition) then $r_a^b= \exp\{-d(a,b)\}$ is a relevance. And the simplest metric is $\big|b-a\big|$.
+[^RelevanceConstruction]: If $d(a,b)$ is a [metric](https://en.wikipedia.org/wiki/Metric_space#Definition) then $r_a^b= \exp\{-d(a,b)\}$ is a [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance). And the simplest metric is $\big|b-a\big|$.
 
 It is a special case if relevance is purely time-based, i.e. no variation by individual, *because we can shortcut all the above simply by scaling the data by relevance* and proceeding with the lives-weighted approach. While, yes, this is a relevance-based approach, the maths is so trivial that it is usually treated as obvious and goes unremarked[^CmiModelRelevance].
 
@@ -124,7 +124,7 @@ where $p$ and $q$ are pension amounts (revalued to the same date for consistency
 
 In order to help us intuit what's going on, we can ask what happens if relevance is always 0 or 1? In this case, relevance *partitions*[^RelevancePartition] the experience data and valuation data into a finite number of groups labelled $G$[^PartitionLabel], within each of which all experience is 100% relevant to all valuation individuals. 
 
-[^RelevancePartition]: This follows from the properties of relevance, i.e.
+[^RelevancePartition]: This follows from the properties of [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance), i.e.
 
     - 100% self-relevance, i.e. $r_{it}^{it}=1$,
     - symmetry, i.e. $r_{it}^{ju}= r_{ju}^{it}$, and
@@ -164,13 +164,13 @@ In [Part&#xA0;II](/2025-10/mortality-good-things-come-to-those-who-weight-ii), w
 - we are provided with a [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance) of the log-likelihood of the E2R for individual $i$ at time $t$ to individual $j$ in the valuation data as at the valuation date $t_0$,
 
 /// admonition | It's not amounts-weighted A/E vs lives-weighted modelling
-    type: tip
+    type: info
     attrs: {class: "inline end"}
 
 One reason the 'lives-weighted is the only valid approach' view has propagated is because some actuaries think the only combinations of options are
 
-- amounts-weighted A/E, and
-- sophisticated lives-weighted modelling
+- amounts-weighted A/E, or
+- sophisticated lives-weighted modelling,
 
 when actually the choices of weight and modelling approach are orthogonal.
 
@@ -293,7 +293,7 @@ If you believe
 
 - *relevance of mortality experience varies by pension amount*, and
 
-- *the variation in pension plan mortality can be parametrised in one dimension as heavy vs light mortality*,
+- *the variation in pension plan mortality can be parametrised primarily in one dimension as heavy vs light mortality*,
 
 then I think you should be using weighted log-likelihood when assessing base mortality for DB pensioners.
 

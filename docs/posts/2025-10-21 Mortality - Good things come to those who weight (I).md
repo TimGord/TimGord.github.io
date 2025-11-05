@@ -103,19 +103,26 @@ What's worthy of note is how very fuzzy, uncertain and judgement-based the inclu
 
 What happens if instead we try to incorporate relevance into the modelling itself? The fuzziness is not going to go away; all we're doing is moving fuzziness already present in the real world to inside our modelling. But this approach may provide us with insights, so let's give it a go.
 
-First, we need to define it: a **relevance**[^RelevanceOtherNames] $r_{it}^{jt_0} \in [0,1]$ is the multiplicative factor to apply to the log-likelihood of the experience data for individual $i$ at time $t$ to assess liabilities for individual $j$ as at the valuation date $t_0$[^RelevanceProperties].
+
+/// admonition | Relevance properties
+    type: info
+    attrs: {class: "inline end"}
+
+To ensure sensible behaviour, a relevance $r_a^b \in [0,1]$ should be 
+
+- 100% self-relevant: $r_a^a=1$
+- symmetric: $r_a^b= r_b^a$, and
+- consistent: $r_a^c \ge r_a^b \cdot r_b^c$,
+
+where $a=it$, $b=ju$ and $c=kv$.
+
+Or, equivalently, $-\log r_a^b$ should be a [metric](https://en.wikipedia.org/wiki/Metric_space#Definition).
+
+///
+
+First, we need to define it: a **relevance**[^RelevanceOtherNames] $r_{it}^{jt_0} \in [0,1]$ is the multiplicative factor to apply to the log-likelihood of the experience data for individual $i$ at time $t$ to assess liabilities for individual $j$ as at the valuation date $t_0$.
 
 [^RelevanceOtherNames]: Relevance is also known as *importance* or *reliability*. Beware that these words are also used to described other types of weights, so it's important to check definitions. And sometimes weighting log-likelihood is assumed to be such an obvious concept that it is not given a special name at all.
-
-[^RelevanceProperties]: To ensure sensible behaviour, a relevance should also be 
-
-    - 100% self-relevant, i.e. $r_a^a=1$,
-    - symmetric, i.e. $r_a^b= r_b^a$, and
-    - consistent, i.e. $r_a^c \ge r_a^b \cdot r_b^c$,
-
-    where $a=(i,t)$, $b=(j,u)$ and $c=(k,v)$.
-    
-    Or, equivalently, we require that $-\log r_a^b$ be a [metric](https://en.wikipedia.org/wiki/Metric_space#Definition).
 
 I don't think this is contentious -- relevance is not uncommon in modern statistical sampling. And I suspect that you didn't bat an eyelid when I mentioned above that the CMI under-weighted COVID-19 affected data in its Mortality Projections Model, and yet those weights are nothing more than relevances.
 
