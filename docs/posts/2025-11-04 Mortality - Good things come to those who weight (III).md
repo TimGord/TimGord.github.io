@@ -271,7 +271,12 @@ People (including me) sometimes worry about abnormally large pensions distorting
 - The variance will capture concentration.
 - UK DB pensions have been capped by regulation for such a long time now that extremely large pensions no longer exist.
 
-If it's a choice between lives and amounts-weighted then, while [both are 'wrong'](https://hermiene.net/essays-trans/relativity_of_wrong.html), the amounts-weighted is safer if your objective is to value liabilities.
+It boils down to how you want to distribute your errors:
+
+![Average liability for lives vs amounts](Lives-vs-amounts-light.png#only-light)
+![Average liability for lives vs amounts](Lives-vs-amounts-dark.png#only-dark)
+
+If it's a choice between lives and amounts-weighted then, while [both are 'wrong'](https://hermiene.net/essays-trans/relativity_of_wrong.html), the amounts-weighted is safer in a DB pensions context if your objective is to value liabilities.
 
 /// admonition | Insight 19. Prefer amounts-weighted to lives-weighted log-likelihood
     type: insight
