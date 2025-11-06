@@ -103,9 +103,9 @@ I suggest that
 
 If you have a lot of experience data, then you will likely end up sub-dividing your model by pension band (or equivalent), in which this probably[^LivesCriterion] doesn't matter.
 
-[^LivesCriterion]: Model *selection* (e.g. using the [AIC](/2025-08/mortality-suddenly-aic/#Def-Var-LP)) will still be affected because it would be determined by lives affected, not liability impact, although I suspect that the impact in most cases is second order.
+[^LivesCriterion]: Model *selection* (e.g. using the [AIC](/2025-08/mortality-suddenly-aic/#Def-Var-LP)) will still be affected because it would be determined by lives affected, not liability impact, although I suspect that the difference in most cases is second order.
 
-But if you don't have a lot of data (or if you calibrate any covariates across all lives) then *not taking account of relevance will have an impact*. A particularly fertile area is processes that handle lots of cases each of which has relatively small amounts of experience data.
+But if you don't have a lot of data (or if you calibrate any covariates across all lives) then *not taking account of relevance will likely matter*. A particularly fertile area is processes that handle lots of cases each of which has relatively small amounts of experience data.
 
 Given that the underlying variables feeding into data relevance need to be generally available, simple and robust, an obvious[^Dimensionless] candidate for individual relevance is log-pension, for example[^RelevanceConstruction]
 
