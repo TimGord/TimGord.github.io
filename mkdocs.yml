@@ -40,16 +40,7 @@ theme:
 
   palette:
 
-    # Palette toggle for light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: custom
-      accent: orange
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-
-    # Palette toggle for automatic mode
+    # Automatic (system preference) mode -- toggle switches to light
     - media: "(prefers-color-scheme)"
       scheme: default
       primary: custom
@@ -58,14 +49,23 @@ theme:
         icon: material/brightness-auto
         name: Switch to light mode
 
-    # Palette toggle for dark mode
+    # Light mode -- toggle switches to dark
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Dark mode -- toggle switches to system preference
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: custom
       accent: orange
       toggle:
         icon: material/brightness-4
-        name: Switch to automatic mode
+        name: Switch to system preference
 
   features:
     - content.code.copy # Copy code blocks
