@@ -1,0 +1,1147 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Thoughts on mortality analysis, longevity forecasting, coding and presentation">
+      
+      
+        <meta name="author" content="Tim Gordon">
+      
+      
+        <link rel="canonical" href="https://timgord.com/2025-08/mortality-suddenly-aic/">
+      
+      
+        <link rel="prev" href="../mortality-proportional-hazards/">
+      
+      
+        <link rel="next" href="../../2025-09/mortality-overdispersion-and-quasi-log-likelihood/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>Mortality: Suddenly AIC - Tim Gordon’s blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/github-permalink-style.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Mortality: Suddenly AIC - Tim Gordon’s blog" />
+<meta property="og:description" content="Thoughts on mortality analysis, longevity forecasting, coding and presentation" />
+<meta property="og:image" content="https://timgord.com/assets/images/social/2025-08/mortality-suddenly-aic.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://timgord.com/2025-08/mortality-suddenly-aic/" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="Mortality: Suddenly AIC - Tim Gordon’s blog" />
+<meta property="twitter:description" content="Thoughts on mortality analysis, longevity forecasting, coding and presentation" />
+<meta property="twitter:image" content="https://timgord.com/assets/images/social/2025-08/mortality-suddenly-aic.png" />
+</head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mortality-suddenly-aic" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Tim Gordon’s blog" class="md-header__button md-logo" aria-label="Tim Gordon’s blog" data-md-component="logo">
+      
+  <img src="../../assets/TimGord-white-disc.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tim Gordon’s blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Mortality: Suddenly AIC
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tim Gordon’s blog" class="md-nav__button md-logo" aria-label="Tim Gordon’s blog" data-md-component="logo">
+      
+  <img src="../../assets/TimGord-white-disc.svg" alt="logo">
+
+    </a>
+    Tim Gordon’s blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recommended reading
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Recommended reading
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mortality-measures-matter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mortality: Measures matter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../collated-mortality-insights/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Collated mortality insights
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2024-01/lisnoti-a-proportional-font-that-works-for-coding-too/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lisnoti – a proportional font that works for coding too
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about-me/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About me
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reprint-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reprint policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topic/coding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topic/maths--stats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maths &amp; stats
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topic/mortality--longevity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mortality &amp; longevity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topic/presentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Page contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Page contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#akaikes-big-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Akaike&rsquo;s big idea
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#penalised-log-likelihood" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Penalised log-likelihood
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-pay-off" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The pay off
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#just-weight-a-moment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Just weight a moment
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../.." class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <img src="https://timgord.com/assets/favicon.svg" alt="Tim Gordon">
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          Tim Gordon
+                        
+                      </strong>
+                      <br>
+                      Longevity modelling and pricing actuary
+                    </span>
+                  </div>
+                
+              </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2025-08-26 00:00:00+00:00" class="md-ellipsis">2025-08-26</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../../topic/maths--stats/">Maths &amp; stats</a>, 
+                              <a href="../../topic/mortality--longevity/">Mortality &amp; longevity</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              7 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+
+
+
+
+<h1 id="mortality-suddenly-aic">Mortality: Suddenly AIC<a class="headerlink" href="#mortality-suddenly-aic" title="Permanent link"></a></h1>
+<p>In this article, I&rsquo;m going to look at choosing between mortality models using Hirotugu Akaike&rsquo;s information criterion, the AIC.</p>
+<p>I&rsquo;m going to run through &ndash; at a very high level &ndash; the rationale behind the AIC and its construction because</p>
+<ul>
+<li>the standard result looks so trivial that people sometimes assumes it&rsquo;s an arbitrary convention, and</li>
+<li>I&rsquo;m going to generalise it (a little).</li>
+</ul>
+<!-- more -->
+<div class="admonition abstract inline end">
+<p class="admonition-title">Articles in this series</p>
+<ol>
+<li><a href="/2025-08/mortality-measures-matter/">Measures matter</a></li>
+<li><a href="/2025-08/mortality-a-over-e/">A over E</a></li>
+<li><a href="/2025-08/mortality-log-likelihood/">Log-likelihood</a></li>
+<li><a href="/2025-08/mortality-proportional-hazards/">Proportional hazards</a></li>
+<li><a href="/2025-08/mortality-suddenly-aic/">Suddenly AIC</a></li>
+<li><a href="/2025-09/mortality-overdispersion-and-quasi-log-likelihood/">Overdispersion and quasi-log-likelihood</a></li>
+<li><a href="/2025-10/mortality-incoherent-rating-factors/">Incoherent rating factors</a></li>
+<li><a href="/2025-10/mortality-pensioner-mortality-variation/">Pensioner mortality variation</a></li>
+<li><a href="/2025-10/mortality-good-things-come-to-those-who-weight-i/">Good things come to those who weight: Part&#xA0;I</a>, <a href="/2025-10/mortality-good-things-come-to-those-who-weight-ii/">Part&#xA0;II</a> and <a href="/2025-11/mortality-good-things-come-to-those-who-weight-iii/">Part&#xA0;III</a></li>
+</ol>
+</div>
+<p>I <a href="/2025-08/mortality-log-likelihood/#Ref-log">previously wrote</a> that it&rsquo;s a shame that the &lsquo;log&rsquo; in &lsquo;log-likelihood&rsquo; is not always recognised as being much more fundamental than a mere technical convenience or device for avoiding numerical under/overflow. The AIC is a case in point &ndash; indeed Akaike himself wrote that &lsquo;the log-likelihood is essentially a more natural quantity than the simple likelihood&rsquo;<sup id="fnref:Akaike"><a class="footnote-ref" href="#fn:Akaike">2</a></sup>.</p>
+<h2 id="akaikes-big-idea">Akaike&rsquo;s big idea<a class="headerlink" href="#akaikes-big-idea" title="Permanent link"></a></h2>
+<p>Selecting parameters by maximising the log-likelihood is an effective tool for calibrating a single model. But we can&rsquo;t choose between different models by comparing maximum likelihoods because models with more parameters can achieve a better fit to the data and so the comparison is not fair.</p>
+<div class="admonition info inline end">
+<p class="admonition-title">Further reading</p>
+<p>Kenneth Burnham and David Anderson&rsquo;s <a href="https://doi.org/10.1007/b97636">book on model selection</a><sup id="fnref2:BurnhamAnderson"><a class="footnote-ref" href="#fn:BurnhamAnderson">1</a></sup> is in my view the best reference on <em>practical application</em> of the AIC. Also see (both online) <a href="http://www.sortie-nd.org/lme/Statistical%20Papers/Burnham_and_Anderson_2004_Multimodel_Inference.pdf">AIC vs BIC</a> and <a href="https://sites.warnercnr.colostate.edu/kenburnham/wp-content/uploads/sites/25/2016/08/AIC-Myths-and-Misunderstandings.pdf">AIC myths and misunderstandings</a>.</p>
+<p>Rob Hyndman provides an excellent overview of <a href="https://robjhyndman.com/hyndsight/aic/">facts and fallacies of the AIC</a>.</p>
+</div>
+<p>Akaike&rsquo;s<sup id="fnref2:Akaike"><a class="footnote-ref" href="#fn:Akaike">2</a></sup> insight was</p>
+<ul>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence"><em>relative entropy</em></a> (also known as the <em>Kullback-Leibler divergence</em>) can be used to compare different models,</p>
+</li>
+<li>
+<p><em>maximum likelihood is a biased estimate</em> of the variation in relative entropy compared with reality<sup id="fnref:TrueModel"><a class="footnote-ref" href="#fn:TrueModel">3</a></sup>,</p>
+</li>
+<li>
+<p>provided a model is reasonably good, <em>we can adjust for that bias with a simple penalty</em>, and</p>
+</li>
+<li>
+<p>the resulting <em>penalised maximum log-likelihood</em>, <span class="arithmatex">\(L_\text{P}\)</span>, can be used to compare models <em>regardless of the number of parameters they have</em>.</p>
+</li>
+</ul>
+<div class="admonition warning inline end">
+<p class="admonition-title">Too many twos</p>
+<p>The AIC is defined as −2 times <span class="arithmatex">\(L_\text{P}\)</span>, for consistency with regression.</p>
+<p>Unfortunately the −2 factor</p>
+<ul>
+<li>complicates the definition,</li>
+<li>obscures the AIC as an unbiased estimate of <a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence">relative entropy</a>, and</li>
+<li>leads to spurious additional factors of 2 or ½ in applications<sup id="fnref:SpuriousTwo"><a class="footnote-ref" href="#fn:SpuriousTwo">4</a></sup>.</li>
+</ul>
+<p>So I&rsquo;ll use the penalised log-likelihood, <span class="arithmatex">\(L_\text{P}\)</span>, itself i.e. <em>without the −2</em>.</p>
+</div>
+<h2 id="penalised-log-likelihood">Penalised log-likelihood<a class="headerlink" href="#penalised-log-likelihood" title="Permanent link"></a></h2>
+<p>Although I&rsquo;ll continue to refer to &lsquo;the AIC&rsquo;, I&rsquo;ll express it in terms of penalised log-likelihood, which is equivalent but cleaner (see box out).</p>
+<p>I&rsquo;m not going to justify or derive the AIC here &ndash; if you want further information then see Burnham &amp; Anderson<sup id="fnref:BurnhamAnderson"><a class="footnote-ref" href="#fn:BurnhamAnderson">1</a></sup> &ndash; but we will need a few key results.</p>
+<p>The penalised log-likelihood that falls out of the definition of <a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence">relative entropy</a> is</p>
+<pre class="arithmatex">\[L_\text{P} \mathrel{\hat=} \mathbb{E}_1\mathbb{E}_2\,L\tag{10}\]</pre>
+<p>where</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(\mathbb{E}\)</span> indicates expectation according to reality, which occurs once in the definition of relative entropy itself and a second time because we want our estimate to be unbiased, and</p>
+</li>
+<li>
+<p><span class="arithmatex">\(L\)</span> is log-likelihood (weighted by the <a href="/2025-08/mortality-measures-matter/#Def-variable">variable</a> <span class="arithmatex">\(w\ge0\)</span>), which we <a href="/2025-08/mortality-log-likelihood/#Def-log-likelihood">previously defined </a> using the <a href="/2025-08/mortality-measures-matter/#Def-AE-ops"><span class="arithmatex">\(\text{A}\)</span> and <span class="arithmatex">\(\text{E}\)</span> operators</a> as</p>
+<pre class="arithmatex">\[L=\text{A}w\log\mu-\text{E}w\tag{4}\]</pre>
+</li>
+</ul>
+<p>With some assumptions, we can estimate this as</p>
+<pre class="arithmatex">\[L_\text{P} = L(\hat\beta)-\operatorname{tr}\Big\{\mathbf{I} \, \text{Var}\big(\hat\beta\big)\Big\}\tag{11}\]</pre>
+<p>where <span class="arithmatex">\(\beta\)</span> parametrises the <a href="/2025-08/mortality-measures-matter/#Def-mortality">mortality model</a> under consideration, <span class="arithmatex">\(\hat\beta\)</span> maximises the log-likelihood, and all of the following are <span class="arithmatex">\(\dim(\beta)^2\)</span> square matrices:</p>
+<pre class="arithmatex">\[\begin{aligned}
+\text{Var}\big(\hat\beta\big)&amp;\approx\mathbf{I}^{-1}\mathbf{J}\mathbf{I}^{-1}
+\\[0.5em]
+\mathbf{I}&amp;=-L''(\hat\beta)
+\\[0.5em]
+\mathbf{J}&amp;\mathrel{\hat=}\mathbb{E}\,L'(\beta)L'(\beta)^\text{T}
+\end{aligned}\]</pre>
+<p>with <span class="arithmatex">\('\)</span> indicating <span class="arithmatex">\(\partial /\partial \beta\)</span> and <span class="arithmatex">\(^\text{T}\)</span> indicating transpose.</p>
+<h2 id="the-pay-off">The pay off<a class="headerlink" href="#the-pay-off" title="Permanent link"></a></h2>
+<p>The <span class="arithmatex">\(\mathbf{I}\)</span> matrix and its inverse cancel in equation <span class="arithmatex">\((11)\)</span>, resulting in</p>
+<pre class="arithmatex">\[L_\text{P}=L(\hat\beta)-\text{tr}(\mathbf{J}\mathbf{I}^{-1})\tag{12}\]</pre>
+<p>where <span class="arithmatex">\(\text{tr}\)</span> is the <a href="https://en.wikipedia.org/wiki/Trace_(linear_algebra)">trace operator</a>.</p>
+<p>The usual next step is to note that, in the lives-weighted case, i.e. <span class="arithmatex">\(w\in\{0,1\}\)</span>, <span class="arithmatex">\(\mathbf{I}\approx\mathbf{J}\)</span>, which results in the conventional form<sup id="fnref:MinusTwo"><a class="footnote-ref" href="#fn:MinusTwo">5</a></sup> of the AIC:</p>
+<pre class="arithmatex">\[L_\text{P}=L(\hat\beta)-\dim(\beta)\tag{lives-weighted only}\]</pre>
+<p>But we can still obtain a useful result <em>in the ad hoc weighted case</em> if we assume that our mortality model is <a href="/2025-08/mortality-proportional-hazards/#the-proportional-hazards-model">proportional hazards</a>, i.e.</p>
+<pre class="arithmatex">\[\mu(\beta) = \mu^\text{ref}\exp\Big(\beta^\text{T}X\Big)\tag{9}\]</pre>
+<p>From <a href="/2025-08/mortality-proportional-hazards/#Def-L-dash-dash">before</a>, we have</p>
+<pre class="arithmatex">\[\mathbf{I}=-L''(\hat\beta)=\text{E}wXX^\text{T}\]</pre>
+<p>and, using the expected and variance results from the <a href="/2025-08/mortality-a-over-e/">A over E article</a>, we have</p>
+<pre class="arithmatex">\[\begin{aligned}
+\mathbb{E}\,L'(\beta)L'(\beta)^\text{T}
+&amp;=\mathbb{E}\big(\text{A}wX-\text{E}wX\big)\big(\text{A}wX-\text{E}wX\big)^\text{T}
+\\[0.6em]
+&amp;\approx\text{E}w^2XX^\text{T}
+\end{aligned}\]</pre>
+<p>resulting in our estimator for <span class="arithmatex">\(\mathbb{E}\,L'(\beta)L'(\beta)^\text{T}\)</span> being</p>
+<pre class="arithmatex">\[\mathbf{J}=\text{E}w^2XX^\text{T}\tag{13}\]</pre>
+<p><span id="Def-Var-beta">and hence</span></p>
+<pre class="arithmatex">\[\text{Var}\big(\hat\beta\big)\mathrel{\hat=} \big(\text{E}wXX^\text{T}\big)^{-1}\big(\text{E}w^2XX^\text{T}\big)\big(\text{E}wXX^\text{T}\big)^{-1}\tag{14}\]</pre>
+<p><span id="Def-Var-LP">and</span></p>
+<pre class="arithmatex">\[L_\text{P}=L(\hat\beta)-\text{tr}\left(\frac{\text{E}w^2XX^\text{T}}{\text{E}wXX^\text{T}}\right)\tag{15}\]</pre>
+<div class="admonition insight" id="Insight9">
+<p class="admonition-title">Insight 9. An estimate of the variance of the fitted parameters for a proportional hazards mortality model is available in closed form for any <em>ad hoc</em> log-likelihood weight</p>
+<pre class="arithmatex">\[\text{Var}\big(\hat\beta\big)\mathrel{\hat=} \mathbf{I}^{-1}\mathbf{J}\mathbf{I}^{-1}\]</pre>
+<p>where <span class="arithmatex">\(\hat\beta\)</span> is the maximum likelihood estimator of the covariate weights, <span class="arithmatex">\(X\)</span> is the vector of covariates, <span class="arithmatex">\(w\ge0\)</span> is the log-likelihood weight, <span class="arithmatex">\(\mathbf{I}=\text{E}wXX^\text{T}\)</span> and <span class="arithmatex">\(\mathbf{J}=\text{E}w^2XX^\text{T}\)</span>.</p>
+<p>(This is <em>before</em> allowing for overdispersion.)</p>
+<p>Caveat: <span class="arithmatex">\(w\)</span> is an <em>ad hoc</em> reallocation of log-likelihood; it is <em>not</em> <a href="/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance">relevance</a>. For the version of this insight that <em>does</em> take account of relevance, see <a href="/2025-11/mortality-good-things-come-to-those-who-weight-iii/#Insight17">Insight&#xA0;17</a>.</p>
+<p>[<a href="/collated-mortality-insights#Insight9">All mortality insights</a>]</p>
+</div>
+<div class="admonition insight" id="Insight10">
+<p class="admonition-title">Insight 10. A penalised log-likelihood for a proportional hazards mortality model is available in closed form for any <em>ad hoc</em> log-likelihood weight</p>
+<pre class="arithmatex">\[L_\text{P}= L(\hat\beta)-\text{tr}\big(\mathbf{J}\mathbf{I}^{-1}\big)\]</pre>
+<p>where <span class="arithmatex">\(\hat\beta\)</span> is the maximum likelihood estimator of the covariate weights, <span class="arithmatex">\(X\)</span> is the vector of covariates, <span class="arithmatex">\(L\)</span> is the log-likelihood, <span class="arithmatex">\(w\ge0\)</span> is the log-likelihood weight, <span class="arithmatex">\(\mathbf{I}=\text{E}wXX^\text{T}\)</span> and <span class="arithmatex">\(\mathbf{J}=\text{E}w^2XX^\text{T}\)</span>.</p>
+<p>Caveat: <span class="arithmatex">\(w\)</span> is an <em>ad hoc</em> reallocation of log-likelihood; it is <em>not</em> <a href="/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance">relevance</a>. For the version of this insight that <em>does</em> take account of relevance, see <a href="/2025-11/mortality-good-things-come-to-those-who-weight-iii/#Insight17">Insight&#xA0;17</a>.</p>
+<p>[<a href="/collated-mortality-insights#Insight10">All mortality insights</a>]</p>
+</div>
+<h2 id="just-weight-a-moment">Just weight a moment<a class="headerlink" href="#just-weight-a-moment" title="Permanent link"></a></h2>
+<p><em>Provided we use a <a href="/2025-08/mortality-proportional-hazards/#the-proportional-hazards-model">proportional hazards</a> model</em>, we have formulas for penalised log-likelihood and the variance of <span class="arithmatex">\(\hat\beta\)</span> in the pragmatic <em>ad hoc</em> weighted case.</p>
+<p>In the lives-weighted case, <span class="arithmatex">\(w\in\{0,1\}\)</span>, then <span class="arithmatex">\(w^2=w\)</span> and hence equation <span class="arithmatex">\((15)\)</span> collapses to the lives-weighted version. Otherwise, weighting the experience data will increase concentration and so the estimated variance of <span class="arithmatex">\(\hat\beta\)</span> will typically be greater than the lives-weighted version. If that reflects the impact of <span class="arithmatex">\(\hat\beta\)</span> on the liabilities then this is intuitively reasonable.</p>
+<p>There are issues though:</p>
+<ul>
+<li>
+<p>The validity of equation <span class="arithmatex">\((13)\)</span> depends on the interpretation of the weight, <span class="arithmatex">\(w\)</span>. If it is lives-weighted, i.e. <span class="arithmatex">\(w\in\{0,1\}\)</span>, then everything is trivially ok. And if <span class="arithmatex">\(w\)</span> is an <em>ad hoc</em> reallocation of log-likelihood then this seems ok too, albeit in a pragmatic hand-wavy sense<sup id="fnref:HandWavy"><a class="footnote-ref" href="#fn:HandWavy">6</a></sup>. But equation <span class="arithmatex">\((13)\)</span> cannot be correct if <span class="arithmatex">\(w\)</span> is interpreted as, for instance, <a href="/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance">relevance</a> &ndash; if it were then, say, halving it should double <span class="arithmatex">\(\text{Var}\big(\hat\beta\big)\)</span>, but it doesn&rsquo;t. Hence the caveats.</p>
+</li>
+<li>
+<p>Being able to rank models by <span class="arithmatex">\(L_\text{P}\)</span> gets us only halfway because we also need to understand <em>whether differences in <span class="arithmatex">\(L_\text{P}\)</span> are significant</em>. In the lives-weighted and (after we&rsquo;ve corrected for the point above) the relevance-weighted cases, this is straightforward &ndash; a difference in the penalised log-likelihood of 1 is significant because it is equivalent to adding one more parameter. But, for an <em>ad hoc</em> weight, using the formula as presented here does not automatically provide a measure of significance and so we need another way in<sup id="fnref:TotalPenalityDividedByParameterCount"><a class="footnote-ref" href="#fn:TotalPenalityDividedByParameterCount">7</a></sup>.</p>
+</li>
+</ul>
+<p>On balance, I think equation <span class="arithmatex">\((15)\)</span> is a useful practical tool, but we can do better and put matters on a sounder footing. So I&rsquo;ll revisit weighting and relevance in a few articles&rsquo; time.</p>
+<div class="admonition tip">
+<p class="admonition-title">Next article: <a href="/2025-09/mortality-overdispersion-and-quasi-log-likelihood/"><em>Overdispersion and quasi-log-likelihood</em></a></p>
+<p>I used variance in the above <em>with allowing for overdispersion</em>. This is <a href="/2025-08/mortality-measures-matter/#Insight1"><em>always wrong in mortality analysis</em></a>, so let&rsquo;s tackle it in the <a href="/2025-09/mortality-overdispersion-and-quasi-log-likelihood/">next article</a>.</p>
+</div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:BurnhamAnderson">
+<p>Burnham, K. P.; Anderson, D. R. (2002), <em>Model Selection and Multimodel Inference: A practical information-theoretic approach</em> (2nd ed.), Springer-Verlag. doi:<a href="https://doi.org/10.1007/b97636">10.1007/b97636</a>, ISBN-13: 9780387953649.&#160;<a class="footnote-backref" href="#fnref:BurnhamAnderson" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:BurnhamAnderson" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:Akaike">
+<p>Akaike, H. (1973), &ldquo;Information theory and an extension of the maximum likelihood principle&rdquo;, in Petrov, B. N.; Csáki, F. (eds.), <em>2nd International Symposium on Information Theory, Tsahkadsor, Armenia, USSR, September 2-8, 1971</em>, Budapest: Akadémiai Kiadó, pp. 267–281. Republished in Kotz, S.; Johnson, N. L., eds. (1992), <em>Breakthroughs in Statistics</em>, vol. I, Springer-Verlag, pp. 610–624.&#160;<a class="footnote-backref" href="#fnref:Akaike" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:Akaike" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:TrueModel">
+<p>This does not imply that there is a &lsquo;true model&rsquo; &ndash; models are by definition simplifications of reality.&#160;<a class="footnote-backref" href="#fnref:TrueModel" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:SpuriousTwo">
+<p>Examples:</p>
+<ul>
+<li>
+<p>The natural definition and standard guidance on what constitutes a significant difference in AIC is one parameter&rsquo;s worth. This is 1 for penalised log-likelihood, but a non-intuitive 2 for the conventional AIC definition.</p>
+</li>
+<li>
+<p>Akaike weights, <span class="arithmatex">\(\exp(-\tfrac{1}{2}\text{AIC})\)</span>, are pure clumsiness compared with <span class="arithmatex">\(\exp(L_\text{P})\)</span>.</p>
+</li>
+</ul>
+<p><a class="footnote-backref" href="#fnref:SpuriousTwo" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:MinusTwo">
+<p>Barring a factor of −2.&#160;<a class="footnote-backref" href="#fnref:MinusTwo" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:HandWavy">
+<p>There is <em>non</em>-hand-wavy version to come in a few articles&rsquo; time.&#160;<a class="footnote-backref" href="#fnref:HandWavy" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:TotalPenalityDividedByParameterCount">
+<p>One option is to add up all the penalties of all candidate models and divide that the by the total number of parameters being fitted to obtain an equivalent to &lsquo;one more parameter&rsquo;.&#160;<a class="footnote-backref" href="#fnref:TotalPenalityDividedByParameterCount" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../mortality-proportional-hazards/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Mortality: Proportional hazards">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Mortality: Proportional hazards
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../2025-09/mortality-overdispersion-and-quasi-log-likelihood/" class="md-footer__link md-footer__link--next" aria-label="Next: Mortality: Overdispersion and quasi-log-likelihood">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Mortality: Overdispersion and quasi-log-likelihood
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <!-- Modified 2025 by Tim Gordon -->
+
+<!--
+  Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Copyright and theme information -->
+<div class="md-copyright">
+  
+    <div class="md-copyright__highlight">Copyright &copy; Tim Gordon</div>
+  
+  Typeset in <a href="https://lisnoti.com/" target="_blank" rel="noopener noreferrer" >Lisnoti</a>
+  
+  &#x2000;Made with <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener noreferrer" >Material for MkDocs</a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/tim-gordon-8b59b180/" target="_blank" rel="noopener" title="Tim on LinkedIn" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/LongevityTim/" target="_blank" rel="noopener" title="Tim on X (fka Twitter)" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M357.2 48h70.6L273.6 224.2 455 464H313L201.7 318.6 74.5 464H3.8l164.9-188.5L-5.2 48h145.6l100.5 132.9zm-24.8 373.8h39.1L119.1 88h-42z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.tabs.link", "navigation.sections", "navigation.instant", "navigation.tracking", "navigation.expand", "navigation.footer", "navigation.top", "toc.follow", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": {"Coding": "coding", "Forecasting": "forecasting", "Maths": "maths", "Mortality": "mortality", "Plural": "plural", "Standards": "standards"}, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

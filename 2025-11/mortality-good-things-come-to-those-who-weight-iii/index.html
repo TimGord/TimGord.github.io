@@ -1,0 +1,1302 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Thoughts on mortality analysis, longevity forecasting, coding and presentation">
+      
+      
+        <meta name="author" content="Tim Gordon">
+      
+      
+        <link rel="canonical" href="https://timgord.com/2025-11/mortality-good-things-come-to-those-who-weight-iii/">
+      
+      
+        <link rel="prev" href="../../2025-10/mortality-good-things-come-to-those-who-weight-ii/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>Mortality: Good things come to those who weight (III) - Tim Gordon’s blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/github-permalink-style.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Mortality: Good things come to those who weight (III) - Tim Gordon’s blog" />
+<meta property="og:description" content="Thoughts on mortality analysis, longevity forecasting, coding and presentation" />
+<meta property="og:image" content="https://timgord.com/assets/images/social/2025-11/mortality-good-things-come-to-those-who-weight-iii.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://timgord.com/2025-11/mortality-good-things-come-to-those-who-weight-iii/" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="Mortality: Good things come to those who weight (III) - Tim Gordon’s blog" />
+<meta property="twitter:description" content="Thoughts on mortality analysis, longevity forecasting, coding and presentation" />
+<meta property="twitter:image" content="https://timgord.com/assets/images/social/2025-11/mortality-good-things-come-to-those-who-weight-iii.png" />
+</head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mortality-good-things-come-to-those-who-weight-iii" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Tim Gordon’s blog" class="md-header__button md-logo" aria-label="Tim Gordon’s blog" data-md-component="logo">
+      
+  <img src="../../assets/TimGord-white-disc.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tim Gordon’s blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Mortality: Good things come to those who weight (III)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tim Gordon’s blog" class="md-nav__button md-logo" aria-label="Tim Gordon’s blog" data-md-component="logo">
+      
+  <img src="../../assets/TimGord-white-disc.svg" alt="logo">
+
+    </a>
+    Tim Gordon’s blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recommended reading
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Recommended reading
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2025-08/mortality-measures-matter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mortality: Measures matter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../collated-mortality-insights/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Collated mortality insights
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2024-01/lisnoti-a-proportional-font-that-works-for-coding-too/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lisnoti – a proportional font that works for coding too
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about-me/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About me
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reprint-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reprint policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topic/coding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topic/maths--stats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maths &amp; stats
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topic/mortality--longevity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mortality &amp; longevity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topic/presentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Page contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Page contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#relevance-revisited" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relevance revisited
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Relevance revisited">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#time-based-relevance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time-based relevance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#individual-based-relevance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Individual-based relevance
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#behaviour-in-a-simple-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Behaviour in a simple case
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Application
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alternatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alternatives
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Alternatives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-just-include-pension-as-a-covariate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. &lsquo;Just include pension as a covariate&rsquo;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-why-not-use-a-bayesian-approach-instead" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Why not use a Bayesian approach instead?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-weight-by-pension-amount" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Weight by pension amount
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../.." class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <img src="https://timgord.com/assets/favicon.svg" alt="Tim Gordon">
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          Tim Gordon
+                        
+                      </strong>
+                      <br>
+                      Longevity modelling and pricing actuary
+                    </span>
+                  </div>
+                
+              </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2025-11-04 00:00:00+00:00" class="md-ellipsis">2025-11-04</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../../topic/maths--stats/">Maths &amp; stats</a>, 
+                              <a href="../../topic/mortality--longevity/">Mortality &amp; longevity</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              10 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+
+
+
+
+<h1 id="mortality-good-things-come-to-those-who-weight-iii">Mortality: Good things come to those who weight (III)<a class="headerlink" href="#mortality-good-things-come-to-those-who-weight-iii" title="Permanent link"></a></h1>
+<p>This is the final article of three on <em>weighted mortality analysis</em>.</p>
+<p>If you haven&rsquo;t already read <a href="/2025-10/mortality-good-things-come-to-those-who-weight-i">Part&#xA0;I</a> then I recommend you do that first.</p>
+<p>And if you&rsquo;re really keen to understand the maths then give <a href="/2025-10/mortality-good-things-come-to-those-who-weight-ii">Part&#xA0;II</a> a go, but it&rsquo;s not essential.</p>
+<p>In this article, I&rsquo;ll review the implications and provide some practical recommendations.</p>
+<!-- more -->
+<div class="admonition abstract inline end">
+<p class="admonition-title">Articles in this series</p>
+<ol>
+<li><a href="/2025-08/mortality-measures-matter/">Measures matter</a></li>
+<li><a href="/2025-08/mortality-a-over-e/">A over E</a></li>
+<li><a href="/2025-08/mortality-log-likelihood/">Log-likelihood</a></li>
+<li><a href="/2025-08/mortality-proportional-hazards/">Proportional hazards</a></li>
+<li><a href="/2025-08/mortality-suddenly-aic/">Suddenly AIC</a></li>
+<li><a href="/2025-09/mortality-overdispersion-and-quasi-log-likelihood/">Overdispersion and quasi-log-likelihood</a></li>
+<li><a href="/2025-10/mortality-incoherent-rating-factors/">Incoherent rating factors</a></li>
+<li><a href="/2025-10/mortality-pensioner-mortality-variation/">Pensioner mortality variation</a></li>
+<li><a href="/2025-10/mortality-good-things-come-to-those-who-weight-i/">Good things come to those who weight: Part&#xA0;I</a>, <a href="/2025-10/mortality-good-things-come-to-those-who-weight-ii/">Part&#xA0;II</a> and <a href="/2025-11/mortality-good-things-come-to-those-who-weight-iii/">Part&#xA0;III</a></li>
+</ol>
+</div>
+<h2 id="relevance-revisited">Relevance revisited<a class="headerlink" href="#relevance-revisited" title="Permanent link"></a></h2>
+<p>But first, let&rsquo;s revisit <a href="/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance">relevance</a>.</p>
+<p>Statistics text books typically assume not only that experience data is either 100% relevant or 100% irrelevant, but that determining whether data is relevant or irrelevant is obvious. And in many cases this may be reasonable &ndash; if we are testing the reliability<sup id="fnref:HumanReliability"><a class="footnote-ref" href="#fn:HumanReliability">1</a></sup> of widgets then get some widgets and test them, which sounds well-defined<sup id="fnref:TestingFails"><a class="footnote-ref" href="#fn:TestingFails">2</a></sup>.</p>
+<p>But what experience data is relevant for estimating the mortality for a current or future pensioner in the XYZ Pension Plan? There are two dimensions, time and individual (which are non-exclusive, you can do one or both).</p>
+<h3 id="time-based-relevance"><em>Time-based relevance</em><a class="headerlink" href="#time-based-relevance" title="Permanent link"></a></h3>
+<p>The notion that <em>relevance typically decreases as time elapses</em> is uncontentious, at least conceptually:</p>
+<ul>
+<li>
+<p>This doesn&rsquo;t imply that the most recent data is <em>always</em> the most relevant. For instance, we may also decide to treat COVID-impacted years as less relevant.</p>
+</li>
+<li>
+<p>Smoothly varying relevance by time is not usually a built in feature. Instead it is usually left as an <em>ad hoc</em> practitioner decision, and typically implemented on an all-or-nothing basis.</p>
+</li>
+</ul>
+<p>An example of a time-based relevance<sup id="fnref:RelevanceConstruction"><a class="footnote-ref" href="#fn:RelevanceConstruction">3</a></sup> is</p>
+<pre class="arithmatex">\[r_s^t=\exp\!\big(\!-\phi\,\big|t-s\big|\big)\]</pre>
+<p>where <span class="arithmatex">\(s\)</span> and <span class="arithmatex">\(t\)</span> are dates (measured in years) and <span class="arithmatex">\(\phi&gt;0\)</span>.</p>
+<p>It is a special case if relevance is purely time-based, i.e. no variation by individual, <em>because we can shortcut all the above simply by scaling the data by relevance</em> and proceeding with the lives-weighted approach. While, yes, this is a relevance-based approach, the maths is so trivial that it is usually treated as obvious and goes unremarked<sup id="fnref:CmiModelRelevance"><a class="footnote-ref" href="#fn:CmiModelRelevance">4</a></sup>.</p>
+<p>This is applicable beyond base mortality &ndash; I&rsquo;d recommend using time-based relevance for calibration of <em>all</em> mortality projection and stochastic mortality models (including the <abbr title="The (UK) Institute and Faculty of Actuaries’ Continuous Mortality Investigation">CMI</abbr> Mortality Projections Model).</p>
+<div class="admonition insight" id="Insight17">
+<p class="admonition-title">Insight 17. Always allow for time-based relevance</p>
+<p>Allowing for time-based relevance, e.g. using </p>
+<pre class="arithmatex">\[r_s^t=\exp\!\big(\!-\phi\,\big|t-s\big|\big)\]</pre>
+<p>where <span class="arithmatex">\(s\)</span> and <span class="arithmatex">\(t\)</span> are dates (measured in years) and <span class="arithmatex">\(\phi&gt;0\)</span>, is to be preferred in <em>all mortality modelling contexts</em> because</p>
+<ul>
+<li>it automatically allows for the decay in relevance as time elapses, and</li>
+<li>compared with fixed windows, leaves models less sensitive to the falling away of more historical data.</li>
+</ul>
+<p>If relevance is purely time-based then this can be accomplished simply by scaling the experience data.</p>
+<p>[<a href="/collated-mortality-insights#Insight17">All mortality insights</a>]</p>
+</div>
+<h3 id="individual-based-relevance"><em>Individual-based relevance</em><a class="headerlink" href="#individual-based-relevance" title="Permanent link"></a></h3>
+<p>The more interesting question is <em>relevance by individual</em>.</p>
+<p>I suggest that</p>
+<ul>
+<li>
+<p>it&rsquo;s unreasonable to assume that the mortality experience of all individuals in the same pension plan is 100% relevant<sup id="fnref:AllHumansOver65"><a class="footnote-ref" href="#fn:AllHumansOver65">5</a></sup>, and</p>
+</li>
+<li>
+<p>relevance should take account of pension given that it&rsquo;s the one simple <a href="/2025-08/mortality-measures-matter/#Def-fact">fact</a> that is strongly correlated with both (a)&#xA0;mortality and (b)&#xA0;liability impact.</p>
+</li>
+</ul>
+<p>If you have a lot of experience data, then you will likely end up sub-dividing your model by pension band (or equivalent), in which this probably<sup id="fnref:LivesCriterion"><a class="footnote-ref" href="#fn:LivesCriterion">6</a></sup> doesn&rsquo;t matter.</p>
+<p>But if you don&rsquo;t have a lot of data (or if you calibrate any covariates across all lives) then <em>not taking account of relevance will likely matter</em>. A particularly fertile area is processes that handle lots of cases each of which has relatively small amounts of experience data.</p>
+<p>Given that the underlying variables feeding into data relevance need to be generally available, simple and robust, an obvious<sup id="fnref:Dimensionless"><a class="footnote-ref" href="#fn:Dimensionless">7</a></sup> candidate for individual relevance is log-pension, for example<sup id="fnref2:RelevanceConstruction"><a class="footnote-ref" href="#fn:RelevanceConstruction">3</a></sup></p>
+<pre class="arithmatex">\[\begin{aligned}
+r_p^q
+&amp;=\exp\!\big(\!-\psi\,\big|\log q-\log p\big|\big)
+\\[1em]
+&amp;= \min\!\big(p/q,q/p\big)^\psi
+\end{aligned}\]</pre>
+<p>where <span class="arithmatex">\(p\)</span> and <span class="arithmatex">\(q\)</span> are pension amounts (revalued to the same date for consistency) and <span class="arithmatex">\(\psi&gt;0\)</span>.</p>
+<h2 id="behaviour-in-a-simple-case">Behaviour in a simple case<a class="headerlink" href="#behaviour-in-a-simple-case" title="Permanent link"></a></h2>
+<p>In order to help us intuit what&rsquo;s going on, we can ask what happens if relevance is always 0 or 1? In this case, relevance <em>partitions</em><sup id="fnref:RelevancePartition"><a class="footnote-ref" href="#fn:RelevancePartition">8</a></sup> the experience data and valuation data into a finite number of groups labelled <span class="arithmatex">\(G\)</span><sup id="fnref:PartitionLabel"><a class="footnote-ref" href="#fn:PartitionLabel">9</a></sup>, within each of which all experience is 100% relevant to all valuation individuals. </p>
+<p>The relevance approach collapses to<sup id="fnref:MathsNotShown"><a class="footnote-ref" href="#fn:MathsNotShown">10</a></sup> </p>
+<pre class="arithmatex">\[\begin{aligned}
+\hat\beta &amp;\approx \big(V'\big)^{-1}\sum_G V'_G \, \hat\beta_G
+\\[1em]
+\text{Var}\big(\hat\beta\big) &amp;\approx \big(V'\big)^{-2}\sum_G \big(V'_G\big)^2 I_G^{-1}
+\end{aligned}\]</pre>
+<p>where</p>
+<ul>
+<li><span class="arithmatex">\(V_G\)</span> is the sum of liability values for individuals in group <span class="arithmatex">\(G\)</span>, with the total being <span class="arithmatex">\(V=\sum_G V_G\)</span>,</li>
+<li><span class="arithmatex">\(L_G\)</span> is the sum of log-likelihood for the <abbr title="Exposed-to-risk, ε, comprising start and end times, [ν,τ), and an indicator, δ ∈ {0, 1}, as to whether the individual died at the end">E2Rs</abbr> in group <span class="arithmatex">\(G\)</span>, with the <a href="/2025-10/mortality-good-things-come-to-those-who-weight-ii/#Def-Ik">relevant information</a> for group <span class="arithmatex">\(G\)</span> being <span class="arithmatex">\(I_G=-L''_G\)</span>, and</li>
+<li><span class="arithmatex">\('\)</span> and <span class="arithmatex">\(''\)</span> are first and second derivatives with respect to the mortality model parameter <span class="arithmatex">\(\beta\)</span>.</li>
+</ul>
+<p>In other words, </p>
+<ul>
+<li>
+<p>the <em>overall best estimate</em> is the sum of the per-group best estimates <em>weighted by liability impact</em> (<span class="arithmatex">\(V'_G\)</span>), and</p>
+</li>
+<li>
+<p>the <em>variance</em> of the overall best estimate reflects both (a)&#xA0;liability impact (<span class="arithmatex">\(V'_G\)</span>) and (b)&#xA0;the amount of experience data available (<span class="arithmatex">\(I_G\)</span>) per group.</p>
+</li>
+</ul>
+<p>This is self-evidently the best estimate for liability value and its uncertainty given the assumptions and so it is reassuring that the general approach gives the correct answer in this case.</p>
+<h2 id="application">Application<a class="headerlink" href="#application" title="Permanent link"></a></h2>
+<p>In <a href="/2025-10/mortality-good-things-come-to-those-who-weight-ii">Part&#xA0;II</a>, we showed that if</p>
+<ul>
+<li>a mortality model has a single scalar parameter, and</li>
+<li>we are provided with a <a href="/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance">relevance</a> of the log-likelihood of the <abbr title="Exposed-to-risk, ε, comprising start and end times, [ν,τ), and an indicator, δ ∈ {0, 1}, as to whether the individual died at the end">E2R</abbr> for individual <span class="arithmatex">\(i\)</span> at time <span class="arithmatex">\(t\)</span> to individual <span class="arithmatex">\(j\)</span> in the valuation data as at the valuation date <span class="arithmatex">\(t_0\)</span>,</li>
+</ul>
+<div class="admonition info inline end">
+<p class="admonition-title">It&rsquo;s not amounts-weighted A/E vs lives-weighted modelling</p>
+<p>One reason the &lsquo;lives-weighted is the only valid approach&rsquo; view has propagated is because some actuaries think the only combinations of options are</p>
+<ul>
+<li>amounts-weighted A/E, or</li>
+<li>sophisticated lives-weighted modelling,</li>
+</ul>
+<p>when actually the choices of weight and modelling approach are orthogonal.</p>
+</div>
+<p>then we can define a weight such that maximising the <em>weighted</em> log-likelihood <em>automatically</em> results in the best estimate of the present value of liabilities when using that single parameter mortality model.</p>
+<p>I suggest that it is best practice to use an approach that</p>
+<ul>
+<li>
+<p>takes explicit account of liability impact (given that assessing liabilities is our objective), and</p>
+</li>
+<li>
+<p>in particular, defaults to unbiased liability valuation results <em>regardless of the quantum of experience data available</em> (which is <em>not</em> automatically the case for lives-weighted statistics).</p>
+</li>
+</ul>
+<p>Using a weighted log-likelihood as derived to fit <abbr title="Defined benefit">DB</abbr> pensioner base mortality models meets these criteria and &ndash; as demonstrated by the previous articles in this series &ndash; leaves standard modelling machinery unchanged.</p>
+<div class="admonition insight" id="Insight18">
+<p class="admonition-title">Insight 18. Use relevance for calibrating and selecting <abbr title="Defined benefit">DB</abbr> pensioner base mortality models</p>
+<p>Using the weights by <span class="arithmatex">\(w\)</span> and <span class="arithmatex">\(u\)</span> as defined in Insights&#xA0;<a href="/2025-10/mortality-good-things-come-to-those-who-weight-ii#Insight15">15</a> and <a href="/2025-10/mortality-good-things-come-to-those-who-weight-ii#Insight16">16</a> respectively to calibrate and select <abbr title="Defined benefit">DB</abbr> pensioner base mortality models </p>
+<ul>
+<li>
+<p>takes explicit account of liability impact, and</p>
+</li>
+<li>
+<p>defaults to sensible results regardless of the quantum of experience data available.</p>
+</li>
+</ul>
+<p>The following Insights need to be restated to accommodate relevance:</p>
+<ul>
+<li>
+<p><a href="/2025-08/mortality-a-over-e#Insight5">Insight&#xA0;5</a> (allowing for overdispersion <span class="arithmatex">\(\Omega\)</span>) becomes</p>
+<pre class="arithmatex">\[\text{Var}\big(\text{A}w-\text{E}w\big)=\Omega\,\mathbb{E}\big(\text{E}u^2\big)\]</pre>
+</li>
+<li>
+<p>The equations for <a href="/2025-08/mortality-suddenly-aic#Insight9">Insights&#xA0;9</a> and <a href="/2025-08/mortality-suddenly-aic#Insight10">Insights&#xA0;10</a> are unchanged as</p>
+<pre class="arithmatex">\[\begin{aligned}
+\text{Var}\big(\hat\beta\big)\mathrel{\hat=} \Omega\,\mathbf{I}^{-1}\mathbf{J}\mathbf{I}^{-1}
+\\[1em]
+L_\text{P}= L(\hat\beta)-\text{tr}\big(\mathbf{J}\mathbf{I}^{-1}\big)
+\end{aligned}\]</pre>
+<p>But <span class="arithmatex">\(\mathbf{J}\)</span> is redefined as <span class="arithmatex">\(\text{E}u^2XX^\text{T}\)</span>, i.e. weighted by <span class="arithmatex">\(u^2\)</span> rather than <span class="arithmatex">\(w^2\)</span>.</p>
+</li>
+</ul>
+<p>[<a href="/collated-mortality-insights#Insight18">All mortality insights</a>]</p>
+</div>
+<p>Being able to define a weight in this way depends on specific features of <abbr title="Defined benefit">DB</abbr> pensioner mortality and so it is <em>not</em> general. But there are questions to answer if actuaries do not consider for liability impact in their statistical analysis<sup id="fnref:FullRelevance"><a class="footnote-ref" href="#fn:FullRelevance">11</a></sup>.</p>
+<h2 id="alternatives">Alternatives<a class="headerlink" href="#alternatives" title="Permanent link"></a></h2>
+<div class="admonition danger inline end">
+<p class="admonition-title">The infinite data fallacy</p>
+<p>The infinite data fallacy is that there <em>will</em> always be sufficient experience data to determine features critical to your model<sup id="fnref:ExpertFallacy"><a class="footnote-ref" href="#fn:ExpertFallacy">12</a></sup>.</p>
+<p>I&rsquo;ve used the future tense because the assumption is usually made in the context of a hypothetical future case, as opposed to a common concrete dataset that we can all examine.</p>
+<p>The classic example is assuming that there <em>will</em> be sufficient experience data to determine dependence of mortality on pension amount. (One of the <a href="/2025-10/mortality-incoherent-rating-factors#Insight13">many</a> reasons why &lsquo;Just include pension as a covariate&rsquo; is a red light.)</p>
+<p>The point is that in the presence of infinite data <em>we cannot distinguish between different methods, because they will all work</em> (including weighting by &lsquo;anything I feel like&rsquo;).</p>
+</div>
+<h3 id="1-just-include-pension-as-a-covariate"><em>1. &lsquo;Just include pension as a covariate&rsquo;</em><a class="headerlink" href="#1-just-include-pension-as-a-covariate" title="Permanent link"></a></h3>
+<p>People reach for this throw away line frequently, but it&rsquo;s flawed.</p>
+<ul>
+<li>
+<p>It doesn&rsquo;t specify a model to be fitted or a concrete approach. Yes, sensible approaches to allow for pension as a covariate can be constructed but they have to work very hard to avoid bias in the absence of credible experience data.</p>
+</li>
+<li>
+<p>And that leads on to the second point, which I call the &lsquo;infinite data fallacy&rsquo; &ndash; see box out. The throw away line implicitly assumes either (a)&#xA0;there is sufficient experience data to capture the impact of pension as a covariate or (b)&#xA0;if there isn&rsquo;t then it doesn&rsquo;t matter. But it most certainly <em>does</em> matter: the mortality (<em>μ</em>) rates for the <abbr title="The (UK) Institute and Faculty of Actuaries’ Continuous Mortality Investigation">CMI</abbr>&rsquo;s standard male pensioner base tables at age 75 are over 20%(!) higher for lives-weighted vs amounts-weighted. I&rsquo;d like an approach that works in all cases please.</p>
+</li>
+<li>
+<p>Allowing for &lsquo;pension as a covariate&rsquo; doesn&rsquo;t help with other independent covariates &ndash; you&rsquo;ll still end up fitting these on a lives-weighted basis.</p>
+</li>
+<li>
+<p>Finally, people tend to gloss over the <a href="/2025-10/mortality-incoherent-rating-factors#Insight13">problems with using pension as a covariate</a>.</p>
+</li>
+</ul>
+<h3 id="2-why-not-use-a-bayesian-approach-instead"><em>2. Why not use a Bayesian approach instead?</em><a class="headerlink" href="#2-why-not-use-a-bayesian-approach-instead" title="Permanent link"></a></h3>
+<p>Bayesian approaches are <em>prima facie</em> attractive, and maybe they can be made to work in this context too.</p>
+<p>Whereas relevance is a standalone concept, the definition of a prior depends on the particular mortality model (because it&rsquo;s a prior for the parameters of a model), which I think makes using priors less flexible and less intuitive than relevance, and probably makes the maths more messy too.</p>
+<p>If you can get it to work then great (but note that if liability values don&rsquo;t figure in your approach then, whatever problem you think you&rsquo;ve solved, it isn&rsquo;t pricing or valuation related).</p>
+<h3 id="3-weight-by-pension-amount"><em>3. Weight by pension amount</em><a class="headerlink" href="#3-weight-by-pension-amount" title="Permanent link"></a></h3>
+<p>In real life your systems may not be able to accommodate relevance, in which case I suggest just <em>weight your analysis by pension amount</em><sup id="fnref:SystemsAndWeights"><a class="footnote-ref" href="#fn:SystemsAndWeights">13</a></sup>.</p>
+<p>People (including me) sometimes worry about abnormally large pensions distorting the results but this hasn&rsquo;t been a problem in practice:</p>
+<ul>
+<li>The variance will capture concentration.</li>
+<li>UK <abbr title="Defined benefit">DB</abbr> pensions have been capped by regulation for such a long time now that extremely large pensions no longer exist.</li>
+</ul>
+<p>It boils down to how you want to distribute your errors:</p>
+<p><img alt="Average liability for lives vs amounts" src="../../Lives-vs-amounts-light.png#only-light" />
+<img alt="Average liability for lives vs amounts" src="../../Lives-vs-amounts-dark.png#only-dark" /></p>
+<p>If it&rsquo;s a choice between lives and amounts-weighted then, while <a href="https://hermiene.net/essays-trans/relativity_of_wrong.html">both are &lsquo;wrong&rsquo;</a>, the amounts-weighted is safer in a <abbr title="Defined benefit">DB</abbr> pensions context if your objective is to value liabilities.</p>
+<div class="admonition insight" id="Insight19">
+<p class="admonition-title">Insight 19. Prefer amounts-weighted to lives-weighted log-likelihood</p>
+<p>For <abbr title="Defined benefit">DB</abbr> pensioner mortality analysis, prefer statistics weighted by pension amount over lives-weighted.</p>
+<p>When there is a lot of experience data it won&rsquo;t matter; when there is only a little it will mitigate biased liability value estimates.</p>
+<p>[<a href="/collated-mortality-insights#Insight19">All mortality insights</a>]</p>
+</div>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link"></a></h2>
+<p>If you believe</p>
+<ul>
+<li>
+<p><em>what matters is valuing liabilities correctly</em> (as opposed to developing models that are good in some abstract sense),</p>
+</li>
+<li>
+<p><em>relevance of mortality experience varies by pension amount</em>, and</p>
+</li>
+<li>
+<p><em>the variation in pension plan mortality can be parametrised primarily in one dimension as heavy vs light mortality</em>,</p>
+</li>
+</ul>
+<p>then I think you should be using weighted log-likelihood when assessing base mortality for <abbr title="Defined benefit">DB</abbr> pensioners.</p>
+<div class="admonition tip">
+<p class="admonition-title">End of this series</p>
+<p>This is the final article on my series on base mortality modelling in relation to <abbr title="Defined benefit">DB</abbr> pension plans. I hope you&rsquo;ve found some of it interesting or even useful.</p>
+<p>There will be more to come on mortality generally and other things too.</p>
+</div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:HumanReliability">
+<p>It is a linguistic convention that we use &lsquo;reliability&rsquo; in an engineering context and &lsquo;mortality&rsquo; in a biological context.&#160;<a class="footnote-backref" href="#fnref:HumanReliability" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:TestingFails">
+<p>It isn&rsquo;t &ndash; try Googling the testing of Challenger Space Shuttle o-rings, Volkswagen diesel emissions or Grenfell Tower cladding.&#160;<a class="footnote-backref" href="#fnref:TestingFails" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:RelevanceConstruction">
+<p>If <span class="arithmatex">\(d(a,b)\)</span> is a <a href="https://en.wikipedia.org/wiki/Metric_space#Definition">metric</a> then <span class="arithmatex">\(r_a^b= \exp\{-d(a,b)\}\)</span> is a <a href="/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance">relevance</a>. And the simplest metric is <span class="arithmatex">\(\big|b-a\big|\)</span>.&#160;<a class="footnote-backref" href="#fnref:RelevanceConstruction" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:RelevanceConstruction" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:CmiModelRelevance">
+<p>For instance, this is how the <abbr title="The (UK) Institute and Faculty of Actuaries’ Continuous Mortality Investigation">CMI</abbr> adjusted its Mortality Projections Model to cope with COVID-affected mortality experience. I note that the debate then was essentially over <em>the degree of relevance</em>, not whether adjusting for relevance was wrong.&#160;<a class="footnote-backref" href="#fnref:CmiModelRelevance" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:AllHumansOver65">
+<p>In the same way that it would be unreasonable to assume that the mortality experience of all <a href="https://ourworldindata.org/grapher/population-by-age-group">800&#xA0;million</a> humans over age&#xA0;65 is 100% relevant &ndash; nominative determinism is not statistics.&#160;<a class="footnote-backref" href="#fnref:AllHumansOver65" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:LivesCriterion">
+<p>Model <em>selection</em> (e.g. using the <a href="/2025-08/mortality-suddenly-aic/#Def-Var-LP">AIC</a>) will still be affected because it would be determined by lives affected, not liability impact, although I suspect that the difference in most cases is second order.&#160;<a class="footnote-backref" href="#fnref:LivesCriterion" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:Dimensionless">
+<p>Obvious because (a)&#xA0;results should be independent of units, (b)&#xA0;ratios are the simplest dimensionless means of comparison and (c)&#xA0;measuring distance requires taking differences. Hence use logarithms.&#160;<a class="footnote-backref" href="#fnref:Dimensionless" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:RelevancePartition">
+<p>This follows from the properties of <a href="/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance">relevance</a>, i.e.</p>
+<ul>
+<li>100% self-relevance, i.e. <span class="arithmatex">\(r_{it}^{it}=1\)</span>,</li>
+<li>symmetry, i.e. <span class="arithmatex">\(r_{it}^{ju}= r_{ju}^{it}\)</span>, and</li>
+<li>consistency, i.e. <span class="arithmatex">\(r_{it}^{kv} \ge r_{it}^{ju} \cdot r_{ju}^{kv}\)</span>.</li>
+</ul>
+<p><a class="footnote-backref" href="#fnref:RelevancePartition" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:PartitionLabel">
+<p>Because this is a partition, we can use the same label for experience and valuation data.&#160;<a class="footnote-backref" href="#fnref:PartitionLabel" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:MathsNotShown">
+<p>I haven&rsquo;t shown the maths, but this follows direct from the equations in Insights <a href="/2025-10/mortality-good-things-come-to-those-who-weight-ii#Insight15">15</a> and <a href="/2025-10/mortality-good-things-come-to-those-who-weight-ii#Insight16">16</a>.&#160;<a class="footnote-backref" href="#fnref:MathsNotShown" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:FullRelevance">
+<p>The answer may well be that the nature of the problem means that the <em>a priori</em> belief is all experience data is 100% relevant to all individuals and the time scale is such that time-relevance does not need to be allowed for.&#160;<a class="footnote-backref" href="#fnref:FullRelevance" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:ExpertFallacy">
+<p>This is closely related to the <em>expert fallacy</em>, which is:</p>
+<p>&lsquo;<em>I can&rsquo;t define the process I will use but I am confident that I can get the right answer if I personally review every case</em>.&rsquo;&#160;<a class="footnote-backref" href="#fnref:ExpertFallacy" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:SystemsAndWeights">
+<p>A lot of systems can&rsquo;t weight by anything.&#160;<a class="footnote-backref" href="#fnref:SystemsAndWeights" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../2025-10/mortality-good-things-come-to-those-who-weight-ii/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Mortality: Good things come to those who weight (II)">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Mortality: Good things come to those who weight (II)
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <!-- Modified 2025 by Tim Gordon -->
+
+<!--
+  Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Copyright and theme information -->
+<div class="md-copyright">
+  
+    <div class="md-copyright__highlight">Copyright &copy; Tim Gordon</div>
+  
+  Typeset in <a href="https://lisnoti.com/" target="_blank" rel="noopener noreferrer" >Lisnoti</a>
+  
+  &#x2000;Made with <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener noreferrer" >Material for MkDocs</a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/tim-gordon-8b59b180/" target="_blank" rel="noopener" title="Tim on LinkedIn" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/LongevityTim/" target="_blank" rel="noopener" title="Tim on X (fka Twitter)" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M357.2 48h70.6L273.6 224.2 455 464H313L201.7 318.6 74.5 464H3.8l164.9-188.5L-5.2 48h145.6l100.5 132.9zm-24.8 373.8h39.1L119.1 88h-42z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.tabs.link", "navigation.sections", "navigation.instant", "navigation.tracking", "navigation.expand", "navigation.footer", "navigation.top", "toc.follow", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": {"Coding": "coding", "Forecasting": "forecasting", "Maths": "maths", "Mortality": "mortality", "Plural": "plural", "Standards": "standards"}, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

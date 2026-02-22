@@ -1,0 +1,89 @@
+/* NB The url(...) path is *relative to* the stylesheets folder! */
+
+@font-face {
+  font-family: "Lisnoti";
+  src: /* List must end with a semi-colon! */
+    url('../fonts/Lisnoti-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/Lisnoti-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/Lisnoti-Regular.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: "Lisnoti";
+  src: /* List must end with a semi-colon! */
+    url('../fonts/Lisnoti-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/Lisnoti-Bold.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/Lisnoti-Bold.ttf')  format('truetype'); /* Safari, Android, iOS */
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Lisnoti";
+  src: /* List must end with a semi-colon! */
+    url('../fonts/Lisnoti-Italic.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/Lisnoti-Italic.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/Lisnoti-Italic.ttf')  format('truetype'); /* Safari, Android, iOS */
+  font-style: italic;
+}
+@font-face {
+  font-family: "Lisnoti";
+  src: /* List must end with a semi-colon! */
+    url('../fonts/Lisnoti-BoldItalic.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/Lisnoti-BoldItalic.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/Lisnoti-BoldItalic.ttf')  format('truetype'); /* Safari, Android, iOS */
+  font-weight: bold;
+  font-style: italic;
+}
+
+:root {
+  /* Precise Teal */
+  --md-primary-fg-color:        #00A0C0;
+  --md-primary-fg-color--light: #00C1EE;
+  --md-primary-fg-color--dark:  #0080A0;
+
+  /* Use Lisnoti font */
+  --md-text-font: "Lisnoti"; 
+  --md-code-font: "Lisnoti";
+}
+
+::selection {
+  color: #000;
+  background: #FFE500;
+}
+
+/* Fix scroll bars appearing on math blocks */
+.md-typeset div.arithmatex {
+  overflow: initial;
+}
+
+/* Make MathJax a little smaller */
+.MJX-TEX { font-size: 96.875%; }
+
+/* Make table headings align to bottom of row */
+th { 
+    vertical-align: bottom;
+}
+.md-typeset table:not([class]) th {
+    vertical-align: bottom;
+}
+
+/* Add an "insight" admonition */
+:root {
+/*
+  --md-admonition-icon--insight: url('docs/assets/TimGord-teal-disc.svg')
+*/
+--md-admonition-icon--insight: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180"><path d="M 90, 90 m 90, 0 a 90,90 0 1,0 -180,0 a 90,90 0 1,0  180,0Z M68 31 128 9 100 59.9 117.5 54 93.2 103.5 107 99 63 175 74.8 109.5 61 114 76.6 67.7 59 73.5Z"/></svg>')
+}
+.md-typeset .admonition.insight,
+.md-typeset details.insight {
+  border-color: #FFA000;
+}
+.md-typeset .insight > .admonition-title,
+.md-typeset .insight > summary {
+  background-color: #FFA00011;
+}
+.md-typeset .insight > .admonition-title::before,
+.md-typeset .insight > summary::before {
+  background-color: #FFA000;
+  -webkit-mask-image: var(--md-admonition-icon--insight);
+  mask-image: var(--md-admonition-icon--insight);
+}

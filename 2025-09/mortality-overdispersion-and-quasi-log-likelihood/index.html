@@ -1,0 +1,1083 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Thoughts on mortality analysis, longevity forecasting, coding and presentation">
+      
+      
+        <meta name="author" content="Tim Gordon">
+      
+      
+        <link rel="canonical" href="https://timgord.com/2025-09/mortality-overdispersion-and-quasi-log-likelihood/">
+      
+      
+        <link rel="prev" href="../../2025-08/mortality-suddenly-aic/">
+      
+      
+        <link rel="next" href="../../2025-10/mortality-incoherent-rating-factors/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>Mortality: Overdispersion and quasi-log-likelihood - Tim Gordon’s blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/github-permalink-style.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Mortality: Overdispersion and quasi-log-likelihood - Tim Gordon’s blog" />
+<meta property="og:description" content="Thoughts on mortality analysis, longevity forecasting, coding and presentation" />
+<meta property="og:image" content="https://timgord.com/assets/images/social/2025-09/mortality-overdispersion-and-quasi-log-likelihood.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://timgord.com/2025-09/mortality-overdispersion-and-quasi-log-likelihood/" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="Mortality: Overdispersion and quasi-log-likelihood - Tim Gordon’s blog" />
+<meta property="twitter:description" content="Thoughts on mortality analysis, longevity forecasting, coding and presentation" />
+<meta property="twitter:image" content="https://timgord.com/assets/images/social/2025-09/mortality-overdispersion-and-quasi-log-likelihood.png" />
+</head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mortality-overdispersion-and-quasi-log-likelihood" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Tim Gordon’s blog" class="md-header__button md-logo" aria-label="Tim Gordon’s blog" data-md-component="logo">
+      
+  <img src="../../assets/TimGord-white-disc.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tim Gordon’s blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Mortality: Overdispersion and quasi-log-likelihood
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tim Gordon’s blog" class="md-nav__button md-logo" aria-label="Tim Gordon’s blog" data-md-component="logo">
+      
+  <img src="../../assets/TimGord-white-disc.svg" alt="logo">
+
+    </a>
+    Tim Gordon’s blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recommended reading
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Recommended reading
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2025-08/mortality-measures-matter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mortality: Measures matter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../collated-mortality-insights/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Collated mortality insights
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2024-01/lisnoti-a-proportional-font-that-works-for-coding-too/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lisnoti – a proportional font that works for coding too
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about-me/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About me
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reprint-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reprint policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topic/coding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topic/maths--stats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maths &amp; stats
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topic/mortality--longevity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mortality &amp; longevity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topic/presentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Page contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Page contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#causes-of-overdispersion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Causes of overdispersion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quasi-log-likelihood" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quasi log-likelihood
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#formulas-including-global-overdispersion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Formulas including global overdispersion
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../.." class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <img src="https://timgord.com/assets/favicon.svg" alt="Tim Gordon">
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          Tim Gordon
+                        
+                      </strong>
+                      <br>
+                      Longevity modelling and pricing actuary
+                    </span>
+                  </div>
+                
+              </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2025-09-02 00:00:00+00:00" class="md-ellipsis">2025-09-02</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../../topic/maths--stats/">Maths &amp; stats</a>, 
+                              <a href="../../topic/mortality--longevity/">Mortality &amp; longevity</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              5 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+
+
+
+
+<h1 id="mortality-overdispersion-and-quasi-log-likelihood">Mortality: Overdispersion and quasi-log-likelihood<a class="headerlink" href="#mortality-overdispersion-and-quasi-log-likelihood" title="Permanent link"></a></h1>
+<p>In the first article in this series, I noted that if you don&rsquo;t allow for <a href="/2025-08/mortality-measures-matter/#Def-overdispersion">overdispersion</a> then you <em>will</em> underestimate uncertainty and overfit models.</p>
+<p>In this article I&rsquo;ll outline the most practical approach to dealing with overdispersion in a pensions longevity context.</p>
+<!-- more -->
+<div class="admonition abstract inline end">
+<p class="admonition-title">Articles in this series</p>
+<ol>
+<li><a href="/2025-08/mortality-measures-matter/">Measures matter</a></li>
+<li><a href="/2025-08/mortality-a-over-e/">A over E</a></li>
+<li><a href="/2025-08/mortality-log-likelihood/">Log-likelihood</a></li>
+<li><a href="/2025-08/mortality-proportional-hazards/">Proportional hazards</a></li>
+<li><a href="/2025-08/mortality-suddenly-aic/">Suddenly AIC</a></li>
+<li><a href="/2025-09/mortality-overdispersion-and-quasi-log-likelihood/">Overdispersion and quasi-log-likelihood</a></li>
+<li><a href="/2025-10/mortality-incoherent-rating-factors/">Incoherent rating factors</a></li>
+<li><a href="/2025-10/mortality-pensioner-mortality-variation/">Pensioner mortality variation</a></li>
+<li><a href="/2025-10/mortality-good-things-come-to-those-who-weight-i/">Good things come to those who weight: Part&#xA0;I</a>, <a href="/2025-10/mortality-good-things-come-to-those-who-weight-ii/">Part&#xA0;II</a> and <a href="/2025-11/mortality-good-things-come-to-those-who-weight-iii/">Part&#xA0;III</a></li>
+</ol>
+</div>
+<p>In the real world, mortality experience data typically exhibits <em>greater variance</em> than would be the case if, <a href="/2025-08/mortality-measures-matter/#what-is-random">as we&rsquo;ve assumed</a> up to now, that mortality itself is deterministic and deaths are independent. </p>
+<p>Specifically, if we define <span id="Def-overdispersion"><em>overdispersion</em><sup id="fnref:OverdispersionWithWeight"><a class="footnote-ref" href="#fn:OverdispersionWithWeight">1</a></sup> as</span></p>
+<pre class="arithmatex">\[\Omega=\frac
+{\text{Var}\big(\text{A}w-\text{E}w\big)}
+{\mathbb{E}\big(\text{E}w^2\big)}
+\tag{16}
+\]</pre>
+<p>then we typically observe <span class="arithmatex">\(\Omega \gt 1\)</span> instead of the <span class="arithmatex">\(\Omega = 1\)</span> we&rsquo;d expect based on <a href="/2025-08/mortality-measures-matter/#definitions">our assumptions</a>.</p>
+<p>Overdispersion tends not to affect the estimated parameters themselves (if you&rsquo;re using maximum likelihood), but <em>it does affect their estimated variance</em>, potentially leading to <em>over-fitted models</em> being selected if it is not accounted for. So we need to allow for overdispersion in some way.</p>
+<h2 id="causes-of-overdispersion">Causes of overdispersion<a class="headerlink" href="#causes-of-overdispersion" title="Permanent link"></a></h2>
+<div class="admonition danger inline end">
+<p class="admonition-title">It&rsquo;s <em>not</em> heterogeneity!</p>
+<p>At time of writing (2025-08-20), the <a href="https://en.wikipedia.org/wiki/Overdispersion">Wikipedia article on overdispersion</a> states (my italics):</p>
+<blockquote>
+<p>Overdispersion is a very common feature in applied data analysis <em>because in practice, populations are frequently heterogeneous (non-uniform) contrary to the assumptions implicit within widely used simple parametric models</em>.</p>
+</blockquote>
+<p>This explanation is sometimes repeated in a mortality context, but that&rsquo;s <em>not</em> the case <em>within the framework I&rsquo;ve outlined</em>: if mortality itself were deterministic (<a href="/2025-08/mortality-measures-matter/#what-is-random">as we&rsquo;ve assumed</a>) and deaths were independent then, <em>regardless of how much mortality varied by individual</em>, there would be no overdispersion. So the cause of overdispersion is not heterogeneity; it&rsquo;s the failure of our idealised assumptions.</p>
+<p>And it&rsquo;s not just that heterogeneity is not the cause in this context; mortality varying by individual is a <em>core premise</em> in mortality modelling<sup id="fnref:Frailty"><a class="footnote-ref" href="#fn:Frailty">2</a></sup>.</p>
+</div>
+<p>There are multiple potential causes of overdispersion, all arising from our initial assumptions not being true in the real world, the key ones being that <a href="/2025-08/mortality-measures-matter/#what-is-random">mortality is itself deterministic and deaths are independent</a>. (Also see the box out regarding heterogeneity.)</p>
+<p>We knew from the the outset that this is a convenient simplification of reality. The question is: what&rsquo;s the best way to allow for overdispersion<sup id="fnref:DeduplicationFailure"><a class="footnote-ref" href="#fn:DeduplicationFailure">3</a></sup>?</p>
+<h2 id="quasi-log-likelihood">Quasi log-likelihood<a class="headerlink" href="#quasi-log-likelihood" title="Permanent link"></a></h2>
+<p>One option is to use a statistical distribution with an additional hyperparameter to model observed <a href="https://en.wikipedia.org/wiki/Mixed_Poisson_distribution#Properties">overdispersion explicitly</a>. People do do this, but it entails a loss of tractability<sup id="fnref:TractabilityBenefits"><a class="footnote-ref" href="#fn:TractabilityBenefits">4</a></sup> and there is a simpler alternative.</p>
+<p>The most widely used approach is to divide the log-likelihood by an estimated or assumed <em>global</em><sup id="fnref:GlobalOverdispersion"><a class="footnote-ref" href="#fn:GlobalOverdispersion">5</a></sup> value for overdispersion, <span class="arithmatex">\(\Omega\)</span>, i.e.</p>
+<pre class="arithmatex">\[L \mapsto \Omega^{-1}L\]</pre>
+<p>Technically, this results in a <a href="https://en.wikipedia.org/wiki/Quasi-likelihood">quasi-log-likelihood</a> (and the AIC becomes the QAIC), but I&rsquo;ll continue to refer to it as the log-likelihood on the understanding that adjustments are always made for overdispersion.</p>
+<p>The question naturally arises as to whether to estimate overdispersion from the experience data to hand<sup id="fnref:OldCMIModeOverdispersion"><a class="footnote-ref" href="#fn:OldCMIModeOverdispersion">6</a></sup>. While measured overdispersion should be a test diagnostic (provided you have sufficient data), there is a case for using a default value:</p>
+<ul>
+<li>We have a reasonable prior view on mortality overdispersion &ndash; it is better in general to spend your information budget on estimating the things you don&rsquo;t know. </li>
+<li>Estimating <span class="arithmatex">\(\Omega\)</span> from the data can add brittleness and hard-to-explain variation to model fitting.</li>
+<li>Estimating <span class="arithmatex">\(\Omega\)</span> from the data also makes the fitting process more complicated, increasing the potential sources of error.</li>
+</ul>
+<p>I&rsquo;d suggest a suitable default is <span class="arithmatex">\(2\le\Omega\le3\)</span><sup id="fnref:BurnhamAndersonOverdispersion"><a class="footnote-ref" href="#fn:BurnhamAndersonOverdispersion">7</a></sup>, with higher values making your models a little more resistant to overfitting.</p>
+<p>If you do estimate <span class="arithmatex">\(\Omega\)</span> from the data then the cardinal rule is <em>use the same estimate for all candidate models being tested</em>.</p>
+<div class="admonition insight" id="Insight11">
+<p class="admonition-title">Insight 11. Adjusting <em>globally</em> for overdispersion is reasonable and straightforward</p>
+<p>If <span class="arithmatex">\(\Omega\)</span> is <em>global</em> overdispersion then:</p>
+<ol>
+<li>
+<p>A standard method for allowing for overdispersion is to scale log-likelihood by <span class="arithmatex">\(\Omega^{-1}\)</span> and variances by <span class="arithmatex">\(\Omega\)</span>.</p>
+</li>
+<li>
+<p>Suitable default values for mortality experience data are <span class="arithmatex">\(2\le\Omega\le3\)</span>.</p>
+</li>
+<li>
+<p>Use the <em>same <span class="arithmatex">\(\Omega\)</span> for all candidate models being tested</em>, including when <span class="arithmatex">\(\Omega\)</span> is being estimated from the experience data at hand.</p>
+</li>
+</ol>
+<p>[<a href="/collated-mortality-insights#Insight11">All mortality insights</a>]</p>
+</div>
+<h2 id="formulas-including-global-overdispersion">Formulas including global overdispersion<a class="headerlink" href="#formulas-including-global-overdispersion" title="Permanent link"></a></h2>
+<p>For reference, I&rsquo;ll restate results from previous articles with overdispersion included.</p>
+<ol>
+<li>
+<p>The <a href="/2025-08/mortality-a-over-e/#the-variance-result">variance result</a>:</p>
+<pre class="arithmatex">\[\text{Var}\big(\text{A}w-\text{E}w\big)=\Omega\,\mathbb{E}\big(\text{E}w^2\big) \tag{2b}\]</pre>
+</li>
+<li>
+<p><a href="/2025-08/mortality-log-likelihood/#Def-log-likelihood">Log-likelihood</a>:</p>
+<pre class="arithmatex">\[L=\Omega^{-1}\big(\text{A}w\log\mu-\text{E}w\big) \tag{4b}\]</pre>
+</li>
+<li>
+<p>The (estimated) <a href="/2025-08/mortality-suddenly-aic/#Def-Var-beta">variance of the fitted covariate weights <span class="arithmatex">\(\hat\beta\)</span></a>:</p>
+<pre class="arithmatex">\[\text{Var}\big(\hat\beta\big)\mathrel{\hat=} \Omega\,\mathbf{I}^{-1}\mathbf{J}\mathbf{I}^{-1} \tag{14b}\]</pre>
+</li>
+<li>
+<p>The <a href="/2025-08/mortality-suddenly-aic/#Def-Var-LP">penalised log-likelihood</a> is unchanged <em>provided we use the adjusted (quasi-)log-likelihood from above</em>:</p>
+<pre class="arithmatex">\[L_\text{P}=L(\hat\beta)- \text{tr}\big(\mathbf{J}\mathbf{I}^{-1}\big)\tag{15b}\]</pre>
+</li>
+</ol>
+<p>In the above, <span class="arithmatex">\(\mathbf{I}=\text{E}wXX^\text{T}\)</span> and <span class="arithmatex">\(\mathbf{J}=\text{E}w^2XX^\text{T}\)</span>, and, as <a href="/2025-08/mortality-suddenly-aic/#just-weight-a-moment">previously noted</a>, these assume <span class="arithmatex">\(w\)</span> is an <em>ad hoc</em> reallocation of log-likelihood, as opposed to e.g. <a href="/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance">relevance-based</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Next article: <a href="/2025-10/mortality-incoherent-rating-factors/"><em>Incoherent rating factors</em></a></p>
+<p>So far I have focussed on the machinery for modelling the mortality of <abbr title="Defined benefit">DB</abbr> pension plan members. There is more to come on this, but in the <a href="/2025-10/mortality-incoherent-rating-factors/">next article</a> I want to discuss &lsquo;incoherent rating factors&rsquo;. These are rating factors that can appear predictive using standard modelling diagnostics but which &ndash; scarily &ndash; can result in models that produce poor or even systematically biased forecasts.</p>
+</div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:OverdispersionWithWeight">
+<p>Equation <span class="arithmatex">\((16)\)</span> is more general than the usual definition of overdispersion because I have included a weight <span class="arithmatex">\(w\)</span> so as to ensure that the additional variance of arising from variation in the weight <span class="arithmatex">\(w\)</span> itself is explicitly excluded.&#160;<a class="footnote-backref" href="#fnref:OverdispersionWithWeight" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:Frailty">
+<p>There are other issues caused by heterogeneity, e.g. it is a candidate for causing the flattening of observed <em>population</em> mortality at high ages and failure to allow for heterogeneity can result in the <em>under</em>-valuation of closed books of pension-in-payment liabilities. I may return to these in future articles.&#160;<a class="footnote-backref" href="#fnref:Frailty" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:DeduplicationFailure">
+<p>Duplicates in the data could be considered an extreme version of deaths not being independent, but I&rsquo;ll assume that every attempt has been made in practice to deduplicate the data.&#160;<a class="footnote-backref" href="#fnref:DeduplicationFailure" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:TractabilityBenefits">
+<p>Tractability doesn&rsquo;t just mean pretty equations; it means simpler computer code that is therefore more robust and easier to maintain, which in turn means fewer visits from the f***-up fairy.&#160;<a class="footnote-backref" href="#fnref:TractabilityBenefits" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:GlobalOverdispersion">
+<p>It is not necessarily the case that overdispersion is the same for all the data in the experience dataset, or indeed for all weights in equation <span class="arithmatex">\((16)\)</span>, but this is a standard assumption on the basis that, once a general mitigation has been made for overdispersion, then there are probably bigger modelling fish left to fry.&#160;<a class="footnote-backref" href="#fnref:GlobalOverdispersion" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:OldCMIModeOverdispersion">
+<p>I <em>think</em> the original <abbr title="The (UK) Institute and Faculty of Actuaries’ Continuous Mortality Investigation">CMI</abbr> Mortality Projections Model used to do this. It doesn&rsquo;t any more, which means overdispersion is subsumed into its various <span class="arithmatex">\(S\)</span> parameters.&#160;<a class="footnote-backref" href="#fnref:OldCMIModeOverdispersion" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:BurnhamAndersonOverdispersion">
+<p>Burnham &amp; Anderson recommend <span class="arithmatex">\(1\le\Omega\le4\)</span> for general count data. See box out &lsquo;Overdispersed Count Data: A Review&rsquo; on page 69 of Burnham, K. P.; Anderson, D. R. (2002), <em>Model Selection and Multimodel Inference: A practical information-theoretic approach</em> (2nd ed.), Springer-Verlag. doi:<a href="https://doi.org/10.1007/b97636">10.1007/b97636</a>, ISBN-13: 9780387953649.&#160;<a class="footnote-backref" href="#fnref:BurnhamAndersonOverdispersion" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../2025-08/mortality-suddenly-aic/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Mortality: Suddenly AIC">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Mortality: Suddenly AIC
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../2025-10/mortality-incoherent-rating-factors/" class="md-footer__link md-footer__link--next" aria-label="Next: Mortality: Incoherent rating factors">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Mortality: Incoherent rating factors
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <!-- Modified 2025 by Tim Gordon -->
+
+<!--
+  Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Copyright and theme information -->
+<div class="md-copyright">
+  
+    <div class="md-copyright__highlight">Copyright &copy; Tim Gordon</div>
+  
+  Typeset in <a href="https://lisnoti.com/" target="_blank" rel="noopener noreferrer" >Lisnoti</a>
+  
+  &#x2000;Made with <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener noreferrer" >Material for MkDocs</a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/tim-gordon-8b59b180/" target="_blank" rel="noopener" title="Tim on LinkedIn" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/LongevityTim/" target="_blank" rel="noopener" title="Tim on X (fka Twitter)" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M357.2 48h70.6L273.6 224.2 455 464H313L201.7 318.6 74.5 464H3.8l164.9-188.5L-5.2 48h145.6l100.5 132.9zm-24.8 373.8h39.1L119.1 88h-42z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.tabs.link", "navigation.sections", "navigation.instant", "navigation.tracking", "navigation.expand", "navigation.footer", "navigation.top", "toc.follow", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": {"Coding": "coding", "Forecasting": "forecasting", "Maths": "maths", "Mortality": "mortality", "Plural": "plural", "Standards": "standards"}, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

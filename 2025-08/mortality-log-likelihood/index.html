@@ -1,0 +1,1031 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Thoughts on mortality analysis, longevity forecasting, coding and presentation">
+      
+      
+        <meta name="author" content="Tim Gordon">
+      
+      
+        <link rel="canonical" href="https://timgord.com/2025-08/mortality-log-likelihood/">
+      
+      
+        <link rel="prev" href="../mortality-a-over-e/">
+      
+      
+        <link rel="next" href="../mortality-proportional-hazards/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>Mortality: Log-likelihood - Tim Gordon’s blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/github-permalink-style.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Mortality: Log-likelihood - Tim Gordon’s blog" />
+<meta property="og:description" content="Thoughts on mortality analysis, longevity forecasting, coding and presentation" />
+<meta property="og:image" content="https://timgord.com/assets/images/social/2025-08/mortality-log-likelihood.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://timgord.com/2025-08/mortality-log-likelihood/" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="Mortality: Log-likelihood - Tim Gordon’s blog" />
+<meta property="twitter:description" content="Thoughts on mortality analysis, longevity forecasting, coding and presentation" />
+<meta property="twitter:image" content="https://timgord.com/assets/images/social/2025-08/mortality-log-likelihood.png" />
+</head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mortality-log-likelihood" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Tim Gordon’s blog" class="md-header__button md-logo" aria-label="Tim Gordon’s blog" data-md-component="logo">
+      
+  <img src="../../assets/TimGord-white-disc.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tim Gordon’s blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Mortality: Log-likelihood
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tim Gordon’s blog" class="md-nav__button md-logo" aria-label="Tim Gordon’s blog" data-md-component="logo">
+      
+  <img src="../../assets/TimGord-white-disc.svg" alt="logo">
+
+    </a>
+    Tim Gordon’s blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recommended reading
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Recommended reading
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mortality-measures-matter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mortality: Measures matter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../collated-mortality-insights/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Collated mortality insights
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2024-01/lisnoti-a-proportional-font-that-works-for-coding-too/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lisnoti – a proportional font that works for coding too
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about-me/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About me
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reprint-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reprint policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topic/coding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topic/maths--stats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maths &amp; stats
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topic/mortality--longevity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mortality &amp; longevity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topic/presentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Page contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Page contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Definition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#weighting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weighting
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../.." class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <img src="https://timgord.com/assets/favicon.svg" alt="Tim Gordon">
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          Tim Gordon
+                        
+                      </strong>
+                      <br>
+                      Longevity modelling and pricing actuary
+                    </span>
+                  </div>
+                
+              </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2025-08-12 00:00:00+00:00" class="md-ellipsis">2025-08-12</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../../topic/maths--stats/">Maths &amp; stats</a>, 
+                              <a href="../../topic/mortality--longevity/">Mortality &amp; longevity</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              3 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+
+
+
+
+<h1 id="mortality-log-likelihood">Mortality: Log-likelihood<a class="headerlink" href="#mortality-log-likelihood" title="Permanent link"></a></h1>
+<p><span id="Ref-log">I think it&rsquo;s a shame that the &lsquo;log&rsquo; in &lsquo;log-likelihood&rsquo; is so often presented as a technical convenience or a device for avoiding numerical under/overflow. Yes, it is definitely both of these things, but it is much more fundamental.</span></p>
+<p><strong>Expected <em>log</em>-probability, i.e. <em>entropy</em>, lies at the heart of information theory.</strong> And the concept of entropy itself is pervasive, having extended beyond thermodynamics, its original home, into quantum physics and general relativity, as well as information theory.</p>
+<p>So, without further ado, let&rsquo;s define <em>log</em>-likelihood for mortality experience data.</p>
+<!-- more -->
+
+<div class="admonition abstract inline end">
+<p class="admonition-title">Articles in this series</p>
+<ol>
+<li><a href="/2025-08/mortality-measures-matter/">Measures matter</a></li>
+<li><a href="/2025-08/mortality-a-over-e/">A over E</a></li>
+<li><a href="/2025-08/mortality-log-likelihood/">Log-likelihood</a></li>
+<li><a href="/2025-08/mortality-proportional-hazards/">Proportional hazards</a></li>
+<li><a href="/2025-08/mortality-suddenly-aic/">Suddenly AIC</a></li>
+<li><a href="/2025-09/mortality-overdispersion-and-quasi-log-likelihood/">Overdispersion and quasi-log-likelihood</a></li>
+<li><a href="/2025-10/mortality-incoherent-rating-factors/">Incoherent rating factors</a></li>
+<li><a href="/2025-10/mortality-pensioner-mortality-variation/">Pensioner mortality variation</a></li>
+<li><a href="/2025-10/mortality-good-things-come-to-those-who-weight-i/">Good things come to those who weight: Part&#xA0;I</a>, <a href="/2025-10/mortality-good-things-come-to-those-who-weight-ii/">Part&#xA0;II</a> and <a href="/2025-11/mortality-good-things-come-to-those-who-weight-iii/">Part&#xA0;III</a></li>
+</ol>
+</div>
+<h2 id="definition">Definition<a class="headerlink" href="#definition" title="Permanent link"></a></h2>
+<p>Although we can approach log-likelihood from an all-of-time point of view, I think it&rsquo;s instructive to start at the opposite end of the scale, with infinitesimals<sup id="fnref:Heuristic"><a class="footnote-ref" href="#fn:Heuristic">1</a></sup>.</p>
+<p>Over an infinitesimal time period <span class="arithmatex">\(\text{d}t\)</span>, the probability of survival is</p>
+<pre class="arithmatex">\[p\approx\exp\Big\{\!-\!\mu(i,t)\text{d}t\Big\}\]</pre>
+<p>There are two possible outcomes, which I&rsquo;ll represent using <span class="arithmatex">\(\delta\)</span>, which is <span class="arithmatex">\(1\)</span> if the individual died and <span class="arithmatex">\(0\)</span> otherwise. The likelihood over this infinitesimal time period is then</p>
+<pre class="arithmatex">\[p^{(1-\delta)}(1-p)^\delta\approx\exp\Big\{\!-\!(1-\delta)\mu(i,t)\text{d}t\Big\} \Big\{\mu(i,t)\text{d}t\Big\}^\delta\]</pre>
+<p>and hence the <em>log</em>-likelihood is</p>
+<pre class="arithmatex">\[\delta\log\Big\{\mu(i,t)\text{d}t\Big\} - (1-\delta)\mu(i,t)\text{d}t\]</pre>
+<p>How can we take the log of the infinitesimal <span class="arithmatex">\(\text{d}t\)</span>? The answer is that, even though they are often not presented this way, log-likelihoods are always <em>relative</em>, i.e. it is only the <em>difference</em> between two log-likelihoods that matters. And, when we subtract another log-likelihood <em>for the same experience data</em><sup id="fnref:SameData"><a class="footnote-ref" href="#fn:SameData">2</a></sup>, the <span class="arithmatex">\(\text{d}t\)</span>s inside the log term will cancel.</p>
+<p>Given our assumption of independence by individual and time period, we can sum these individual log-likelihoods. When we do this, <span class="arithmatex">\(\delta\)</span> is, by definition zero everywhere except the very end and so the <span class="arithmatex">\((1-\delta)\)</span> can be treated as <span class="arithmatex">\(1\)</span>, which leaves us with<sup id="fnref:LogUnit"><a class="footnote-ref" href="#fn:LogUnit">3</a></sup></p>
+<pre class="arithmatex">\[\delta\log \mu(i,t) - \mu(i,t)\text{d}t\tag{3}\]</pre>
+<p>But we already know how to add up these terms using the <a href="/2025-08/mortality-measures-matter/#Def-AE-ops"><span class="arithmatex">\(\text{A}\)</span> and <span class="arithmatex">\(\text{E}\)</span> operators</a> defined in the <a href="/2025-08/mortality-measures-matter/">first article</a> in this series. <span id="Def-log-likelihood">So the log-likelihood is</span></p>
+<pre class="arithmatex">\[L=\text{A}w\log\mu-\text{E}w\tag{4}\]</pre>
+<p>where <span class="arithmatex">\(w\)</span> is a <a href="/2025-08/mortality-measures-matter/#Def-variable">variable</a> weighting of the log-likelihood infinitesimals.</p>
+<p><span class="arithmatex">\(\text{A}\)</span> and <span class="arithmatex">\(\text{E}\)</span> are <a href="/2025-08/mortality-measures-matter/#Def-measure">measures</a>, so <span class="arithmatex">\(L\)</span> is a measure<sup id="fnref:SignedMeasure"><a class="footnote-ref" href="#fn:SignedMeasure">4</a></sup> too, which means that, just like <span class="arithmatex">\(\text{A}\)</span> and <span class="arithmatex">\(\text{E}\)</span>, we can partition the data any way we like &ndash; we&rsquo;ll still end up the same result (<a href="/2025-08/mortality-measures-matter/#Insight2">Insight&#xA0;2</a>).</p>
+<h2 id="weighting">Weighting<a class="headerlink" href="#weighting" title="Permanent link"></a></h2>
+<p>Log-likelihood is literally the log of a probability so the inclusion of a weight <span class="arithmatex">\(w\)</span> implies that we&rsquo;re using probabilities to the power of <span class="arithmatex">\(w\)</span>, which is worthy of comment.</p>
+<ol>
+<li>
+<p>If <span class="arithmatex">\(w\in\{0,1\}\)</span> then this is simply equivalent to excluding or including data. I&rsquo;ll call this &lsquo;lives-weighted&rsquo;.</p>
+</li>
+<li>
+<p><span id="Ref-relevance">If <span class="arithmatex">\(0\le w \le 1\)</span> then <span class="arithmatex">\(w\)</span> can be interpreted as <em>relevance</em> (also known as &lsquo;reliability&rsquo; or &lsquo;importance&rsquo;).</span></p>
+</li>
+<li>
+<p>The general case, <span class="arithmatex">\(w\ge0\)</span>, is sometimes described as &lsquo;<em>ad hoc</em>&rsquo; or &lsquo;pragmatic&rsquo;, or even illegitimate(!).</p>
+</li>
+</ol>
+<p>I&rsquo;ll have more to say about weighting the log-likelihood in due course. For the time being, let&rsquo;s leave our options open by assuming <span class="arithmatex">\(w\ge0\)</span>, i.e. 3 above.</p>
+<div class="admonition insight" id="Insight7">
+<p class="admonition-title">Insight 7. Log-likelihood can be defined directly in terms of the <span class="arithmatex">\(\text{A}\)</span> and <span class="arithmatex">\(\text{E}\)</span> operators</p>
+<p>The log-likelihood written in terms of the <span class="arithmatex">\(\text{A}\)</span> and <span class="arithmatex">\(\text{E}\)</span> operators is</p>
+<pre class="arithmatex">\[L=\text{A}w\log\mu-\text{E}w\]</pre>
+<p>where <span class="arithmatex">\(w\ge0\)</span> is the weight variable.</p>
+<p>(This is <em>before</em> allowing for overdispersion.)</p>
+<p>[<a href="/collated-mortality-insights#Insight7">All mortality insights</a>]</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Next article: <a href="/2025-08/mortality-proportional-hazards/"><em>Proportional hazards</em></a></p>
+<p>Equation <span class="arithmatex">\((4)\)</span> is doing a lot of heavy lifting with admirable concision. In <a href="/2025-08/mortality-proportional-hazards/">the next article</a>, I&rsquo;ll show how it leads directly to one of the most useful tools in the mortality modelling armoury.</p>
+</div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:Heuristic">
+<p>My mental model of log-likelihood is as a sum of infinitesimals. It is all heuristics though &ndash; I am not making a pretence of mathematical rigour.&#160;<a class="footnote-backref" href="#fnref:Heuristic" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:SameData">
+<p>A cardinal rule of log-likelihoods is that they are <em>comparable only if calculated on exactly the same data</em>.&#160;<a class="footnote-backref" href="#fnref:SameData" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:LogUnit">
+<p>Taking the log of the <a href="https://en.wikipedia.org/wiki/Dimensionless_quantity">dimensional quantity</a> <span class="arithmatex">\(\mu\)</span> may also irk you &ndash; it does me (a little) &ndash; but units also cancel when two log-likelihoods are compared.&#160;<a class="footnote-backref" href="#fnref:LogUnit" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:SignedMeasure">
+<p>Technically it&rsquo;s a <a href="https://en.wikipedia.org/wiki/Signed_measure">signed measure</a>.&#160;<a class="footnote-backref" href="#fnref:SignedMeasure" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../mortality-a-over-e/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Mortality: A over E">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Mortality: A over E
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../mortality-proportional-hazards/" class="md-footer__link md-footer__link--next" aria-label="Next: Mortality: Proportional hazards">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Mortality: Proportional hazards
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <!-- Modified 2025 by Tim Gordon -->
+
+<!--
+  Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Copyright and theme information -->
+<div class="md-copyright">
+  
+    <div class="md-copyright__highlight">Copyright &copy; Tim Gordon</div>
+  
+  Typeset in <a href="https://lisnoti.com/" target="_blank" rel="noopener noreferrer" >Lisnoti</a>
+  
+  &#x2000;Made with <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener noreferrer" >Material for MkDocs</a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/tim-gordon-8b59b180/" target="_blank" rel="noopener" title="Tim on LinkedIn" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/LongevityTim/" target="_blank" rel="noopener" title="Tim on X (fka Twitter)" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M357.2 48h70.6L273.6 224.2 455 464H313L201.7 318.6 74.5 464H3.8l164.9-188.5L-5.2 48h145.6l100.5 132.9zm-24.8 373.8h39.1L119.1 88h-42z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.tabs.link", "navigation.sections", "navigation.instant", "navigation.tracking", "navigation.expand", "navigation.footer", "navigation.top", "toc.follow", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": {"Coding": "coding", "Forecasting": "forecasting", "Maths": "maths", "Mortality": "mortality", "Plural": "plural", "Standards": "standards"}, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

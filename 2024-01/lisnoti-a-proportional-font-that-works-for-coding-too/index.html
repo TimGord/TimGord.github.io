@@ -1,0 +1,1077 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Thoughts on mortality analysis, longevity forecasting, coding and presentation">
+      
+      
+        <meta name="author" content="Tim Gordon">
+      
+      
+        <link rel="canonical" href="https://timgord.com/2024-01/lisnoti-a-proportional-font-that-works-for-coding-too/">
+      
+      
+      
+        <link rel="next" href="../../2024-10/on-contemporary-mortality-models-for-actuarial-use/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>Lisnoti – a proportional font for coding - Tim Gordon’s blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/github-permalink-style.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Lisnoti – a proportional font for coding - Tim Gordon’s blog" />
+<meta property="og:description" content="Thoughts on mortality analysis, longevity forecasting, coding and presentation" />
+<meta property="og:image" content="https://timgord.com/assets/images/social/2024-01/lisnoti-a-proportional-font-that-works-for-coding-too.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://timgord.com/2024-01/lisnoti-a-proportional-font-that-works-for-coding-too/" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="Lisnoti – a proportional font for coding - Tim Gordon’s blog" />
+<meta property="twitter:description" content="Thoughts on mortality analysis, longevity forecasting, coding and presentation" />
+<meta property="twitter:image" content="https://timgord.com/assets/images/social/2024-01/lisnoti-a-proportional-font-that-works-for-coding-too.png" />
+</head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lisnoti-a-proportional-font-that-works-for-coding-too" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Tim Gordon’s blog" class="md-header__button md-logo" aria-label="Tim Gordon’s blog" data-md-component="logo">
+      
+  <img src="../../assets/TimGord-white-disc.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tim Gordon’s blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lisnoti – a proportional font for coding
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tim Gordon’s blog" class="md-nav__button md-logo" aria-label="Tim Gordon’s blog" data-md-component="logo">
+      
+  <img src="../../assets/TimGord-white-disc.svg" alt="logo">
+
+    </a>
+    Tim Gordon’s blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recommended reading
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Recommended reading
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2025-08/mortality-measures-matter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mortality: Measures matter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../collated-mortality-insights/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Collated mortality insights
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lisnoti – a proportional font that works for coding too
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about-me/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About me
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reprint-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reprint policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topic/coding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topic/maths--stats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maths &amp; stats
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topic/mortality--longevity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mortality &amp; longevity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topic/presentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Page contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Page contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-most-extreme-typewriter-habit-of-them-all" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The most extreme typewriter habit of them all
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-a1-ai-called-al" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The A1 AI called Al
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-long-wish-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The long wish list
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introducing-the-lisnoti-font" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducing the Lisnoti font
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../.." class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <img src="https://timgord.com/assets/favicon.svg" alt="Tim Gordon">
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          Tim Gordon
+                        
+                      </strong>
+                      <br>
+                      Longevity modelling and pricing actuary
+                    </span>
+                  </div>
+                
+              </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2024-01-23 00:00:00+00:00" class="md-ellipsis">2024-01-23</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../../topic/coding/">Coding</a>, 
+                              <a href="../../topic/presentation/">Presentation</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              8 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+
+
+
+
+<h1 id="lisnoti-a-proportional-font-that-works-for-coding-too">Lisnoti – a proportional font that works for coding too<a class="headerlink" href="#lisnoti-a-proportional-font-that-works-for-coding-too" title="Permanent link"></a></h1>
+<p><img align="right" alt="Lisnoti font card" src="../../LisnotiCard.svg" width="50%" /></p>
+<p>Over the past 15 years or so, I have periodically searched in vain for a <em>proportional</em> sans serif font that is both high quality in itself but also suitable for programming, i.e. writing computer code. I finally decided to stop waiting and to make one myself.</p>
+<p>The result is the open source <a href="https://github.com/Lisnoti/Lisnoti/">Lisnoti</a> (<code>/lɪzˈnəʊtiː/</code>) font, which can be <strong><a href="https://github.com/Lisnoti/Lisnoti/?tab=readme-ov-file#installing-lisnoti">downloaded here</a></strong>. It is also the font used to typeset this blog.</p>
+<!-- more -->
+
+<h2 id="the-most-extreme-typewriter-habit-of-them-all">The most extreme typewriter habit of them all<a class="headerlink" href="#the-most-extreme-typewriter-habit-of-them-all" title="Permanent link"></a></h2>
+<p>It&rsquo;s a curious thing that almost no-one other than coders uses <a href="https://en.wikipedia.org/wiki/Monospaced_font">monospaced fonts</a> for large amounts of text. Proportional fonts are ubiquitous for the simple reason that characters such as <code>W</code> and <code>i</code> have very different natural widths. Trying to squash <code>W</code> and widen <code>i</code> so that they have same width is at best inefficient and at worst less readable. And this is before we consider non-Western languages that use characters that are wider still.</p>
+<p>The convention that monospaced fonts are used for coding derives from programming&rsquo;s historical reliance on (a)&nbsp;typewriter-like terminals and displays, and (b)&nbsp;the ASCII character set (or similar), which can just about be crammed into a fixed width font.</p>
+<div class="admonition info inline end">
+<p class="admonition-title">Typewriter habits</p>
+<p>&lsquo;Typewriter habits&rsquo; is a term coined by Matthew Butterick in his excellent <a href="https://practicaltypography.com/typewriter-habits.html">Practical Typography</a> to describe bad typography habits left over from the typewriter era.</p>
+</div>
+<p>The case for using proportional fonts for coding &ndash; essentially readability and efficiency &ndash; has already been well made by <a href="https://storck.io/posts/proportional-programming-code-fonts/">Martĳn Storck</a>, <a href="https://nelsonslog.wordpress.com/2021/09/12/proportional-fonts-and-yapf-vs-black/">Nelson Minar</a> and <a href="https://input.djr.com/info/">David Jonathan Ross</a>. But the sheer prevalence of monospaced fonts in coding contexts means that their use is often just taken for granted and so the habit is hard to break, despite widespread IDE support for proportional fonts and despite computing having spread far beyond the English-speaking world (hello Unicode).</p>
+<p>Sometimes monospace is precisely what you want (e.g. to edit hex data, write assembly or use a terminal). But many objections to proportional fonts boil down to monospaced fonts being presumed to be better simply because either</p>
+<ul>
+<li>people are used to them, or</li>
+<li>some &ndash; arguably brittle and source diff-unfriendly &ndash; code alignment practices, such as hanging comments, assume that the code will always be displayed using a monospaced font.</li>
+</ul>
+<p>If you&rsquo;re completely unconvinced about using proportional fonts for coding then fine; this article is not for you.</p>
+<p>If, on the other hand, you are interested then there is one common objection to proportional fonts that does need to be addressed, which is that many (sans serif) fonts <em>do not reliably distinguish between characters that matter when writing code</em>. (In contrast, almost all monospaced fonts do.) So let&rsquo;s tackle this first.</p>
+<h2 id="the-a1-ai-called-al">The A1 AI called Al<a class="headerlink" href="#the-a1-ai-called-al" title="Permanent link"></a></h2>
+<p>I am going to focus on <em>sans serif</em> fonts because I think these are overall clearer for coding than serif fonts (e.g. <a href="https://en.wikipedia.org/wiki/Times_New_Roman">Times New Roman</a>).</p>
+<p>The most obvious problem when using sans serif fonts for coding is distinguishing</p>
+<ul>
+<li>upper case <code>I</code> from lower case <code>l</code> (and while we&rsquo;re here, also the number <code>1</code>), and</li>
+<li>upper case <code>O</code> from zero <code>0</code>. </li>
+</ul>
+<p>For instance, Gill Sans (<img alt="Characters I i 1 O and 0 in Gill Sans" src="../../Font-Il1O0-Gill-Sans-light.svg#only-light" /><img alt="Characters I i 1 O and 0 in Gill Sans" src="../../Font-Il1O0-Gill-Sans-dark.svg#only-dark" />) has the classic purist design where <code>I</code>, <code>l</code> and <code>1</code> are indistinguishable.</p>
+<p>Many sans serif fonts do at least distinguish the number <code>1</code> from letters, e.g Roboto (<img alt="Characters I i 1 O and 0 in Roboto" src="../../Font-Il1O0-Roboto-light.svg#only-light" /><img alt="Characters I i 1 O and 0 in Roboto" src="../../Font-Il1O0-Roboto-dark.svg#only-dark" /> &ndash; Arial and Calibri are similar). But this still leaves <code>I</code> and <code>l</code> easily confused. </p>
+<div class="admonition info inline end">
+<p class="admonition-title">Legibility is a wider concern</p>
+<p>The need to distinguish similar-looking characters such as <code>I</code> v <code>l</code> is not just a coding issue &ndash; see e.g. <a href="https://www.linotype.com/6990/din-1450.html">this Linotype article</a> on redesigning Frutiger to comply with German legibility standard DIN 1450.</p>
+<p>You may find it surprising that many typefaces commonly used for &ndash; sometimes even <em>specifically designed for</em> &ndash; public signage do not reliably distinguish between the letters <code>I</code> and <code>l</code>. (You can probably spot a few in <a href="https://en.wikipedia.org/wiki/List_of_public_signage_typefaces">this summary</a>.)</p>
+<p>Notable historical exceptions include the pioneering London Underground <a href="https://en.wikipedia.org/wiki/Johnston_(typeface)">Johnston typeface</a>, the UK&rsquo;s <a href="https://en.wikipedia.org/wiki/Transport_(typeface)">Transport typeface</a> and Germany&rsquo;s <a href="https://en.wikipedia.org/wiki/DIN_1451">DIN 1451</a>.</p>
+</div>
+<p>To address the <code>I</code> v <code>l</code> issue, modern fonts often follow in the footsteps of Johnston (see the boxout) and put a tail on the lower case <code>l</code>. Unfortunately, there is an alternative convention whereby the lower case <code>l</code> remains tailless and instead serifs are added to the upper case <code>I</code>. An example of this inconsistency is the <code>I</code> and <code>l</code> typography in Google&rsquo;s <a href="https://fonts.google.com/noto">Noto global fonts project</a> where</p>
+<ul>
+<li>
+<p>the <a href="https://fonts.google.com/noto/specimen/Noto+Sans+JP">Japanese version of Noto Sans</a> uses the first convention (<img alt="Characters I i 1 O and 0 in Noto Sans JP" src="../../Font-Il1O0-Noto-Sans-JP-light.svg#only-light" /><img alt="Characters I i 1 O and 0 in Noto Sans" src="../../Font-Il1O0-Noto-Sans-JP-dark.svg#only-dark" />), but</p>
+</li>
+<li>
+<p>the <a href="https://fonts.google.com/noto/specimen/Noto+Sans">Western version of Noto Sans</a> uses the second convention (<img alt="Characters I i 1 O and 0 in Noto Sans" src="../../Font-Il1O0-Noto-Sans-light.svg#only-light" /><img alt="Characters I i 1 O and 0 in Noto Sans" src="../../Font-Il1O0-Noto-Sans-dark.svg#only-dark" />).</p>
+</li>
+</ul>
+<p>What this means is that, <em>even if <code>I</code> is distinct from <code>l</code> within a font, you cannot deduce which is which in isolation</em>. Plus there is additional cognitive load.</p>
+<p>Back at the start of 2017, Paul McAulay asked that <a href="https://github.com/notofonts/noto-fonts/issues/821#issuecomment-270531619">Noto Sans and Roboto be modified to correct precisely this ambiguity</a> (see <a href="https://github.com/googlefonts/roboto/issues/226">here for the Roboto request</a>), but he and others were given pretty short shrift. The objection that I really struggle to understand is that <em>making <code>I</code> and <code>l</code> distinct cannot be done for style reasons</em> &ndash; see for example <a href="https://github.com/googlefonts/roboto/issues/226#issuecomment-270854413">this classic (&lsquo;it just won&rsquo;t fit&rsquo;)</a> and, in relation to a different font,
+ <a href="https://github.com/be5invis/Iosevka/issues/1352#issuecomment-1125731246">a dismissal based solely on style (&lsquo;differentiation is not a design goal&rsquo;)</a>.</p>
+<p>A limited few proportional fonts <em>do</em> handle the <code>I</code> v <code>l</code> issue:</p>
+<ul>
+<li>David Jonathan Ross&rsquo;s proportionally-spaced sans serif variant of his <a href="https://input.djr.com/info/">Input font</a> does this by design, although I find it too clunky for general typography (which to be fair is not what it is intended for).</li>
+<li>I suspect <a href="https://www.ibm.com/plex/">IBM Plex</a> achieves this accidentally solely because of the <code>I</code> in the IBM logo.</li>
+</ul>
+<p>But fixing the <code>I</code> v <code>l</code> issue is just the start&nbsp;…</p>
+<h2 id="the-long-wish-list">The long wish list<a class="headerlink" href="#the-long-wish-list" title="Permanent link"></a></h2>
+<p>As well as being suitable for writing standard computer code and as a general font, I&rsquo;d also like a font that includes mathematical and other symbols that crop up in code documentation and, if you use <a href="https://julialang.org/">Julia</a>, in actual code.</p>
+<p>The reason you want all characters in the <em>same</em> font is that otherwise the environment you&rsquo;re using will either show a meaningless replacement character (e.g. <code>�</code>) or make a &ndash; likely garish &ndash; substitution from an unrelated font.</p>
+<div class="admonition info inline end">
+<p class="admonition-title">Hyphen vs minus sign</p>
+<p>Using hyphen to represent a minus sign is a frequently-occurring typographical sin, the more so because almost all modern fonts specifically include an actual minus sign (<code>U+2212</code>).</p>
+<p>Even the generally reliable Matthew Butterick lapses (albeit while advocating the use of true maths symbols) <a href="https://practicaltypography.com/math-symbols.html">by suggesting en dash as a minus sign</a> &ndash; please don&rsquo;t do that!</p>
+<p>Even professional typographers screw this up. At time of writing, <a href="https://fonts.google.com/noto/specimen/Noto+Sans">Noto Sans</a> <em>does</em> implement the Unicode minus sign but does so <em>incorrectly</em> as a hyphen. (The minus sign in the font file is literally a reference to the hyphen glyph.)</p>
+</div>
+<p>Here&rsquo;s my personal long list of font requirements and character coverage:</p>
+<ol>
+<li>
+<p>Reliable distinction of <code>I</code>/<code>l</code> and <code>O</code>/<code>0</code> (as already discussed).</p>
+</li>
+<li>
+<p>Consistent arithmetic, comparison, logic, set, <em>n</em>-ary and other common mathematical operators and entities, e.g. </p>
+<ul>
+<li>arithmetic: <code>− × ÷ ± ∓ ∞</code></li>
+<li>comparison: <code>≤ ≠ ≥ ≈ ≡ ≢ ∝</code></li>
+<li>logic: <code>¬ ∧ ∨ ⊻ ⊤ ⊥ ⊦</code></li>
+<li>set: <code>∩ ∪ ∈ ∉ ⊂ ⊃ ⊆ ⊇ ∅</code></li>
+<li><em>n</em>-ary: <code>∑ ∏ ⋀ ⋁  ⋂ ⋃</code></li>
+<li>other: <code>∫ ∂ √ Δ  ∇ ∀ ∃</code></li>
+</ul>
+</li>
+<li>
+<p>Greek and Cyrillic letters &ndash; mathematics and logic make frequent use of Greek letters and occasionally Cyrillic ones too.</p>
+</li>
+<li>
+<p>Consistently formatted digit and Roman letter superscripts and subscripts, e.g. <code>¹²³ ⁽⁾⁺⁻ ᵃᵇᶜ ᴬᴮᴰ</code> and <code>₁₂₃ ₍₎₊₋ ₐₑₕ</code>.</p>
+</li>
+<li>
+<p>A selection of symbols (consistently including all related characters within each set &ndash; I&rsquo;ve shown only subsets below)</p>
+<ul>
+<li>squares, diamonds, rectangles, triangles, circles and stars, e.g.<code>■ ◇ ▮ △ ● ☆</code></li>
+<li>arrows, e.g. <code>→ ⇒ ⇨ ￫</code></li>
+<li>ticks and crosses, e.g. <code>☑ ✔✕✘</code></li>
+<li>box drawing, e.g.<code>│ ┐ ┬ ├</code></li>
+<li>game characters, e.g.<code>♚♕♠♡</code></li>
+<li>miscellaneous but useful, e.g. <code>☸ ♯ ⌘ ␣</code></li>
+</ul>
+</li>
+<li>
+<p>All the operators <a href="https://github.com/JuliaLang/julia/blob/master/src/julia-parser.scm">parsed by Julia</a>.</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Mathematical_Alphanumeric_Symbols">Unicode mathematical alphanumeric symbols</a>, e.g. <code>𝐀𝐴𝑨 𝒜𝒲𝓐 𝔄 𝔸 𝕬 𝖠𝗔𝘈𝘼 𝙰</code> (noting that these too can be parsed by Julia).</p>
+</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">All the above <em>but monospaced</em></p>
+<p>If you want all the above but you&rsquo;re happy with a monospaced font, then I suggest you check out <a href="https://juliamono.netlify.app/">Julia Mono</a>.</p>
+</div>
+<h2 id="introducing-the-lisnoti-font">Introducing the Lisnoti font<a class="headerlink" href="#introducing-the-lisnoti-font" title="Permanent link"></a></h2>
+<p>Google&rsquo;s <a href="https://fonts.google.com/noto/">Noto global fonts project</a> has generated sets of sans serif fonts that, in combination, have excellent Unicode coverage and are published under an <a href="https://openfontlicense.org/">open source licence</a>. This means that we can build on the huge amount of technically skilled typographical work that has already been done and publish the results for general use (provided original copyright statements, reserved font name declarations and the original licence text are included).</p>
+<p>So that&rsquo;s what I&rsquo;ve done &ndash; I&rsquo;ve edited and combined Noto Sans fonts to create a proportional font <strong>Lisnoti</strong> (<code>/lɪzˈnəʊtiː/</code>) that meets all the requirement listed in this article, including, of course, fixing the ambiguous characters we kicked off with (<img alt="Characters I i 1 O and 0 in Lisnoti" src="../../Font-Il1O0-Lisnoti-light.svg#only-light" /><img alt="Characters I i 1 O and 0 in Lisnoti" src="../../Font-Il1O0-Lisnoti-dark.svg#only-dark" />).</p>
+<p><strong>Lisnoti can be <a href="https://github.com/Lisnoti/Lisnoti/?tab=readme-ov-file#installing-lisnoti">downloaded from GitHub here</a></strong> (where you can also find further detail on its construction). </p>
+<p>It is available </p>
+<ul>
+<li>in regular, <em>italic</em>, <strong>bold</strong> and <strong><em>bold-italic</em></strong> variants, and</li>
+<li>in OpenType (<code>.ttf</code>) and web (<code>.woff</code> and <code>.woff2</code>) formats,</li>
+</ul>
+<p>and is published under the <a href="https://openfontlicense.org/">SIL Open Font Licence (OFL)</a>. </p>
+<p>I&rsquo;ve been using Lisnoti in Visual Studio and VS Code for some time now, and it works for me. (I&rsquo;ve tried it on Windows and Apple, but not on Linux.)</p>
+<p>If you have comments on Lisnoti, please use the <a href="https://github.com/Lisnoti/Lisnoti/discussions">Lisnoti GitHub discussions page</a>. If you do comment then please bear in mind that I am not a typography expert, just a frustrated user.</p>
+<p>Cheers</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+        
+          
+          <a href="../../2024-10/on-contemporary-mortality-models-for-actuarial-use/" class="md-footer__link md-footer__link--next" aria-label="Next: On contemporary mortality models for actuarial use">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                On contemporary mortality models for actuarial use
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <!-- Modified 2025 by Tim Gordon -->
+
+<!--
+  Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Copyright and theme information -->
+<div class="md-copyright">
+  
+    <div class="md-copyright__highlight">Copyright &copy; Tim Gordon</div>
+  
+  Typeset in <a href="https://lisnoti.com/" target="_blank" rel="noopener noreferrer" >Lisnoti</a>
+  
+  &#x2000;Made with <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener noreferrer" >Material for MkDocs</a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/tim-gordon-8b59b180/" target="_blank" rel="noopener" title="Tim on LinkedIn" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/LongevityTim/" target="_blank" rel="noopener" title="Tim on X (fka Twitter)" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M357.2 48h70.6L273.6 224.2 455 464H313L201.7 318.6 74.5 464H3.8l164.9-188.5L-5.2 48h145.6l100.5 132.9zm-24.8 373.8h39.1L119.1 88h-42z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.tabs.link", "navigation.sections", "navigation.instant", "navigation.tracking", "navigation.expand", "navigation.footer", "navigation.top", "toc.follow", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": {"Coding": "coding", "Forecasting": "forecasting", "Maths": "maths", "Mortality": "mortality", "Plural": "plural", "Standards": "standards"}, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
