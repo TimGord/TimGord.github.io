@@ -45,14 +45,14 @@ In this first article, I'll set out the foundations.
 
 ## Definitions
 
-An <span id="Def-E2R">**exposed-to-risk**</span> (E2R) for an individual comprises[^ContinuousTime][^Interval]
+I'll take it as a given that we should work in (some representation of) continuous time if at all possible. Otherwise we'd be (a)&#xA0;throwing away data and (b)&#xA0;creating additional cognitive load and potentially biased or even plain wrong results by having to make assumptions about averages.
+
+An <span id="Def-E2R">**exposed-to-risk**</span> (E2R) for an individual comprises
 
 - an exposure period $[\nu,\tau)$ throughout which the individual was alive, and
-- an indicator $\delta$, which is $1$ if the individual died at $\tau$ or else $0$.
+- an indicator $\delta$, which is $1$ if the individual died at $\tau$ or else $0$,
 
-[^ContinuousTime]: I'll take it as a given that we should work in (some representation of) continuous time if at all possible. Otherwise we'd be (a)&#xA0;throwing away data and (b)&#xA0;creating additional cognitive load and potentially biased or even plain wrong results by having to make assumptions about averages.
-
-[^Interval]: The notation $[\nu,\tau)$ means the [interval](https://en.wikipedia.org/wiki/Interval_(mathematics)) $\{t\in\mathbb{R} \mid  \nu\le t \lt \tau\}$.
+where the notation $[\nu,\tau)$ means the [interval](https://en.wikipedia.org/wiki/Interval_(mathematics)) $\{t\in\mathbb{R} \mid  \nu\le t \lt \tau\}$.
 
 I'll write an E2R as $\varepsilon=(\nu,\tau,\delta)$.
 
