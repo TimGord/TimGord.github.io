@@ -97,7 +97,7 @@ If you don't allow for overdispersion then you *will* underestimate uncertainty 
 [[All mortality insights](/collated-mortality-insights#Insight1)]
 ///
 
-The good news is that we can fix things up to allow for overdispersion, which we'll get to in a later article. In the meantime, whenever you come across references to mortality variance or uncertainty (in this blog or anywhere else), a little voice in your head should be saying '*remember to allow for overdispersion*'.
+The good news is that we can fix things up to allow for overdispersion, which we'll get to in a [later article](/2025-09/mortality-overdispersion-and-quasi-log-likelihood/). In the meantime, whenever you come across references to mortality variance or uncertainty (in this blog or anywhere else), a little voice in your head should be saying '*remember to allow for overdispersion*'.
 
 ## The measures that matter
 
@@ -169,7 +169,7 @@ On notation and terminology:
 - The dataset $\text{Exp}$ and, for $\text{E}$, the mortality $\mu$ are typically implicit from context -- it is rare that we need additional notation to make them explicit. But, for the avoidance of doubt, $\text{E}$ always implies a background mortality $\mu$.
 - There is a multitude of notations for integrating using measures (see e.g. [here](https://math.stackexchange.com/questions/5230/is-there-any-difference-between-the-notations-int-fxd-mux-and-int-fx)), of which $\int \!f(x)\,\text{M}(\text{d}x)$ and $\int \!f\,\text{dM}$ are common. But the simplest is $\text{M}f$, which is what I'll use.
 
-Although I've emphasised that $\text{A}$ and $\text{E}$ are measures over experience data, I confess that I don't use this terminology day-to-day[^LinearOp]. In fact, I've hardly heard anyone mention 'measures' in connection with experience analysis, which may explain why their importance seems to be overlooked and why some practitioners end up confused over the meaning of 'expected' (see box out), or whether individuals need to be tracked throughout the experience data.
+Although I've emphasised that $\text{A}$ and $\text{E}$ are measures over experience data, I confess that I don't use this terminology day-to-day[^LinearOp]. In fact, I've hardly heard anyone mention 'measures' in connection with experience analysis, which may explain why their importance seems to be overlooked and why some practitioners end up confused over (a)&#xA0;the meaning of 'expected' (see box out) and (b)&#xA0;whether individuals need to be tracked throughout the experience data.
 
 [^LinearOp]: I think I usually describe $A$ and $E$ as 'linear operators'.
 
