@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{#- Every page sets Latin text in Lisnoti Regular, so fetch that subset alongside
+    the stylesheets instead of after them. The file name must follow the release
+    in docs/fonts/Lisnoti-woff2/. -#}
+{% block extrahead %}
+  {{ super() }}
+  <link rel="preload" href="{{ 'fonts/Lisnoti-woff2/Lisnoti-Regular-latin.woff2' | url }}" as="font" type="font/woff2" crossorigin>
+{% endblock %}

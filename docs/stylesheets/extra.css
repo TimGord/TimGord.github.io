@@ -1,38 +1,9 @@
-/* NB The url(...) path is *relative to* the stylesheets folder! */
-
-@font-face {
-  font-family: "Lisnoti";
-  src: /* List must end with a semi-colon! */
-    url('../fonts/Lisnoti-Regular.woff2') format('woff2'), /* Super Modern Browsers */
-    url('../fonts/Lisnoti-Regular.woff') format('woff'), /* Pretty Modern Browsers */
-    url('../fonts/Lisnoti-Regular.ttf')  format('truetype'); /* Safari, Android, iOS */
-}
-
-@font-face {
-  font-family: "Lisnoti";
-  src: /* List must end with a semi-colon! */
-    url('../fonts/Lisnoti-Bold.woff2') format('woff2'), /* Super Modern Browsers */
-    url('../fonts/Lisnoti-Bold.woff') format('woff'), /* Pretty Modern Browsers */
-    url('../fonts/Lisnoti-Bold.ttf')  format('truetype'); /* Safari, Android, iOS */
-  font-weight: bold;
-}
-@font-face {
-  font-family: "Lisnoti";
-  src: /* List must end with a semi-colon! */
-    url('../fonts/Lisnoti-Italic.woff2') format('woff2'), /* Super Modern Browsers */
-    url('../fonts/Lisnoti-Italic.woff') format('woff'), /* Pretty Modern Browsers */
-    url('../fonts/Lisnoti-Italic.ttf')  format('truetype'); /* Safari, Android, iOS */
-  font-style: italic;
-}
-@font-face {
-  font-family: "Lisnoti";
-  src: /* List must end with a semi-colon! */
-    url('../fonts/Lisnoti-BoldItalic.woff2') format('woff2'), /* Super Modern Browsers */
-    url('../fonts/Lisnoti-BoldItalic.woff') format('woff'), /* Pretty Modern Browsers */
-    url('../fonts/Lisnoti-BoldItalic.ttf')  format('truetype'); /* Safari, Android, iOS */
-  font-weight: bold;
-  font-style: italic;
-}
+/* Lisnoti is self-hosted. Its @font-face rules are in
+   docs/fonts/Lisnoti-woff2/lisnoti.css, which mkdocs.yml lists ahead of this
+   file. That folder is Lisnoti's own release copied unchanged, one WOFF2 file
+   per subset per style, and a page fetches only the subsets its text uses.
+   overrides/main.html preloads Lisnoti-Regular-latin.woff2, which every page
+   needs. To take a new release, copy its Lisnoti-woff2 folder over this one. */
 
 :root {
   /* Precise Teal */

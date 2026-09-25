@@ -114,13 +114,17 @@ markdown_extensions:
       options:
         custom_icons:
           - overrides/.icons 
-  - pymdownx.highlight:
+  - pymdownx.highlight: # See https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#configuration
       use_pygments: true
       anchor_linenums: true
       line_spans: __span # Required for features like line highlighting to work correctly
       pygments_lang_class: true # Required for custom annotation markers to function
   #- pymdownx.inlinehilite
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
   - toc:
@@ -205,6 +209,7 @@ extra:
     Plural: plural
 
 extra_css:
+  - fonts/Lisnoti-woff2/lisnoti.css  # Lisnoti's @font-face rules; must come first
   - stylesheets/extra.css
   - stylesheets/github-permalink-style.css  # GitHub-style heading links *before* title
 
