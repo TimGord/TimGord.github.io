@@ -1,9 +1,12 @@
-/* Lisnoti is self-hosted. Its @font-face rules are in
-   docs/fonts/Lisnoti-woff2/lisnoti.css, which mkdocs.yml lists ahead of this
-   file. That folder is Lisnoti's own release copied unchanged, one WOFF2 file
+/* Lisnoti and Lisnoti Code are self-hosted. Their @font-face rules are in
+   docs/fonts/Lisnoti-woff2/lisnoti.css and
+   docs/fonts/LisnotiCode-woff2/lisnoti-code.css, which mkdocs.yml lists ahead
+   of this file. Each folder is the release copied unchanged, one WOFF2 file
    per subset per style, and a page fetches only the subsets its text uses.
    overrides/main.html preloads Lisnoti-Regular-latin.woff2, which every page
-   needs. To take a new release, copy its Lisnoti-woff2 folder over this one. */
+   needs; Lisnoti Code is not preloaded, since only pages with code need it.
+   To take a new release, copy its Lisnoti-woff2 and LisnotiCode-woff2 folders
+   over these ones. */
 
 :root {
   /* Precise Teal */
@@ -11,9 +14,9 @@
   --md-primary-fg-color--light: #00C1EE;
   --md-primary-fg-color--dark:  #0080A0;
 
-  /* Use Lisnoti font */
-  --md-text-font: "Lisnoti"; 
-  --md-code-font: "Lisnoti";
+  /* Use Lisnoti for text and Lisnoti Code for code */
+  --md-text-font: "Lisnoti";
+  --md-code-font: "Lisnoti Code";
 }
 
 ::selection {

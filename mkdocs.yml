@@ -210,6 +210,7 @@ extra:
 
 extra_css:
   - fonts/Lisnoti-woff2/lisnoti.css  # Lisnoti's @font-face rules; must come first
+  - fonts/LisnotiCode-woff2/lisnoti-code.css  # Lisnoti Code's @font-face rules
   - stylesheets/extra.css
   - stylesheets/github-permalink-style.css  # GitHub-style heading links *before* title
 

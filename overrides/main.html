@@ -6,4 +6,8 @@
 {% block extrahead %}
   {{ super() }}
   <link rel="preload" href="{{ 'fonts/Lisnoti-woff2/Lisnoti-Regular-latin.woff2' | url }}" as="font" type="font/woff2" crossorigin>
+  {#- A page can set its own code font in front matter, e.g. code_font: Lisnoti -#}
+  {% if page and page.meta and page.meta.code_font %}
+  <style>:root { --md-code-font: "{{ page.meta.code_font }}"; }</style>
+  {% endif %}
 {% endblock %}
