@@ -1,6 +1,8 @@
 # Collated mortality insights
 
-These are the collated mortality insights from all my blog articles.
+These are the collated mortality insights from all my blog articles[^Insights16And18].
+
+[^Insights16And18]: [Edit 2026-10-30] I've retracted Insight&#xA0;16, which set out a formula for the log-likelihood weight to estimate uncertainty using a different weight from $w$ defined in [Insight&#xA0;15](#Insight15), because I think it requires additional assumptions. A direct knock-on effect is that the parameter uncertainty estimates in [Insight&#xA0;18](#Insight18) have been removed.
 
 <!-- 
 /2025-08/mortality-measures-matter/ 
@@ -77,8 +79,6 @@ Allowing for overdispersion $\Omega$, this becomes
 
 $$\text{Var}\big(\text{A}f-\text{E}f\big)=\Omega\,\mathbb{E}\big(\text{E}f^2\big)$$
 
-Caveat: $f$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance). For the version of this insight that *does* take account of relevance, see [Insight&#xA0;17](/collated-mortality-insights#Insight17).
-
 [[Original article](/2025-08/mortality-a-over-e#Insight5)]
 ///
 
@@ -147,8 +147,6 @@ $$\text{Var}\big(\hat\beta\big)\mathrel{\hat=} \Omega\,\mathbf{I}^{-1}\mathbf{J}
 
 where $\hat\beta$ is the maximum likelihood estimator of the covariate weights, $X$ is the vector of covariates, $w\ge0$ is the log-likelihood weight, $\mathbf{I}=\text{E}wXX^\text{T}$, $\mathbf{J}=\text{E}w^2XX^\text{T}$ and $\Omega$ is overdispersion
 
-Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance). For the version of this insight that *does* take account of relevance, see [Insight&#xA0;17](/collated-mortality-insights#Insight17).
-
 [[Original article](/2025-08/mortality-suddenly-aic#Insight9)]
 ///
 
@@ -159,8 +157,6 @@ Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevanc
 $$L_\text{P}= L(\hat\beta)-\text{tr}\big(\mathbf{J}\mathbf{I}^{-1}\big)$$
 
 where $\hat\beta$ is the maximum likelihood estimator of the covariate weights, $X$ is the vector of covariates, $L$ is the log-likelihood (which has *already* been adjusted for overdispersion), $w\ge0$ is the log-likelihood weight, $\mathbf{I}=\text{E}wXX^\text{T}$ and $\mathbf{J}=\text{E}w^2XX^\text{T}$.
-
-Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance). For the version of this insight that *does* take account of relevance, see [Insight&#xA0;17](/collated-mortality-insights#Insight17).
 
 [[Original article](/2025-08/mortality-suddenly-aic#Insight10)]
 ///
@@ -254,7 +250,7 @@ $$w_{it}=\sum_{j\in\text{Val}} r_{it}^{jt_0} \, I_j^{-1} v'_j$$
 
 In the above,
 
-- $r_{it}^{jt_0}$ is the relevance of the log-likelihood of the E2R of individual $i$ at time $t$ to individual $k$ in the valuation data as at the valuation date $t_0$,
+- $r_{it}^{jt_0}$ is the relevance of the log-likelihood of the E2R of individual $i$ at time $t$ to individual $j$ in the valuation data as at the valuation date $t_0$,
 - $I_j$ is the relevant information matrix for valuation individual $j$, and
 - $v'_j$ is derivative of liability value for valuation individual $j$ with respect to the model parameter $\beta$.
 
@@ -264,19 +260,6 @@ For further definitions, see [article body](/2025-10/mortality-good-things-come-
 
 ///
 
-
-/// admonition | Insight 16. A different weight is required to determine uncertainty in the presence of relevance
-    type: insight
-    attrs: {id: "Insight16"}
-
-The log-likelihood weight to determine uncertainty that corresponds to the best estimate weight in [Insight&#xA0;15](/2025-10/mortality-good-things-come-to-those-who-weight-ii#Insight15) is
-
-
-$$u_{it}=\sum_{j\in\text{Val}} \sqrt{r_{it}^{jt_0}} \, I_j^{-1} v'_j$$
-
-[[Original article](/2025-10/mortality-good-things-come-to-those-who-weight-ii#Insight16)]
-
-///
 
 <!-- 
 /2025-11/mortality-good-things-come-to-those-who-weight-iii/ 
@@ -307,27 +290,11 @@ If relevance is purely time-based then this can be accomplished simply by scalin
     type: insight
     attrs: {id: "Insight18"}
 
-Using the weights by $w$ and $u$ as defined in Insights&#xA0;[15](/collated-mortality-insights#Insight15) and [16](/collated-mortality-insights#Insight16) respectively to calibrate and select DB pensioner base mortality models 
+Using the weight $w$ as defined in Insight&#xA0;[15](/collated-mortality-insights#Insight15) to calibrate and select DB pensioner base mortality models[^Insights16And18]
 
 - takes explicit account of liability impact, and
 
 - defaults to sensible results regardless of the quantum of experience data available.
-
-The following Insights need to be restated to accommodate relevance:
-
-- [Insight&#xA0;5](/collated-mortality-insights#Insight5) (allowing for overdispersion $\Omega$) becomes
-
-    $$\text{Var}\big(\text{A}w-\text{E}w\big)=\Omega\,\mathbb{E}\big(\text{E}u^2\big)$$
-
-- The equations for [Insights&#xA0;9](/collated-mortality-insights#Insight9) and [Insights&#xA0;10](/collated-mortality-insightsaic#Insight10) are unchanged as
-
-    $$\begin{aligned}
-    \text{Var}\big(\hat\beta\big)\mathrel{\hat=} \Omega\,\mathbf{I}^{-1}\mathbf{J}\mathbf{I}^{-1}
-    \\[1em]
-    L_\text{P}= L(\hat\beta)-\text{tr}\big(\mathbf{J}\mathbf{I}^{-1}\big)
-    \end{aligned}$$
-
-    But $\mathbf{J}$ is redefined as $\text{E}u^2XX^\text{T}$, i.e. weighted by $u^2$ rather than $w^2$.
 
 [[Original article](/2025-11/mortality-good-things-come-to-those-who-weight-iii#Insight18)]
 

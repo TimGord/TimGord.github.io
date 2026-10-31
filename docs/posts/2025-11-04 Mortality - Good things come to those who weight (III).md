@@ -132,29 +132,25 @@ In order to help us intuit what's going on, we can ask what happens if relevance
 
 [^PartitionLabel]: Because this is a partition, we can use the same label for experience and valuation data.
 
-The relevance approach collapses to[^MathsNotShown] 
+The relevance approach collapses to[^MathsNotShown][^LiabilityUncertainty]
 
-$$\begin{aligned}
-\hat\beta &\approx \big(V'\big)^{-1}\sum_G V'_G \, \hat\beta_G
-\\[1em]
-\text{Var}\big(\hat\beta\big) &\approx \big(V'\big)^{-2}\sum_G \big(V'_G\big)^2 I_G^{-1}
-\end{aligned}$$
+$$
+\hat\beta \approx \big(V'\big)^{-1}\sum_G V'_G \, \hat\beta_G
+$$
 
-[^MathsNotShown]: I haven't shown the maths, but this follows direct from the equations in Insights [15](/2025-10/mortality-good-things-come-to-those-who-weight-ii#Insight15) and [16](/2025-10/mortality-good-things-come-to-those-who-weight-ii#Insight16).
+[^MathsNotShown]: I haven't shown the maths, but this follows direct from [Insight&#xA0;15](/2025-10/mortality-good-things-come-to-those-who-weight-ii#Insight15).
+
+[^LiabilityUncertainty]: [Edit 2026-10-30] I originally included an estimate of liability variance using a related but differently defined weight, but I've retracted this because I think it requires additional assumptions. This has also led to the parameter uncertainty originally in [Insight&#xA0;18](#Insight18) being removed.
 
 where
 
 - $V_G$ is the sum of liability values for individuals in group $G$, with the total being $V=\sum_G V_G$,
-- $L_G$ is the sum of log-likelihood for the E2Rs in group $G$, with the [relevant information](/2025-10/mortality-good-things-come-to-those-who-weight-ii/#Def-Ik) for group $G$ being $I_G=-L''_G$, and
-- $'$ and $''$ are first and second derivatives with respect to the mortality model parameter $\beta$.
+- $\hat\beta_G$ is the estimate based on the log-likelihood for group $G$, and
+- $'$ is the first derivative with respect to the mortality model parameter $\beta$.
 
-In other words, 
+In other words, the *overall best estimate* is the sum of the per-group best estimates *weighted by liability impact* ($V'_G$).
 
-- the *overall best estimate* is the sum of the per-group best estimates *weighted by liability impact* ($V'_G$), and
-
-- the *variance* of the overall best estimate reflects both (a)&#xA0;liability impact ($V'_G$) and (b)&#xA0;the amount of experience data available ($I_G$) per group.
-
-This is self-evidently the best estimate for liability value and its uncertainty given the assumptions and so it is reassuring that the general approach gives the correct answer in this case.
+This is self-evidently the best estimate for liability value given the assumptions and so it is reassuring that the general approach gives the correct answer in this case.
 
 ## Application
 
@@ -190,27 +186,11 @@ Using a weighted log-likelihood as derived to fit DB pensioner base mortality mo
     type: insight
     attrs: {id: "Insight18"}
 
-Using the weights by $w$ and $u$ as defined in Insights&#xA0;[15](/2025-10/mortality-good-things-come-to-those-who-weight-ii#Insight15) and [16](/2025-10/mortality-good-things-come-to-those-who-weight-ii#Insight16) respectively to calibrate and select DB pensioner base mortality models 
+Using the weight $w$ as defined in Insight&#xA0;[15](/2025-10/mortality-good-things-come-to-those-who-weight-ii#Insight15) to calibrate and select DB pensioner base mortality models[^LiabilityUncertainty]
 
 - takes explicit account of liability impact, and
 
 - defaults to sensible results regardless of the quantum of experience data available.
-
-The following Insights need to be restated to accommodate relevance:
-
-- [Insight&#xA0;5](/2025-08/mortality-a-over-e#Insight5) (allowing for overdispersion $\Omega$) becomes
-
-    $$\text{Var}\big(\text{A}w-\text{E}w\big)=\Omega\,\mathbb{E}\big(\text{E}u^2\big)$$
-
-- The equations for [Insights&#xA0;9](/2025-08/mortality-suddenly-aic#Insight9) and [Insights&#xA0;10](/2025-08/mortality-suddenly-aic#Insight10) are unchanged as
-
-    $$\begin{aligned}
-    \text{Var}\big(\hat\beta\big)\mathrel{\hat=} \Omega\,\mathbf{I}^{-1}\mathbf{J}\mathbf{I}^{-1}
-    \\[1em]
-    L_\text{P}= L(\hat\beta)-\text{tr}\big(\mathbf{J}\mathbf{I}^{-1}\big)
-    \end{aligned}$$
-
-    But $\mathbf{J}$ is redefined as $\text{E}u^2XX^\text{T}$, i.e. weighted by $u^2$ rather than $w^2$.
 
 [[All mortality insights](/collated-mortality-insights#Insight18)]
 

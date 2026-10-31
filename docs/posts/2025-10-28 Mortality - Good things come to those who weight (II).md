@@ -45,7 +45,7 @@ In this article, I'll use a simple framework to express this mathematically.
 
 <span id="Ref-givens">These are our givens:</span>
 
-1. The objective is to *determine the best estimate and uncertainty of the present value of liabilities*.
+1. The objective is to *determine the best estimate of the present value of liabilities*.
 
 1. Our mortality model has a *single scalar parameter* -- see e.g. [this previous article in relation to DB pensioner mortality](/2025-10/mortality-pensioner-mortality-variation/).
 
@@ -96,8 +96,6 @@ To give you an idea of where we're headed, here is a roadmap:
 - Then we'll look for an [equivalent overall parameter](#equivalent-overall-parameter) that gives the same answer.
 
 - To complete the circle, we'll re-express the derivation of that equivalent overall parameter in terms of [weighted log-likelihood](#weighted-log-likelihood).
-
-- Finally, we'll address [parameter uncertainty](#parameter-uncertainty).
 
 ## Best estimate liability
 
@@ -188,7 +186,9 @@ Changing order of summation, we have
 
 $$\sum_{b\in\text{Val}} \tilde w_b L_b(\beta)=\sum_{b\in\text{Val}} \tilde w_b \sum_{a\in\text{Exp}} r_b^a\ell_a(\beta)= \sum_{a\in\text{Exp}} w_a\ell_a(\beta)$$
 
-and hence the general weight to apply to the experience data is[^CreditAndyHarding]
+and hence the general weight to apply to the experience data is[^CreditAndyHarding][^LiabilityUncertainty]
+
+[^LiabilityUncertainty]: [Edit 2026-10-30] There is no longer an Insight&#xA0;16. It was based on a proposed related but differently defined weight for estimating liability uncertainty, which I've retracted, because I think it requires additional assumptions.
 
 $$w_a=\sum_{b\in\text{Val}} r_a^b \, I_b^{-1} v'_b\tag{25}$$
 
@@ -219,58 +219,9 @@ have a reasonable default mortality* (so that we can calculate $I$ and $v'$ *in 
 
 I'll expand on this in [P&#xA0;III](/2025-11/mortality-good-things-come-to-those-who-weight-iii#Insight19).
 
-## Parameter uncertainty
-
-Best estimates are meaningless without some measure of uncertainty. I'm not going to plow through yet more maths here and so instead I'll simply state results[^Unchecked].
-
-[^Unchecked]: These results are unchecked, so please review before you apply them.
- 
-We can estimate the variance in best estimate liabilities as 
-
-$$
-\text{Var}(\hat V)
-\approx \sum_{b,c\in\text{Val}}v'_b{}^\text{T}\,\text{Cov}(\hat\beta_b,\hat\beta_c)\,v'_c
-\approx-\!\sum_{a\in\text{Exp}}u_a^\text{T}\,\ell''_a\,u_a
-$$
-
-where $u_a$ is the vector
-
-$$u_a=\sum_{b\in\text{Val}} \sqrt{r_a^b}\,I_b^{-1}v'_b\tag{26}$$
-
-> :pushpin: Contrast the uncertainty weight in equation $(26)$ with the weight used to derive the best estimate in equation $(25)$ above.
-
-Given our assumptions, we have
-
-$$\text{Var}(\hat V)\approx V'{}^\text{T}\text{Var}(\hat \beta)V'$$
-
-where
-
-$$V' = \sum_{b\in\text{Val}}v'_b = -\!\sum_{a\in\text{Exp}}\ell''_a w_a $$
-
-In the $n=1$ case, this *defines* an estimate of the variance of $\hat\beta$ as
-
-$$\text{Var}(\hat\beta) \approx (V')^{-2}\;\text{Var}(\hat V)\tag{27}$$
-
-/// admonition | Insight 16. A different weight is required to determine uncertainty in the presence of relevance
-    type: insight
-    attrs: {id: "Insight16"}
-
-The log-likelihood weight to determine uncertainty that corresponds to the best estimate weight in [Insight&#xA0;15](/2025-10/mortality-good-things-come-to-those-who-weight-ii#Insight15) is
-
-
-$$u_{it}=\sum_{j\in\text{Val}} \sqrt{r_{it}^{jt_0}} \, I_j^{-1} v'_j$$
-
-[[All mortality insights](/collated-mortality-insights#Insight16)]
-
-///
-
 ## Summary
 
-Let's take stock: if our underlying mortality model has a single scalar parameter, *as is typically the case for mortality models for DB pensioners*, then 
-
-1. maximising log-likelihood weighted by $w$ leads to the *best estimate of liability value*, and
-
-1. the second differential of log-likelihood weighted by $u^2$ estimates *parameter (and liability) uncertainty*.
+Let's take stock: if our underlying mortality model has a single scalar parameter, *as is typically the case for mortality models for DB pensioners*, then maximising log-likelihood weighted by $w$ leads to the *best estimate of liability value*[^LiabilityUncertainty].
 
 /// admonition | Next article: [*Good things come to those who weight (III)*](/2025-11/mortality-good-things-come-to-those-who-weight-iii/)
     type: tip
@@ -278,6 +229,6 @@ Let's take stock: if our underlying mortality model has a single scalar paramete
 There remain questions of practicality and generalisability.
 
 I'll conclude this series by addressing those questions in
-Part&#xA0;III](/2025-11/mortality-good-things-come-to-those-who-weight-iii/).
+[Part&#xA0;III](/2025-11/mortality-good-things-come-to-those-who-weight-iii/).
 
 ///

@@ -79,11 +79,9 @@ Log-likelihood is literally the log of a probability so the inclusion of a weigh
 
 1. If $w\in\{0,1\}$ then this is simply equivalent to excluding or including data. I'll call this 'lives-weighted'.
 
-1. <span id="Ref-relevance">If $0\le w \le 1$ then $w$ can be interpreted as *relevance* (also known as 'reliability' or 'importance').</span>
+2. The general case, $w\ge0$, is sometimes described as '*ad hoc*' or 'pragmatic', or even illegitimate(!).
 
-1. The general case, $w\ge0$, is sometimes described as '*ad hoc*' or 'pragmatic', or even illegitimate(!).
-
- I'll have more to say about weighting the log-likelihood in due course. For the time being, let's leave our options open by assuming $w\ge0$, i.e. 3 above.
+ I'll have more to say about weighting the log-likelihood in due course. For the time being, let's leave our options open by assuming $w\ge0$, i.e. 2 above.
 
 /// admonition | Insight 7. Log-likelihood can be defined directly in terms of the $\text{A}$ and $\text{E}$ operators
     type: insight

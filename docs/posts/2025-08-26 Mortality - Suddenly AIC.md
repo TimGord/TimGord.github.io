@@ -175,8 +175,6 @@ where $\hat\beta$ is the maximum likelihood estimator of the covariate weights, 
 
 (This is *before* allowing for overdispersion.)
 
-Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance). For the version of this insight that *does* take account of relevance, see [Insight&#xA0;17](/2025-11/mortality-good-things-come-to-those-who-weight-iii/#Insight17).
-
 [[All mortality insights](/collated-mortality-insights#Insight9)]
 ///
 
@@ -187,8 +185,6 @@ Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevanc
 $$L_\text{P}= L(\hat\beta)-\text{tr}\big(\mathbf{J}\mathbf{I}^{-1}\big)$$
 
 where $\hat\beta$ is the maximum likelihood estimator of the covariate weights, $X$ is the vector of covariates, $L$ is the log-likelihood, $w\ge0$ is the log-likelihood weight, $\mathbf{I}=\text{E}wXX^\text{T}$ and $\mathbf{J}=\text{E}w^2XX^\text{T}$.
-
-Caveat: $w$ is an *ad hoc* reallocation of log-likelihood; it is *not* [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance). For the version of this insight that *does* take account of relevance, see [Insight&#xA0;17](/2025-11/mortality-good-things-come-to-those-who-weight-iii/#Insight17).
 
 [[All mortality insights](/collated-mortality-insights#Insight10)]
 ///
@@ -201,11 +197,9 @@ In the lives-weighted case, $w\in\{0,1\}$, then $w^2=w$ and hence equation $(15)
 
 There are issues though:
 
-- The validity of equation $(13)$ depends on the interpretation of the weight, $w$. If it is lives-weighted, i.e. $w\in\{0,1\}$, then everything is trivially ok. And if $w$ is an *ad hoc* reallocation of log-likelihood then this seems ok too, albeit in a pragmatic hand-wavy sense[^HandWavy]. But equation $(13)$ cannot be correct if $w$ is interpreted as, for instance, [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance) -- if it were then, say, halving it should double $\text{Var}\big(\hat\beta\big)$, but it doesn't. Hence the caveats.
+- The validity of equation $(13)$ depends on the interpretation of the weight, $w$. If it is lives-weighted, i.e. $w\in\{0,1\}$, then everything is trivially ok. And if $w$ is an *ad hoc* reallocation of log-likelihood then this seems ok too, albeit in a pragmatic hand-wavy sense. But equation $(13)$ cannot be correct if $w$ is interpreted as, for instance, [relevance](/2025-10/mortality-good-things-come-to-those-who-weight-i/#3-defining-and-incorporating-data-relevance) -- if it were then, say, halving it should double $\text{Var}\big(\hat\beta\big)$, but it doesn't.
 
-- Being able to rank models by $L_\text{P}$ gets us only halfway because we also need to understand *whether differences in $L_\text{P}$ are significant*. In the lives-weighted and (after we've corrected for the point above) the relevance-weighted cases, this is straightforward -- a difference in the penalised log-likelihood of 1 is significant because it is equivalent to adding one more parameter. But, for an *ad hoc* weight, using the formula as presented here does not automatically provide a measure of significance and so we need another way in[^TotalPenalityDividedByParameterCount].
-
-[^HandWavy]: There is *non*-hand-wavy version to come in a few articles' time.
+- Being able to rank models by $L_\text{P}$ gets us only halfway because we also need to understand *whether differences in $L_\text{P}$ are significant*. In the lives-weighted case, this is straightforward -- a difference in the penalised log-likelihood of 1 is significant because it is equivalent to adding one more parameter. But, for an *ad hoc* weight, using the formula as presented here does not automatically provide a measure of significance and so we need another way in[^TotalPenalityDividedByParameterCount].
 
 [^TotalPenalityDividedByParameterCount]: One option is to add up all the penalties of all candidate models and divide that the by the total number of parameters being fitted to obtain an equivalent to 'one more parameter'.
 

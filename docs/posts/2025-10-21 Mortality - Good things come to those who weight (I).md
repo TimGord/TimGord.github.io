@@ -54,7 +54,7 @@ The is the first of three articles explaining why using weighted statistics make
 
 ### *1. What's the objective?*
 
-The objective is *to determine the best estimate and uncertainty of **the present value[^CashflowsToo] of liabilities**.* Along the way, yes, we will need to generate and test mortality models, but we do this because it enables us to meet the objective, not as an end in itself.
+The objective is *to determine the best estimate of **the present value[^CashflowsToo] of liabilities**.* Along the way, yes, we will need to generate and test mortality models, but we do this because it enables us to meet the objective, not as an end in itself.
 
 [^CashflowsToo]: In the real world, we'd probably also want projected cashflows, but let's keep things simple.
 
